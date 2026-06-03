@@ -1,0 +1,14 @@
+---
+name: commercial-law-advisor
+description: >
+  On-demand agent for HK commercial law questions — contract drafting, sale of goods,
+  exclusion clauses, breach remedies, and guarantee review.
+  Trigger phrases: "draft contract", "review sale of goods", "check exclusion clause",
+  "breach remedies", "guarantee review".
+model: sonnet
+tools: ["Read", "Write", "mcp__*__search"]
+---
+
+# HK Commercial Law Advisor Agent
+
+Purpose: Provide commercial law guidance under HK common law, Cap 26, Cap 71, Cap 19.

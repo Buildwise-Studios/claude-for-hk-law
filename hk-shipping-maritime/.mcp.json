@@ -1,35 +1,5 @@
 {
-  "mcpServers": {
-    "Marine Department": {
-      "type": "http",
-      "url": "https://mcp.mardep.gov.hk/mcp",
-      "title": "Marine Department",
-      "description": "Hong Kong Shipping Register, ship registration, seafarer licensing, port control, and marine incident reports."
-    },
-    "HKLII": {
-      "type": "http",
-      "url": "https://mcp.hklii.hk/mcp",
-      "title": "HKLII",
-      "description": "Search Hong Kong admiralty and maritime law case law including collision, salvage, ship arrest, and bill of lading decisions."
-    },
-    "Hong Kong e-Legislation": {
-      "type": "http",
-      "url": "https://mcp.elegislation.gov.hk/mcp",
-      "title": "Hong Kong e-Legislation",
-      "description": "Official Bills of Lading Ordinance (Cap 440), Merchant Shipping Ordinances, and maritime legislation with cross-references."
-    },
-    "HKIAC": {
-      "type": "http",
-      "url": "https://mcp.hkiac.org/mcp",
-      "title": "HKIAC",
-      "description": "Hong Kong International Arbitration Centre rules, marine panel, model clauses, and procedural guidance for maritime arbitration."
-    }
-  },
-  "recommendedCategories": [
-    "maritime-law",
-    "admiralty",
-    "shipping",
-    "hong-kong-law",
-    "arbitration"
-  ]
+  "mcpServers": {},
+  "recommendedCategories": [],
+  "_note": "No public MCP servers exist for Hong Kong government/legal portals. To connect this plugin to live data, build a custom MCP server wrapping the relevant portal (e.g., Companies Registry e-Search, e-Legislation, PCPD, Land Registry). See CONNECTORS.md for the pattern."
 }
