@@ -121,9 +121,9 @@ Prepare a memorandum setting out:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 528 fair dealing provisions
-- HKLII MCP — Copyright infringement and fair dealing cases
-- WIPO MCP — International copyright treaties, Berne Convention
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 528 fair dealing provisions
+- HKLII (https://www.hklii.hk) — Copyright infringement and fair dealing cases
+- WIPO (https://www.wipo.int) — International copyright treaties, Berne Convention
 
 ## Practice Guidance
 

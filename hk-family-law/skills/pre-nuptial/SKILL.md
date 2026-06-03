@@ -174,7 +174,7 @@ Essential for enforceability:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 192 (financial relief), Cap 481 (Inheritance)
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 192 (financial relief), Cap 481 (Inheritance)
 - Form E — Statement of Financial Position (use as disclosure template)
 - Radmacher v Granatino [2010] UKSC 42 — full judgment
 - HK Family Court practice directions on consent orders

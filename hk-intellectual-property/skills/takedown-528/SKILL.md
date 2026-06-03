@@ -167,9 +167,9 @@ Under s.88(1)(a), OSPs must implement a policy that:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 528 ss.88–91 OSP safe harbour
-- HKLII MCP — Copyright and OSP liability cases
-- IPD MCP — Copyright information and practice guidance
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 528 ss.88–91 OSP safe harbour
+- HKLII (https://www.hklii.hk) — Copyright and OSP liability cases
+- IPD Hong Kong (https://www.ipd.gov.hk) — Copyright information and practice guidance
 
 ## Practice Guidance
 

@@ -174,8 +174,8 @@ Calculate stamp duty payable on Hong Kong property transactions under the Stamp 
 
 ## Tools & Resources
 
-- IRD Stamp Office MCP — duty rates, forms, e-Stamping
-- Land Registry MCP — consideration verification, property records
-- RVD MCP — market value adjudication
-- e-Legislation MCP — Cap 117 provisions
+- IRD Stamp Office (https://www.ird.gov.hk/stamps) — duty rates, forms, e-Stamping
+- Land Registry (https://www.landreg.gov.hk) — consideration verification, property records
+- Rating and Valuation Department (https://www.rvd.gov.hk) — market value adjudication
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 117 provisions
 - IRD Practice Directions on stamp duty

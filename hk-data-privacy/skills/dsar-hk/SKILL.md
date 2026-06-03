@@ -141,7 +141,7 @@ If data subject is dissatisfied with response:
 
 ## Tools & Resources
 
-- PCPD MCP — enforcement decisions on DSAR refusals, guidance
-- e-Legislation MCP — Cap 486 access provisions
+- PCPD (https://www.pcpd.org.hk) — enforcement decisions on DSAR refusals, guidance
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 access provisions
 - PCPD Guidance on DSAR Handling
 - DSAR log template (recommended for internal records)

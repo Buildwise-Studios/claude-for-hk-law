@@ -85,7 +85,7 @@ Check for:
 
 ## Tools & Resources
 
-- HKLII MCP — NSL case law (HKSAR v Lai Chee Ying, Tam Sze Leung, Ma Chun Wai)
-- e-Legislation MCP — NSL full text
+- HKLII (https://www.hklii.hk) — NSL case law (HKSAR v Lai Chee Ying, Tam Sze Leung, Ma Chun Wai)
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — NSL full text
 - CLAUDE.md for NSL overview and implications
 - Law Society of HK / HKBA practice directions

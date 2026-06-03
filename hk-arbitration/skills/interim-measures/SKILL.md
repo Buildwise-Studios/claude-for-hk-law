@@ -171,10 +171,10 @@ The CFI has the same power to grant interim measures in relation to arbitration 
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 609 ss.35–45, 56–61
-- HKLII MCP — Interim measure decisions, anti-suit injunction cases
-- HKIAC MCP — Practice Note on Interim Measures, model applications
-- PRC SPC MCP — 2019 Arrangement implementation
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 609 ss.35–45, 56–61
+- HKLII (https://www.hklii.hk) — Interim measure decisions, anti-suit injunction cases
+- HKIAC (https://www.hkiac.org) — Practice Note on Interim Measures, model applications
+- PRC Supreme People's Court (http://www.court.gov.cn) — 2019 Arrangement implementation
 
 ## Practice Guidance
 

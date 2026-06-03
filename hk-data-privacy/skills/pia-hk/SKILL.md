@@ -149,8 +149,8 @@ Prepare a PIA report including:
 
 ## Tools & Resources
 
-- PCPD MCP — compliance guidance, investigation reports
-- e-Legislation MCP — Cap 486 provisions
+- PCPD (https://www.pcpd.org.hk) — compliance guidance, investigation reports
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 provisions
 - PCPD Privacy Management Programme guidance
 - PCPD Data Breach Handling guidance
 - ISO/IEC 27001 / SOC 2 frameworks (cross-reference)

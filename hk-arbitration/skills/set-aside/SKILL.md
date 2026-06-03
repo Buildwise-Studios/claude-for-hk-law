@@ -199,9 +199,9 @@ Instead of setting aside the award in whole, the court may:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 609 s.81, ss.99–104, Model Law Art 34
-- HKLII MCP — Set-aside applications and decisions
-- HKIAC MCP — Practice Note on awards and corrections
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 609 s.81, ss.99–104, Model Law Art 34
+- HKLII (https://www.hklii.hk) — Set-aside applications and decisions
+- HKIAC (https://www.hkiac.org) — Practice Note on awards and corrections
 
 ## Practice Guidance
 

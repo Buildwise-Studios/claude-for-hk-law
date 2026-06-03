@@ -155,10 +155,10 @@ Analyse patent validity and infringement for standard and short-term patents und
 
 ## Tools & Resources
 
-- IPD MCP — Patent register search, short-term patent filing
-- e-Legislation MCP — Cap 514 patentability, infringement, revocation provisions
-- HKLII MCP — Patent infringement and revocation cases
-- EPO/UKIPO/CNIPA MCP — Designated patent status verification
+- IPD Hong Kong (https://www.ipd.gov.hk) — Patent register search, short-term patent filing
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 514 patentability, infringement, revocation provisions
+- HKLII (https://www.hklii.hk) — Patent infringement and revocation cases
+- EPO/UKIPO/CNIPA (respective registry websites) — Designated patent status verification
 
 ## Practice Guidance
 

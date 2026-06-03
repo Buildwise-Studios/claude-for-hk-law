@@ -181,7 +181,7 @@ Estates valued at less than HK$50,000:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 10, Cap 30, Cap 73
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 10, Cap 30, Cap 73
 - Probate Registry forms — HK Judiciary website
 - iCMS (Integrated Court Case Management System) — electronic filing
 - IRD — Estate duty clearance forms

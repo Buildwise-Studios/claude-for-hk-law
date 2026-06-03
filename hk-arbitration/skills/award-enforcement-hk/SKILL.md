@@ -146,8 +146,8 @@ Guide legal practitioners through the enforcement of domestic, Model Law, and fo
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 609 ss.84–90
-- HKLII MCP — Enforcement decisions and set-aside applications
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 609 ss.84–90
+- HKLII (https://www.hklii.hk) — Enforcement decisions and set-aside applications
 - CFI Practice Directions — Enforcement of awards procedure
 - DOJ Practice Direction SL.1 — Contempt in arbitration-related court proceedings
 

@@ -144,9 +144,9 @@ Who may be bound by the arbitration agreement?
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 609 ss.18–22, Model Law Arts 7–8, 16
-- HKLII MCP — Jurisdiction challenges and agreement validity cases
-- HKIAC MCP — Model clauses, practice notes, rules
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 609 ss.18–22, Model Law Arts 7–8, 16
+- HKLII (https://www.hklii.hk) — Jurisdiction challenges and agreement validity cases
+- HKIAC (https://www.hkiac.org) — Model clauses, practice notes, rules
 
 ## Practice Guidance
 

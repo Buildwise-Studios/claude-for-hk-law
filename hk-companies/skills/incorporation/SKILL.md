@@ -104,9 +104,37 @@ Documents to file with the Companies Registry:
 - **SCR compliance**: Failure to maintain is a criminal offence; many newly incorporated companies miss this
 - **Business Registration**: Must be obtained before commencing business
 
+## Live Data Lookup
+
+You can fetch company information directly from the Companies Registry open data API.
+
+**Query by Business Registration Number:**
+```bash
+curl -s "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Brn&query[0][key2]=equal&query[0][key3]=<BR_NUMBER>"
+```
+
+**Query by Company Name (English):**
+```python
+import requests
+
+company_name = input("Enter company name: ")
+url = "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search"
+params = {
+    "query[0][key1]": "Eng_Comp_Name",
+    "query[0][key2]": "contains",
+    "query[0][key3]": company_name
+}
+response = requests.get(url, params=params)
+for co in response.json():
+    print(f"{co['English_Company_Name']} (BRN: {co['Brn']}) — {co['Company_Type']}")
+```
+
+Available fields: `Brn`, `Eng_Comp_Name`, `Chi_Comp_Name`. Operators: `equal`, `contains`, `startwith`, `endwith`. Public API — no auth required.
+
 ## Tools & Resources
 
-- Companies Registry MCP — e-Search, e-Registry, ICRIS
-- e-Legislation MCP — Companies Ordinance (Cap 622)
+- Companies Registry e-Services Portal: https://e-services.cr.gov.hk
+- Companies Registry Open Data: data.gov.hk/en-data/dataset/hk-cr-crdata-list-addr
+- Hong Kong e-Legislation: https://www.elegislation.gov.hk
 - CR Practice Directions and FAQs (cr.gov.hk)
 - Model Articles (Schedule 2, Cap 622)

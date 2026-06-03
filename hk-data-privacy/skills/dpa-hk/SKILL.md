@@ -154,8 +154,8 @@ Review and advise on Data Processing Agreements (DPA) under the Personal Data (P
 
 ## Tools & Resources
 
-- PCPD MCP — outsourcing guidance, data processor compliance
-- e-Legislation MCP — Cap 486 provisions
+- PCPD (https://www.pcpd.org.hk) — outsourcing guidance, data processor compliance
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 provisions
 - PCPD Guidance on Outsourcing the Processing of Personal Data to Data Processors
 - DPA template (PDPO-compliant)
 - Sub-processor due diligence checklist

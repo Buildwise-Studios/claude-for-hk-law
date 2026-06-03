@@ -147,8 +147,8 @@ Maintain a direct marketing compliance register:
 
 ## Tools & Resources
 
-- PCPD MCP — direct marketing compliance guidance, enforcement decisions
-- e-Legislation MCP — Cap 486 s.35A-J
+- PCPD (https://www.pcpd.org.hk) — direct marketing compliance guidance, enforcement decisions
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 s.35A-J
 - PCPD Guidance on Direct Marketing
 - Direct marketing consent log template
 - Opt-out register template

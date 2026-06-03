@@ -126,8 +126,8 @@ Review residential and commercial tenancy agreements for Hong Kong properties un
 
 ## Tools & Resources
 
-- Land Registry MCP — search tenancy registrations
-- RVD MCP — check rateable value
-- HKLII MCP — tenancy case law
-- e-Legislation MCP — Cap 7 provisions
+- Land Registry (https://www.landreg.gov.hk) — search tenancy registrations
+- Rating and Valuation Department (https://www.rvd.gov.hk) — check rateable value
+- HKLII (https://www.hklii.hk) — tenancy case law
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 7 provisions
 - Standard tenancy forms (EAA, Law Society of HK)

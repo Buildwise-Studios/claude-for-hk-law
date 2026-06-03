@@ -64,6 +64,6 @@ Analyse and advise on constitutional issues arising under the Hong Kong Basic La
 
 ## Tools & Resources
 
-- HKLII MCP — Basic Law case law
-- e-Legislation MCP — Consolidated BL text
+- HKLII (https://www.hklii.hk) — Basic Law case law
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Consolidated BL text
 - CLAUDE.md for practice profile and landmark cases

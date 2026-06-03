@@ -124,10 +124,10 @@ Check whether the mark is:
 
 ## Tools & Resources
 
-- IPD MCP — Trade mark register search, e-filing
-- Companies Registry MCP — Company name search
-- e-Legislation MCP — Cap 559 absolute/relative grounds
-- HKLII MCP — Opposition and infringement decisions
+- IPD Hong Kong (https://www.ipd.gov.hk) — Trade mark register search, e-filing
+- Companies Registry e-Search (https://www.icris.cr.gov.hk) — Company name search
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 559 absolute/relative grounds
+- HKLII (https://www.hklii.hk) — Opposition and infringement decisions
 - Nice Classification — WIPO classification database
 
 ## Practice Guidance

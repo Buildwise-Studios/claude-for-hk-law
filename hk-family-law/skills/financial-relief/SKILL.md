@@ -175,7 +175,7 @@ Advise on and draft financial remedy applications under the Matrimonial Proceedi
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 192, Cap 13, Cap 16
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 192, Cap 13, Cap 16
 - Child Maintenance Guidelines (Judiciary)
 - Form E — Statement of Financial Position
 - Pension valuation calculators

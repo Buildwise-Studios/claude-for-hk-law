@@ -190,7 +190,7 @@ See also Child Arrangements skill — cross-border relocation considerations:
 ## Tools & Resources
 
 - Hague Conference on Private International Law website (hcch.net) — Contracting States list
-- e-Legislation MCP — Cap 512, Cap 179, Cap 188, Cap 13
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 512, Cap 179, Cap 188, Cap 13
 - Director of Social Welfare HK — Central Authority for Hague Convention applications
 - Mainland-HK Arrangement on Recognition of Matrimonial Judgments (2022)
 - HK Judiciary Practice Directions — Family Court

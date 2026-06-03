@@ -166,10 +166,10 @@ Once the IPC issues an enforcement order:
 
 ## Tools & Resources
 
-- HKLII MCP — HK enforcement decisions
-- e-Legislation MCP — Cap 609 enforcement provisions
-- PRC SPC MCP — SPC interpretations, guidance, reporting mechanism
-- PRC Civil Procedure Law MCP — Enforcement procedure
+- HKLII (https://www.hklii.hk) — HK enforcement decisions
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 609 enforcement provisions
+- PRC Supreme People's Court (http://www.court.gov.cn) — SPC interpretations, guidance, reporting mechanism
+- PRC Civil Procedure Law (pkulaw.com) — Enforcement procedure
 
 ## Practice Guidance
 

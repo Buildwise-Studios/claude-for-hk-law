@@ -126,8 +126,29 @@ Advise shareholders on remedies available under Hong Kong company law for corpor
 - **Re Grand Field Group Holdings Ltd** — Derivative action leave principles
 - **Re Haron International Ltd** — Deadlock and winding up
 
+## Live Data Lookup
+
+You can fetch company information from the Companies Registry open data API.
+
+**By Business Registration Number:**
+```bash
+curl -s "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Brn&query[0][key2]=equal&query[0][key3]=<BR_NUMBER>"
+```
+
+**By Company Name (Python):**
+```python
+import requests
+name = input("Company name: ")
+r = requests.get("https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search",
+    params={"query[0][key1]": "Eng_Comp_Name", "query[0][key2]": "contains", "query[0][key3]": name})
+for co in r.json():
+    print(f"{co['English_Company_Name']} ({co['Brn']}) — {co['Company_Type']}")
+```
+
+Public API, no auth required. Fields: `Brn`, `Eng_Comp_Name`, `Chi_Comp_Name`. Operators: `equal`, `contains`, `startwith`, `endwith`.
+
 ## Tools & Resources
 
-- HKLII MCP — Company law case law
-- e-Legislation MCP — Cap 622 (ss.724–738), Cap 32 (s.177, ss.180)
-- Companies Registry MCP — Company records for valuation evidence
+- HKLII (https://www.hklii.hk) — Company law case law
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 622 (ss.724–738), Cap 32 (s.177, ss.180)
+- Companies Registry e-Search (https://www.icris.cr.gov.hk) — Company records for valuation evidence

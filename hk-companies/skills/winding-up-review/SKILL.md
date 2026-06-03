@@ -144,9 +144,30 @@ Advise on winding-up processes under the Companies (Winding Up and Miscellaneous
 - **Re Lam Kwai Chung Garment Factory Ltd** — Just and equitable winding up
 - **Securities and Futures Commission v Stock Exchange of Hong Kong Ltd** — Director liability
 
+## Live Data Lookup
+
+You can fetch company information from the Companies Registry open data API.
+
+**By Business Registration Number:**
+```bash
+curl -s "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Brn&query[0][key2]=equal&query[0][key3]=<BR_NUMBER>"
+```
+
+**By Company Name (Python):**
+```python
+import requests
+name = input("Company name: ")
+r = requests.get("https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search",
+    params={"query[0][key1]": "Eng_Comp_Name", "query[0][key2]": "contains", "query[0][key3]": name})
+for co in r.json():
+    print(f"{co['English_Company_Name']} ({co['Brn']}) — {co['Company_Type']}")
+```
+
+Public API, no auth required. Fields: `Brn`, `Eng_Comp_Name`, `Chi_Comp_Name`. Operators: `equal`, `contains`, `startwith`, `endwith`.
+
 ## Tools & Resources
 
-- HKLII MCP — Winding-up case law
-- e-Legislation MCP — Cap 32 provisions
-- Companies Registry MCP — Gazette notices, company winding-up status
+- HKLII (https://www.hklii.hk) — Winding-up case law
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 32 provisions
+- Companies Registry e-Search (https://www.icris.cr.gov.hk) — Gazette notices, company winding-up status
 - Official Receiver's Office — Practice directions, forms, and guidelines

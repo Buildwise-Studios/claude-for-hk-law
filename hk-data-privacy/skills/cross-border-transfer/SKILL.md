@@ -168,8 +168,8 @@ The following clauses are recommended for cross-border data processing arrangeme
 
 ## Tools & Resources
 
-- PCPD MCP — compliance guidance on cross-border transfers
-- e-Legislation MCP — Cap 486 provisions
+- PCPD (https://www.pcpd.org.hk) — compliance guidance on cross-border transfers
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 provisions
 - PCPD Guidance on Outsourcing the Processing of Personal Data to Data Processors
 - ISO/IEC 27701 (Privacy Information Management)
 - Standard DPA template (customised for PDPO)

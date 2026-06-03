@@ -81,7 +81,7 @@ For matters before HKSAR courts:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Basic Law text (Chinese + English)
-- HKLII MCP — CFA BL jurisprudence
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Basic Law text (Chinese + English)
+- HKLII (https://www.hklii.hk) — CFA BL jurisprudence
 - CLAUDE.md for comprehensive BL structure and key articles
 - NPCSC Interpretation Gazettes (available via HKLII)

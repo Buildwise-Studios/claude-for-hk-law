@@ -177,8 +177,8 @@ Costs: paid out of management fund (or owners proportionally)
 
 ## Tools & Resources
 
-- Land Registry MCP — DMC searches, IO registration
-- HKLII MCP — Building management case law
-- e-Legislation MCP — Cap 344 provisions
+- Land Registry (https://www.landreg.gov.hk) — DMC searches, IO registration
+- HKLII (https://www.hklii.hk) — Building management case law
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 344 provisions
 - Land Tribunal — Building Management jurisdiction guidance
-- PCPD MCP — CCTV and data privacy in building management
+- PCPD (https://www.pcpd.org.hk) — CCTV and data privacy in building management

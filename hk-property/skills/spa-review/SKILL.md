@@ -123,7 +123,7 @@ Review and advise on formal Sale and Purchase Agreements (SPA) for Hong Kong pro
 
 ## Tools & Resources
 
-- Land Registry MCP — title search, memorial, pending actions
-- RVD MCP — rates, government rent, valuation
-- e-Legislation MCP — Cap 219, Cap 128 provisions
+- Land Registry (https://www.landreg.gov.hk) — title search, memorial, pending actions
+- Rating and Valuation Department (https://www.rvd.gov.hk) — rates, government rent, valuation
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 219, Cap 128 provisions
 - Standard SPA forms (HKIS / Law Society / Estate Agents Authority)

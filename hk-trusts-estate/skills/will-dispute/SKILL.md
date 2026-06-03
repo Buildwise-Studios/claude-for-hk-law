@@ -198,7 +198,7 @@ Advise on and litigate will disputes and claims under the Inheritance (Provision
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 30, Cap 481, Cap 73, Cap 10
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 30, Cap 481, Cap 73, Cap 10
 - Probate Registry forms (Caveat, Warning, etc.) — HK Judiciary
 - Law Society of HK — Practice directions on probate litigation
 - Mediation — HKMAAL accredited mediators with probate expertise

@@ -177,8 +177,8 @@ If PCPD decides to investigate:
 
 ## Tools & Resources
 
-- PCPD MCP — breach handling guidance, enforcement decisions, public reports
-- e-Legislation MCP — Cap 486 provisions
+- PCPD (https://www.pcpd.org.hk) — breach handling guidance, enforcement decisions, public reports
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 486 provisions
 - PCPD Guidance on Data Breach Handling (voluntary framework)
 - Breach notification letter templates
 - Incident response plan template

@@ -182,8 +182,8 @@ The testator must:
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 30 (Wills Ordinance)
-- e-Legislation MCP — Cap 73 (Intestates' Estates Ordinance)
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 30 (Wills Ordinance)
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 73 (Intestates' Estates Ordinance)
 - Probate Registry forms — HK Judiciary
 - Law Society of HK — Will drafting practice directions
 - STEP HK — Society of Trust and Estate Practitioners HK Chapter

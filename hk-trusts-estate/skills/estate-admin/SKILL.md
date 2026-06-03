@@ -210,7 +210,7 @@ Guide executors and administrators through the full process of administering a d
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 10, Cap 73, Cap 481
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 10, Cap 73, Cap 481
 - Probate Registry — Forms and guidance (Judiciary website)
 - IRD — Estate clearance procedures
 - Land Registry — Assent of property forms

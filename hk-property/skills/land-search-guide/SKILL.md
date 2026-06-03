@@ -127,8 +127,8 @@ Prepare a due diligence report covering:
 
 ## Tools & Resources
 
-- Land Registry MCP — Integrated Information System, e-Search
-- RVD MCP — Rateable value, government rent
-- e-Legislation MCP — Cap 128, Cap 219 provisions
+- Land Registry (https://www.landreg.gov.hk) — Integrated Information System, e-Search
+- Rating and Valuation Department (https://www.rvd.gov.hk) — Rateable value, government rent
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 128, Cap 219 provisions
 - Land Registry Practice Directions
 - Law Society of HK Practice Direction on Conveyancing

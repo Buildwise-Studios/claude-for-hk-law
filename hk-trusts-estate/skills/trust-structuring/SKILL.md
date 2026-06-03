@@ -183,7 +183,7 @@ Advise on the establishment, structuring, and administration of onshore Hong Kon
 
 ## Tools & Resources
 
-- e-Legislation MCP — Cap 29, Cap 76, Cap 253, Cap 257
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 29, Cap 76, Cap 253, Cap 257
 - STEP HK — best practice guidance
 - HKMA — TCSP (Trust or Company Service Providers) licensing
 - IRD — Charitable registration guidelines

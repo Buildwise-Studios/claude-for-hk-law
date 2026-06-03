@@ -129,10 +129,10 @@ Establish the classic trinity:
 
 ## Tools & Resources
 
-- IPD MCP — Trade mark register verification
-- HKLII MCP — Trade mark infringement and passing off cases
-- e-Legislation MCP — Cap 559 infringement provisions
-- Customs & Excise MCP — Border measures and criminal enforcement
+- IPD Hong Kong (https://www.ipd.gov.hk) — Trade mark register verification
+- HKLII (https://www.hklii.hk) — Trade mark infringement and passing off cases
+- Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 559 infringement provisions
+- Customs & Excise Department (https://www.customs.gov.hk) — Border measures and criminal enforcement
 
 ## Practice Guidance
 
