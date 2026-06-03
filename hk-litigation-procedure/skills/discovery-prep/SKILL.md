@@ -134,3 +134,16 @@ The affidavit must:
 Draft affidavit text ready for swearing.
 
 **Append:** `⚠️ This is a draft for review. Ensure all documents have been properly reviewed for privilege before the affidavit is sworn. Verify that the search scope was adequate.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

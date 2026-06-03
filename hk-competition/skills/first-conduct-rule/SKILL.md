@@ -61,3 +61,16 @@ The Competition Commission may issue block exemption orders for categories of ag
 4. Is it SACC (serious anti-competitive conduct)?
 5. Does a block exemption apply?
 6. Does an exclusion/exemption order apply?
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

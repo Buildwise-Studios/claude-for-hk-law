@@ -85,3 +85,16 @@ Does the contract include all required particulars:
 ## Output
 
 Produce a compliance matrix (✅ Compliant / ⚠️ Needs Attention / 🔴 Non-compliant) with inline tags for verification and review items.
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

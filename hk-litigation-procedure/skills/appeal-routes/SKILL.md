@@ -129,3 +129,16 @@ Key documents required:
 ```
 
 **Append:** `⚠️ Appeal routes, leave requirements, and time limits are subject to the court's specific rules and directions. Verify against the current RHC, RDC, or CFA Rules. This is not a substitute for legal advice.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

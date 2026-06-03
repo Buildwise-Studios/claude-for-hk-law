@@ -186,3 +186,16 @@ The CFI has the same power to grant interim measures in relation to arbitration 
 6. **Anti-suit injunctions are powerful but controversial** — HK courts have granted them in support of arbitration; but be aware of EU/MSJ objections
 7. **Costs risk** — interim measures applications are costly; offering cross-undertaking in damages is standard for court-ordered measures
 8. **Document evidence** — maintain a clear chain of evidence for the application; lack of concrete evidence will defeat the application
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

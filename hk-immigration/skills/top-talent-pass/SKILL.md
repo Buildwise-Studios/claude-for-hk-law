@@ -126,3 +126,16 @@ Guide legal practitioners through the eligibility assessment and application pro
 - Early extension (at year 2) with strong employment evidence strengthens the PR application path
 - For high earners not meeting the education test, Category A remains the most accessible route
 - For Mainland Chinese applicants, TTPS offers a much faster path than QMAS
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

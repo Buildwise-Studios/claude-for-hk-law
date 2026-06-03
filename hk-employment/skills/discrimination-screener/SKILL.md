@@ -104,3 +104,16 @@ argument-hint: "[describe the factual scenario — treatment, comments, policies
 | Cap 602 | [Y/N/Maybe] | 🔴/🟠/🟡/🟢 | [Low/Medium/High] | [Action] |
 
 Append a decision tree: EOC conciliation, legal advice, internal investigation, or litigation preparation.
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

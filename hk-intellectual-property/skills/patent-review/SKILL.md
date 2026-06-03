@@ -169,3 +169,16 @@ Analyse patent validity and infringement for standard and short-term patents und
 5. **Claim construction is key** — HK courts apply purposive construction; expert evidence on the person skilled in the art is essential
 6. **Short-term patents** — maximum 8 claims; ensure they are carefully drafted as the patent cannot be amended post-grant
 7. **Always check the designated patent** — for standard patents, the underlying EPO/UK/PRC patent must be in force
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

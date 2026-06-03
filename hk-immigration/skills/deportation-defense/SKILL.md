@@ -116,3 +116,16 @@ Determine whether the matter involves deportation or removal:
 - Collect mitigation evidence early — before the Deportation Order is signed
 - Human rights arguments under BL Art 28 (freedom from torture) may be stronger than Art 8 (family life) in drug/trafficking cases
 - Post-deportation: No automatic right of return — application for permission required (ad hoc, rarely granted)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

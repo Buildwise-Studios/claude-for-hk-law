@@ -62,3 +62,16 @@ For limitation clauses: consider **financial resources** of the party relying on
 - [ ] Apply Schedule 2 reasonableness guidelines
 - [ ] Is the clause incorporated by signature, notice, or course of dealing?
 - [ ] Does contra proferentem narrow interpretation against the drafter?
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

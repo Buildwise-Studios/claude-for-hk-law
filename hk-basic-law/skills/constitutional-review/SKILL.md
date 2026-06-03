@@ -67,3 +67,16 @@ Analyse and advise on constitutional issues arising under the Hong Kong Basic La
 - HKLII (https://www.hklii.hk) — Basic Law case law
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Consolidated BL text
 - CLAUDE.md for practice profile and landmark cases
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

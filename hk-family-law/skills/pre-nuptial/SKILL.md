@@ -178,3 +178,16 @@ Essential for enforceability:
 - Form E — Statement of Financial Position (use as disclosure template)
 - Radmacher v Granatino [2010] UKSC 42 — full judgment
 - HK Family Court practice directions on consent orders
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

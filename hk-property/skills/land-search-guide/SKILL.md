@@ -132,3 +132,16 @@ Prepare a due diligence report covering:
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 128, Cap 219 provisions
 - Land Registry Practice Directions
 - Law Society of HK Practice Direction on Conveyancing
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

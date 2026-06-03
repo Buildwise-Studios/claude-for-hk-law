@@ -127,3 +127,16 @@ Review and advise on formal Sale and Purchase Agreements (SPA) for Hong Kong pro
 - Rating and Valuation Department (https://www.rvd.gov.hk) — rates, government rent, valuation
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 219, Cap 128 provisions
 - Standard SPA forms (HKIS / Law Society / Estate Agents Authority)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

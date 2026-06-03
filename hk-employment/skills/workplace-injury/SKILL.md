@@ -82,3 +82,16 @@ argument-hint: "[describe the work injury — nature, circumstances, injuries, e
 | Next steps | [Procedure to follow] |
 
 **Append:** `⚠️ This is not legal advice or a formal assessment. Verify the injury against Cap 282, the Assessment Board's guidelines, and current schedules. Review with a licensed HK solicitor or barrister before proceeding with any claim.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -203,3 +203,16 @@ Advise on and litigate will disputes and claims under the Inheritance (Provision
 - Law Society of HK — Practice directions on probate litigation
 - Mediation — HKMAAL accredited mediators with probate expertise
 - STEP HK — Contentious trusts and estates practice guidance
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

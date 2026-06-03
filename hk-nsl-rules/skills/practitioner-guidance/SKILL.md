@@ -171,3 +171,16 @@ The Hong Kong Bar Association has issued statements on professional conduct in N
 - [ ] Ensure professional indemnity covers NSL work
 - [ ] Seek guidance from Law Society / Bar Council where uncertain
 - [ ] Maintain privilege — do not disclose without clear statutory authority or court order
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

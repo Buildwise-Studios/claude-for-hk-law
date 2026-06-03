@@ -144,3 +144,16 @@ Guide legal practitioners through the review, analysis, and drafting of charterp
 - For HK maritime arbitration, the HKIAC marine panel provides experienced maritime arbitrators
 - Consider mediation (HKIAC Mediation Rules) — commonly used for charterparty disputes in HK
 - Limitation of liability under Cap 434 may apply to certain owner claims
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

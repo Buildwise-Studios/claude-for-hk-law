@@ -161,3 +161,16 @@ Guide legal practitioners through the enforcement of domestic, Model Law, and fo
 6. **State immunity** — treat with care; commercial activity exception is available but procedural steps (service) are more stringent
 7. **Costs follow the event** — a successful enforcing party is generally entitled to costs
 8. **Limitation period** — enforcement action must be brought within 6 years of the award
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

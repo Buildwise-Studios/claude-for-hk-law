@@ -134,3 +134,16 @@ Prepare a memorandum setting out:
 5. **Parody/caricature/pastiche/quote exception (s.39A)** — useful for creative and media clients; still requires fairness assessment
 6. **Fair dealing is a defence** — the burden of proof is on the defendant once subsistence and infringement are established
 7. **Document the analysis** — if advising on whether a proposed use is fair, document the factors considered and the conclusion
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

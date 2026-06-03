@@ -213,3 +213,16 @@ Instead of setting aside the award in whole, the court may:
 6. **Opt-in appeal is rare** — most commercial contracts do not include it; check the arbitration agreement before advising on appeal options
 7. **Evidence must be procedural** — the court will not consider evidence going to the merits of the dispute
 8. **Full disclosure** — on set-aside applications, the applicant must disclose all material facts, including any parallel proceedings
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

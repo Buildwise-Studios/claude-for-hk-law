@@ -69,3 +69,16 @@ Before assessing SMP, define the relevant market:
 - **Competition Commission**: Investigation, enforcement, commitment agreements
 - **Competition Tribunal**: Pecuniary penalties, directions, injunctions
 - **Maximum penalty**: Up to 10% of Hong Kong gross turnover for each year of infringement (up to 3 years)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

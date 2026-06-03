@@ -181,3 +181,16 @@ Under s.88(1)(a), OSPs must implement a policy that:
 6. **Privacy issues** — OSPs should not disclose user identity without a court order or the user's consent; the notice-and-takedown does not require the OSP to disclose identity
 7. **Document everything** — OSPs should keep a register of all notices received, actions taken, and counter-notifications
 8. **The safe harbour is not the only defence** — OSPs may also rely on s.40 (incidental inclusion) or ss.79–80 (private copying) in appropriate circumstances
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

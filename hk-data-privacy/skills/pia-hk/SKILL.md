@@ -154,3 +154,16 @@ Prepare a PIA report including:
 - PCPD Privacy Management Programme guidance
 - PCPD Data Breach Handling guidance
 - ISO/IEC 27001 / SOC 2 frameworks (cross-reference)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

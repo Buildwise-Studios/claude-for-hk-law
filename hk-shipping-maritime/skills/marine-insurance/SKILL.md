@@ -140,3 +140,16 @@ Guide legal practitioners through the review, analysis, and advice on marine ins
 - **General Average:** Advise cargo interests to sign GA bond promptly to avoid cargo detention
 - **Deductibles:** Typically HK$50k–500k for H&M; HK$5k–50k for cargo
 - **Law reform:** Cap 329 is due for review (UK Insurance Act 2015 reforms not yet adopted in HK); Dubai regime may influence HK reform
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

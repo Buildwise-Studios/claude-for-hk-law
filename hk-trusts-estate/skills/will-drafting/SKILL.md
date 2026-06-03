@@ -187,3 +187,16 @@ The testator must:
 - Probate Registry forms — HK Judiciary
 - Law Society of HK — Will drafting practice directions
 - STEP HK — Society of Trust and Estate Practitioners HK Chapter
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

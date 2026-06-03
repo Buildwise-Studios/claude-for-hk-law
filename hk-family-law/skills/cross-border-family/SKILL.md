@@ -194,3 +194,16 @@ See also Child Arrangements skill — cross-border relocation considerations:
 - Director of Social Welfare HK — Central Authority for Hague Convention applications
 - Mainland-HK Arrangement on Recognition of Matrimonial Judgments (2022)
 - HK Judiciary Practice Directions — Family Court
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

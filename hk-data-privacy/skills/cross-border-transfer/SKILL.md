@@ -174,3 +174,16 @@ The following clauses are recommended for cross-border data processing arrangeme
 - ISO/IEC 27701 (Privacy Information Management)
 - Standard DPA template (customised for PDPO)
 - Data flow mapping template
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

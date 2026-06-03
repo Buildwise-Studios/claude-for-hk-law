@@ -123,3 +123,16 @@ Under Cap 440, the following have title to sue and are subject to liabilities:
 - For combined transport, check whether the loss occurred at sea (Hague-Visby) or on land (CMR or local law)
 - eBL adoption is growing fast — ensure advice covers the bespoke system terms (Bolero Rulebook, etc.)
 - Cargo receivers should present original bills before delivery — delivery without surrender creates liability for the carrier
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -111,3 +111,16 @@ Directors may be liable for:
 | 2. Design | Months 2–3 | Policy drafting, training materials |
 | 3. Implementation | Months 4–6 | Training roll-out, processes |
 | 4. Monitoring | Ongoing | Audits, updates, refreshers |
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

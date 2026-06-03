@@ -127,3 +127,16 @@ The Central Government may exercise jurisdiction if ONE of three conditions is m
 - [ ] If Art 55 invoked, advise on Mainland procedure rights and limitations
 - [ ] Document all advice
 - [ ] Monitor for Art 55 indicators (SJ statements, official announcements)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

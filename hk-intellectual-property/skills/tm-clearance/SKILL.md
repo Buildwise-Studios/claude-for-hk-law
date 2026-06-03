@@ -139,3 +139,16 @@ Check whether the mark is:
 5. **IPD objections** — respond within 6 months; evidence of use / acquired distinctiveness may overcome absolute grounds
 6. **Opposition risk** — be prepared; opposition proceedings can be costly (CFI proceedings)
 7. **Always dual-track** — consider both registered (IPD) and unregistered (passing off) rights
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

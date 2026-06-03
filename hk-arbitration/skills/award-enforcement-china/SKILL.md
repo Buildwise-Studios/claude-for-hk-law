@@ -181,3 +181,16 @@ Once the IPC issues an enforcement order:
 6. **Public policy argument is weak** — SPC has repeatedly directed courts to construe public policy narrowly; cite SPC guidance
 7. **Blacklisting is powerful** — the 失信被执行人 (Shixin) list is publicly accessible and can seriously damage a debtor's business operations in PRC; use it as leverage
 8. **Patent enforcement vs award enforcement** — the Arrangement applies to awards only, not court judgments; if you have a HK court judgment (not award), the process is different (see HKSAR-Mainland China Judgment Arrangement 2024)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -94,3 +94,16 @@ The Commission will prohibit a merger that has resulted, or may be expected to r
 - Directions to remedy
 - Pecuniary penalties for failure to comply with directions
 - Notifiable telecom mergers completed without notification: up to 10% of Hong Kong turnover
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

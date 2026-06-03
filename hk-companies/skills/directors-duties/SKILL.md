@@ -138,3 +138,19 @@ Returns: company name, BRN, type, status, incorporation date, and registered off
 - HKLII (https://www.hklii.hk) — Directors' duty case law
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 622, Cap 32 provisions
 - SFC enforcement database for listed company cases
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+
+# Look up company info (only for company-related queries)
+python3 scripts/check_company.py <BRN_or_name>
+```

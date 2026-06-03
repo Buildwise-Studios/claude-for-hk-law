@@ -188,3 +188,16 @@ Advise on the establishment, structuring, and administration of onshore Hong Kon
 - HKMA — TCSP (Trust or Company Service Providers) licensing
 - IRD — Charitable registration guidelines
 - HK Law Society — trust practice directions
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -131,3 +131,16 @@ Review residential and commercial tenancy agreements for Hong Kong properties un
 - HKLII (https://www.hklii.hk) — tenancy case law
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 7 provisions
 - Standard tenancy forms (EAA, Law Society of HK)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

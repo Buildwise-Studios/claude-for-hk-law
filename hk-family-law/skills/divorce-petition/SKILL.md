@@ -137,3 +137,16 @@ Ancillary relief should be applied for in the prayer or by separate notice:
 - Matrimonial Causes Rules (Cap 179A) — procedural forms
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — District Court Ordinance (Cap 336)
 - Judiciary Practice Directions — family proceedings
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

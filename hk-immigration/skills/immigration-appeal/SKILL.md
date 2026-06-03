@@ -153,3 +153,16 @@ The Immigration Tribunal hears appeals against:
 - Human rights arguments should be developed in the Tribunal, not saved for judicial review
 - Costs: No costs order in the Tribunal; each party bears its own costs
 - Legal aid: Available for deportation appeals (means and merits tested; apply to Director of Legal Aid)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

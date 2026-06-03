@@ -53,3 +53,16 @@ Review goods contracts under the Sale of Goods Ordinance (Cap 26).
 3. Identify any express exclusion of implied terms
 4. Review acceptance / rejection timelines
 5. Assess available remedies
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -132,3 +132,16 @@ HK courts have prescribed scales for certain items (e.g., solicitor's fees for i
 - [x] Security for costs assessment (if applicable)
 
 **Append:** `⚠️ Cost estimates are indicative only. Actual costs depend on the complexity of the case, the court's directions, and the outcome of individual applications. Taxing Master's scale rates should be verified against current scales. Review with a practising HK costs specialist for a formal estimate.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

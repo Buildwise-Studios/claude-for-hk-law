@@ -160,3 +160,16 @@ Guide legal practitioners through the procedure for arresting a ship in Hong Kon
 - **Costs:** The arresting party is entitled to arrest costs (bailiff fees, legal costs, translation, surveys) in the priority of claims
 - **Limitation of liability:** The arrested shipowner may apply to limit liability under Cap 434 — apply to establish a limitation fund
 - If the claim is below HK$500k, consider whether arrest is proportionate
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

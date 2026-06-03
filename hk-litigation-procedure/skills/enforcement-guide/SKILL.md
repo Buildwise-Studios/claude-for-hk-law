@@ -162,3 +162,16 @@ argument-hint: "[describe the judgment — court, amount, debtor information, kn
 5. **Consider China enforcement** — if Mainland assets identified
 
 **Append:** `⚠️ Enforcement is fact-dependent and subject to the debtor's asset position, cooperation, and any appeals or challenges. This is a guide only — specific legal advice should be sought before taking enforcement steps. Review with a licensed HK solicitor or barrister.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

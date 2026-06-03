@@ -132,3 +132,16 @@ Guide legal practitioners through the trial procedure for NSL offences in Hong K
 - [ ] Prepare written submissions tailored to reasoned judgment
 - [ ] Anticipate sentencing factors
 - [ ] Preserve appeal grounds
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -78,3 +78,16 @@ Under s.106 of the Ordinance, the Commission may apply to the Tribunal for a dir
 3. **Legal advice**: Engage legal counsel before contacting the Commission
 4. **Document preservation**: Immediately issue a legal hold notice
 5. **Cross-jurisdictional issues**: Coordinate with other competition authorities (especially if multi-jurisdictional cartel)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

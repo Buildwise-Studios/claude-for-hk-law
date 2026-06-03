@@ -73,3 +73,16 @@ Remedies for breach of contract under Hong Kong common law.
 - [ ] Specific performance — is damages inadequate?
 - [ ] Limitation period check (6 years / 12 years)
 - [ ] Any limitation or exclusion clause (Cap 71)?
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

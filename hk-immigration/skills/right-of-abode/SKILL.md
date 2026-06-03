@@ -110,3 +110,16 @@ Key factors established in **Vallejos v Commissioner of Registration (2013):**
 - For Category 3 claims, the parent must have been a permanent resident at the time of the child's birth
 - "Permanent resident" status is different from "right of abode" — a person may have one without the other
 - Consider alternative pathways: Certificate of Entitlement vs Right of Abode Verification (for those already in HK)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

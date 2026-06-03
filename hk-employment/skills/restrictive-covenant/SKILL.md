@@ -91,3 +91,16 @@ HK courts apply the **blue pencil test**: if the offending part of a covenant ca
 **Recommendation:** Redline suggestions (narrow scope, reduce duration, add garden leave as alternative, add fresh consideration).
 
 **Append:** `⚠️ Restrictive covenant enforceability is highly fact-dependent. Review this assessment with a licensed HK solicitor or barrister before relying on the covenant.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

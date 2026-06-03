@@ -44,3 +44,16 @@ formation, essential terms, breach provisions, and remedial clauses.
 - Cap 26 Sale of Goods Ordinance (for goods)
 - Cap 71 Control of Exemption Clauses Ordinance
 - Cap 622 Companies Ordinance (execution formalities)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

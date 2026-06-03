@@ -122,3 +122,16 @@ Apply the CFA framework from **HKSAR v Lai Chee Ying (2021)**:
 - [ ] Anticipate prosecution objections and SJ review
 - [ ] Prepare for appeal if bail is refused
 - [ ] Document all advice to client on bail prospects
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

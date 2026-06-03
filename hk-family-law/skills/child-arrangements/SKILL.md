@@ -178,3 +178,16 @@ Court resolves a specific dispute on:
 - Hague Convention forms (Central Authority, Director of Social Welfare)
 - Social Welfare Department — Family Casework Service
 - Judiciary Family Court Practice Directions
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -94,3 +94,16 @@ Calculated at the employee's average daily wage × number of days of notice peri
 | **Total** | **HK$ [N]** | |
 
 Append: `⚠️ All calculations are estimates based on Cap 57 formulas. Verify against the employee's records and current statutory thresholds. Review with a licensed HK solicitor or barrister before making payment.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

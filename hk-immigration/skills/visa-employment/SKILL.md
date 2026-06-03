@@ -104,3 +104,16 @@ Guide legal practitioners through the review and preparation of employment visa 
 - GEP applications from Mainland China require a separate exit endorsement from the Mainland authorities
 - Dependant visas are generally approved for spouses and unmarried children under 18
 - Overstay history may disqualify or trigger enhanced scrutiny
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

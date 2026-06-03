@@ -108,3 +108,16 @@ Provide a structured classification including:
 - Overlapping HK offences (if any)
 - Key evidence considerations
 - Recommendation for further investigation or disclosure
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -135,3 +135,16 @@ Guide legal practitioners through the procedure for bringing and defending admir
 - Consider P&I Club negotiation before arrest — may avoid costs and delay
 - Wrongful arrest damages are assessed strictly (losses directly caused)
 - Preservation of the arrested ship is the arresting party's responsibility (safe berth, insurance)
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

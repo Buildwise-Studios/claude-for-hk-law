@@ -158,3 +158,16 @@ Who may be bound by the arbitration agreement?
 6. **Choose institution carefully** — HKIAC is preferred for HK-seated arbitrations due to familiarity with HK procedural law, but ICC, SIAC, and others operate in HK too
 7. **Review for consistency** — check the entire agreement for conflict with the arbitration clause (exclusive jurisdiction clauses, governing law, dispute resolution in schedules)
 8. **Consider arbitration of non-contractual claims** — "arising out of or in connection with" covers tort, restitution, and statutory claims related to the contract
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

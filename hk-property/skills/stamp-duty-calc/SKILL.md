@@ -179,3 +179,16 @@ Calculate stamp duty payable on Hong Kong property transactions under the Stamp 
 - Rating and Valuation Department (https://www.rvd.gov.hk) — market value adjudication
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 117 provisions
 - IRD Practice Directions on stamp duty
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

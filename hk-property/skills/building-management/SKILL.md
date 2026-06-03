@@ -182,3 +182,16 @@ Costs: paid out of management fund (or owners proportionally)
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 344 provisions
 - Land Tribunal — Building Management jurisdiction guidance
 - PCPD (https://www.pcpd.org.hk) — CCTV and data privacy in building management
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

@@ -180,3 +180,16 @@ Advise on and draft financial remedy applications under the Matrimonial Proceedi
 - Form E — Statement of Financial Position
 - Pension valuation calculators
 - HK Family Court practice directions
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```

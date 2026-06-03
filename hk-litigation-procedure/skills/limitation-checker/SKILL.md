@@ -113,3 +113,16 @@ argument-hint: "[describe the claim type, cause of action, dates of relevant eve
 - [ ] If limitation is contestable, advise on protective issue of proceedings.
 
 **Append:** `⚠️ This analysis is based on the information provided and the general provisions of the Limitation Ordinance (Cap 347). Specific claims may be subject to special limitation periods under other ordinances, case law, or contractual provisions. Review with a licensed HK solicitor or barrister before relying on this assessment.`
+
+
+## Scripts
+
+Use these scripts to fetch live data:
+
+```bash
+# Search legislation index by keyword
+python3 scripts/download_legislation_list.py --search "keyword"
+
+# Download full ordinance text
+python3 scripts/download_legislation_text.py <cap_no>
+```
