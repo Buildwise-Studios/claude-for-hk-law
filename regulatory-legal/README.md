@@ -62,7 +62,7 @@ Owner notifications (gap assignments, due-date reminders, NPRM alerts) require a
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `reg-change-monitor` agent watches the regulatory feeds and flags changes against your policy library. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `reg-change-monitor` agent watches the regulatory feeds and flags changes against your policy library. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## Notes
 
@@ -72,4 +72,4 @@ Your practice profile at `~/.claude/plugins/config/claude-for-legal/regulatory-l
 
 ## Configuration
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` and survives plugin updates — you only run setup once.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` and survives plugin updates — you only run setup once.

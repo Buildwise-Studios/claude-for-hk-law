@@ -21,7 +21,7 @@ This plugin does **not** draft patent claims. Patent prosecution with claim stra
 
 On first use, the plugin interviews you — ten to fifteen minutes, conversational — to learn how your practice actually works. It asks about your practice area mix, your jurisdiction footprint, your enforcement posture, your approval matrix, and your escalation triggers. Then it asks for your portfolio list, brand guidelines, C&D templates, enforcement playbook, and OSS policy — whatever you have — so it can extract rather than making you re-type.
 
-It writes what it learns to `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` — a plain-English document about your practice that every other skill reads before doing anything. You edit the document, not a config file.
+It writes what it learns to `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` — a plain-English document about your practice that every other skill reads before doing anything. You edit the document, not a config file.
 
 ```
 /ip-legal:cold-start-interview
@@ -51,7 +51,7 @@ It writes what it learns to `~/.claude/plugins/config/claude-for-legal/ip-legal/
 
 | Skill | Purpose |
 |---|---|
-| **cold-start-interview** | First-run interview that writes `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` |
+| **cold-start-interview** | First-run interview that writes `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` |
 | **cease-desist** | Draft or triage a C&D; routes through the approval matrix before sending |
 | **takedown** | DMCA notice, response to a received takedown, or counter-notice |
 | **clearance** | Knockout search + likelihood-of-confusion first pass for a proposed mark |
@@ -103,7 +103,7 @@ With Drive or Slack connected: portfolio exports, C&D templates, and enforcement
 
 Ten to fifteen minutes. Have your portfolio list, brand guidelines (if any), a C&D template (if any), and your OSS policy (if any) ready to share.
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` and survives plugin updates.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` and survives plugin updates.
 
 ### 2. Clear a mark
 
@@ -151,14 +151,14 @@ ip-legal/
 The plugin reads user-specific configuration from:
 
 ```
-~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md
+~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md
 ```
 
 This path survives plugin updates. The `CLAUDE.md` that ships with the plugin is a template — it is replaced every upgrade. The cold-start interview writes your populated version to the config path above; from then on, edit that file directly when something changes.
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `ip-renewal-watcher` agent tracks the portfolio register and surfaces upcoming renewal deadlines at your cadence. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `ip-renewal-watcher` agent tracks the portfolio register and surfaces upcoming renewal deadlines at your cadence. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## Notes
 

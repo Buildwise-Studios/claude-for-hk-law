@@ -19,7 +19,7 @@ does not do one.
 
 ## Instructions
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. If it
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. If it
    contains `[PLACEHOLDER]`, stop and direct to `/ip-legal:cold-start-interview`. If the
    practice profile shows trademark- or copyright-only (no patent practice),
    say so and route the user elsewhere — this is the wrong tool.
@@ -93,7 +93,7 @@ is invisible. If enabled and there is no active matter, ask: "Which matter is
 this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load
 the active matter's `matter.md` for matter-specific context and overrides.
 Write outputs to the matter folder at
-`~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/`.
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/`.
 Never read another matter's files unless `Cross-matter context` is `on`.
 
 Invention disclosures are particularly common candidates for **clean-team** or
@@ -107,7 +107,7 @@ channels.
 ## Load the practice profile first
 
 **Before reading the disclosure, read
-`~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`.** If it is
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`.** If it is
 missing or still contains placeholders, stop and run `/ip-legal:cold-start-interview`. The
 practice profile tells you:
 

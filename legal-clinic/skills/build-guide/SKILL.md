@@ -12,11 +12,11 @@ argument-hint: "[optional: practice area — e.g., 'immigration', 'housing']"
 
 # /build-guide
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → role (must be Supervising attorney), practice areas, jurisdiction.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → role (must be Supervising attorney), practice areas, jurisdiction.
 2. Use the workflow below.
 3. If the user is not the supervising attorney, stop and redirect (students run `/legal-clinic:ramp`).
 4. Walk through: practice area → intake questions → pedagogy posture → review gates → cross-plugin checks → local rules.
-5. Write `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. Create the `guides/` directory if needed.
+5. Write `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. Create the `guides/` directory if needed.
 6. Offer a test run — run `/legal-clinic:draft` under the configured posture so the supervisor sees what a student sees.
 
 ```
@@ -58,7 +58,7 @@ Walk through the checklist at the start of the interview so the supervisor knows
 
 ### Step 1: Check role
 
-This is a supervisor skill. Read `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → `## Who's using this` → Role. If the role is not "Supervising attorney," say:
+This is a supervisor skill. Read `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → `## Who's using this` → Role. If the role is not "Supervising attorney," say:
 
 > This skill is for supervisors — it configures how the student-facing skills behave. If you're the supervisor, make sure your practice profile role is set to "Supervising attorney" in `/legal-clinic:cold-start-interview`. If you're a student, this isn't the right skill for you — run `/legal-clinic:ramp` to onboard, or ask your supervisor to author a guide for your clinic.
 
@@ -72,7 +72,7 @@ If the answer is "Other," ask for a short name — that name becomes the filenam
 
 Check the practice areas listed in `CLAUDE.md` → `## Clinic profile` → Practice areas. If the chosen practice area is not listed there, note it: "I'll write this guide, but your practice profile doesn't list [area] as one of your clinic's practice areas. That's fine — you can add it later with `/legal-clinic:cold-start-interview --redo` — but the student-facing skills won't route intakes to this area until the profile lists it."
 
-If a guide already exists at `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`, offer: "A guide for [area] already exists at [path]. Do you want to (a) revise it section-by-section, (b) start fresh and overwrite, or (c) see what's there first?"
+If a guide already exists at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`, offer: "A guide for [area] already exists at [path]. Do you want to (a) revise it section-by-section, (b) start fresh and overwrite, or (c) see what's there first?"
 
 ### Step 3: Intake questions
 
@@ -140,7 +140,7 @@ Check `CLAUDE.md` → `## Jurisdiction` — the state and primary court are alre
 
 ### Step 8: Write the guide
 
-Write to `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. Create the `guides/` directory if it doesn't exist. Use this structure:
+Write to `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. Create the `guides/` directory if it doesn't exist. Use this structure:
 
 ```markdown
 # Practice-area guide: [Practice area]
@@ -220,7 +220,7 @@ Fill every section from the supervisor's answers. Leave a section empty only if 
 
 Then tell the supervisor:
 
-> Your guide is at `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. Every student who uses the clinic plugin for [practice area] will have skills that follow it. Edit the file directly to change anything, or re-run `/legal-clinic:build-guide` to revise a section. You can have multiple guides — one per practice area.
+> Your guide is at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. Every student who uses the clinic plugin for [practice area] will have skills that follow it. Edit the file directly to change anything, or re-run `/legal-clinic:build-guide` to revise a section. You can have multiple guides — one per practice area.
 
 ### Step 9: Offer a test run
 
@@ -230,7 +230,7 @@ If the supervisor says yes, simulate the drafting skill reading the guide they j
 
 ## Output
 
-The skill's "output" is the file written at `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. The conversation with the supervisor is the interview; the written guide is the artifact.
+The skill's "output" is the file written at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. The conversation with the supervisor is the interview; the written guide is the artifact.
 
 After writing, show a brief confirmation:
 

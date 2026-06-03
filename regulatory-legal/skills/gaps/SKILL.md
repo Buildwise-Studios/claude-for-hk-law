@@ -6,7 +6,7 @@ argument-hint: "[optional: --close GAP-ID | --accept GAP-ID]"
 
 # /gaps
 
-1. Read the gap tracker at `~/.claude/plugins/config/claude-for-legal/regulatory-legal/gap-tracker.yaml`.
+1. Read the gap tracker at `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/gap-tracker.yaml`.
 2. If `--close`: mark gap closed with resolution note.
 3. If `--accept`: record the risk-acceptance rationale and acceptor, status → risk-accepted.
 4. Otherwise: report open gaps by age and materiality.

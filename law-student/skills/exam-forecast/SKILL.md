@@ -11,13 +11,13 @@ argument-hint: "[class name, with past exams shared or paths to them]"
 
 # /exam-forecast
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → class, professor, exam format, syllabus.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → class, professor, exam format, syllabus.
 2. Apply the workflow below.
 3. Intake past exams (PDF, paste, or paths). Confirm sample size.
 4. Analyze each past exam: format, subject coverage, question style, fact-pattern density, recurring traps.
 5. Cross-exam pattern analysis — what's stable, what varies.
 6. Combine with current syllabus to produce forecast: subject weights, format, hobby horses, study emphasis.
-7. Write `~/.claude/plugins/config/claude-for-legal/law-student/exam-forecasts/[class]/forecast-[YYYY-MM-DD].md`. Framed as weighting heuristic, not prediction.
+7. Write `~/.claude/plugins/config/claude-for-hk-law/law-student/exam-forecasts/[class]/forecast-[YYYY-MM-DD].md`. Framed as weighting heuristic, not prediction.
 
 ---
 
@@ -36,7 +36,7 @@ Not magic. A forecast, not a prediction. The skill cannot tell you what's on the
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → current classes, exam formats, syllabus if captured
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → current classes, exam formats, syllabus if captured
 - User-provided past exams (PDF, pasted text, paths)
 - Optional: syllabus for the current class (for "what's been covered to date")
 
@@ -143,7 +143,7 @@ This forecast is derived from [N] past exams. Professors vary. Professors rotate
 
 ### Step 5: Output location
 
-Write to `~/.claude/plugins/config/claude-for-legal/law-student/exam-forecasts/[class]/forecast-[YYYY-MM-DD].md`. Versioned — if the student gets another past exam mid-semester, re-run and append.
+Write to `~/.claude/plugins/config/claude-for-hk-law/law-student/exam-forecasts/[class]/forecast-[YYYY-MM-DD].md`. Versioned — if the student gets another past exam mid-semester, re-run and append.
 
 ## Integration
 

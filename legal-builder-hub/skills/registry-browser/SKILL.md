@@ -10,7 +10,7 @@ argument-hint: "[search query]"
 
 # /registry-browser
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → watched registries.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → watched registries.
 2. Use the workflow below.
 3. Search each registry. Show matches with descriptions.
 4. Offer to show full SKILL.md for any match.
@@ -23,7 +23,7 @@ Find skills across the watched registries. Search, preview, decide.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → watched registries list.
+`~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → watched registries list.
 
 ## Workflow
 
@@ -68,7 +68,7 @@ If the user has a URL to a registry not in the watchlist:
 
 1. Fetch it, validate it's a skills repo (has `skills/` or `.claude-plugin/`)
 2. Show what's in it
-3. Add to `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → watched registries on confirmation
+3. Add to `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → watched registries on confirmation
 
 ## Default registries
 

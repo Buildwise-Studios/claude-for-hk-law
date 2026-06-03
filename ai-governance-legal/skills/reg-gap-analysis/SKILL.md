@@ -12,10 +12,10 @@ argument-hint: "[regulation name, or paste regulatory text, or attach a document
 
 # /reg-gap-analysis
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. Confirm regulatory footprint and use case registry are populated.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. Confirm regulatory footprint and use case registry are populated.
 2. Use the framework below.
 3. Scope: does this regulation apply? (Jurisdiction, threshold, builder/deployer, sector.) If not, one line and done.
-4. Extract requirements. Diff against current state in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+4. Extract requirements. Diff against current state in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
 5. Prioritize gaps. Output: remediation plan with must-do / should-do / already compliant / accepted gaps.
 6. Save as dated markdown doc for the file.
 
@@ -32,7 +32,7 @@ guidance. The FTC publishes an AI enforcement policy. Something moves — and no
 you need to know what, if anything, you have to change.
 
 This skill diffs the new requirement against your current AI governance posture
-(per `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` — use case registry, vendor positions, impact assessment practices,
+(per `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` — use case registry, vendor positions, impact assessment practices,
 and AI policy commitments) and produces a gap list with a remediation plan.
 
 The AI regulatory landscape is moving faster than any other area of law right now.
@@ -42,7 +42,7 @@ judgment call.
 
 ## Load current state
 
-Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`:
 - `## Regulatory footprint` — what already applies
 - `## Use case registry` — what AI you're actually running, and under what conditions
 - `## AI policy commitments` — what you've publicly or contractually committed to
@@ -111,7 +111,7 @@ For each requirement:
 
 **Regulation says:** [requirement, quoted or paraphrased]
 
-**We currently:** [what `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` / AI policy / use case registry / assessment
+**We currently:** [what `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` / AI policy / use case registry / assessment
 practice shows]
 
 **Gap:** [None | Partial | Full]
@@ -194,7 +194,7 @@ Cite primary sources with pinpoint references. Flag ambiguity for attorney judgm
 >
 > Tool-retrieved citations keep their source tag (`[HKLII]`, `[Westlaw]`, `[e-Legislation]`, `[PCPD]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 >
-> **For non-lawyer users, uncertain dates, thresholds, and phase-in provisions go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a non-lawyer who doesn't know what the tag means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel") and collect all uncertain items in a final gap-analysis section titled: "**Things I'm not certain about — ask your attorney to confirm before relying on this:**" with each item listed (what I said, what's uncertain, why it matters to the gap). Lawyer-role users keep the inline `[verify]` treatment.
+> **For non-lawyer users, uncertain dates, thresholds, and phase-in provisions go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a non-lawyer who doesn't know what the tag means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel") and collect all uncertain items in a final gap-analysis section titled: "**Things I'm not certain about — ask your attorney to confirm before relying on this:**" with each item listed (what I said, what's uncertain, why it matters to the gap). Lawyer-role users keep the inline `[verify]` treatment.
 
 ---
 

@@ -96,13 +96,13 @@ A false assurance of protection is worse than no marking. The solicitor who reli
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: CourtListener ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
 > - **Before relying:** [the 1-2 things the reviewer should actually do — or "ready for your eyes" if clean]
 
-If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: CourtListener verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
+If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: HKLII verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
 **The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
@@ -183,7 +183,7 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 - `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[IPD Hong Kong]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
-A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
+A reviewer-note shorthand like "HKLII verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
 
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 

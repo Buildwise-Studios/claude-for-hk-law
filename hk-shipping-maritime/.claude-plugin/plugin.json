@@ -1,8 +1,8 @@
 {
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "hk-shipping-maritime",
-  "displayName": "HK Shipping & Maritime",
   "description": "Hong Kong maritime law under admiralty jurisdiction, the Bills of Lading Ordinance (Cap 440), Merchant Shipping Ordinances, and international conventions. Covers ship registration, admiralty claims, bills of lading, charterparties, marine insurance, collision, salvage, and limitation of liability.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

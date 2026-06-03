@@ -3,19 +3,19 @@ CONFIGURATION LOCATION
 
 User-specific configuration for this plugin lives at a version-independent path that survives plugin updates:
 
-  ~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md
+  ~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md
 
 Rules for every skill, command, and agent in this plugin:
 1. READ configuration from that path. Not from this file.
 2. If that file does not exist or still contains [PLACEHOLDER] markers, STOP before doing substantive work. Say: "This plugin needs setup before it can give you useful output. Run /employment-legal:cold-start-interview — it takes about 10-15 minutes and every command in this plugin depends on it. Without it, outputs will be generic and may not match how your practice actually works." Do NOT proceed with placeholder or default configuration. The only skills that run without setup are /employment-legal:cold-start-interview itself and any --check-integrations flag.
 3. Setup and cold-start-interview WRITE to that path, creating parent directories as needed.
 4. On first run after a plugin update, if a populated CLAUDE.md exists at the old cache path
-   (~/.claude/plugins/cache/claude-for-legal/employment-legal/<version>/CLAUDE.md for any version)
+   (~/.claude/plugins/cache/claude-for-hk-law/employment-legal/<version>/CLAUDE.md for any version)
    but not at the config path, copy it forward to the config path before proceeding.
 5. This file (the one you are reading) is the TEMPLATE. It ships with the plugin and shows the
    structure the config should have. It is replaced on every plugin update. Never write user data here.
 
-**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
+**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
 # Hong Kong Employment Law Practice Profile
@@ -51,6 +51,16 @@ This plugin is adapted for **Hong Kong law**. The primary legislation governing 
 
 ---
 
+## Language
+
+**Primary analysis language:** [PLACEHOLDER — en | zh-Hant | bilingual]
+**Client-facing language:** [PLACEHOLDER — en | zh-Hant | bilingual]
+**Notes:** [PLACEHOLDER — e.g. "Termination letters English; employee FAQs Traditional Chinese"]
+
+See `references/language-output.md` and `references/hk-employment-doctrine.md`.
+
+---
+
 ## Who's using this
 
 **Role:** [PLACEHOLDER — Lawyer / legal professional | Non-lawyer with attorney access | Non-lawyer without attorney access]
@@ -74,7 +84,7 @@ The deliverable should read like a partner wrote it. The meta-commentary goes in
 
 | Integration | Status | Fallback if unavailable |
 |---|---|---|
-| HRIS (Workday, BambooHR, Rippling, ADP) | [✓ / ✗] | Leave data tracked in `~/.claude/plugins/config/claude-for-legal/employment-legal/leave-register.yaml`; manual entry via `/employment-legal:log-leave` |
+| HRIS (Workday, BambooHR, Rippling, ADP) | [✓ / ✗] | Leave data tracked in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/leave-register.yaml`; manual entry via `/employment-legal:log-leave` |
 | Document storage (Google Drive, SharePoint, Box) | [✓ / ✗] | Read local paths for handbook + seed documents |
 | Slack | [✓ / ✗] | Reviews emitted as files only; no in-channel summaries |
 
@@ -111,13 +121,13 @@ A false assurance of protection is worse than no marking. The lawyer who relies 
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: CourtListener ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
 > - **Before relying:** [the 1-2 things the reviewer should actually do — or "ready for your eyes" if clean]
 
-If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: CourtListener verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
+If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: HKLII verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
 **The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
@@ -179,7 +189,7 @@ Do not promote a tag because the citation "seems right." The tag describes prove
 - `[CourtListener]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
-A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
+A reviewer-note shorthand like "HKLII verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
 
 
 These rules apply to every skill in this plugin. Skills may repeat them in their own instructions, but this is the canonical statement — when a skill's text conflicts, this section controls.
@@ -218,7 +228,7 @@ Canonical scale: 🔴 Blocking / 🟠 High / 🟡 Medium / 🟢 Low. Any plugin-
 
 **File access failures.** When you can't read a file the user pointed you at, don't fail silently. Say what happened: "I can't read [path]. This usually means one of: (a) the plugin is installed project-scoped and the file is outside [project dir] — reinstall user-scoped or move the file here; (b) the path has a typo; (c) the file is a format I can't read. Can you paste the content directly, or try one of the fixes?" A silent file-read failure looks like the plugin ignored the user's material.
 
-**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-legal/employment-legal/verification-log.md`:
+**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-hk-law/employment-legal/verification-log.md`:
 
 `[YYYY-MM-DD] [cite or fact] verified by [name] against [source] — [verdict: confirmed / corrected to X / could not verify]`
 
@@ -241,7 +251,7 @@ Corollary: when the user asks a doctrinal question (not a document-review questi
 
 ## Ad-hoc questions in this domain
 
-When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-legal/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
+When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
 
 - Use their jurisdiction footprint, risk posture, playbook positions, and escalation chain
 - Apply the guardrails even though no skill is running: source attribution, citation hygiene, jurisdiction recognition, decision posture, the reviewer note format
@@ -316,7 +326,7 @@ When a user asks to "run all the workflows," "review every document," "process e
 
 For employment-legal in private practice, a "matter" is typically a specific client-employee situation (a termination, an investigation, a leave, a hire, a classification decision) or a country expansion project. Handbook and policy drafting run at practice-level by default.
 
-When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (jurisdictional footprint, escalation matrix, house style) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-legal/employment-legal/matters/<matter-slug>/`.
+When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (jurisdictional footprint, escalation matrix, house style) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/employment-legal/matters/<matter-slug>/`.
 
 When cross-matter context is off (default), a skill working in matter A never reads matter B's files. Confidentiality is especially important here — one employee's investigation, accommodation, or termination record must not leak into work for another. Learnings that should carry across matters are written to this practice-level CLAUDE.md, not to a matter folder.
 
@@ -393,7 +403,7 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 ## Systems
 
 **HRIS:** [System name / none]
-**Leave data access:** [Legal has read access / manual — `~/.claude/plugins/config/claude-for-legal/employment-legal/leave-register.yaml`]
+**Leave data access:** [Legal has read access / manual — `~/.claude/plugins/config/claude-for-hk-law/employment-legal/leave-register.yaml`]
 **Handbook location:** [Drive folder / SharePoint / local path]
 **MPF Scheme:** [Name of trustee / scheme]
 

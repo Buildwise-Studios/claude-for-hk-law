@@ -18,7 +18,7 @@ Prospective only — for existing relationships, consult counsel.
 
 ## Instructions
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → jurisdictional footprint, escalation table.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → jurisdictional footprint, escalation table.
 2. Run the full workflow below.
 3. If the attorney provides details upfront, extract what's available and ask
    only about the gaps. Do not re-ask information already provided.
@@ -46,7 +46,7 @@ us, sets her own hours, uses her own laptop, project fee per placement.
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -106,13 +106,13 @@ If the answer to "has this work already started?" is no (the engagement is genui
 
 ## Load context
 
-Read `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → jurisdictional footprint, any classification history or
+Read `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → jurisdictional footprint, any classification history or
 prior settlements noted, escalation table, and any house classification
 policy the team has recorded.
 
 ## Output header
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`).
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`).
 
 ## Workflow
 
@@ -185,7 +185,7 @@ questions, note the gaps — they affect the analysis.
 >
 > Cite the controlling case law. Verify currency. If you are uncertain about the current state of the law, flag for attorney verification — do not state a test you haven't confirmed.
 
-If `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` records the company's house classification policy, apply it
+If `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` records the company's house classification policy, apply it
 first and flag any tension with the researched test.
 
 > **No silent supplement.** If a research query to the configured legal research tool returns few or no results for a jurisdiction-and-purpose combination, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [jurisdiction / purpose / test]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
@@ -274,7 +274,7 @@ Gaps — where the arrangement doesn't match the intended structure:
 
 **Escalation trigger**
 
-Escalate per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` if any of the following, or any team-specific
+Escalate per `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` if any of the following, or any team-specific
 triggers recorded in that config:
 - The jurisdiction uses a strict test and the proposed work is core to the
   company's business — do not proceed without counsel review.
@@ -361,7 +361,7 @@ entity] — coordinate with them on worker agreement. No `/hiring-review` needed
 
 ## Consequential-action gate (classify a worker)
 
-**Before producing a "Proceed as IC / employee / agency / vendor" final recommendation:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before producing a "Proceed as IC / employee / agency / vendor" final recommendation:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
 > Classifying a worker has legal consequences — misclassification exposes the company to back wages, taxes, benefits, penalties, and private-action risk, and in several states is strict-liability. Have you reviewed this classification call with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >

@@ -6,7 +6,7 @@ argument-hint: "[GAP-ID or gap description]"
 
 # /policy-redraft
 
-1. Load `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` → policy library index + practice profile.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` → policy library index + practice profile.
 2. Use the workflow below.
 3. Gather inputs: the gap (from `/regulatory-legal:gaps` output or described directly), the current approved policy text, the rule text.
 4. Verify the rule is current (per the policy-diff rule-status check). If you can't verify, emit the `⚠️ RULE STATUS UNVERIFIED` banner.
@@ -20,7 +20,7 @@ argument-hint: "[GAP-ID or gap description]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/regulatory-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/regulatory-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/regulatory-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -46,7 +46,7 @@ Three inputs are required. If any is missing, ask — don't infer.
 ### 1a. The gap
 
 One of:
-- A `GAP-ID` from the gap tracker — load the entry from `~/.claude/plugins/config/claude-for-legal/regulatory-legal/gap-tracker.yaml` (or the matter-level equivalent).
+- A `GAP-ID` from the gap tracker — load the entry from `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/gap-tracker.yaml` (or the matter-level equivalent).
 - A gap described in the user's message — capture the requirement, the regulation, and the affected policy.
 - A diff summary pasted from `/regulatory-legal:policy-diff` output.
 
@@ -114,7 +114,7 @@ If you see a second gap while redrafting — a provision that's clearly out of s
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: CourtListener ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
 > - **Read:** [sections of the policy reviewed; what wasn't read]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [rule status verified against [source], [date] | unverified — see banner above]
@@ -173,7 +173,7 @@ Write to the matter workspace if one is active; otherwise to the current working
 
 ## Config-dependent fallbacks
 
-This skill reads the policy library index and owners from `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`. When a value it needs is empty or still `[PLACEHOLDER]`:
+This skill reads the policy library index and owners from `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`. When a value it needs is empty or still `[PLACEHOLDER]`:
 
 - **Policy owner missing:** still produce the redraft. Note in the reviewer note: "No policy owner is set for [policy] in `## Policy library`. Assign one with `/regulatory-legal:cold-start-interview --redo` so the approval path is routable."
 - **Policy library empty and the gap doesn't name a specific policy:** stop and ask: "I need the current policy text to redraft. Paste the text of the affected policy, or point me at the file."

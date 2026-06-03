@@ -14,8 +14,8 @@ This skill surfaces open comment periods and records decisions.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/regulatory-legal/comment-tracker.yaml` → all tracked NPRMs and their status.
-`~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` → default comment decision owner.
+`~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/comment-tracker.yaml` → all tracked NPRMs and their status.
+`~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` → default comment decision owner.
 
 ## Default view — open comment periods
 
@@ -64,7 +64,7 @@ Reminder at 3 days before deadline if still undecided — elevated urgency.
 
 ## Consequential-action gate (submit a regulatory comment / respond to a regulator)
 
-**Before logging a decision as "filing" — and always before producing a comment letter or regulator-response draft for submission:** Read `## Who's using this` in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md. If the Role is **Non-lawyer**:
+**Before logging a decision as "filing" — and always before producing a comment letter or regulator-response draft for submission:** Read `## Who's using this` in ~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md. If the Role is **Non-lawyer**:
 
 > Submitting a comment or response to a regulator has legal consequences. It's a public statement of the company's position, it's on the record in the rulemaking or enforcement matter, and positions taken here bind the company and can be used against it in subsequent proceedings. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >

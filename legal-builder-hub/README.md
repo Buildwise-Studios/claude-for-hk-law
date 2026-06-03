@@ -16,13 +16,13 @@ Asks your practice type, industry, team size, tooling comfort. Recommends a star
 /legal-builder-hub:cold-start-interview
 ```
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` and survives plugin updates.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` and survives plugin updates.
 
 ## Security posture
 
 Installed community skills run with your access to client data, matter files, and your team's playbook. The hub treats every install and every update as a trust decision. Four layers of defense, none of which is sufficient on its own:
 
-- **Allowlist (admin-controlled):** `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/allowlist.yaml` declares which registries, publishers, and MCP connectors community skills may use. `permissive` mode (default) warns on anything off-list; `restrictive` mode (recommended for firm / enterprise deployments) refuses it. The allowlist is checked before the installer reads any third-party content. See `skills/skill-installer/references/allowlist.md` for the schema.
+- **Allowlist (admin-controlled):** `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/allowlist.yaml` declares which registries, publishers, and MCP connectors community skills may use. `permissive` mode (default) warns on anything off-list; `restrictive` mode (recommended for firm / enterprise deployments) refuses it. The allowlist is checked before the installer reads any third-party content. See `skills/skill-installer/references/allowlist.md` for the schema.
 - **Raw source, not summary:** the installer shows you the full raw `SKILL.md` — not an AI summary — before anything is written. A summary is a convenience; a skill that does something dodgy has to do it in text the raw display will show.
 - **Heuristic scans:** both the installer and `skills-qa` scan the skill for prompt-injection patterns (override/authority claims, out-of-scope reads and writes, external URLs, hidden unicode, shell execution, credential asks). These are AI-heuristic scans, explicitly labeled as such — a clean scan is not a security audit, it is a prompt to read the text yourself.
 - **Human approval, every time:** nothing is written to disk without a fresh typed `yes`. Approval is not inferred from earlier messages. For defense in depth, the installer recommends running the fetch / analysis in a read-only subagent so Write capabilities only become available after approval.
@@ -34,7 +34,7 @@ If a skill goes wrong after install: `/legal-builder-hub:disable [skill]` quiets
 ## Prerequisites
 
 - Slack notifications from the registry-sync agent require a Slack MCP server configured in your environment. Without one, the agent writes its digest to a file.
-- The default registry list in `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` ships empty except for `lpm-skills`. Add registries you trust via `/legal-builder-hub:registry-browser` or by editing `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md`.
+- The default registry list in `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` ships empty except for `lpm-skills`. Add registries you trust via `/legal-builder-hub:registry-browser` or by editing `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md`.
 - For HK-specific legal content, you may add registries from local law societies or HK legal tech communities.
 
 ## Commands
@@ -74,7 +74,7 @@ The commands above run when you invoke them — for when you're working a matter
 
 ## Watched registries (default)
 
-The default allowlist ships with the community registries we've reviewed pre-configured. Edit `references/allowlist-default.yaml` in the repo, or your per-install allowlist at `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/allowlist.yaml`, to add, remove, or switch between restrictive and permissive modes.
+The default allowlist ships with the community registries we've reviewed pre-configured. Edit `references/allowlist-default.yaml` in the repo, or your per-install allowlist at `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/allowlist.yaml`, to add, remove, or switch between restrictive and permissive modes.
 
 - **lpm-skills** — Legal project management (Scott Margetts / LegalOps Consulting) — `github.com/legalopsconsulting/lpm-skills`
 - **Lawvable / awesome-legal-skills** — Curated list of AI agent skills for legal work — `github.com/lawvable/awesome-legal-skills`
@@ -85,7 +85,7 @@ The default allowlist ships with the community registries we've reviewed pre-con
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` isn't static — it improves as you use the plugin. The hub re-reads it on every `/legal-builder-hub:registry-browser` and `/legal-builder-hub:related-skills-surfacer`, so adjusting your practice type, industry, or watched registries sharpens future recommendations. Edit the file directly or re-run `/legal-builder-hub:cold-start-interview --redo` when your work shifts.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` isn't static — it improves as you use the plugin. The hub re-reads it on every `/legal-builder-hub:registry-browser` and `/legal-builder-hub:related-skills-surfacer`, so adjusting your practice type, industry, or watched registries sharpens future recommendations. Edit the file directly or re-run `/legal-builder-hub:cold-start-interview --redo` when your work shifts.
 
 ## Notes
 

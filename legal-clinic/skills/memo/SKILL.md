@@ -11,7 +11,7 @@ argument-hint: "[optional: specific issue to focus]"
 
 # /memo
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → practice areas, jurisdiction.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → practice areas, jurisdiction.
 2. Use the workflow below. Read intake summary / case notes.
 3. Frame issues as questions. Scaffold IRAC for each — Rule blocks are RESEARCH NEEDED, Application is STUDENT ANALYSIS prompts, Conclusion is blank.
 4. Strengths/weaknesses/open questions. Research gaps summary.
@@ -33,12 +33,12 @@ The case analysis memo is where the student's thinking lives. This skill provide
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → practice areas, jurisdiction, supervision style.
+`~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → practice areas, jurisdiction, supervision style.
 Intake summary and case notes for facts.
 
 ## Pedagogy check
 
-Read the supervisor guide for this practice area at `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. Check the `pedagogy_posture` setting:
+Read the supervisor guide for this practice area at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. Check the `pedagogy_posture` setting:
 
 - **`guide` (default):** Produce the IRAC structure and the research-gap list. Ask the student to draft each rule statement themselves from research, rather than giving them a framework. Give feedback on what they wrote. Offer to fill the framework rule for a section only when the student has tried once.
 - **`assist`:** Produce the memo scaffold and fill what can be filled. Flag items for student review. The student edits and learns by reviewing. (Note: this memo skill always leaves the `[STUDENT ANALYSIS]` and `[STUDENT CONCLUSION]` blocks blank by design — `assist` means the skill produces the IRAC scaffold and framework rule statement; it does not produce the application or the conclusion.)

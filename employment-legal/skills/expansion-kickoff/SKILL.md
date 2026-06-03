@@ -17,13 +17,13 @@ country-specific flags, and creates a persistent tracker.
 
 ## Instructions
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → jurisdictional footprint, escalation table.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → jurisdictional footprint, escalation table.
 2. Load the `international-expansion` reference skill and run the full workflow.
-3. If a tracker file already exists for this country (`~/.claude/plugins/config/claude-for-legal/employment-legal/expansion-[slug].yaml`),
+3. If a tracker file already exists for this country (`~/.claude/plugins/config/claude-for-hk-law/employment-legal/expansion-[slug].yaml`),
    flag it: "An expansion tracker for [country] already exists. Use
    `/employment-legal:expansion-update [country]` to update it, or confirm
    you want to start over."
-4. Create `~/.claude/plugins/config/claude-for-legal/employment-legal/expansion-[slug].yaml` on completion.
+4. Create `~/.claude/plugins/config/claude-for-hk-law/employment-legal/expansion-[slug].yaml` on completion.
 
 ## Examples
 

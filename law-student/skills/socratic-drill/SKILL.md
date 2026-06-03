@@ -9,7 +9,7 @@ argument-hint: "[subject or topic]"
 
 # /socratic-drill
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → learning style, classes, weak areas.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → learning style, classes, weak areas.
 2. Apply the workflow below.
 3. Ask a question on the topic. Wait for answer.
 4. Push back. Ask follow-ups. Don't give the answer.
@@ -33,13 +33,13 @@ You don't learn law by reading. You learn it by being wrong about it, noticing y
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → learning style (drill-me vs explain-to-me — this skill is drill-me by design, but tone adjusts), weak areas, current classes.
+`~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → learning style (drill-me vs explain-to-me — this skill is drill-me by design, but tone adjusts), weak areas, current classes.
 
 ## The drill
 
 ### Step 1: Pick the topic
 
-User names it, or pull from weak areas in `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md`. If they keep avoiding a subject, that's the one to drill.
+User names it, or pull from weak areas in `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md`. If they keep avoiding a subject, that's the one to drill.
 
 ### Step 2: Ask
 
@@ -67,7 +67,7 @@ Student answers. Now the work:
 
 This is not giving the answer. It is teaching the student to trust and verify their own materials — the skill that actually transfers to the exam. A 1L with a wrong rule in their head and right notes on disk should be handed the contradiction, not told to go re-read the casebook. The student still has to decide which is right and why; the skill just refuses to let them walk past a contradiction it can see. Apply this only when:
 
-1. The student has actually uploaded materials (notes, outlines, case briefs, flashcards) referenced in `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → Seed materials, and
+1. The student has actually uploaded materials (notes, outlines, case briefs, flashcards) referenced in `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → Seed materials, and
 2. The stated rule and the uploaded rule disagree on a specific point — not a phrasing difference, not a level-of-detail difference, but a substantive contradiction.
 
 Do not volunteer the correction from your own knowledge. Do not cite the casebook. Only quote the student's own materials back to them.

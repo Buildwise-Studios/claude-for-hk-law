@@ -12,16 +12,16 @@ argument-hint: "[describe a proposed new AI practice — or omit / use --sweep f
 # /policy-monitor
 
 **Sweep mode** (no argument or `--sweep`):
-1. Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → outputs folder path, AI policy document, last sweep date.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → outputs folder path, AI policy document, last sweep date.
 2. Use the framework below. Scan outputs folder for files since last sweep.
 3. For each output: extract approved practices → diff against current policy commitments and use case registry.
 4. Classify gaps: REQUIRED (policy misrepresents current practice) vs ADVISABLE (policy silent).
 5. For each gap: quote current policy, describe gap, draft suggested language.
-6. Flag any use cases in outputs not yet added to the `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` registry.
-7. Present results to the human. Only after acknowledgment, update `Last policy sweep` and `gaps_found` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+6. Flag any use cases in outputs not yet added to the `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` registry.
+7. Present results to the human. Only after acknowledgment, update `Last policy sweep` and `gaps_found` in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
 
 **Direct query mode** (with description argument):
-1. Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → current policy commitments, use case registry, actual policy document.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → current policy commitments, use case registry, actual policy document.
 2. Parse proposed practice. Diff against policy: use case coverage, automation level, affected parties, disclosure, vendor data use, oversight.
 3. Output: covered / missing / conflicting + suggested language for each gap + registry entry if needed + timing recommendation.
 
@@ -55,7 +55,7 @@ The output is always the same: here's the gap, here's the suggested language.
 
 ## Load current state
 
-Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`:
 - `## AI policy commitments` — commitments extracted from the published policy
 - `## Use case registry` — approved, conditional, and never use cases
 - `## Outputs` — outputs folder path, AI policy document location, last sweep date
@@ -67,7 +67,7 @@ If `## Outputs` contains `[PLACEHOLDER]`:
 > folder path."
 
 Read the actual AI or acceptable use policy document from the path in `## Outputs`
-→ **AI policy document**. The commitments in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` are a summary; the actual
+→ **AI policy document**. The commitments in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` are a summary; the actual
 document is authoritative for suggesting edits.
 
 ---
@@ -94,7 +94,7 @@ If the outputs folder is empty or has no new files since the last sweep:
 > "No new outputs since [last sweep date]. AI policy appears current with recent
 > practice. Next scheduled sweep: [date]."
 
-**Do not update `Last policy sweep` or `gaps_found` automatically.** After the sweep results are presented, wait for the human to acknowledge them ("sweep acknowledged," "results reviewed," or equivalent). Only then update `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`:
+**Do not update `Last policy sweep` or `gaps_found` automatically.** After the sweep results are presented, wait for the human to acknowledge them ("sweep acknowledged," "results reviewed," or equivalent). Only then update `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`:
 
 - `Last policy sweep: [date of acknowledgment]`
 - `gaps_found: [N]` (number of REQUIRED + ADVISABLE gaps found in that sweep)
@@ -119,7 +119,7 @@ Updating the stamp before acknowledgment would let an unreviewed sweep silently 
 
 **Vendor AI reviews (signed / approved):**
 - Extract: vendor added, data use terms agreed to, any AI-specific provisions
-  accepted that differ from standard positions in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`
+  accepted that differ from standard positions in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`
 - Flag: vendors added whose data use terms the policy should reference (e.g., "we
   use third-party AI services and ensure they do not train on our data"), approved
   deviations from standard positions that the policy implies you hold
@@ -205,7 +205,7 @@ affects external parties or creates a reasonable expectation.
 
 ## Use case registry sync
 
-[Any use cases approved since the last sweep that aren't yet in the `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`
+[Any use cases approved since the last sweep that aren't yet in the `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`
 registry — suggest registry entries to add]
 
 ---
@@ -290,7 +290,7 @@ or policy is updated to a defensible new position; never silently accept both]
 
 ## Use case registry
 
-[If this use case isn't in the registry: "Add to `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → Use case registry:"]
+[If this use case isn't in the registry: "Add to `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → Use case registry:"]
 ```
 | [use case] | [Approved/Conditional] | [conditions] | — |
 ```

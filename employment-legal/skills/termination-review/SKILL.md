@@ -11,7 +11,7 @@ argument-hint: "[describe the termination, or attach documentation]"
 
 # /termination-review
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → termination review triggers, high-risk flags, severance practice, jurisdiction rules.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → termination review triggers, high-risk flags, severance practice, jurisdiction rules.
 2. Use the workflow below.
 3. Walk the checklist. Check every high-risk flag.
 4. Final pay timing per employee's jurisdiction. Severance + release if applicable.
@@ -21,7 +21,7 @@ argument-hint: "[describe the termination, or attach documentation]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -34,12 +34,12 @@ release-period requirement is researched and cited at the time of review.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → termination review triggers, high-risk flags, standard severance,
+`~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → termination review triggers, high-risk flags, standard severance,
 jurisdiction table.
 
 ## Output header
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`). Match the memo format from seed term memos referenced in that config where one exists. The work-product header is always first.
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`). Match the memo format from seed term memos referenced in that config where one exists. The work-product header is always first.
 
 ## Workflow
 
@@ -56,7 +56,7 @@ Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/
 
 ### Step 2: High-risk flag scan (HK Employment Ordinance)
 
-This is the most important step. Check every flag from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. HK-default
+This is the most important step. Check every flag from `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`. HK-default
 set:
 
 | Flag | Why it's high-risk | Check |
@@ -76,7 +76,7 @@ set:
 
 **Summary dismissal flag (Cap 57 s. 9).** Summary dismissal without notice is only permitted for gross misconduct. If the employer relies on summary dismissal and the conduct doesn't meet the high threshold, the dismissal is unlawful and the employee is entitled to damages in lieu of notice.
 
-**Any flag fires → escalate per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` before the term proceeds.** Not
+**Any flag fires → escalate per `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` before the term proceeds.** Not
 after. Before.
 
 ### Step 3: HK-specific requirements
@@ -99,7 +99,7 @@ after. Before.
 
 ### Step 4: Severance, LSP, and release
 
-Per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → standard severance:
+Per `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → standard severance:
 
 - Is the employee entitled to statutory severance payment (Cap 57 Part VA) or Long Service Payment (Cap 57 Part VB)? Note that severance and LSP are mutually exclusive — the employee receives the higher.
 - Is a contractual ex gratia payment being offered beyond the statutory minimum?
@@ -130,7 +130,7 @@ what changed? The answer should be documented.
 
 > **Jurisdiction assumption.** This review applies the Employment Ordinance (Cap 57) and related Hong Kong legislation as stated in Step 1. Employment rules under Cap 57 apply to all employees in Hong Kong SAR. If the employee works under a different employment regime or choice-of-law is contested, this analysis may not apply as written.
 
-Match the memo format from seed term memos referenced in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If none:
+Match the memo format from seed term memos referenced in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`. If none:
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
@@ -202,7 +202,7 @@ Match the memo format from seed term memos referenced in `~/.claude/plugins/conf
 
 ## Consequential-action gate (terminate an employee)
 
-**Before producing a "Go" recommendation or a term-day checklist marked ready:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before producing a "Go" recommendation or a term-day checklist marked ready:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
 > Terminating an employee has legal consequences — wrongful-termination, discrimination, retaliation, and wage-law claims all trace back to how this decision is structured. Have you reviewed this termination with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >

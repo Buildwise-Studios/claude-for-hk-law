@@ -11,7 +11,7 @@ argument-hint: "[legal issue]"
 
 # /research-start
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → jurisdiction, practice area.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → jurisdiction, practice area.
 2. Use the workflow below.
 3. Frame the issue specifically. Build roadmap: statutory starting points (unverified), case law areas (not cases), secondary sources, search terms.
 4. If student has existing research uploaded: synthesize and identify gaps.
@@ -35,7 +35,7 @@ This skill produces the starting point: ordinances to check, case law areas to i
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → jurisdiction (Hong Kong), practice areas.
+`~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → jurisdiction (Hong Kong), practice areas.
 
 ## Workflow
 
@@ -43,7 +43,7 @@ This skill produces the starting point: ordinances to check, case law areas to i
 
 **Before building the roadmap, read the clinic's own seed documents.** The supervising attorney uploaded them at cold-start (handbook, filing guides, Practice Directions, intake forms, example case files, prior memos) — they are pre-vetted, jurisdiction-specific, and will beat any HKLII or Westlaw Asia query on the first 20 minutes of a student's research.
 
-1. Read `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → `## Seed documents`. Identify any item whose purpose or filename matches the research area (e.g., "Alameda UD filing guide" for a UD habitability question; a redacted sample case file in the same practice area; a prior memo on the same issue).
+1. Read `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → `## Seed documents`. Identify any item whose purpose or filename matches the research area (e.g., "Alameda UD filing guide" for a UD habitability question; a redacted sample case file in the same practice area; a prior memo on the same issue).
 2. For each match, surface it as a **Seed documents to read first** block at the top of the roadmap output. Name the file, say why it matters for this specific question, and say what it likely covers vs. where outside research will still be needed.
 3. If no seed documents match the issue, say so plainly ("No clinic seed documents match this issue — proceeding straight to primary sources"). Don't fabricate a match.
 4. If the clinic has the `LIMITED DATA` flag set in `## Seed documents`, add a one-line note: "Clinic has fewer than 10 seed docs; your professor's precedent bank is thin — lean harder on primary sources and flag what's missing for your supervisor."

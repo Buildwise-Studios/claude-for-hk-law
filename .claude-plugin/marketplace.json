@@ -1,32 +1,30 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claude-for-hk-law",
-  "description": "Reference agents, skills, and data connectors for Hong Kong legal workflows — covering commercial, privacy, product, corporate, employment, litigation, regulatory, AI governance, IP, and the learning side of practice (law school clinics and students).",
+  "metadata": {
+    "description": "Reference agents, skills, and data connectors for Hong Kong legal workflows — commercial, privacy, corporate, employment, litigation, regulatory, AI governance, IP, clinics, and HK-native practice areas."
+  },
   "owner": {
     "name": "Buildwise-Studios"
   },
   "plugins": [
     {
       "name": "commercial-legal",
-      "displayName": "Commercial Legal",
       "source": "./commercial-legal",
-      "description": "Reviews vendor agreements, NDAs, and SaaS subscriptions under Hong Kong contract law (common law, Cap 26 Sale of Goods Ordinance). Tracks renewals and cancel-by deadlines, routes escalations to the right approver, and translates reviews into summaries business stakeholders will read — all within Hong Kong court jurisdiction.",
+      "description": "Reviews vendor agreements, NDAs, and SaaS subscriptions under Hong Kong contract law (common law, Cap 26 Sale of Goods Ordinance). Tracks renewals and cancel-by deadlines, routes escalations to the right approver, and translates reviews into summaries business stakeholders will read \u2014 all within Hong Kong court jurisdiction.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "privacy-legal",
-      "displayName": "Privacy Legal",
       "source": "./privacy-legal",
-      "description": "Triages processing activities, generates PIAs, reviews DPAs as controller or processor, drafts DSAR responses within PDPO (Cap 486) timelines, and monitors policy drift against practice — covering cross-border data transfer requirements and the six DPPs.",
+      "description": "Triages processing activities, generates PIAs, reviews DPAs as controller or processor, drafts DSAR responses within PDPO (Cap 486) timelines, and monitors policy drift against practice \u2014 covering cross-border data transfer requirements and the six DPPs.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "product-legal",
-      "displayName": "Product Legal",
       "source": "./product-legal",
       "description": "Reviews product launches against your risk calibration, answers 'is this a problem?' questions in minutes, checks marketing copy against the Trade Descriptions Ordinance (Cap 362) and HK consumer protection law, and flags upcoming launches that need legal eyes before anyone asks.",
       "author": {
@@ -35,16 +33,14 @@
     },
     {
       "name": "corporate-legal",
-      "displayName": "Corporate Legal",
       "source": "./corporate-legal",
-      "description": "Runs M&A diligence under the Companies Ordinance (Cap 622), builds disclosure schedules and closing checklists, drafts board consents and minutes in HK format, and tracks entity compliance deadlines — including winding-up procedures under Cap 32.",
+      "description": "Runs M&A diligence under the Companies Ordinance (Cap 622), builds disclosure schedules and closing checklists, drafts board consents and minutes in HK format, and tracks entity compliance deadlines \u2014 including winding-up procedures under Cap 32.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "employment-legal",
-      "displayName": "Employment Legal",
       "source": "./employment-legal",
       "description": "Reviews hires and terminations for HK-specific risk flags under the Employment Ordinance (Cap 57), MPF requirements, and anti-discrimination ordinances (DDO, SDO, FDO). Classifies workers, tracks leave deadlines, runs internal investigations, and drafts policies consistent with HK labour law.",
       "author": {
@@ -53,16 +49,14 @@
     },
     {
       "name": "regulatory-legal",
-      "displayName": "Regulatory Legal",
       "source": "./regulatory-legal",
-      "description": "Watches regulatory feeds from the SFC, HKMA, and IA, diffs new rules against your policy library, tracks consultation deadlines and open gaps, and writes the digest your team reads Monday morning — covering Hong Kong's dual-securities and banking regulatory framework.",
+      "description": "Watches regulatory feeds from the SFC, HKMA, and IA, diffs new rules against your policy library, tracks consultation deadlines and open gaps, and writes the digest your team reads Monday morning \u2014 covering Hong Kong's dual-securities and banking regulatory framework.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "ai-governance-legal",
-      "displayName": "AI Governance Legal",
       "source": "./ai-governance-legal",
       "description": "Triages proposed AI use cases against your registry, runs impact assessments under the PDPO amendments, reviews vendor AI terms for training-on-data and liability gaps, and keeps your AI policy current with PCPD guidance and emerging HK AI regulation.",
       "author": {
@@ -71,43 +65,38 @@
     },
     {
       "name": "litigation-legal",
-      "displayName": "Litigation Legal",
       "source": "./litigation-legal",
-      "description": "Manages the litigation portfolio — matters, deadlines, holds, demands, outside counsel — under HK civil procedure (HCR, DCAC). Covers the CFA/CFI/DC court structure, claim charts, chronologies, depo prep, privilege logs, and brief drafting. Adapts to how you work litigation: in-house, firm, or solo.",
+      "description": "Manages the litigation portfolio \u2014 matters, deadlines, holds, demands, outside counsel \u2014 under HK civil procedure (HCR, DCAC). Covers the CFA/CFI/DC court structure, claim charts, chronologies, depo prep, privilege logs, and brief drafting. Adapts to how you work litigation: in-house, firm, or solo.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "law-student",
-      "displayName": "Law Student",
       "source": "./law-student",
-      "description": "Drills Socratically, briefs cases, builds outlines, runs PCLL and bar prep sessions tuned to HK requirements (HKU, CUHK, CityU), grades IRAC practice, and plans the study schedule — without ever writing it for you.",
+      "description": "Drills Socratically, briefs cases, builds outlines, runs PCLL and bar prep sessions tuned to HK requirements (HKU, CUHK, CityU), grades IRAC practice, and plans the study schedule \u2014 without ever writing it for you.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "legal-clinic",
-      "displayName": "Legal Clinic",
       "source": "./legal-clinic",
-      "description": "Sets up the clinic, onboards students, runs structured intake, tracks deadlines with malpractice-aware caution, and hands off cases at semester end — built for HK community legal clinics, the duty lawyer service, and CLIC resources.",
+      "description": "Sets up the clinic, onboards students, runs structured intake, tracks deadlines with malpractice-aware caution, and hands off cases at semester end \u2014 built for HK community legal clinics, the duty lawyer service, and CLIC resources.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "legal-builder-hub",
-      "displayName": "Legal Builder Hub",
       "source": "./legal-builder-hub",
-      "description": "Finds, evaluates, and installs community legal skills — with a security review gate before anything lands in your environment. Includes HK-specific template language and localised practice guidelines.",
+      "description": "Finds, evaluates, and installs community legal skills \u2014 with a security review gate before anything lands in your environment. Includes HK-specific template language and localised practice guidelines.",
       "author": {
         "name": "Buildwise-Studios"
       }
     },
     {
       "name": "ip-legal",
-      "displayName": "IP Legal",
       "source": "./ip-legal",
       "description": "Runs first-pass trademark clearance under Cap 559 (Trade Marks Ordinance), patentability triage under Cap 514 (Patents Ordinance), copyright analysis under Cap 528 (Copyright Ordinance). Screens invention disclosures, drafts cease-and-desist letters, checks open source compliance, reviews IP clauses, and tracks registrations and renewal deadlines in Hong Kong.",
       "author": {
@@ -116,16 +105,14 @@
     },
     {
       "name": "cocounsel-legal",
-      "displayName": "CoCounsel Legal",
       "source": "./external_plugins/cocounsel-legal",
-      "description": "CoCounsel Legal delivers comprehensive Westlaw Deep Research reports with inline, linked citations to Westlaw and Practical Law sources — including Hong Kong case law and legislative materials.",
+      "description": "CoCounsel Legal delivers comprehensive Westlaw Deep Research reports with inline, linked citations to Westlaw and Practical Law sources \u2014 including Hong Kong case law and legislative materials.",
       "author": {
         "name": "Thomson Reuters"
       }
     },
     {
       "name": "hk-arbitration",
-      "displayName": "HK Arbitration",
       "source": "./hk-arbitration",
       "description": "Hong Kong arbitration under the Arbitration Ordinance (Cap 609), UNCITRAL Model Law, and HKIAC rules. Covers arbitration agreements, interim measures, award enforcement (domestic and China under Arrangement), and court supervision.",
       "author": {
@@ -134,7 +121,6 @@
     },
     {
       "name": "hk-basic-law",
-      "displayName": "HK Basic Law",
       "source": "./hk-basic-law",
       "description": "Hong Kong Basic Law, NPCSC interpretations, Annex III national laws, constitutional review, and the 'one country, two systems' framework. Covers the relationship between the HKSAR and the Central Government, fundamental rights and duties, and the legal framework under Articles 8, 18, 84, 158, and 159.",
       "author": {
@@ -143,7 +129,6 @@
     },
     {
       "name": "hk-commercial-law",
-      "displayName": "HK Commercial Law",
       "source": "./hk-commercial-law",
       "description": "Hong Kong commercial law covering the Sale of Goods Ordinance (Cap 26), Control of Exemption Clauses Ordinance (Cap 71), Bills of Exchange Ordinance (Cap 19), and common law contract and tort principles. Covers sale of goods, agency, bailment, guarantees, and commercial dispute resolution.",
       "author": {
@@ -151,17 +136,7 @@
       }
     },
     {
-      "name": "hk-companies",
-      "displayName": "HK Companies",
-      "source": "./hk-companies",
-      "description": "Hong Kong company law under the Companies Ordinance (Cap 622) and winding up (Cap 32). Incorporation, share capital, directors' duties, shareholder remedies, insolvency, corporate governance, and regulatory filings with the Companies Registry.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
       "name": "hk-competition",
-      "displayName": "HK Competition",
       "source": "./hk-competition",
       "description": "Hong Kong competition law under the Competition Ordinance (Cap 619). Covers the first conduct rule (anti-competitive agreements), second conduct rule (abuse of substantial market power), merger control regime (non-mandatory), Competition Commission investigations, and Competition Tribunal proceedings.",
       "author": {
@@ -169,26 +144,7 @@
       }
     },
     {
-      "name": "hk-data-privacy",
-      "displayName": "HK Data Privacy",
-      "source": "./hk-data-privacy",
-      "description": "Hong Kong data privacy under the Personal Data (Privacy) Ordinance (Cap 486). Covers data protection principles (DPP1-6), direct marketing, data breach, cross-border transfers, PCPD investigations, and compliance programmes.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
-      "name": "hk-employment",
-      "displayName": "HK Employment",
-      "source": "./hk-employment",
-      "description": "Hong Kong employment law under the Employment Ordinance (Cap 57), Employees' Compensation Ordinance (Cap 282), MPF Schemes Ordinance (Cap 485), and anti-discrimination ordinances (Cap 480, 487, 527, 602). Covers contract drafting, termination, discrimination, workplace injury, trade unions, and Labour Tribunal procedure.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
       "name": "hk-family-law",
-      "displayName": "HK Family Law",
       "source": "./hk-family-law",
       "description": "Hong Kong family law under the Matrimonial Causes Ordinance (Cap 179), Matrimonial Proceedings and Property Ordinance (Cap 192), Guardianship of Minors Ordinance (Cap 13), and Separation and Maintenance Orders Ordinance (Cap 16). Covers divorce, financial relief, child custody, and adoption.",
       "author": {
@@ -197,7 +153,6 @@
     },
     {
       "name": "hk-immigration",
-      "displayName": "HK Immigration",
       "source": "./hk-immigration",
       "description": "Hong Kong immigration law under the Immigration Ordinance (Cap 115). Covers right of abode, visa schemes (employment, investment, talent), dependent visas, visitor conditions, deportation, and immigration appeals to the Immigration Tribunal.",
       "author": {
@@ -205,35 +160,7 @@
       }
     },
     {
-      "name": "hk-intellectual-property",
-      "displayName": "HK Intellectual Property",
-      "source": "./hk-intellectual-property",
-      "description": "Hong Kong intellectual property law under the Trade Marks Ordinance (Cap 559), Patents Ordinance (Cap 514), Copyright Ordinance (Cap 528), and Registered Designs Ordinance (Cap 522). Covers registration, enforcement, licensing, passing off, fair dealing, IPD practice, and Customs & Excise enforcement.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
-      "name": "hk-litigation-procedure",
-      "displayName": "HK Litigation Procedure",
-      "source": "./hk-litigation-procedure",
-      "description": "Hong Kong civil litigation under the Rules of the High Court (Cap 4A) and District Court (Cap 336H). Covers case management, pleadings, discovery, summons, trial procedure, costs, appeals, and enforcement. Includes CFA, CA, CFI, DC procedure.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
-      "name": "hk-nsl-rules",
-      "displayName": "HK National Security Law",
-      "source": "./hk-nsl-rules",
-      "description": "Hong Kong National Security Law (NSL) — Annex III national law applicable in Hong Kong. Covers NSL offences, court procedures, designated judges, police powers, bail provisions, trial procedures without jury, and implications for legal practitioners and their clients.",
-      "author": {
-        "name": "Buildwise-Studios"
-      }
-    },
-    {
       "name": "hk-property",
-      "displayName": "HK Property & Conveyancing",
       "source": "./hk-property",
       "description": "Hong Kong property law under the Conveyancing and Property Ordinance (Cap 219), Land Registration Ordinance (Cap 128), Building Management Ordinance (Cap 344), and New Territories land. Covers sale and purchase, leasing, mortgages, deeds, Land Registry searches, building management, and stamp duty.",
       "author": {
@@ -242,7 +169,6 @@
     },
     {
       "name": "hk-shipping-maritime",
-      "displayName": "HK Shipping & Maritime",
       "source": "./hk-shipping-maritime",
       "description": "Hong Kong maritime law under admiralty jurisdiction, the Bills of Lading Ordinance (Cap 440), Merchant Shipping Ordinances, and international conventions. Covers ship registration, admiralty claims, bills of lading, charterparties, marine insurance, collision, salvage, and limitation of liability.",
       "author": {
@@ -251,7 +177,6 @@
     },
     {
       "name": "hk-trusts-estate",
-      "displayName": "HK Trusts & Estate",
       "source": "./hk-trusts-estate",
       "description": "Hong Kong trust and estate law under the Trusts Ordinance (Cap 29), Probate and Administration Ordinance (Cap 10), Inheritance (Provision for Family and Dependants) Ordinance (Cap 481). Covers trust creation, trustee duties, will drafting, probate, administration of estates, and will disputes.",
       "author": {

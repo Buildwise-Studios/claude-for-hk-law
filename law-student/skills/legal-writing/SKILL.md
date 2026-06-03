@@ -10,13 +10,13 @@ argument-hint: "[paste draft OR path to file]"
 
 # /legal-writing
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → class, writing skill level, past feedback patterns.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → class, writing skill level, past feedback patterns.
 2. Apply the framework below.
 3. Read full draft top to bottom. Identify structural type (memo / brief / paper / essay).
 4. Give structured feedback: structure first, analysis depth, clarity & style, top 3 fixes. Flag `[VERIFY]` on any substantive rule call I'm unsure about.
 5. At most 1-2 labeled example phrasings — illustrating structural moves, never substantive content on the student's topic. Every example labeled "write yours — don't copy."
 6. If asked to rewrite: refuse gracefully. Offer targeted structural feedback instead.
-7. Append to `~/.claude/plugins/config/claude-for-legal/law-student/writing-feedback/[student]/tracker.md` for pattern detection.
+7. Append to `~/.claude/plugins/config/claude-for-hk-law/law-student/writing-feedback/[student]/tracker.md` for pattern detection.
 
 ---
 
@@ -40,7 +40,7 @@ Example phrasings are permitted sparingly because seeing structural moves (not c
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → class, assignment type (if known), writing skill level, graded-essay feedback history
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → class, assignment type (if known), writing skill level, graded-essay feedback history
 - Student-provided draft
 - Optional: rubric or assignment prompt if the student shares one
 
@@ -135,7 +135,7 @@ Then offer one of:
 
 ### Step 5: Track patterns
 
-Append session summary to `~/.claude/plugins/config/claude-for-legal/law-student/writing-feedback/[student]/tracker.md`:
+Append session summary to `~/.claude/plugins/config/claude-for-hk-law/law-student/writing-feedback/[student]/tracker.md`:
 
 ```markdown
 ## [date] — [assignment type / subject]

@@ -2,7 +2,7 @@
 name: cold-start-interview
 description: >
   Run the cold-start interview — learns your AI governance practice and writes
-  `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` from
+  `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` from
   your AI policy, a reference impact assessment, and key vendor AI agreements.
   Use when the practice profile is missing or contains `[PLACEHOLDER]` markers,
   or when user says "set up ai governance plugin", "onboard me", "configure ai
@@ -12,17 +12,17 @@ argument-hint: "[--redo | --check-integrations]"
 
 # /cold-start-interview
 
-1. Check `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` — if populated and no `--redo`, confirm before overwriting.
+1. Check `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` — if populated and no `--redo`, confirm before overwriting.
 2. Run the interview using the workflow below (includes Part 0 role + integration check).
 3. Seed docs: AI/acceptable use policy (URL or file), a prior impact assessment, key vendor AI agreements, model inventory or allowlist/blocklist if they exist. Read all provided.
 4. Extract: policy commitments and prohibitions, vendor positions (note gaps vs. stated), impact assessment structure, approved/prohibited tool lists.
-5. Migration: if a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-legal/ai-governance-legal/*/CLAUDE.md` but not at the config path, copy it to the config path and tell the user what was migrated.
-6. Write `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` (create parent directories as needed). Show summary. Offer first task.
+5. Migration: if a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-hk-law/ai-governance-legal/*/CLAUDE.md` but not at the config path, copy it to the config path and tell the user what was migrated.
+6. Write `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` (create parent directories as needed). Show summary. Offer first task.
 
 ## Flags
 
-- `--redo` — re-run the full interview and overwrite `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
-- `--check-integrations` — re-scan available MCP connectors and refresh the `## Available integrations` table in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` without re-running the full interview. Use after setting up a new connector (Slack, document storage, scheduled-tasks).
+- `--redo` — re-run the full interview and overwrite `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
+- `--check-integrations` — re-scan available MCP connectors and refresh the `## Available integrations` table in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` without re-running the full interview. Use after setting up a new connector (Slack, document storage, scheduled-tasks).
 
 When probing: only report ✓ if an MCP tool call actually succeeded. Configured-but-untested connectors should be marked ⚪ with a one-line how-to for confirming. Never report ✓ based on `.mcp.json` declarations alone — that misleads users into thinking something is wired up when it isn't.
 
@@ -47,7 +47,7 @@ because builder obligations and deployer obligations are nearly opposite exercis
 
 ## Cold-start check
 
-Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`:
 - **Does not exist** → start the interview.
 - **Contains `<!-- SETUP PAUSED AT: -->`** → greet the user and offer to resume from that section.
 - **Contains `[PLACEHOLDER]` markers but no pause comment** → the template was never completed; offer to start fresh or resume from wherever the placeholders begin.
@@ -55,11 +55,11 @@ Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`:
 
 The template structure lives at `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` — use it as the section scaffold. Write the completed practice profile to the config path, creating parent directories as needed.
 
-If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-legal/ai-governance-legal/*/CLAUDE.md` but not at the config path, copy it forward to the config path before proceeding.
+If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-hk-law/ai-governance-legal/*/CLAUDE.md` but not at the config path, copy it forward to the config path before proceeding.
 
 ## Check for the shared company profile
 
-Look for `~/.claude/plugins/config/claude-for-legal/company-profile.md`.
+Look for `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`.
 
 - **If it exists:** Read it. Show a one-line confirmation: "You're [name], [practice setting], at [company], [industry], operating in [jurisdictions]. Right? (Or say 'update' to change the shared profile.)" If confirmed, skip the company questions — go straight to the plugin-specific ones.
 - **If it doesn't exist:** You'll be the first plugin this user set up. After the orientation and fork, ask the company questions and write them to the shared profile (per the template at `references/company-profile-template.md` in the plugin root), then continue with the plugin-specific questions. Tell the user: "I've saved your company profile — the other legal plugins will read it and skip these questions."
@@ -92,7 +92,7 @@ Open with the fork-first preamble. Keep it to 3-4 short lines. Ask quick-or-full
 
 Give the fuller orientation. One paragraph, in your own voice:
 
-> "This plugin maintains: your practice profile (governance tiers, red lines, policy commitments), a use-case registry, impact assessments, and vendor AI reviews — all in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/`. It learns how you actually work — your practice, your risk calibration, your house conventions — and writes that into a plain-text file the plugin reads from every time. Everything you answer can be changed later."
+> "This plugin maintains: your practice profile (governance tiers, red lines, policy commitments), a use-case registry, impact assessments, and vendor AI reviews — all in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/`. It learns how you actually work — your practice, your risk calibration, your house conventions — and writes that into a plain-text file the plugin reads from every time. Everything you answer can be changed later."
 
 Then: "Ready? A few quick questions first, then we'll go deeper."
 
@@ -113,7 +113,7 @@ Corollary: the interview's inputs are the user's typed answers and documents the
 - **For uploads or shared documents:** "Paste the contents, share a file path, or say 'skip for now.' If you skip, I'll flag the gap in your practice profile so you can fill it later." Then actually wait.
 - **Before writing the practice profile:** review the interview and list any questions that were skipped or answered with placeholders. Say: "Before I write your configuration, here's what's still open: [list]. Want to fill any of these now, or leave them as placeholders?" Then wait for the answer.
 - **Never** write a practice profile with silent gaps. Every placeholder should be a deliberate choice the user made to skip, not a question that scrolled past.
-- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/ai-governance-legal:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /ai-governance-legal:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
+- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/ai-governance-legal:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /ai-governance-legal:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
 
 **Verify user-stated legal facts as they come up in setup.** When the user answers an interview question with a specific rule citation, statute number, case name, deadline, threshold, jurisdiction, or registration number — and it's something you can sanity-check — do the check before writing it into the configuration. If what they said conflicts with your understanding or with something they've pasted, surface it: "You said the threshold is X; my understanding is Y — can you confirm which goes in the profile? `[premise flagged — verify]`" A wrong fact written into CLAUDE.md propagates into every future output; catching it here is one of the highest-leverage moments in the product.
 
@@ -237,7 +237,7 @@ Walk through the sector options if the user isn't sure:
 with `/ai-governance-legal:ai-inventory add` later?" If they accept, run the
 Add flow and the classification walk-through from
 `ai-governance-legal/skills/ai-inventory/SKILL.md` for each system. Save to
-`~/.claude/plugins/config/claude-for-legal/ai-governance-legal/ai-systems.yaml`.
+`~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/ai-systems.yaml`.
 
 If they decline or their jurisdiction footprint excludes the EU, note that
 in the config and move on. The inventory can be populated later.
@@ -643,7 +643,7 @@ This solves the cold-start problem (the supervisor doesn't know what to do first
 
 5. **Close with a note on changeability.** End with something like:
 
-   > "Done. Your configuration is at `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` — it's a plain text file you can read and edit directly. Anything you answered can be changed:
+   > "Done. Your configuration is at `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` — it's a plain text file you can read and edit directly. Anything you answered can be changed:
    >
    > - Edit the file directly for a quick change
    > - Run `/ai-governance-legal:cold-start-interview --redo` for a full re-interview

@@ -11,7 +11,7 @@ argument-hint: "[--card for the one-page reference]"
 
 # /ramp
 
-1. Check `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` is set up. If placeholders: "Ask [professor] to run `/legal-clinic:cold-start-interview` first."
+1. Check `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` is set up. If placeholders: "Ask [professor] to run `/legal-clinic:cold-start-interview` first."
 2. Use the walkthrough below.
 3. Walk through: clinic context (from handbook) → commands → practice exercises (fake intake, practice draft, research roadmap) → verification habits.
 4. `--card`: generate the one-page reference card.
@@ -38,7 +38,7 @@ This skill is the guided walkthrough. It reads what the professor uploaded durin
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → clinic profile, practice areas, jurisdiction, handbook path, supervision style, practice-area templates.
+`~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → clinic profile, practice areas, jurisdiction, handbook path, supervision style, practice-area templates.
 
 If that file is missing or still has placeholders: "The clinic hasn't been set up yet. Ask [supervising professor] to run `/cold-start-interview` first."
 
@@ -52,7 +52,7 @@ If that file is missing or still has placeholders: "The clinic hasn't been set u
 
 ### Part 1: This clinic (5 min)
 
-Read from `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` and the ingested handbook. Cover, interactively:
+Read from `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` and the ingested handbook. Cover, interactively:
 
 - **Practice areas** — what the clinic handles, what it doesn't (and where to refer if someone walks in with an out-of-scope issue)
 - **Clients** — who they are, what they're facing, languages

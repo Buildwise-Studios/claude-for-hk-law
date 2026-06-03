@@ -29,8 +29,8 @@ This plugin provides specialised tools for immigration law practitioners working
 ## Related Plugins
 
 - `hk-basic-law` — Basic Law Art 24 for right of abode, constitutional framework
-- `hk-litigation-procedure` — Court procedures for judicial review of immigration decisions
-- `hk-employment` — Employment Ordinance issues for visa applicants
+- `litigation-legal` — Court procedures for judicial review of immigration decisions
+- `employment-legal` — Employment Ordinance (Cap 57) issues for visa applicants
 
 ## Maintenance
 

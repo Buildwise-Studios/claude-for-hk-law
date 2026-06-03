@@ -10,7 +10,7 @@ argument-hint: "[case name, or paste case text, or path to reading]"
 
 # /cold-call-prep
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → class list, professors, learning style.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → class list, professors, learning style.
 2. Apply the workflow below.
 3. Identify reading (case name + citation, professor, class, syllabus context).
 4. Predict 6-10 likely questions across categories (Facts / Holding / Reasoning / Application / Policy), weighted to professor's known tendencies.
@@ -41,7 +41,7 @@ Not a replacement for reading the case. A test that you actually did.
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → current classes, professors, learning style
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → current classes, professors, learning style
 - User-provided: case name / case text / casebook pages / reading list
 
 ## Workflow
@@ -49,7 +49,7 @@ Not a replacement for reading the case. A test that you actually did.
 ### Step 1: Identify the reading + professor
 
 - Case name and citation
-- Professor (from ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md class list — tone and focus vary by professor)
+- Professor (from ~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md class list — tone and focus vary by professor)
 - Class / subject area
 - Where this case falls in the syllabus (for context — is this the first case on the topic, a narrowing case, a counterexample?)
 
@@ -81,7 +81,7 @@ Professors cold-call in recurring patterns. Predict across these categories:
 - What's the policy the court is protecting?
 - Does this rule make sense? Alternative approaches?
 
-**Professor-specific flavor (from ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md notes):**
+**Professor-specific flavor (from ~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md notes):**
 - If the professor is known for hypo-heavy calls, weight Application/Hypo questions
 - If policy-heavy, weight Policy/Theory
 - If fact-heavy socratic (Socratic 101 Paper Chase style), weight Facts + Holding
@@ -130,4 +130,4 @@ At the end:
 - **Be the professor.** The actual cold-call can go anywhere. This skill predicts patterns; professors surprise.
 - **Replace reading the case.** If you haven't read it, the skill can't help you — questions require text you've absorbed.
 - **Give you the case's holding without asking you first.** Drill-me pattern: I ask, you answer.
-- **Predict jurisdiction-specific niche questions.** If the professor has known hobby horses, capture them in ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md class notes and the skill can weight accordingly; otherwise, it works from general patterns.
+- **Predict jurisdiction-specific niche questions.** If the professor has known hobby horses, capture them in ~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md class notes and the skill can weight accordingly; otherwise, it works from general patterns.

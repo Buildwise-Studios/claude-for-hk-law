@@ -11,12 +11,12 @@ argument-hint: "[--semester=YYYY-term (default: current)] [--case=[case_id] (for
 
 # /semester-handoff
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → clinic profile, semester dates, supervision style.
-2. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/deadlines.yaml` and `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md` per case.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → clinic profile, semester dates, supervision style.
+2. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/deadlines.yaml` and `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md` per case.
 3. Use the workflow below.
 4. Take active-case list as input (ask if clinic doesn't have a central list). Map outgoing → incoming owners.
-5. Generate per-case handoff memo → `~/.claude/plugins/config/claude-for-legal/legal-clinic/handoffs/[semester]/[case_id].md`.
-6. Generate cohort summary → `~/.claude/plugins/config/claude-for-legal/legal-clinic/handoffs/[semester]/_summary.md`.
+5. Generate per-case handoff memo → `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/handoffs/[semester]/[case_id].md`.
+6. Generate cohort summary → `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/handoffs/[semester]/_summary.md`.
 7. Route per supervision model — formal queue / configurable flags / lighter-touch.
 
 ---
@@ -35,9 +35,9 @@ Professor or departing students. The professor runs it to orchestrate the full c
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → clinic profile, semester, practice areas, supervision style
-- `~/.claude/plugins/config/claude-for-legal/legal-clinic/deadlines.yaml` → all active deadlines, grouped by case
-- `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md` (per case) → communications history
+- `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → clinic profile, semester, practice areas, supervision style
+- `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/deadlines.yaml` → all active deadlines, grouped by case
+- `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md` (per case) → communications history
 - Case files / intake summaries the clinic maintains
 - Student roster — who owns what going into the handoff
 
@@ -45,7 +45,7 @@ Professor or departing students. The professor runs it to orchestrate the full c
 
 ### Step 1: Identify cases and owners
 
-- Pull all active cases (from intake records + `~/.claude/plugins/config/claude-for-legal/legal-clinic/deadlines.yaml` case_ids + client-comms folders)
+- Pull all active cases (from intake records + `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/deadlines.yaml` case_ids + client-comms folders)
 - For each case: who's the current owner student? Are they staying or leaving?
 - Map: outgoing owner → incoming owner (if known; otherwise mark "TBD — professor to assign")
 
@@ -73,7 +73,7 @@ For each case:
 
 ## Pending deadlines
 
-*Pulled from `~/.claude/plugins/config/claude-for-legal/legal-clinic/deadlines.yaml`. Incoming student's first job is to confirm these are accurate and owned.*
+*Pulled from `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/deadlines.yaml`. Incoming student's first job is to confirm these are accurate and owned.*
 
 | Due | Type | Description | Notes |
 |---|---|---|---|
@@ -104,7 +104,7 @@ For each case:
 
 ## Communications history summary
 
-*From `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md`. Three-line summary here; incoming student reads the full log.*
+*From `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md`. Three-line summary here; incoming student reads the full log.*
 
 [Short summary of recent contact patterns — e.g., "3 phone calls since intake, all in Spanish, client prefers evenings. Last contact: 2026-04-15, confirmed address for hearing notice."]
 
@@ -129,7 +129,7 @@ For each case:
 
 ### Step 3: Cohort summary
 
-After all per-case memos, produce `~/.claude/plugins/config/claude-for-legal/legal-clinic/handoffs/[semester]/_summary.md`:
+After all per-case memos, produce `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/handoffs/[semester]/_summary.md`:
 
 ```markdown
 # Cohort Handoff Summary — [semester ending]
@@ -164,9 +164,9 @@ After all per-case memos, produce `~/.claude/plugins/config/claude-for-legal/leg
 
 ### Step 4: Professor review (if supervision model calls for it)
 
-Closing a case or transitioning it to a new student is a consequential action. The gate is the supervision workflow in `## Supervision style` in `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md`, reinforced by the Part 0 role check confirming a licensed supervising attorney owns the setup. Case-closing memos always get professor sign-off before the case is marked closed in the handoff document, regardless of supervision-style choice.
+Closing a case or transitioning it to a new student is a consequential action. The gate is the supervision workflow in `## Supervision style` in `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md`, reinforced by the Part 0 role check confirming a licensed supervising attorney owns the setup. Case-closing memos always get professor sign-off before the case is marked closed in the handoff document, regardless of supervision-style choice.
 
-Per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` supervision style:
+Per `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` supervision style:
 
 - **Formal review queue:** every handoff memo goes into the review queue before release to the incoming student. Professor approves, edits, or returns.
 - **Configurable flags:** memos carry "CHECK WITH [PROFESSOR] BEFORE RELYING" — professor reviews informally, student responsible for checking in.
@@ -174,11 +174,11 @@ Per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` supervisi
 
 ### Step 5: Hand off
 
-Once reviewed, handoff memos live at `~/.claude/plugins/config/claude-for-legal/legal-clinic/handoffs/[semester]/[case_id].md`. The incoming student reads them during their `/ramp` run at the start of next semester — `/ramp` should surface the memos for cases the new student is assigned.
+Once reviewed, handoff memos live at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/handoffs/[semester]/[case_id].md`. The incoming student reads them during their `/ramp` run at the start of next semester — `/ramp` should surface the memos for cases the new student is assigned.
 
 ## Integration
 
-- **`/ramp`:** at the start of next semester, reads `~/.claude/plugins/config/claude-for-legal/legal-clinic/handoffs/[most-recent-semester]/` and surfaces per-case memos for the cases each new student is taking on.
+- **`/ramp`:** at the start of next semester, reads `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/handoffs/[most-recent-semester]/` and surfaces per-case memos for the cases each new student is taking on.
 - **`/deadlines`:** feeds the pending-deadlines section of each memo.
 - **`/client-comms-log`:** feeds the communications history summary.
 - **`/supervisor-review-queue` (if formal review enabled):** handoff memos route here for professor approval.

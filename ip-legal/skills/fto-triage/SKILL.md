@@ -21,7 +21,7 @@ not mean the product is clear.
 
 ## Instructions
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. If it
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. If it
    contains `[PLACEHOLDER]`, stop and direct to `/ip-legal:cold-start-interview`.
 2. Follow the workflow below.
 3. Run intake (product/process, technical detail, jurisdictions, known patents,
@@ -92,7 +92,7 @@ privileged channels.
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 Patent FTO matters are particularly common candidates for **clean-team** or
 **heightened** confidentiality at matter-open. Respect the matter's confidentiality
@@ -102,7 +102,7 @@ marking from `matter.md`.
 
 ## Load the practice profile first
 
-Before running triage, read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. Pull:
+Before running triage, read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. Pull:
 
 - **Role** from `## Who's using this` (lawyer vs. non-lawyer changes the
   work-product header and the non-lawyer gate below).
@@ -117,7 +117,7 @@ Before running triage, read `~/.claude/plugins/config/claude-for-legal/ip-legal/
 - **Decision posture** from `## Decision posture on subjective legal calls` —
   this skill never concludes "does not infringe."
 
-If `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` contains `[PLACEHOLDER]` or `[Your Company Name]`, surface this bounce:
+If `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` contains `[PLACEHOLDER]` or `[Your Company Name]`, surface this bounce:
 
 > I notice you haven't configured your practice profile yet — that's how I tailor posture, jurisdictions, and approval chain to your practice.
 >
@@ -357,7 +357,7 @@ Bucket by what the triage found:
 
 ## Output format
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` `## Outputs`. Mark the document as privileged if the role is lawyer; see the non-lawyer gate below if not.
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` `## Outputs`. Mark the document as privileged if the role is lawyer; see the non-lawyer gate below if not.
 
 ```markdown
 [WORK-PRODUCT HEADER]
@@ -445,7 +445,7 @@ required]
   search found nothing and comprehensive search already ran]
 - [design-around options if a literal read was found]
 - [license / IPR / PGR / at-risk analysis as counsel directs]
-- [routing per `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` —
+- [routing per `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` —
   patent OC named in the practice profile]
 
 ## Willfulness note
@@ -498,9 +498,9 @@ be forwarded to non-attorney third parties.
 ## Output location
 
 If matter workspaces are enabled and a matter is active, write the output to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/outputs/fto-triage-<subject-slug>-YYYY-MM-DD.md`.
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/outputs/fto-triage-<subject-slug>-YYYY-MM-DD.md`.
 Otherwise write to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/outputs/fto-triage-<subject-slug>-YYYY-MM-DD.md`
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/outputs/fto-triage-<subject-slug>-YYYY-MM-DD.md`
 and surface the path.
 
 Append a one-line entry to the matter's `history.md` if a matter is active.

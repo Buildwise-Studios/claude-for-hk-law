@@ -10,10 +10,10 @@ argument-hint: "[subject] [--generate | --drill | --review | --stats | --session
 
 # /flashcards
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → current classes, weak subjects, outline locations.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → current classes, weak subjects, outline locations.
 2. Apply the framework below.
 3. Route by flag:
-   - `--generate`: build cards from source (outline path, notes, casebook) per card-writing rules. Write to `~/.claude/plugins/config/claude-for-legal/law-student/flashcards/[subject]/cards.md`.
+   - `--generate`: build cards from source (outline path, notes, casebook) per card-writing rules. Write to `~/.claude/plugins/config/claude-for-hk-law/law-student/flashcards/[subject]/cards.md`.
    - `--drill` (default): prioritize due cards + new; show Q, wait for answer, show A, take self-assessment, update buckets + next review.
    - `--review`: browse deck by bucket.
    - `--stats`: progress snapshot; flag stuck cards for verbal drill.
@@ -46,8 +46,8 @@ Same rule as the other content-generating skills:
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → current classes, weak subjects, existing outlines
-- `~/.claude/plugins/config/claude-for-legal/law-student/flashcards/[subject]/cards.md` if it exists (incremental build)
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → current classes, weak subjects, existing outlines
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/flashcards/[subject]/cards.md` if it exists (incremental build)
 - User-provided source (outline path, notes, casebook excerpt) if given
 
 ## Modes
@@ -58,7 +58,7 @@ Flag: `--generate | --drill | --review | --stats | --session <n>` (default: prom
 
 For when the student says "let's do 5 cards on Contracts" or runs `/law-student:session Contracts 5 --flashcards`.
 
-- Load `~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml` if it exists and read `session_history` for this subject.
+- Load `~/.claude/plugins/config/claude-for-hk-law/law-student/study-plan.yaml` if it exists and read `session_history` for this subject.
 - Prioritize: cards previously marked wrong > due cards > new cards.
 - Run N cards one at a time per the `--drill` flow.
 - At session end, append results to `study-plan.yaml` → `session_history`:
@@ -75,13 +75,13 @@ session_history:
     stuck_topics: [parol-evidence-rule]
 ```
 
-- If no `study-plan.yaml`, write to `~/.claude/plugins/config/claude-for-legal/law-student/session-history.yaml` instead.
+- If no `study-plan.yaml`, write to `~/.claude/plugins/config/claude-for-hk-law/law-student/session-history.yaml` instead.
 
 ### `--generate` — create cards
 
 **Inputs:**
 - Subject (class name or topic)
-- Source (outline path, notes, or "use my existing outline from ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md")
+- Source (outline path, notes, or "use my existing outline from ~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md")
 - Optional: card count target (default 10-20 per session)
 
 **Card structure:**

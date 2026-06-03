@@ -29,10 +29,10 @@ This plugin provides specialised tools for legal practitioners working with Hong
 
 ## Related Plugins
 
-- `hk-litigation-procedure` — Court procedures for CFI applications (interim measures, enforcement, set-aside)
-- `hk-companies` — Corporate disputes, shareholders' agreements, arbitration clauses
+- `litigation-legal` — Court procedures for CFI applications (interim measures, enforcement, set-aside)
+- `corporate-legal` — Corporate disputes, shareholders' agreements, arbitration clauses
 - `hk-property` — Property disputes, landlord-tenant arbitration
-- `hk-intellectual-property` — IP disputes suitable for arbitration
+- `ip-legal` — IP disputes suitable for arbitration
 
 ## Maintenance
 

@@ -20,7 +20,7 @@ and (for patents) treble damages.
 
 ## Instructions
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. If it
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. If it
    contains `[PLACEHOLDER]`, stop and direct to `/ip-legal:cold-start-interview`.
 2. Follow the workflow below.
 3. Ask which right is at issue — trademark / copyright / patent / trade secret
@@ -91,7 +91,7 @@ the attorney narrows. Stay on the two-way door side.
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 Infringement triages often lead into cease-and-desist drafting or takedown
 routing. Open a matter if one isn't active and the practice is private — the
@@ -101,7 +101,7 @@ triage, the C&D, and any downstream response belong in one workspace.
 
 ## Load the practice profile first
 
-Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. Pull:
+Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. Pull:
 
 - **Role** from `## Who's using this`.
 - **Enforcement posture** from `## Enforcement posture` — the triage output
@@ -477,7 +477,7 @@ each way. Routing per posture.
 
 ## Output format (all modes)
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` `## Outputs`.
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` `## Outputs`.
 
 ```markdown
 [WORK-PRODUCT HEADER]
@@ -531,7 +531,7 @@ factors cutting [direction] are [brief summary].
 - [evidence preservation and hold — if a litigation clock is running]
 - [fact development needed before a decision — e.g., access logs, prosecution
   history, market studies, survey evidence]
-- [routing per `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`
+- [routing per `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`
   `## Enforcement posture`, if the posture is to assert]
 
 ## Citation verification
@@ -572,9 +572,9 @@ Deliver the triage alongside the brief.
 ## Output location
 
 If matter workspaces are enabled and a matter is active, write to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/outputs/infringe-<mode>-<subject-slug>-YYYY-MM-DD.md`.
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/outputs/infringe-<mode>-<subject-slug>-YYYY-MM-DD.md`.
 Otherwise write to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/outputs/infringe-<mode>-<subject-slug>-YYYY-MM-DD.md`
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/outputs/infringe-<mode>-<subject-slug>-YYYY-MM-DD.md`
 and surface the path.
 
 Append a one-line entry to the matter's `history.md` if a matter is active.

@@ -10,8 +10,8 @@ argument-hint: "[--build | --update | --status | --cram]"
 
 # /study-plan
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → bar jurisdiction, exam format, bar date, weak subjects, target study hours/day, prep course.
-2. Load `~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml` if it exists.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → bar jurisdiction, exam format, bar date, weak subjects, target study hours/day, prep course.
+2. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/study-plan.yaml` if it exists.
 3. Apply the framework below.
 4. Route by flag:
    - `--build` (default if no plan exists): walk the inputs gate (exam, subjects, hours/week, days off, methods). Build the phase structure + daily schedule for the first two weeks. Write `study-plan.yaml`.
@@ -39,14 +39,14 @@ A plan is opinion, not doctrine. The skill states clearly what's an estimate:
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md`:
+`~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md`:
 - Bar jurisdiction, exam format, bar date
 - Current classes (for non-bar use)
 - Weak subjects (MBE, essay)
 - Prep course
 - Target study hours/day
 
-`~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml` if it exists — extend, don't overwrite.
+`~/.claude/plugins/config/claude-for-hk-law/law-student/study-plan.yaml` if it exists — extend, don't overwrite.
 
 ## Workflow
 
@@ -87,7 +87,7 @@ For (3) semester: ask for the term-end date as the anchor.
 
 ### Step 2.5: Supplement vs. replace (prep-course users)
 
-If `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → `Prep course` is **Barbri**, **Themis**, **Kaplan**, or any other structured prep course (i.e., NOT `self` or `N/A`), the student already has a prep-course calendar. This skill's plan must choose one of two roles — it cannot run a full parallel curriculum alongside the prep course without burning the student out.
+If `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → `Prep course` is **Barbri**, **Themis**, **Kaplan**, or any other structured prep course (i.e., NOT `self` or `N/A`), the student already has a prep-course calendar. This skill's plan must choose one of two roles — it cannot run a full parallel curriculum alongside the prep course without burning the student out.
 
 Ask, one question, wait:
 
@@ -126,7 +126,7 @@ Calculate weeks-to-exam from today's date. Then:
 
 ### Step 4: Write it
 
-Write to `~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml`:
+Write to `~/.claude/plugins/config/claude-for-hk-law/law-student/study-plan.yaml`:
 
 ```yaml
 plan_type: bar  # or law-school-exam or semester

@@ -6,7 +6,7 @@ argument-hint: '[--patent | --civil] [--infringement | --invalidity | --review] 
 
 # /claim-chart
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → role, work-product header, decision posture, document storage.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → role, work-product header, decision posture, document storage.
 2. If matter workspaces enabled, confirm or select the active matter; load `matter.md` (side, jurisdiction, phase, theory, pleadings).
 3. Follow the workflow and reference below.
 4. Mode selection:
@@ -57,13 +57,13 @@ Under-flagging a gap is a one-way door — a complaint filed without plausibilit
 
 ## Matter context
 
-Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/litigation-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` — especially the case theory, the pleading / complaint (for the elements actually alleged), the jurisdiction, any Markman order or stipulated constructions (patent mode), and the phase of the case. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/<matter-slug>/claim-charts/`. Never read another matter's files unless `Cross-matter context` is `on`.
+Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/litigation-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` — especially the case theory, the pleading / complaint (for the elements actually alleged), the jurisdiction, any Markman order or stipulated constructions (patent mode), and the phase of the case. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/<matter-slug>/claim-charts/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → role, work-product header, decision posture, document storage, case-theory scaffolding
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → role, work-product header, decision posture, document storage, case-theory scaffolding
 - Active matter's `matter.md` — claims, defenses, side, jurisdiction, phase, theory
 - For civil mode: the complaint or counterclaim (for the actually-pleaded counts), any answer (for the actually-pleaded affirmative defenses), the relevant pattern jury instruction source, and the governing statute if statutory. Also the evidence corpus — deposition transcripts, declarations, produced documents, expert reports.
 - For patent mode: the patent, the asserted claims, the specification, prosecution history if available, the accused-product material or prior art reference, any Markman order or stipulated constructions.
@@ -82,7 +82,7 @@ If the user says "provisional," build the claim chart normally using these gener
 
 > "That was a generic run against default assumptions. Run `/litigation-legal:cold-start-interview` to get output calibrated to YOUR practice — your risk calibration, your landscape, your house style. 2 minutes."
 
-**Conflicts gate — unbypassable.** Before building a claim chart, check `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
+**Conflicts gate — unbypassable.** Before building a claim chart, check `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
 
 > "I don't see [matter slug] in the matter log. Run `/litigation-legal:matter-intake` first so the conflicts check runs and the matter workspace is set up. I won't build a claim chart on a matter that hasn't been intaken — the conflicts check is the gate."
 
@@ -355,7 +355,7 @@ For an opposing party's MSJ brief, a motion to dismiss, or outside counsel's dra
 
 ## Output
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` `## Outputs`.
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` `## Outputs`.
 
 ### Markdown table (always)
 
@@ -424,7 +424,7 @@ Prepend the work-product header as the top row. Alongside it, include:
 - Civil: `element-chart-[count-slug]-[side]-YYYY-MM-DD.{md,csv,xlsx}`
 - Review: `chart-review-[subject]-YYYY-MM-DD.{md,csv,xlsx}`
 
-If matter workspaces enabled and a matter is active: `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/<matter-slug>/claim-charts/`. Otherwise: `~/.claude/plugins/config/claude-for-legal/litigation-legal/claim-charts/`. Surface the path. Append a one-line entry to the matter's `history.md`.
+If matter workspaces enabled and a matter is active: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/<matter-slug>/claim-charts/`. Otherwise: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/claim-charts/`. Surface the path. Append a one-line entry to the matter's `history.md`.
 
 ## Summary readout
 

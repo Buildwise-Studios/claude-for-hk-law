@@ -1,5 +1,0 @@
-{
-  "mcpServers": {},
-  "recommendedCategories": [],
-  "_note": "No public MCP servers exist for Hong Kong government/legal portals. To connect this plugin to live data, build a custom MCP server wrapping the relevant portal (e.g., Companies Registry e-Search, e-Legislation, PCPD, Land Registry). See CONNECTORS.md for the pattern."
-}

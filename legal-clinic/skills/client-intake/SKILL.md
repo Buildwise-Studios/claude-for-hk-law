@@ -11,7 +11,7 @@ argument-hint: "[optional: practice area hint]"
 
 # /client-intake
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → practice areas, intake templates, supervision style, flag triggers.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → practice areas, intake templates, supervision style, flag triggers.
 2. Use the workflow below.
 3. Route to practice-area template. Listen for cross-area issues throughout.
 4. Conflict check flags. Triage classification.
@@ -35,11 +35,11 @@ This skill structures the conversation, produces the write-up, spots issues acro
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → practice areas, intake templates (per practice area if multiple), supervision style, jurisdiction, flag triggers.
+`~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → practice areas, intake templates (per practice area if multiple), supervision style, jurisdiction, flag triggers.
 
 ## Read the supervisor guide
 
-Check for a practice-area guide at `~/.claude/plugins/config/claude-for-legal/legal-clinic/guides/<practice-area>.md`. If one exists, use its intake questions, red flags, and good-fit criteria instead of the generic defaults below. If one doesn't exist, use the generic intake and note at the end of the intake summary: "This was a generic intake — your supervisor can tailor the questions for your clinic type with `/legal-clinic:build-guide`."
+Check for a practice-area guide at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/guides/<practice-area>.md`. If one exists, use its intake questions, red flags, and good-fit criteria instead of the generic defaults below. If one doesn't exist, use the generic intake and note at the end of the intake summary: "This was a generic intake — your supervisor can tailor the questions for your clinic type with `/legal-clinic:build-guide`."
 
 When the intake starts before the practice area is routed (Step 1 of the workflow below), re-check for the guide after routing — the guide path depends on which practice area the intake landed in.
 
@@ -55,7 +55,7 @@ From the answer, route to the appropriate intake template. If the clinic handles
 
 ### Step 2: Practice-area-specific intake
 
-Each practice area asks different questions. Use the template from `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` for this area. Defaults if none provided:
+Each practice area asks different questions. Use the template from `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` for this area. Defaults if none provided:
 
 **Immigration (HK context — non-refoulement, overstayer, torture claims):**
 - Current immigration status and how entered HK
@@ -106,7 +106,7 @@ Note every cross-area issue in the summary. The clinic may handle it, refer it, 
 
 ### Step 4: Conflict check flags
 
-Per whatever conflict-check process `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` describes. At minimum:
+Per whatever conflict-check process `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` describes. At minimum:
 
 - Opposing party name(s) — does the clinic represent or have represented them?
 - Related parties — anyone else the student or clinic might have a conflict with?
@@ -127,7 +127,7 @@ Not a case-acceptance decision — a triage input:
 
 ### Step 6: Supervision flag check
 
-Per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` supervision style and flag triggers. If formal queue or configurable flags are enabled, and a trigger is present (deadline mentioned, DV indicator, immigration status at issue, etc.), note the flag.
+Per `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` supervision style and flag triggers. If formal queue or configurable flags are enabled, and a trigger is present (deadline mentioned, DV indicator, immigration status at issue, etc.), note the flag.
 
 ### Step 7: Deadline handoff — required deliverable
 

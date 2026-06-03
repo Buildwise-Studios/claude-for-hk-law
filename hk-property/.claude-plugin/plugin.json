@@ -1,8 +1,8 @@
 {
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "hk-property",
-  "displayName": "HK Property & Conveyancing",
   "description": "Hong Kong property law under the Conveyancing and Property Ordinance (Cap 219), Land Registration Ordinance (Cap 128), Building Management Ordinance (Cap 344), and New Territories land. Covers sale and purchase, leasing, mortgages, deeds, Land Registry searches, building management, and stamp duty.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

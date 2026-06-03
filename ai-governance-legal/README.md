@@ -45,7 +45,7 @@ positions and house style.
 
 | Skill | Purpose |
 |---|---|
-| **cold-start-interview** | Writes `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` from interview + seed docs |
+| **cold-start-interview** | Writes `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` from interview + seed docs |
 | **ai-inventory** | EU AI Act per-system inventory — role (provider, deployer, importer, distributor, authorized rep, product manufacturer) and risk tier per system |
 | **use-case-triage** | Classifies use cases against the registry; flags missing assessments |
 | **aia-generation** | AI impact assessment (AIA) in house format |
@@ -66,7 +66,7 @@ positions and house style.
 Have ready (if they exist): your AI or acceptable use policy, one prior impact assessment,
 key vendor AI agreements, model inventory or approved tool list.
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` and survives plugin updates.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` and survives plugin updates.
 
 ### 2. Triage a new use case
 
@@ -127,7 +127,7 @@ ai-governance-legal/
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `policy-monitor` agent watches for drift between your AI governance policy and your practice and proposes updates. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `policy-monitor` agent watches for drift between your AI governance policy and your practice and proposes updates. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## Notes
 
@@ -141,6 +141,6 @@ Your practice profile at `~/.claude/plugins/config/claude-for-legal/ai-governanc
   ask which hat you're wearing for each task.
 - Gap analysis is manual (you point it at a regulation or guidance doc). For automated
   monitoring, pair with the `regulatory-legal` plugin, if the plugin is installed.
-- The `## Company profile` section is the first block of `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` by convention. If
+- The `## Company profile` section is the first block of `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` by convention. If
   you run other `-counsel` plugins, you can copy it across rather than re-entering
   the same context.

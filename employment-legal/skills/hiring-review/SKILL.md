@@ -12,7 +12,7 @@ argument-hint: "[offer letter file, or describe the hire]"
 
 # /hiring-review
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → jurisdictional footprint, hiring review triggers, restrictive covenant policy.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → jurisdictional footprint, hiring review triggers, restrictive covenant policy.
 2. Use the workflow below.
 3. Check: jurisdiction, classification, restrictive covenants, background check compliance.
 4. Flag anything that hits the jurisdiction-specific escalation table.
@@ -21,7 +21,7 @@ argument-hint: "[offer letter file, or describe the hire]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/employment-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/employment-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -34,12 +34,12 @@ and cited at the time of review.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → jurisdictional footprint, hiring review triggers, restrictive
+`~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → jurisdictional footprint, hiring review triggers, restrictive
 covenant policy, offer letter template location.
 
 ## Output header
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`).
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` → `## Outputs` (it differs by user role — see `## Who's using this`).
 
 ## Workflow
 
@@ -51,7 +51,7 @@ If remote: their home state/country governs. If hybrid: usually their home
 state, but check the offer letter's choice-of-law clause (may or may not hold
 up).
 
-Check the jurisdiction table in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` for this state/country. If it's
+Check the jurisdiction table in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` for this state/country. If it's
 not in the table — new jurisdiction — flag that: "First hire in [state]. The
 jurisdiction table doesn't cover this. Research needed before offer goes out."
 
@@ -93,7 +93,7 @@ non-solicit, or confidentiality/IP assignment:
 > - Choice-of-law and choice-of-forum enforceability for out-of-state covenants.
 > Cite primary sources. Verify currency.
 
-Per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` restrictive covenant policy: does this hire even get one?
+Per `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` restrictive covenant policy: does this hire even get one?
 Some companies use them selectively. Apply the house policy first, then
 research overlays from the jurisdiction.
 
@@ -103,7 +103,7 @@ research overlays from the jurisdiction.
 
 ### Step 4: Jurisdiction-specific requirements
 
-Check the `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` table for this jurisdiction. Common categories to
+Check the `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md` table for this jurisdiction. Common categories to
 research for each hire:
 
 - **Pay transparency** — does the jurisdiction require a salary range in the
@@ -182,7 +182,7 @@ Hong Kong SAR. Governed by Employment Ordinance (Cap 57) and related legislation
 
 ## Consequential-action gate (make an offer)
 
-**Before producing a "Clear to send" recommendation or a final offer letter for signature:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before producing a "Clear to send" recommendation or a final offer letter for signature:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
 > Making an offer has legal consequences — the letter is a contract, and restrictive covenants, classification, and jurisdiction-specific terms are difficult to reset once sent. Have you reviewed this offer with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >

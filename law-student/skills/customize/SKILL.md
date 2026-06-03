@@ -21,7 +21,7 @@ hand-editing YAML.
 ## What to do
 
 1. **Read the config.** Read
-   `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md`.
+   `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md`.
    If the plugin config does not exist or still contains `[PLACEHOLDER]`
    values, say:
 

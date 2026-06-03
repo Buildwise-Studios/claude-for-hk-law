@@ -1,7 +1,8 @@
 {
   "name": "hk-competition",
-  "displayName": "HK Competition",
   "description": "Hong Kong competition law under the Competition Ordinance (Cap 619). Covers the first conduct rule (anti-competitive agreements), second conduct rule (abuse of substantial market power), merger control regime (non-mandatory), Competition Commission investigations, and Competition Tribunal proceedings.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

@@ -8,13 +8,13 @@ argument-hint: "[--all | --slug=foo | --no-gmail]"
 
 To run weekly, set a recurring reminder to invoke `/litigation-legal:oc-status`. Automated scheduling requires a scheduled-tasks integration, which is not bundled.
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml`, filter per default rules (or per flags).
-2. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → outside counsel directive style, signer defaults, budget posture.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml`, filter per default rules (or per flags).
+2. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → outside counsel directive style, signer defaults, budget posture.
 3. Follow the workflow and reference below.
 4. For each matter in scope: read `matter.md` + `history.md`, draft per-matter email.
-5. Write markdown to `~/.claude/plugins/config/claude-for-legal/litigation-legal/oc-status/[YYYY-MM-DD]/[slug].md`.
+5. Write markdown to `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/oc-status/[YYYY-MM-DD]/[slug].md`.
 6. If Gmail MCP authenticated: create Gmail drafts. Else: markdown-only, note in summary.
-7. Write `~/.claude/plugins/config/claude-for-legal/litigation-legal/oc-status/[YYYY-MM-DD]/_summary.md` — what ran, what was skipped and why.
+7. Write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/oc-status/[YYYY-MM-DD]/_summary.md` — what ran, what was skipped and why.
 
 ---
 
@@ -26,10 +26,10 @@ Writing the same status-request email to outside counsel every week across 5–1
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — the filtering and field source
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` — matter context (current posture, open questions)
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md` — recent events to inform what to ask about
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → outside counsel directive style, signer name/email, budget posture
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — the filtering and field source
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` — matter context (current posture, open questions)
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md` — recent events to inform what to ask about
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → outside counsel directive style, signer name/email, budget posture
 
 ## Filtering — which matters?
 
@@ -50,7 +50,7 @@ Flags:
 
 Each email has the same skeleton; content is matter-specific.
 
-**Subject:** per house convention (from `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` outside counsel directive style; fallback: `[Matter: [matter name]] — Weekly status update`)
+**Subject:** per house convention (from `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` outside counsel directive style; fallback: `[Matter: [matter name]] — Weekly status update`)
 
 **Body skeleton:**
 
@@ -67,20 +67,20 @@ Checking in on [matter name]. A few items:
 
 3. **Decisions pending** — [pull open questions from matter.md that require OC input; if none, omit this numbered item and renumber]
 
-4. **Budget** — [monthly / quarterly / on-request per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` budget posture]. Where are we against [budget authorization from matter.md]? Any variance to flag?
+4. **Budget** — [monthly / quarterly / on-request per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` budget posture]. Where are we against [budget authorization from matter.md]? Any variance to flag?
 
 [If material and relevant: 5. Specific ask — e.g., "Please send me the latest draft of the motion to dismiss before [date]" — drawn from matter.md open questions.]
 
-[Signoff — name, role, contact. From `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` signer default for OC directives.]
+[Signoff — name, role, contact. From `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` signer default for OC directives.]
 ```
 
-Adapt tone per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` outside counsel directive style — some shops are "dear counsel" formal; others are first-name-and-bullets. Match.
+Adapt tone per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` outside counsel directive style — some shops are "dear counsel" formal; others are first-name-and-bullets. Match.
 
 ## Output
 
 ### Markdown drafts
 
-Write to: `~/.claude/plugins/config/claude-for-legal/litigation-legal/oc-status/[YYYY-MM-DD]/[slug].md`
+Write to: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/oc-status/[YYYY-MM-DD]/[slug].md`
 
 Each file is one email, formatted as:
 
@@ -90,10 +90,10 @@ Each file is one email, formatted as:
 # [Matter name] — OC status request — [YYYY-MM-DD]
 
 **To:** [outside_counsel.email from log] ([outside_counsel.lead], [outside_counsel.firm])
-**From:** [signer name / email from `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`]
+**From:** [signer name / email from `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`]
 **Subject:** [subject line]
 
-> The work-product header above applies to this internal record. The outgoing email body below goes to outside counsel on a retained matter, which is itself a privileged communication — apply the house privilege marking (`~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` privilege conventions) at the top of the email sent, typically `Privileged & Confidential — Attorney-Client Communication / Attorney Work Product`, not this internal work-product header.
+> The work-product header above applies to this internal record. The outgoing email body below goes to outside counsel on a retained matter, which is itself a privileged communication — apply the house privilege marking (`~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` privilege conventions) at the top of the email sent, typically `Privileged & Confidential — Attorney-Client Communication / Attorney Work Product`, not this internal work-product header.
 
 ---
 
@@ -116,7 +116,7 @@ If the Gmail draft-creation MCP is authenticated:
 
 ### Run summary
 
-After processing all matters, write `~/.claude/plugins/config/claude-for-legal/litigation-legal/oc-status/[YYYY-MM-DD]/_summary.md`:
+After processing all matters, write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/oc-status/[YYYY-MM-DD]/_summary.md`:
 
 ```markdown
 # OC Status Run — [YYYY-MM-DD]
@@ -156,4 +156,4 @@ Ad-hoc: `/oc-status` any time. `/oc-status --slug=foo` for a single matter.
 - **Generate content it doesn't have.** If `matter.md` is thin, the email is short and asks broad-status questions. The skill doesn't invent specific questions from nothing.
 - **Retry failures.** If Gmail draft creation fails mid-run, the skill logs the failure and continues with markdown. User can retry after fixing auth.
 - **Rewrite history.md.** Reads it for context; doesn't modify. (If OC's response surfaces new events, use `/matter-update [slug]` to log them.)
-- **Enforce a minimum template.** If the house tone is "one line, first name, done," the draft honors that and skips the bulleted structure. Match `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`.
+- **Enforce a minimum template.** If the house tone is "one line, first name, done," the draft honors that and skips the bulleted structure. Match `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`.

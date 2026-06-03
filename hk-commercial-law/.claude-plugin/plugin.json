@@ -1,7 +1,8 @@
 {
   "name": "hk-commercial-law",
-  "displayName": "HK Commercial Law",
   "description": "Hong Kong commercial law covering the Sale of Goods Ordinance (Cap 26), Control of Exemption Clauses Ordinance (Cap 71), Bills of Exchange Ordinance (Cap 19), and common law contract and tort principles. Covers sale of goods, agency, bailment, guarantees, and commercial dispute resolution.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

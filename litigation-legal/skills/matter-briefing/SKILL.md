@@ -6,9 +6,9 @@ argument-hint: "[slug]"
 
 # /matter-briefing
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → risk calibration + relevant stakeholders.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → risk calibration + relevant stakeholders.
 2. Follow the workflow and reference below.
-3. Read `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` + `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md` + log row from `_log.yaml`.
+3. Read `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` + `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md` + log row from `_log.yaml`.
 4. Produce briefing: current posture, what's changed since last update, next deadline, open questions, risk re-assessment check ("does the `risk:` field still reflect reality?").
 5. Flag staleness: if `last_updated` > 30 days, say so.
 
@@ -22,10 +22,10 @@ Give the counsel a clean read on one matter in the time it takes to walk to a co
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — structured row
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` — narrative intake
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md` — event log
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` — risk calibration (so "risk: high" means something specific, not generic)
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — structured row
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` — narrative intake
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md` — event log
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` — risk calibration (so "risk: high" means something specific, not generic)
 
 **Conflicts gate — unbypassable.** Before briefing, check `_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
 

@@ -29,8 +29,8 @@ This plugin provides specialised tools for property law practitioners working wi
 
 ## Related Plugins
 
-- `hk-companies` — Corporate property holding structures, company charges on land
-- `hk-litigation-procedure` — Court procedures for property disputes
+- `corporate-legal` — Corporate property holding structures, company charges on land
+- `litigation-legal` — Court procedures for property disputes
 - `hk-basic-law` — Constitutional framework for land rights under the Joint Declaration and Basic Law
 
 ## Maintenance

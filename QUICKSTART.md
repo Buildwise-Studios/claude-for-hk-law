@@ -13,16 +13,32 @@ https://github.com/user-attachments/assets/51394f0a-5277-4fe2-b81c-5c5e9ac876b5
 
 1. **Open Claude Code** (in your terminal) or **Claude Cowork** (the desktop app). Not sure which you have? If you have a terminal window open with Claude in it, that's Claude Code.
 
-2. **Add the marketplace.** In Claude Code, type `/plugin marketplace add ` (with a space at the end), then **drag the unzipped `claude-for-hk-law` folder onto the terminal window** — it'll fill in the path. Then press Enter.
+2. **Add the marketplace.** From GitHub (recommended once the repo is public):
 
-   (Or type the full path: `/plugin marketplace add /Users/you/Desktop/claude-for-hk-law`)
+   ```
+   /plugin marketplace add Buildwise-Studios/claude-for-hk-law
+   ```
+
+   Pin a release branch or tag if you want a fixed version:
+
+   ```
+   /plugin marketplace add Buildwise-Studios/claude-for-hk-law@main
+   ```
+
+   Full URL also works: `https://github.com/Buildwise-Studios/claude-for-hk-law`
+
+   **Local path** (contributors or offline): drag the repo folder onto the terminal after `/plugin marketplace add `, or use `/plugin marketplace add /Users/you/path/to/claude-for-hk-law`
 
 3. **Install your plugin.** Pick the one that matches your work from the table below, then:
    ```
    /plugin install commercial-legal@claude-for-hk-law
    ```
 
-4. **⚠️ Restart Claude Code.** Close and reopen. This step is not optional — the plugin isn't live until you restart.
+4. **Activate the plugin.** In Claude Code, run:
+   ```
+   /reload-plugins
+   ```
+   This picks up the install without quitting the session (skills, agents, hooks, and plugin MCP servers). If a new skill does not appear in `/` autocomplete, quit and restart Claude Code once — that refreshes the slash-command index on older builds.
 
 5. **Run setup.** Takes 2 minutes (quick start) or 10-15 minutes (full).
    ```
@@ -59,21 +75,15 @@ If you already installed project-scoped and want to switch: `/plugin uninstall <
 | Clinic supervisor (HK law school) | `legal-clinic` | `/legal-clinic:cold-start-interview` |
 | Law student (HK) | `law-student` | `/law-student:cold-start-interview` |
 | Legal ops / looking for skills | `legal-builder-hub` | `/legal-builder-hub:registry-browser` |
-| Basic Law specialist | `hk-basic-law` | `/hk-basic-law:cold-start-interview` |
-| Companies / corporate (HK) | `hk-companies` | `/hk-companies:cold-start-interview` |
-| Employment (HK) | `hk-employment` | `/hk-employment:cold-start-interview` |
-| Litigation procedure (HK) | `hk-litigation-procedure` | `/hk-litigation-procedure:cold-start-interview` |
-| Property / conveyancing (HK) | `hk-property` | `/hk-property:cold-start-interview` |
-| Data privacy (HK PDPO) | `hk-data-privacy` | `/hk-data-privacy:cold-start-interview` |
-| Intellectual property (HK) | `hk-intellectual-property` | `/hk-intellectual-property:cold-start-interview` |
-| Arbitration (HK) | `hk-arbitration` | `/hk-arbitration:cold-start-interview` |
-| Commercial law (HK) | `hk-commercial-law` | `/hk-commercial-law:cold-start-interview` |
-| Competition (HK) | `hk-competition` | `/hk-competition:cold-start-interview` |
-| Immigration (HK) | `hk-immigration` | `/hk-immigration:cold-start-interview` |
-| Shipping / maritime (HK) | `hk-shipping-maritime` | `/hk-shipping-maritime:cold-start-interview` |
-| Family law (HK) | `hk-family-law` | `/hk-family-law:cold-start-interview` |
-| Trusts / estate (HK) | `hk-trusts-estate` | `/hk-trusts-estate:cold-start-interview` |
-| National security law (HK) | `hk-nsl-rules` | `/hk-nsl-rules:cold-start-interview` |
+| Property / conveyancing (HK) | `hk-property` | `/hk-property:spa-review` |
+| Sale of goods / commercial disputes (HK) | `hk-commercial-law` | `/hk-commercial-law:sog-review` |
+| Arbitration (HK) | `hk-arbitration` | `/hk-arbitration:agreement-review` |
+| Competition (HK) | `hk-competition` | `/hk-competition:first-conduct-rule` |
+| Immigration (HK) | `hk-immigration` | `/hk-immigration:visa-employment` |
+| Shipping / maritime (HK) | `hk-shipping-maritime` | `/hk-shipping-maritime:bill-of-lading` |
+| Family law (HK) | `hk-family-law` | `/hk-family-law:divorce-petition` |
+| Trusts / estate (HK) | `hk-trusts-estate` | `/hk-trusts-estate:will-drafting` |
+| Basic Law specialist | `hk-basic-law` | `/hk-basic-law:bl-interpretation` |
 
 ## What you're installing
 
@@ -83,7 +93,7 @@ Each plugin learns your playbook through a setup interview, writes it to a pract
 
 ## What's in the box
 
-12 core practice-area plugins, 8 HK-native plugins, 5 managed-agent cookbooks, and connectors for Hong Kong e-Legislation, HKLII, and the Judiciary of Hong Kong. The full reference is in [README.md](README.md).
+12 core practice-area plugins (privacy, employment, IP, corporate, and litigation include merged Hong Kong doctrine skills), 9 HK specialty plugins, 5 managed-agent cookbooks, and connectors for Hong Kong e-Legislation, HKLII, and the Judiciary of Hong Kong. The full reference is in [README.md](README.md).
 
 ## Stuck?
 

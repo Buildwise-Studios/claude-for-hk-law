@@ -4,7 +4,7 @@ description: >
   Run an AI impact assessment — structured intake, risk analysis, regulatory
   classification per regime in scope, policy consistency diff, and recommendation
   with conditions. Uses the house-style structure learned from the seed impact
-  assessment in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+  assessment in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
   Use when user says "impact assessment for", "assess this AI use case", "run an
   AIA", "generate an AIA", "we need to document this AI system", "AI risk
   assessment for X", or follows a conditional triage result.
@@ -13,12 +13,12 @@ argument-hint: "[describe the use case or system, or pass a triage result]"
 
 # /aia-generation
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. Confirm impact assessment house style is populated.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. Confirm impact assessment house style is populated.
 2. Determine risk track (fast or full) from governance tier and use case characteristics, using the framework below.
 3. Run intake — conversational, not a form.
 4. Regulatory classification for each regime in the footprint — research tier, prohibited-practice exposure, and applicable obligations; cite primary sources.
 5. Write assessment in house style (from seed doc, or default if none captured).
-6. Policy diff against `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` AI policy commitments.
+6. Policy diff against `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` AI policy commitments.
 7. Output: assessment doc + conditions list + handoff flags (privacy PIA, vendor review if needed).
 
 ```
@@ -29,7 +29,7 @@ argument-hint: "[describe the use case or system, or pass a triage result]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ai-governance-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ai-governance-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -47,22 +47,22 @@ responsibly. They often need to happen in parallel; they're not substitutes.
 
 ## Load house style
 
-Read `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → `## Impact assessment house style`. That has:
+Read `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → `## Impact assessment house style`. That has:
 - What triggers an impact assessment at this company
 - The structure template extracted from the seed assessment
 - Typical depth
 - Who signs off
 
-If the seed structure is in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`, **use it**. The point is that this assessment
+If the seed structure is in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`, **use it**. The point is that this assessment
 looks like the other assessments this team produces.
 
-**Jurisdictional scope.** This assessment applies the regulatory regimes listed in `## Regulatory footprint` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. AI legal rules, risk classifications, and deployment obligations vary materially by jurisdiction and are moving fast. If this system is (or will be) deployed outside that footprint, or if a choice-of-law question is in play, this analysis may not apply as written — re-run or expand the footprint.
+**Jurisdictional scope.** This assessment applies the regulatory regimes listed in `## Regulatory footprint` in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. AI legal rules, risk classifications, and deployment obligations vary materially by jurisdiction and are moving fast. If this system is (or will be) deployed outside that footprint, or if a choice-of-law question is in play, this analysis may not apply as written — re-run or expand the footprint.
 
 ---
 
 ## Step 0: Is an impact assessment needed?
 
-Check the trigger criteria in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+Check the trigger criteria in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
 
 **Also check these regardless:**
 - Does this AI make or materially influence a decision affecting a person (employment,
@@ -70,7 +70,7 @@ Check the trigger criteria in `~/.claude/plugins/config/claude-for-legal/ai-gove
 - Does this AI process personal data about individuals?
 - Is this a customer-facing AI system rather than purely internal?
 - Does this AI use a third-party model where the company is the deployer?
-- Is the use case in the elevated or high governance tier per `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`?
+- Is the use case in the elevated or high governance tier per `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`?
 
 If none of the above and the house trigger isn't met:
 > "Doesn't look like this needs a full impact assessment. Here's a one-paragraph
@@ -80,7 +80,7 @@ If none of the above and the house trigger isn't met:
 
 ## Step 1: Risk track
 
-Before intake, determine which track to run. The tier definitions and the fast-track criteria come from `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` (`## Use case registry` and `## Governance tiers`), not from any hardcoded regime-specific framework.
+Before intake, determine which track to run. The tier definitions and the fast-track criteria come from `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` (`## Use case registry` and `## Governance tiers`), not from any hardcoded regime-specific framework.
 
 Research the applicable risk classification framework for each regime in the user's regulatory footprint. Many regimes distinguish by risk tier, affected population, and decision consequentiality — research the specific criteria. Note that most regimes treat employee data as personal data and employee monitoring as consequential; don't assume internal-only systems are out of scope.
 
@@ -94,13 +94,13 @@ Research the applicable risk classification framework for each regime in the use
 >
 > Tool-retrieved citations keep their source tag (`[HKLII]`, `[Westlaw]`, `[e-Legislation]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 >
-> **For non-lawyer users, uncertain dates go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a CISO who doesn't know what `[verify]` means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel", etc.) and collect all uncertain assertions in a final AIA section titled:
+> **For non-lawyer users, uncertain dates go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a CISO who doesn't know what `[verify]` means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel", etc.) and collect all uncertain assertions in a final AIA section titled:
 >
 > > **Things I'm not certain about — ask your attorney to confirm before relying on this:**
 >
 > List each uncertain item there with (1) what I said, (2) what I'm uncertain about, (3) why it matters to the assessment. This prevents a non-lawyer reader from mistaking a flagged best-guess for a checked fact. Lawyer-role users get the inline `[verify]` treatment — they know what the tag means.
 
-**Fast track vs. full assessment:** `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` defines what qualifies for abbreviated treatment. If `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` doesn't define fast-track criteria, default to full assessment and ask the user what criteria they want captured for next time.
+**Fast track vs. full assessment:** `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` defines what qualifies for abbreviated treatment. If `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` doesn't define fast-track criteria, default to full assessment and ask the user what criteria they want captured for next time.
 
 If in doubt, run the full assessment. A fast track that turns out to be wrong
 is worse than a thorough assessment on something low-risk.
@@ -177,7 +177,7 @@ A common failure mode: the footprint lists EU AI Act + GDPR + NYC Local Law 144,
 
 A second failure mode: the footprint was set before a regime that now matters existed (or took effect). If re-derivation surfaces a regime not in the footprint, flag it in the output's recommendation section, cite the authority, and recommend updating the footprint.
 
-For each regime in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → `## Regulatory footprint` that applies to this system — **plus any regime surfaced by the re-derivation above** — research the currently operative risk classification framework and determine where the system lands.
+For each regime in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → `## Regulatory footprint` that applies to this system — **plus any regime surfaced by the re-derivation above** — research the currently operative risk classification framework and determine where the system lands.
 
 Research tasks:
 - What is the regime's own tier taxonomy (e.g., prohibited / high-risk / limited / minimal, or the regime's equivalent)?
@@ -190,7 +190,7 @@ Research tasks:
 
 Don't assume internal-only systems are out of scope — most regimes treat employee data as personal data and employee monitoring as consequential. Verify the specific rule.
 
-**Provider-vs-deployer split (when `AI role: Both`).** If `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` → `## Company profile` → `AI role` is `Both` (the company is both a provider/builder and a deployer), Section 6 MUST include a provider-vs-deployer mapping table per regime. Most regimes impose materially different obligations on providers (or builders) versus deployers (or users) — collapsing them into one undifferentiated list misses obligations and conflates risks. Do not combine provider and deployer obligations into a single section. Produce, per regime:
+**Provider-vs-deployer split (when `AI role: Both`).** If `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` → `## Company profile` → `AI role` is `Both` (the company is both a provider/builder and a deployer), Section 6 MUST include a provider-vs-deployer mapping table per regime. Most regimes impose materially different obligations on providers (or builders) versus deployers (or users) — collapsing them into one undifferentiated list misses obligations and conflates risks. Do not combine provider and deployer obligations into a single section. Produce, per regime:
 
 | Obligation | As provider | As deployer |
 |---|---|---|
@@ -205,7 +205,7 @@ Capture the classification and the cited authority in the assessment output.
 
 ## Step 4: Write the assessment
 
-**Use the seed structure from `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.** If none was captured, use this default:
+**Use the seed structure from `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.** If none was captured, use this default:
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
@@ -299,7 +299,7 @@ three conditions required before production deployment."]
 
 | Policy commitment | Consistent? | Notes |
 |---|---|---|
-| [commitment from `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md` AI policy section] | 🟢 / 🟡 / 🟠 / 🔴 | |
+| [commitment from `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md` AI policy section] | 🟢 / 🟡 / 🟠 / 🔴 | |
 
 [If any item is 🟡 or worse: policy update needed before deployment, or design needs to change.
 One of them has to change — not both flagged and left open.]
@@ -335,7 +335,7 @@ No]
 Regulatory citations in Section 6 (and anywhere else) were generated by an AI model and have not been verified against primary sources. Before the assessment is certified or relied on, run a verification pass against a legal research tool (Westlaw, EUR-Lex, or your firm's platform) for each cited provision — confirm the pinpoint, currency, and any delegated or implementing acts. The AI regulatory landscape shifts quickly; verify before advising. Source tags on each citation (e.g., `[EUR-Lex]`, `[web search — verify]`) show where it came from; `verify` tags carry higher fabrication risk and should be checked first.
 ```
 
-**Before certifying the AIA (the Sign-off step, marking Status: APPROVED):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before certifying the AIA (the Sign-off step, marking Status: APPROVED):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Certifying this AIA has legal consequences — it becomes the record the company relies on if a regulator or affected party asks how this use case was assessed. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -363,7 +363,7 @@ Aim for 2-5 real risks, not 12 padded ones.
 
 ## AI policy diff
 
-Every assessment should cross-check against the AI policy commitments in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+Every assessment should cross-check against the AI policy commitments in `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
 Common drift:
 
 - Policy prohibits AI use in [category] — this use case is that category. Stop.

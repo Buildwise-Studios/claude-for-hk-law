@@ -10,7 +10,7 @@ argument-hint: "[subject, or point at class notes/casebook section]"
 
 # /outline-builder
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → outline preferences, existing outlines.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → outline preferences, existing outlines.
 2. Apply the workflow below.
 3. Build in student's format. If extending an existing outline, match its structure exactly.
 
@@ -64,14 +64,14 @@ The outline is only as trustworthy as what's in it. Err toward gaps over guesses
 
 This is not writing for the student — it is pointing the student at two things they already have and asking them to reconcile. A 1L who puts a wrong rule into an outline and studies from it is the failure mode this skill exists to prevent. Apply this only when:
 
-1. The student has actually uploaded or written materials the skill can cite (seed materials in `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → Seed materials, or an earlier section of the outline being extended), and
+1. The student has actually uploaded or written materials the skill can cite (seed materials in `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → Seed materials, or an earlier section of the outline being extended), and
 2. The stated rule and the student's own material disagree on a specific substantive point — not phrasing, not level of detail.
 
 Do not volunteer the correction from your own knowledge. Do not cite the casebook unless the student uploaded it. Only quote the student's own materials back to them. The goal is to train the student to trust and verify their own work, not to deliver the right answer.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → outline preferences (format, depth, existing outlines location).
+`~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → outline preferences (format, depth, existing outlines location).
 
 If existing outlines exist: read one. Match its structure exactly. Headings, depth, how cases are integrated, whether there are hypos.
 

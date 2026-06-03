@@ -3,7 +3,7 @@ name: ip-renewal-watcher
 description: >
   Scheduled agent that reads the IP portfolio register, computes what's due,
   and posts a ranked deadline report. Runs weekly by default. Posts to the
-  channel named in `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`
+  channel named in `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`
   → Renewal alerts. Trigger phrases: "what's renewing", "IP deadlines",
   "portfolio check", "IP renewal report", or on schedule.
 model: sonnet
@@ -28,7 +28,7 @@ for grace/lapsed items happen regardless of schedule.
 
 ## What it does
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` to
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` to
    get the alert destination (Slack channel, email list, or inline) and
    the work-product header rules.
 

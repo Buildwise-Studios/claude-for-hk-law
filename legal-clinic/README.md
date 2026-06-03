@@ -92,7 +92,7 @@ The cold-start interview asks the professor to choose:
 2. **Configurable flags, informal review** — certain triggers label output "CHECK WITH PROFESSOR," no queue mechanism
 3. **Lighter-touch** — standard safeguard labels on everything, professor supervises through existing clinic structure (case rounds, one-on-ones)
 
-Changeable later by editing `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md`. Your configuration is stored at that version-independent path and survives plugin updates.
+Changeable later by editing `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md`. Your configuration is stored at that version-independent path and survives plugin updates.
 
 ## Semester turnover: the `/ramp` solution
 
@@ -152,7 +152,7 @@ Account tier (Team vs. Enterprise) for client confidentiality is an open questio
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## File structure
 

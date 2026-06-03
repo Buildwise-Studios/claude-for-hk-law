@@ -22,8 +22,8 @@ cold-start interview and without hand-editing YAML.
 ## What to do
 
 1. **Read the config.** Read
-   `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`
-   (and `~/.claude/plugins/config/claude-for-legal/company-profile.md` one
+   `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`
+   (and `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` one
    level up). If the plugin config does not exist or still contains
    `[PLACEHOLDER]` values, say:
 
@@ -36,15 +36,15 @@ cold-start interview and without hand-editing YAML.
    - **Company / who you are** — name, industry, jurisdictions, stage, practice
      setting *(shared across all 12 plugins — changes flow through
      `company-profile.md`)*
-   - **Regulatory footprint** — EU AI Act, state AI laws, sector regulators in
-     scope
+   - **Regulatory footprint** — PDPO/PCPD, SFC/HKMA sector guidance, cross-border
+     AI rules only if in scope (EU AI Act optional)
    - **Risk posture** — conservative / middle / aggressive, what each means for
      triage and AIA output
    - **People** — governance team, AI risk owner, escalation chain, approvers
    - **Use case registry** — approved / conditional / never entries, and
      conditions attached to each
    - **AI system inventory** — per-system role (provider / deployer / etc.) and
-     tier under the EU AI Act. Run `/ai-governance-legal:ai-inventory` for
+     risk tier (HK/PDPO-first; EU AI Act if in footprint). Run `/ai-governance-legal:ai-inventory` for
      the dedicated editor.
    - **Vendor AI governance** — training-on-data, liability, model-change
      notice, and other positions in your vendor AI playbook
@@ -78,7 +78,7 @@ cold-start interview and without hand-editing YAML.
 
 5. **For shared-profile changes** (company name, industry, jurisdictions,
    practice setting, stage): write to
-   `~/.claude/plugins/config/claude-for-legal/company-profile.md` and note:
+   `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` and note:
 
    > This change affects all 12 plugins — any plugin that reads your
    > jurisdiction footprint now sees [new value].
@@ -96,7 +96,7 @@ cold-start interview and without hand-editing YAML.
   items but won't route them to a specific person.")
 - **Flag internal inconsistency.** If the change would make the profile
   inconsistent (e.g., risk posture aggressive + escalation "everything goes to
-  the GC"; or "EU AI Act in scope" + "no systems flagged for the EU"), flag
+  the GC"; or "PDPO AI guidance in scope" + "no systems in inventory"), flag
   the tension and ask which one they want.
 - **Flag guardrail degradation.** If the user asks to turn off a guardrail
   ("stop adding the `[review]` flag," "drop the citations warning," "skip the

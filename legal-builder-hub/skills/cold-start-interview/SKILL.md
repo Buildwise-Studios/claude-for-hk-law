@@ -12,13 +12,13 @@ argument-hint: "[--redo] [--check-integrations]"
 
 # /cold-start-interview
 
-1. Check `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md`. If a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-legal/legal-builder-hub/*/CLAUDE.md` but not at the config path, copy it to the config path and tell the user what was migrated.
+1. Check `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md`. If a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-hk-law/legal-builder-hub/*/CLAUDE.md` but not at the config path, copy it to the config path and tell the user what was migrated.
 2. Run Part 0 (role + integration check), then the five questions (practice type, industry, team, tooling comfort), per the workflow below.
 3. Match profile to registry skills. Recommend starter pack.
 4. Show each recommended skill's SKILL.md summary. User picks.
-5. Install picked skills. Write `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` (creating parent directories as needed) with `## Who's using this`, `## Available integrations`, profile + installed list.
+5. Install picked skills. Write `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` (creating parent directories as needed) with `## Who's using this`, `## Available integrations`, profile + installed list.
 
-**`--check-integrations`:** Re-run only the Part 0 integration-availability check. Updates the `## Available integrations` table in `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` without touching the role or practice profile. Use this after adding or removing an MCP connector.
+**`--check-integrations`:** Re-run only the Part 0 integration-availability check. Updates the `## Available integrations` table in `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` without touching the role or practice profile. Use this after adding or removing an MCP connector.
 
 When probing: only report ✓ if an MCP tool call actually succeeded. Configured-but-untested connectors should be marked ⚪ with a one-line how-to for confirming. Never report ✓ based on `.mcp.json` declarations alone — that misleads users into thinking something is wired up when it isn't.
 
@@ -26,17 +26,17 @@ When probing: only report ✓ if an MCP tool call actually succeeded. Configured
 
 ## Cold-start check
 
-Read `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md`:
 - **Does not exist** → start the interview.
 - **Contains `<!-- SETUP PAUSED AT: -->`** → greet the user and offer to resume from that section.
 - **Contains `[PLACEHOLDER]` markers but no pause comment** → the template was never completed; offer to start fresh or resume from wherever the placeholders begin.
 - **Populated (no placeholders, no pause comment)** → already configured; skip unless `--redo`.
 
-The template structure lives at `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` — use it as the section scaffold. Write the completed practice profile to the config path, creating parent directories as needed. If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-legal/legal-builder-hub/*/CLAUDE.md` but not here, copy it forward.
+The template structure lives at `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` — use it as the section scaffold. Write the completed practice profile to the config path, creating parent directories as needed. If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-hk-law/legal-builder-hub/*/CLAUDE.md` but not here, copy it forward.
 
 ## Check for the shared company profile
 
-Look for `~/.claude/plugins/config/claude-for-legal/company-profile.md`.
+Look for `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`.
 
 - **If it exists:** Read it. Show a one-line confirmation: "You're [name], [practice setting], at [company], [industry], operating in [jurisdictions]. Right? (Or say 'update' to change the shared profile.)" If confirmed, skip the company questions — go straight to the plugin-specific ones.
 - **If it doesn't exist:** You'll be the first plugin this user set up. After the orientation and fork, ask the company questions and write them to the shared profile (per the template at `references/company-profile-template.md` in the plugin root), then continue with the plugin-specific questions. Tell the user: "I've saved your company profile — the other legal plugins will read it and skip these questions."
@@ -96,7 +96,7 @@ Short as this interview is, the five questions vary — practice area and indust
 - **Before writing the profile and recommending a starter pack:** if any answer was skipped or left as a placeholder, list them and ask: "Want to fill any of these now, or leave them as placeholders? Your starter-pack recommendation is only as good as the profile." Then wait.
 - **Never** write the profile with silent gaps — every placeholder should be a deliberate skip the user confirmed.
 - **Batch size — count subparts.** "Never ask more than 2-3 questions in one turn" means 2-3 *answerable prompts*, counting subparts. One question with 5 subparts is 5 questions. The test: can the user answer without scrolling? If the questions don't fit on one screen, it's too many. Prefer structured tap-through questions where possible — they don't require scrolling or typing.
-- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/legal-builder-hub:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /legal-builder-hub:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
+- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/legal-builder-hub:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /legal-builder-hub:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
 
 **Verify user-stated legal facts as they come up in setup.** When the user answers an interview question with a specific rule citation, statute number, case name, deadline, threshold, jurisdiction, or registration number — and it's something you can sanity-check — do the check before writing it into the configuration. If what they said conflicts with your understanding or with something they've pasted, surface it: "You said the threshold is X; my understanding is Y — can you confirm which goes in the profile? `[premise flagged — verify]`" A wrong fact written into CLAUDE.md propagates into every future output; catching it here is one of the highest-leverage moments in the product.
 
@@ -156,7 +156,7 @@ Before the five questions: "Do you already have a list of community-skill regist
 
 Record the answer in the profile under `## Sources I trust` as `Deployment context: [personal | firm-internal | product-embedding]`. The allowlist's `licenses:` seeding below reads from it.
 
-**Write the allowlist to `allowlist.yaml`, not just the profile.** The installer's gate reads from `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/allowlist.yaml`, not from CLAUDE.md. If you only record the answer in the profile, the installer sees an empty allowlist and falls back to permissive regardless of what the user said — silently defeating the headline structural defense. After this question:
+**Write the allowlist to `allowlist.yaml`, not just the profile.** The installer's gate reads from `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/allowlist.yaml`, not from CLAUDE.md. If you only record the answer in the profile, the installer sees an empty allowlist and falls back to permissive regardless of what the user said — silently defeating the headline structural defense. After this question:
 
 1. Write `allowlist.yaml` at the config path, following the schema in `skill-installer/references/allowlist.md`:
    - `mode:` — the template default is `restrictive` (fail-closed). Offer `permissive` for Solo/small firm (they don't have IT-curated publisher lists, so restrictive mode would refuse everything). Keep `restrictive` for Midsize/large firm, In-house, or Government (those have security policies that want a firm gate). Always confirm: "I'm setting the allowlist to [mode]. Restrictive refuses unknown sources until you add them — safest, but you'll need to approve each new publisher. Permissive flags unknown sources and asks you before installing — more convenient, less strict. Which do you want?" Never write permissive without explicit user consent.
@@ -168,7 +168,7 @@ Record the answer in the profile under `## Sources I trust` as `Deployment conte
      - **Firm-internal** → same as Personal plus `LGPL-2.1-only`, `LGPL-3.0-only`, `MPL-2.0`.
      - **Product-embedding** → same as Personal. Also write a top-of-file comment in `allowlist.yaml`: `## License review required before shipping — anything not on this list needs legal sign-off.` Strong copyleft (GPL, AGPL) is deliberately excluded from the default here; adding those requires a deliberate edit.
 2. Also summarize in the profile's `## Sources I trust` section so a human can see the policy.
-3. Tell the user where it lives: "Your allowlist is at `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/allowlist.yaml`. The installer reads it before fetching anything."
+3. Tell the user where it lives: "Your allowlist is at `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/allowlist.yaml`. The installer reads it before fetching anything."
 
 If the user uploads a registry/allowlist file: read it, extract the registry URLs and allowlist/blocklist entries, confirm what you found, write `allowlist.yaml` per the schema, and summarize in the profile.
 
@@ -260,7 +260,7 @@ This solves the cold-start problem (the supervisor doesn't know what to do first
 
 Then close with the "you can change anything later" note:
 
-> Done. Your configuration is at `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` — a plain text file you can read and edit directly. Anything you answered can be changed:
+> Done. Your configuration is at `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` — a plain text file you can read and edit directly. Anything you answered can be changed:
 >
 > - Edit the file directly for a quick change
 > - Run `/legal-builder-hub:cold-start-interview --redo` for a full re-interview

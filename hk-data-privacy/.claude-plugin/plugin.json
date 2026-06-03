@@ -1,8 +1,0 @@
-{
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
-  "name": "hk-data-privacy",
-  "displayName": "HK Data Privacy",
-  "description": "Hong Kong data privacy under the Personal Data (Privacy) Ordinance (Cap 486). Covers data protection principles (DPP1-6), direct marketing, data breach, cross-border transfers, PCPD investigations, and compliance programmes.",
-  "author": { "name": "Buildwise-Studios" },
-  "version": "1.0.0"
-}

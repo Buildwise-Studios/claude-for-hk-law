@@ -7,8 +7,8 @@ argument-hint: "[slug] [--issue | --refresh | --release | --status]"
 # /legal-hold
 
 1. If `--status` (no slug): read `_log.yaml`, produce portfolio-wide hold report.
-2. Otherwise: load `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` + log row.
-3. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → privilege markings, hold template pointer, escalation norms.
+2. Otherwise: load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` + log row.
+3. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → privilege markings, hold template pointer, escalation norms.
 4. Follow the workflow and reference below.
 5. Route by flag:
    - `--issue`: capture scope, custodians, date range, systems. Draft `legal-hold-v1.docx`. Update `legal_hold` fields. Append history entry. Set `next_refresh` (default +6mo).
@@ -32,9 +32,9 @@ Preservation duties vary materially by forum. Federal common law (via Zubulake /
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — log row (legal_hold fields + status)
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` — matter context (counterparty, facts, key custodians from internal_owners)
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` — house style for litigation hold template pointer, privilege marking, escalation norms
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — log row (legal_hold fields + status)
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` — matter context (counterparty, facts, key custodians from internal_owners)
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` — house style for litigation hold template pointer, privilege marking, escalation norms
 
 **Conflicts gate — unbypassable.** Before issuing, refreshing, or releasing a hold, check `_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
 
@@ -50,7 +50,7 @@ The command takes a flag: `--issue | --refresh | --release | --status`. Default 
 
 Required when `legal_hold.issued == false` and the matter is active or reasonably anticipated.
 
-**Before issuing the hold to custodians (the consequential act):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before issuing the hold to custodians (the consequential act):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Issuing a legal hold has legal consequences — the scope, custodian list, and timing create the preservation record the company will be judged on if spoliation is argued later. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -72,7 +72,7 @@ Do not send the notice without an explicit yes. Drafting and scoping do not requ
 5. **Urgency** — if litigation already served or demand received with threat of suit, this goes out today.
 6. **Effective date** — date of the hold.
 
-**Draft the notice** to each custodian, using the house template in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` if one is configured; otherwise the default template below.
+**Draft the notice** to each custodian, using the house template in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` if one is configured; otherwise the default template below.
 
 **Default hold notice template:**
 
@@ -81,7 +81,7 @@ Do not send the notice without an explicit yes. Drafting and scoping do not requ
 
 DATE: [effective date]
 TO: [custodian name]
-FROM: [signer — per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` default]
+FROM: [signer — per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` default]
 RE: LITIGATION HOLD NOTICE — [matter short name]
 
 You are receiving this notice because [company] has determined that [one-
@@ -134,8 +134,8 @@ release. You may be asked to reaffirm compliance at periodic intervals.
 > This is a draft legal hold notice for attorney review, not a notice ready to issue. Issuing a hold triggers preservation obligations the company will be judged on in any later spoliation argument, and the notice itself may be discoverable. A licensed attorney reviews, approves, and issues. Do not distribute this draft unreviewed.
 
 **Writes:**
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/legal-hold-v1.docx` via the `docx` skill
-- Appends to `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md`:
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/legal-hold-v1.docx` via the `docx` skill
+- Appends to `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md`:
   ```
   ## [YYYY-MM-DD] — Legal hold issued
 
@@ -169,7 +169,7 @@ Refresh cadence: default 6 months; adjustable per matter. When `next_refresh < t
 **Departed custodians:** if a custodian has left the company since last refresh, the skill flags this as a preservation action item — the departing employee's files and email archive need to be preserved at IT level, not just via notice to the individual. Records this in history.md as a separate entry requiring action.
 
 **Writes:**
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/legal-hold-v[N].docx` (next version number)
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/legal-hold-v[N].docx` (next version number)
 - `history.md` entry
 - `_log.yaml`: updates `last_refresh` and `next_refresh` fields; modifies `custodians` list if changed
 
@@ -177,7 +177,7 @@ Refresh cadence: default 6 months; adjustable per matter. When `next_refresh < t
 
 Usually at matter close. Confirm the matter is truly over (not on appeal, not likely to reopen, statute of limitations passed on related claims).
 
-**Before releasing the hold (the consequential act — preservation obligations resume normal retention):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before releasing the hold (the consequential act — preservation obligations resume normal retention):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Releasing a legal hold has legal consequences — once released, custodians may begin deleting material. Release at the wrong time creates spoliation exposure. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -195,7 +195,7 @@ Do not send the release notice without an explicit yes.
 **Release notice template:** one paragraph, formal. "The litigation hold issued [date] regarding [matter] is released effective [date]. Normal retention resumes."
 
 **Writes:**
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/legal-hold-release.docx`
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/legal-hold-release.docx`
 - `history.md` entry
 - `_log.yaml`: sets `released: [YYYY-MM-DD]`
 

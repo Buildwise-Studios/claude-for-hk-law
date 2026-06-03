@@ -15,7 +15,7 @@ checklist, and creates the persistent investigation log.
 
 ## Instructions
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`.
 2. Load the `internal-investigation` reference skill and run Mode 1 (Open).
 3. If a matter with the same slug already exists, warn before overwriting.
 

@@ -1,8 +1,25 @@
+> [!IMPORTANT]
+> **Built by [Buildwise Studios](https://github.com/Buildwise-Studios)** — we design and integrate AI agents for professional services: law firms, in-house legal, headhunters, eCommerce operators, and similar teams.
+>
+> **This repo** is a free Claude plugin marketplace for Hong Kong legal workflows. Install it in [Claude Cowork](https://claude.com/product/cowork) or [Claude Code](https://claude.com/product/claude-code) ([QUICKSTART.md](QUICKSTART.md)). Your documents stay in **your** Claude environment—data handling follows **your** Anthropic subscription, not Buildwise.
+>
+> **Want it tailored to your firm?** [contact@buildwise-studios.com](mailto:contact@buildwise-studios.com) · More about us: [BuildwiseLanding](https://github.com/Buildwise-Studios/BuildwiseLanding)
+>
+> **Examples of what we build on engagement:**
+> - Playbook-aware **NDA / vendor MSAs** wired to iManage or your CLM, with tracked changes in Word
+> - **PDPO DSAR** workflows with HKLII / e-Legislation connectors and firm escalation rules
+> - **Conveyancing SPA** review skills + Land Registry / stamp-duty checklists for property teams
+> - **Regulatory digest** managed agents (SFC, HKMA, PCPD, LegCo consultations) posted to Slack
+> - **Headhunter / recruiting** agents: JD parsing, shortlist scoring, CRM sync (non-legal vertical)
+> - **Custom MCP servers** and managed-agent cookbooks behind your orchestrator
+>
+> **New here?** → [QUICKSTART.md](QUICKSTART.md) — install in 60 seconds.
+
 # Claude for Hong Kong Law
 
 Reference agents, skills, and data connectors for the Hong Kong legal workflows we see most — in-house commercial, privacy, corporate, employment, litigation, regulatory, AI governance, IP, conveyancing, arbitration, competition, and the learning side of the practice (PCLL and law students).
 
-> **New here?** Start with [QUICKSTART.md](QUICKSTART.md) — install in 60 seconds. This README is the full reference.
+> **Full reference below.** For a fast install path, use [QUICKSTART.md](QUICKSTART.md).
 
 Everything here is available **two ways from one source**: install it as a [Claude Cowork](https://claude.com/product/cowork) or [Claude Code](https://claude.com/product/claude-code) plugin, or deploy it through the [Claude Managed Agents API](https://docs.claude.com/en/api/managed-agents) behind your own workflow engine. Same system prompt, same skills — you choose where it runs.
 
@@ -183,8 +200,11 @@ After install, skills fire automatically when relevant, slash commands are avail
 ### Claude Code
 
 ```bash
-# Add the marketplace (use the absolute path to this repo or a GitHub URL)
-/plugin marketplace add <path-to-this-repo>
+# Add the marketplace (GitHub — recommended)
+/plugin marketplace add Buildwise-Studios/claude-for-hk-law
+
+# Or local path while developing:
+# /plugin marketplace add /path/to/claude-for-hk-law
 
 # Install a plugin — pick the ones that match your practice
 /plugin install commercial-legal@claude-for-hk-law
@@ -380,7 +400,7 @@ The full map across all plugins. The cold-start interview is the first thing to 
 | Command | Skill | What it does |
 |---|---|---|
 | `/ai-governance-legal:cold-start-interview` | cold-start-interview | Cold-start — learns your AI governance practice |
-| `/ai-governance-legal:ai-inventory` | ai-inventory | EU AI Act per-system inventory — track each system's role and risk tier |
+| `/ai-governance-legal:ai-inventory` | ai-inventory | HK AI system inventory — PCPD / SFC / HKMA sector and risk tier per system |
 | `/ai-governance-legal:use-case-triage` | use-case-triage | Classify AI use case — approved, conditional, or no |
 | `/ai-governance-legal:aia-generation` | aia-generation | Run an AI impact assessment in house format |
 | `/ai-governance-legal:vendor-ai-review` | vendor-ai-review | Review vendor AI terms against governance positions |

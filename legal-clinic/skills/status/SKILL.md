@@ -10,7 +10,7 @@ argument-hint: "[client | internal | court]"
 
 # /status
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → supervision style, plain-language standards, jurisdiction.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → supervision style, plain-language standards, jurisdiction.
 2. Use the workflow below. Read case notes.
 3. Generate for the specified audience:
    - `client` — plain language, what happened/next/you do/reach us
@@ -40,14 +40,14 @@ Clinics generate enormous numbers of status updates — to clients, to professor
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → supervision style, plain-language standards (for client-facing), jurisdiction.
+`~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → supervision style, plain-language standards (for client-facing), jurisdiction.
 Case notes for facts.
 
 ## Audience modes
 
 ### Client-facing
 
-**Reader:** The client. Probably stressed. Possibly unfamiliar with legal process. Reading level per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` plain-language standards (default 6th grade).
+**Reader:** The client. Probably stressed. Possibly unfamiliar with legal process. Reading level per `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` plain-language standards (default 6th grade).
 
 **Include:**
 - What's happened since they last heard from the clinic
@@ -88,7 +88,7 @@ Under the supervision of [Supervising Attorney]
 [Clinic name]
 ```
 
-**Before sending:** sending a client status update is a consequential action. The gate is the supervision workflow in `## Supervision style` in `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md`, reinforced by the Part 0 role check confirming a licensed supervising attorney owns the setup. Confirm the draft has been reviewed per the supervision protocol (queue / flag / lighter-touch) and all internal review labels (`[AI-ASSISTED DRAFT]`, `[VERIFY]`, etc.) have been removed from the client-facing copy.
+**Before sending:** sending a client status update is a consequential action. The gate is the supervision workflow in `## Supervision style` in `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md`, reinforced by the Part 0 role check confirming a licensed supervising attorney owns the setup. Confirm the draft has been reviewed per the supervision protocol (queue / flag / lighter-touch) and all internal review labels (`[AI-ASSISTED DRAFT]`, `[VERIFY]`, etc.) have been removed from the client-facing copy.
 
 ### Internal (for the professor)
 
@@ -188,7 +188,7 @@ requirements — per current HK court rules]
 
 ## Supervision routing
 
-Per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md`:
+Per `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md`:
 - Client-facing → usually a flag trigger (client communication)
 - Internal → no flag (it's going to the professor anyway)
 - Court-ready → always flagged if formal queue enabled (court filings)

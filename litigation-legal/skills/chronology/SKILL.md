@@ -6,14 +6,14 @@ argument-hint: "[slug] [--format=working|sof|witness-[name]]"
 
 # /chronology
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` → theory, pivot fact, key facts.
-2. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → Document storage sources, default matter folder pattern.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` → theory, pivot fact, key facts.
+2. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → Document storage sources, default matter folder pattern.
 3. Follow the workflow and reference below.
-4. Identify sources in order: user-provided paths this session, default matter folder, declared sources from `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`.
+4. Identify sources in order: user-provided paths this session, default matter folder, declared sources from `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`.
 5. For readable sources: extract dated events. For unreachable sources: note in Gaps.
 6. De-dupe, merge with sources list per event.
 7. Tag significance (🔴/🟡/⚪) per matter theory.
-8. Write `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/chronology.md` (or format variant per flag).
+8. Write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/chronology.md` (or format variant per flag).
 9. If prior version exists: version number increments, diff summary presented to user.
 10. Confirm before finalizing: "Here's what I built. Scan the 🔴 entries — anything I miscalled?"
 
@@ -64,14 +64,14 @@ Common:
 - Any files the user uploads or paths they provide in-session.
 
 `--matter` mode also reads:
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` → case theory, key facts, pivot fact (for significance tagging), key dates.
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` → case theory, key facts, pivot fact (for significance tagging), key dates.
 - Default matter folder pattern from CLAUDE.md → where docs for this slug live.
 
 `--documents` mode also reads:
 - eDiscovery platform metadata if a connector is available (Everlaw, Relativity, DISCO, Aurora) — by custodian + date range.
 - Bates-range manifest or production index if the user points at one.
 
-**Conflicts gate — unbypassable (`--matter` mode).** Before building the chronology, check `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
+**Conflicts gate — unbypassable (`--matter` mode).** Before building the chronology, check `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` for the matter slug. If the matter is not in `_log.yaml`, refuse and route:
 
 > "I don't see [matter slug] in the matter log. Run `/litigation-legal:matter-intake` first so the conflicts check runs and the matter workspace is set up. I won't build a chronology on a matter that hasn't been intaken — the conflicts check is the gate."
 
@@ -173,7 +173,7 @@ Default output is the working chronology. Variants on request.
 
 ### Working chronology (default)
 
-Location: `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/chronology.md`. Complete, tagged, annotated. The reference doc counsel works from.
+Location: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/chronology.md`. Complete, tagged, annotated. The reference doc counsel works from.
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]

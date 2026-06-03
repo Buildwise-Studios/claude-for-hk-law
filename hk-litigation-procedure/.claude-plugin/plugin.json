@@ -1,9 +1,0 @@
-{
-  "name": "hk-litigation-procedure",
-  "displayName": "HK Litigation Procedure",
-  "description": "Hong Kong civil litigation under the Rules of the High Court (Cap 4A) and District Court (Cap 336H). Covers case management, pleadings, discovery, summons, trial procedure, costs, appeals, and enforcement. Includes CFA, CA, CFI, DC procedure.",
-  "author": {
-    "name": "Buildwise-Studios"
-  },
-  "version": "1.0.0"
-}

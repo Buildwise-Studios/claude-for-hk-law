@@ -1,37 +1,31 @@
-# Product Legal Currency Watch
+# Product Legal Currency Watch (Hong Kong)
 
-**Last verified: 2026-05-10.**
+**Last verified: 2026-06-03.**
 
-> **⚠️ Staleness check.** If the last-verified date above is more than 90 days old, treat this file as stale and verify each entry before relying on it. A stale watch list is worse than no watch list — it looks current while being wrong. When a skill reads this file, check the last-verified date first. If stale, say: "The currency watch was last verified [date] — [N] months ago. I'm using it as a checklist of areas to search, not as a source of current status." When you update any entry, also update the last-verified date at the top.
+> If this date is more than 90 days old, treat entries as a checklist to verify, not as current status.
 
-Product/consumer protection law moves. These are the areas most likely to have changed since model training:
+Hong Kong product and consumer-facing legal areas that move frequently:
 
-## Children's online safety
+## Trade descriptions and marketing
 
-- **COPPA 2025 amendments — compliance deadline April 22, 2026.** Biometric identifiers and government IDs now "personal information"; separate consent for third-party disclosure tied to targeted advertising; information security program mandatory; indefinite retention prohibited.
-- **State AADCs:** UK AADC in force. California AADC (AB 2273) enjoined — verify current status of *NetChoice v. Bonta*. Multiple other state AADC-style laws pending or in force.
-- **KOSA / federal children's online safety bills:** check status — changes frequently.
+- **Trade Descriptions Ordinance (Cap 362)** — false trade descriptions, misleading omissions, aggressive commercial practices. Verify current PCPD and Customs enforcement posture.
+- **Undesirable Medical Advertisements Ordinance (Cap 231)** — health and therapeutic claims in advertising.
 
-## Platform and intermediary liability
+## Consumer and platform regulation
 
-- **DSA enforcement ramping:** €120M X fine (Dec 2025); TikTok and adult-platform preliminary findings (April 2026); formal Snapchat investigation (March 2026). If the product serves EU users, DSA obligations are actively enforced.
-- **Section 230 status:** SCOTUS has taken cases; check the latest. Any reliance on §230 for AI-generated content is contested.
+- **Unconscionable Contracts Ordinance (Cap 458)** — consumer contract terms.
+- **Personal Data (Privacy) Ordinance (Cap 486)** — PCPD guidance on direct marketing, employee monitoring, AI and personal data.
+- **Competition Ordinance (Cap 619)** — first/second conduct rules; Competition Commission enforcement.
 
-## FTC §5 and dark patterns
+## Financial and regulated products
 
-- **FTC v. Humor Rainbow/OkCupid (March 2026):** undisclosed training-data sharing as a §5 violation.
-- Dark patterns / negative option: FTC "click to cancel" rule — verify current status.
-- Endorsement guides updated 2023. Influencer disclosure, fake reviews, testimonials.
-- **AMG Capital (2021):** §13(b) does NOT authorize monetary relief — FTC must use §19 or administrative process. Changes the settlement calculus.
+- **SFC codes and circulars** — if the product is securities, crypto, or fund-related.
+- **HKMA supervisory requirements** — banking and payment products.
 
-## AI transparency and synthetic content
+## Cross-border footprint
 
-- EU AI Act transparency obligations: now on a shortened timeline (grace period → 3 months per Digital Omnibus, deadline Dec 2, 2026).
-- US state AI disclosure laws: NE LB 525 (chatbot disclosure to minors), CA AB 2013 (training data disclosure), and others.
-- FTC guidance on AI-generated content and deceptive claims. Verify current.
+If users or data are outside Hong Kong, flag: PRC PIPL, EU GDPR, or other regimes may apply in addition to HK law — do not assume Cap 362/486 alone governs.
 
-## How to use this file
+## How to use
 
-When a launch review cites a rule, effective date, or enforcement posture, it should note: "This area moves — verify at [source]. See `references/currency-watch.md`."
-
-**This file goes stale.** Current as of May 2026. Update when you notice drift.
+When a launch review cites a rule or enforcement posture, verify at elegislation.gov.hk, the relevant regulator site, or HKLII. Tag `[model knowledge — verify]` until confirmed.

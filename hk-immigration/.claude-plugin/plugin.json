@@ -1,8 +1,8 @@
 {
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "hk-immigration",
-  "displayName": "HK Immigration",
   "description": "Hong Kong immigration law under the Immigration Ordinance (Cap 115). Covers right of abode, visa schemes (employment, investment, talent), dependent visas, visitor conditions, deportation, and immigration appeals to the Immigration Tribunal.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

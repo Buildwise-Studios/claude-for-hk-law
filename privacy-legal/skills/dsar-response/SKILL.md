@@ -12,7 +12,7 @@ argument-hint: "[paste the request, or describe it]"
 
 # /dsar-response
 
-1. Load `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → DSAR process (systems list, verification method, SLA).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → DSAR process (systems list, verification method, SLA) and `## Language` (see `references/language-output.md` — PDPO-first; client letters may be zh-Hant when profile says so).
 2. Run the workflow below.
 3. Classify request type. Check escalation triggers — if any fire, route before proceeding.
 4. Walk through: verify identity → walk systems list → exemption analysis → draft.

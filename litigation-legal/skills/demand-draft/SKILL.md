@@ -6,14 +6,14 @@ argument-hint: "[slug] [--skip-gate] [--version=N]"
 
 # /demand-draft
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/intake.md`. Refuse if missing or strategic block empty (for material demands).
-2. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → demand-letter practice, house style, seed-doc table.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/intake.md`. Refuse if missing or strategic block empty (for material demands).
+2. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → demand-letter practice, house style, seed-doc table, and `## Language` if present (HK letters often English; apply `references/language-output.md` when profile specifies zh-Hant or bilingual).
 3. Follow the workflow and reference below.
 4. Run the pre-draft gate: privilege filter, admission risk, accord-and-satisfaction, FRE 408 posture, waiver scan, tone, factual accuracy. Do not proceed until each is engaged.
-5. Template select: seed doc if provided in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`; else soft template for the demand type.
+5. Template select: seed doc if provided in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`; else soft template for the demand type.
 6. Draft in-chat for review. Iterate until user approves.
-7. Write `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/draft-v[N].docx` using the docx skill.
-8. Write `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/checklist.md` (post-send checklist).
+7. Write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/draft-v[N].docx` using the docx skill.
+8. Write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/checklist.md` (post-send checklist).
 9. Assess materiality per heuristic; offer to create a matter. If yes: hand off to `matter-intake` with pre-populated fields.
 
 ---
@@ -79,9 +79,9 @@ This draft assumes the jurisdiction identified in the intake and the forum's app
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/intake.md` — required; refuse to proceed if missing
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → Demand-letter practice (seed-doc paths, insurance-tender timing, materiality threshold for matter creation), house style (privilege markings, outside counsel directive format for tone reference). **Tone, compliance period, marking, and signer come from `## Posture for this matter` — they are matter-level, not practice-level.**
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — to check for existing related matters (same counterparty) and offer cross-link
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/intake.md` — required; refuse to proceed if missing
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → Demand-letter practice (seed-doc paths, insurance-tender timing, materiality threshold for matter creation), house style (privilege markings, outside counsel directive format for tone reference). **Tone, compliance period, marking, and signer come from `## Posture for this matter` — they are matter-level, not practice-level.**
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — to check for existing related matters (same counterparty) and offer cross-link
 
 ### Strategic-block skipped handling
 
@@ -145,7 +145,7 @@ Only proceed when the user has engaged with each item. A blank-acknowledged chec
 
 ### Step 1: Seed doc
 
-Check `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → Demand-letter practice → seed-doc table for the intake's demand type.
+Check `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → Demand-letter practice → seed-doc table for the intake's demand type.
 
 - **Seed doc provided:** read it. Match structure, tone, signature block, privilege markings, typical section ordering. The seed doc is the template.
 - **No seed doc:** use the soft template below for the demand type.
@@ -232,11 +232,11 @@ Single-delivery breach: use § 2-601 perfect-tender framing. Installment: use §
 
 6. **No settlement discussion on the record unless intended.** If the intake flagged the communication as not carrying settlement-communication protection in the forum, the draft does not include any offer to compromise, any "without prejudice" framing, or any language that could be characterized as a settlement communication. Remember that protection attaches from conduct and context; labeling alone is not a cure.
 
-7. **Privilege markings per house style.** Apply `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` privilege conventions exactly.
+7. **Privilege markings per house style.** Apply `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` privilege conventions exactly.
 
 ## Output
 
-### Primary: `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/draft-v[N].docx`
+### Primary: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/draft-v[N].docx`
 
 Use the `docx` skill to produce a letter-formatted .docx:
 - Letterhead / sender address block
@@ -266,7 +266,7 @@ Every `[CITE:___]` placeholder — and any citation pulled from the intake or th
 
 **No silent supplement.** If a research query to the configured legal research tool (Westlaw, CourtListener, Trellis, Descrybe, or firm platform) returns few or no results for an authority the draft needs, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [issue]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) leave the `[CITE:___]` placeholder and stop here. Which would you like?" A lawyer decides whether to accept lower-confidence sources; the skill does not decide for them.
 
-### `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/[slug]/checklist.md` — the post-send checklist
+### `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/[slug]/checklist.md` — the post-send checklist
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`. This header applies to the internal checklist file; the outgoing letter does NOT carry it.]
@@ -288,7 +288,7 @@ Every `[CITE:___]` placeholder — and any citation pulled from the intake or th
 - [ ] Insurance tender sent (if required per house practice)
 - [ ] Conflicts confirmed (if not yet cleared)
 
-**Before the letter is sent (the consequential act):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before the letter is sent (the consequential act):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Sending this demand letter has legal consequences — it creates a record, can trigger statutes and counterclaims, and may waive privileges or constitute admissions. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -326,17 +326,17 @@ After drafting and writing the checklist, assess materiality per heuristic:
 
 - **Default yes if ANY of:**
   - Demand type is `cease-desist`, `breach-cure`, `employment-separation`, or `preservation`
-  - Desired outcome $$ ≥ `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` medium-severity band
+  - Desired outcome $$ ≥ `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` medium-severity band
   - Counterparty is a customer, competitor, or frequent adversary per landscape
 - **Default no otherwise**
 
 Present the call:
 > Materiality heuristic: [result]. [One-sentence reason.]
-> Create a tracked matter in `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml`? (default: [yes/no])
+> Create a tracked matter in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml`? (default: [yes/no])
 
 If user accepts: trigger `matter-intake` with fields pre-populated from the intake (counterparty, type, jurisdiction, `source: demand-letter`, initial theory, internal stakeholders). User reviews pre-filled fields and confirms.
 
-If user declines: update intake `status: drafted` (later `sent` when user confirms). The record stays in `~/.claude/plugins/config/claude-for-legal/litigation-legal/demand-letters/` only.
+If user declines: update intake `status: drafted` (later `sent` when user confirms). The record stays in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/demand-letters/` only.
 
 ## Versioning
 

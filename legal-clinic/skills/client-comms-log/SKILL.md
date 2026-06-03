@@ -14,7 +14,7 @@ argument-hint: "[case-id] [--add (default) | --read | --summary | --patterns]"
 1. Use the workflow below.
 2. Require case-id (prompt if not provided).
 3. Route by flag:
-   - `--add` (default): capture direction, medium, student, summary, action items, follow-up due. Confirm with user. Append (prepend most-recent-first) to `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md`.
+   - `--add` (default): capture direction, medium, student, summary, action items, follow-up due. Confirm with user. Append (prepend most-recent-first) to `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md`.
    - `--read`: show the most recent N entries.
    - `--summary`: one-paragraph condensed read.
    - `--patterns`: scan for unanswered comms, missed follow-ups, language gaps, tone shifts, contact gaps. Supervision-oriented.
@@ -37,8 +37,8 @@ Light. Append-only. The student's job is to write a two-sentence entry after eve
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md` (if exists) — append target
-- `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → not heavily read; this skill is case-scoped
+- `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md` (if exists) — append target
+- `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md` → not heavily read; this skill is case-scoped
 
 ## Modes
 
@@ -63,7 +63,7 @@ Flag: `--add | --read | --summary | --patterns` (default: add)
 
 **Before writing:** show the user the formatted entry and ask for confirmation. Clinic records should be reviewed before they're written, not after.
 
-**Append** to `~/.claude/plugins/config/claude-for-legal/legal-clinic/client-comms/[case-id]/log.md`. If the log doesn't exist, create it with a header:
+**Append** to `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/client-comms/[case-id]/log.md`. If the log doesn't exist, create it with a header:
 
 ```markdown
 # Communications Log — [case name]

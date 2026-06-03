@@ -28,7 +28,7 @@ Connectors shipped in the default `.mcp.json` of each plugin:
 | **Google Drive** (`gdrive`) | all 12 | |
 | **HKLII** | all 12 | Hong Kong judgments and legislation — public, free |
 | **e-Legislation API** | all 12 | Official Hong Kong e-Legislation — ordinances, regulations, commencement notices |
-| **Companies Registry e-Search** | corporate-legal, hk-companies | HK company searches via CR cyberport.gov.hk |
+| **Companies Registry e-Search** | corporate-legal | HK company searches via CR cyberport.gov.hk |
 | **Descrybe** | legal-clinic, ip-legal, law-student | |
 | **Definely** | commercial-legal, corporate-legal | |
 | **iManage** | commercial-legal, corporate-legal | Widely used in HK law firms |

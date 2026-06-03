@@ -64,7 +64,7 @@ discontinued — verify before configuring.
 | Source | URL | Format | Covers | Auth | Notes |
 |---|---|---|---|---|---|
 | OECD AI Policy Observatory | `https://oecd.ai/en/` | HTML + newsletter | National AI policies, OECD guidance | None | |
-| EU AI Act Resources | `https://artificialintelligenceact.eu/` | HTML | EU AI Act timeline, delegated acts | None | |
+| PCPD AI guidance | `https://www.pcpd.org.hk/` | HTML | PDPO amendments, AI and personal data guidance | None | Optional — only if cross-border AI footprint in practice profile |
 
 ---
 

@@ -26,7 +26,7 @@ Every skill is invoked as `/law-student:<skill-name>`.
 | `/law-student:socratic-drill [subject]` | Socratic drilling — it asks, you answer, it pushes back. Does not give the answer. |
 | `/law-student:case-brief [case]` | Case brief in your preferred format |
 | `/law-student:outline-builder [subject]` | Build or extend an outline in your format from class materials |
-| `/law-student:bar-prep-questions [subject]` | Bar prep questions, MBE or essay — jurisdiction-aware (UBE / NextGen / state-specific), flags majority/UBE vs. your state's rule |
+| `/law-student:bar-prep-questions [subject]` | PCLL / HK bar prep questions — jurisdiction-aware (HK default; flags if US or other bar selected in profile) |
 | `/law-student:flashcards [subject]` | Generate or drill flashcards; Leitner-style buckets; per-subject markdown; `--session <n>` mode |
 | `/law-student:study-plan` | Build or update a long-term study plan — phases, subjects by weakness, adaptive daily schedule from session history |
 | `/law-student:session <subject> <n>` | Focused N-question session on a subject; updates the plan with results |
@@ -67,11 +67,11 @@ Trust the flags more than the absence of flags — an unflagged rule is somethin
 
 **Connect a research tool first — the citation guardrails depend on it.** Without one, every cite is tagged `[verify]` and the reviewer note above each deliverable records that sources weren't verified. The plugin works either way; it just does more of the verification for you when a research tool is connected.
 
-The legal research connectors in this plugin aren't just data sources — they're the difference between a verified citation and a citation you have to check. A citation retrieved through **CourtListener** (U.S. court opinions, PACER dockets, citation verification) or **Descrybe** (primary-law search, citation treatment, quoted-language verification) is tagged with its source and can be traced back. A citation from the model's knowledge or from web search is tagged `[verify]` or `[verify-pinpoint]` and should be checked against a primary source before anyone relies on it. The plugin tiers its citations so your verification time goes where it matters.
+The legal research connectors in this plugin aren't just data sources — they're the difference between a verified citation and a citation you have to check. A citation retrieved through **HKLII** (Hong Kong judgments and legislation), **Hong Kong e-Legislation**, or **Descrybe** (primary-law search and citation treatment) is tagged with its source and can be traced back. A citation from the model's knowledge or from web search is tagged `[verify]` or `[verify-pinpoint]` and should be checked against a primary source before anyone relies on it. The plugin tiers its citations so your verification time goes where it matters.
 
 ## Storage
 
-Your practice profile is stored at `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` and survives plugin updates. Everything else is in your working directory:
+Your practice profile is stored at `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` and survives plugin updates. Everything else is in your working directory:
 
 ```
 law-student/
@@ -95,11 +95,11 @@ law-student/
 
 ## How it learns
 
-Your study profile at `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your study profile at `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## Notes
 
 - Drill-me vs. explain-to-me is set at cold-start; switch per session.
 - Case briefs and outlines use YOUR format. If you have existing outlines, point cold-start at them.
-- Bar prep targets your weak subjects from ~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md. It will keep coming back to them.
+- Bar prep targets your weak subjects from ~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md. It will keep coming back to them.
 - Every content-generating skill flags when it's uncertain. Trust the flags more than the absence of flags — an unflagged rule is something I'm confident on; check your source anyway before an exam.

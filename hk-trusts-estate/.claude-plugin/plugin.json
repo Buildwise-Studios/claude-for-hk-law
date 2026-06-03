@@ -1,8 +1,8 @@
 {
-  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "hk-trusts-estate",
-  "displayName": "HK Trusts & Estate",
   "description": "Hong Kong trust and estate law under the Trusts Ordinance (Cap 29), Probate and Administration Ordinance (Cap 10), Inheritance (Provision for Family and Dependants) Ordinance (Cap 481). Covers trust creation, trustee duties, will drafting, probate, administration of estates, and will disputes.",
-  "author": { "name": "Buildwise-Studios" },
+  "author": {
+    "name": "Buildwise-Studios"
+  },
   "version": "1.0.0"
 }

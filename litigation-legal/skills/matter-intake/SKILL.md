@@ -6,13 +6,13 @@ argument-hint: "[optional matter name]"
 
 # /matter-intake
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → risk calibration (for triage), landscape (for context, conflicts method), stakeholders (for who to loop in).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → risk calibration (for triage), landscape (for context, conflicts method), stakeholders (for who to loop in).
 2. Follow the workflow and reference below.
 3. Run the uniform intake: identification, conflicts check, source, risk triage, materiality, outside counsel, internal owners, legal hold, key dates, initial posture.
 4. Generate slug from matter name (lowercase, hyphens, year).
-5. Create `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md` — full narrative intake.
-6. Create `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md` — seeded with the intake as the first entry.
-7. Append structured row to `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml`.
+5. Create `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md` — full narrative intake.
+6. Create `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md` — seeded with the intake as the first entry.
+7. Append structured row to `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml`.
 8. Confirm with the user: "Here's the row I'll write — any edits?"
 
 ---
@@ -25,8 +25,8 @@ Every new matter goes through the same intake so the portfolio stays comparable.
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` — risk calibration (triage thresholds, materiality, settlement ladder), landscape (stakeholders, outside counsel bench).
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — to confirm slug uniqueness.
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` — risk calibration (triage thresholds, materiality, settlement ladder), landscape (stakeholders, outside counsel bench).
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — to confirm slug uniqueness.
 
 ## The intake
 
@@ -42,10 +42,10 @@ Every new matter goes through the same intake so the portfolio stays comparable.
 
 ### 2. Conflicts check
 
-Before going further, run the conflicts step per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → Conflicts clearance.
+Before going further, run the conflicts step per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → Conflicts clearance.
 
 - **Status:** `cleared | pending | not-run | waived`
-- **Method:** match what `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` declares (`corporate-legal | outside-counsel | system-check | informal | other`). If the declared method is `informal`, say so — the record still captures that a counsel's-judgment check was the basis.
+- **Method:** match what `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` declares (`corporate-legal | outside-counsel | system-check | informal | other`). If the declared method is `informal`, say so — the record still captures that a counsel's-judgment check was the basis.
 - **Cleared by:** name / team / firm
 - **Cleared date:** YYYY-MM-DD
 - **Checked against:** brief list of the specific names/entities run (counterparty, known affiliates, adverse counsel if known, key witnesses). Thin is fine; "no" is not.
@@ -58,9 +58,9 @@ Behavior by status:
 - `waived` → rare; requires a conflict-waiver rationale (writing the waiver is outside this skill — capture that one exists, who signed it, and where it lives).
 - `not-run` → **STOP. This is a gate.** The skill will not create `matter.md`, `history.md`, or a `_log.yaml` entry until the conflicts posture is resolved. Three acceptable paths:
 
-  **Path 1 — Run conflicts now.** Pause this intake. Clear per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` Conflicts clearance. Return with `status: cleared` or `status: waived` with rationale.
+  **Path 1 — Run conflicts now.** Pause this intake. Clear per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` Conflicts clearance. Return with `status: cleared` or `status: waived` with rationale.
 
-  **Path 2 — Mark pending with owner + due date.** Allowed only when `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` Conflicts clearance declares parallel-intake acceptable. Capture: who is running conflicts, when they're expected to return, what entities they're checking. Intake proceeds; matter row carries `conflicts.status: pending`; `/portfolio-status` flags it every run; `/matter-update` re-prompts until resolved.
+  **Path 2 — Mark pending with owner + due date.** Allowed only when `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` Conflicts clearance declares parallel-intake acceptable. Capture: who is running conflicts, when they're expected to return, what entities they're checking. Intake proceeds; matter row carries `conflicts.status: pending`; `/portfolio-status` flags it every run; `/matter-update` re-prompts until resolved.
 
   **Path 3 — Bypass with documented rationale.** Only if the user explicitly acknowledges the bypass. Record in `conflicts.override`:
 
@@ -87,17 +87,17 @@ How did this arrive?
 
 ### 4. Risk triage — against house calibration
 
-- Severity: high | medium | low (reference the `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` severity bands)
-- Likelihood: high | medium | low (reference the `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` likelihood bands)
+- Severity: high | medium | low (reference the `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` severity bands)
+- Likelihood: high | medium | low (reference the `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` likelihood bands)
 - Resulting risk rating (per the matrix): high | medium | low | critical
 - Damages exposure range (best estimate)
 - Non-monetary exposure (injunction? consent decree? publicity? precedent?)
 
-If the risk calibration in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` is thin, don't fake precision. Use the user's gut and note the thinness.
+If the risk calibration in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` is thin, don't fake precision. Use the user's gut and note the thinness.
 
 ### 5. Materiality
 
-Against the house thresholds in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`:
+Against the house thresholds in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`:
 - `reserved | disclosed | monitored | none`
 - If `reserved`: reserve amount and whether finance has been notified
 - If `disclosed`: filing and footnote location
@@ -115,7 +115,7 @@ If risk is medium or higher and no outside counsel is assigned — flag it.
 
 ### 7. Internal owners
 
-From `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` landscape — which internal stakeholders are involved?
+From `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` landscape — which internal stakeholders are involved?
 - Business lead
 - HR partner (if employment)
 - Comms contact (if reputational risk)
@@ -152,7 +152,7 @@ Lowercase, hyphens, year at the end. Examples: `acme-v-us-2026`, `employment-smi
 
 Confirm slug is unique in `_log.yaml` before writing.
 
-### `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/matter.md`
+### `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/matter.md`
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
@@ -223,7 +223,7 @@ Confirm slug is unique in `_log.yaml` before writing.
 | [e.g., complaint] | [path or "not yet shared"] |
 ```
 
-### `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/[slug]/history.md`
+### `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/[slug]/history.md`
 
 Seed the history file with the intake as entry zero:
 
@@ -239,7 +239,7 @@ Append-only event log. Most recent at top.
 [Source, who brought it in, initial triage summary, outside counsel assigned, legal hold issued yes/no.]
 ```
 
-### Append to `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml`
+### Append to `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml`
 
 Add a row per the schema. Example:
 

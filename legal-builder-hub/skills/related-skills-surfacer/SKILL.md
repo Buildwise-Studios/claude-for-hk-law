@@ -10,7 +10,7 @@ description: >
 
 # /related-skills-surfacer
 
-1. Load `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → practice profile.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → practice profile.
 2. Use the workflow below.
 3. Check what other plugins have been doing. Match against registry.
 4. Suggest: "You've been doing X — community has a skill for Y that's related."
@@ -30,7 +30,7 @@ Other plugins can include a light check at the end of a task:
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → practice profile, installed skills (don't suggest what's already installed).
+`~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → practice profile, installed skills (don't suggest what's already installed).
 Registry cache from registry-browser.
 
 ## The match
@@ -56,7 +56,7 @@ Don't surface the same skill twice. If the user didn't install it the first time
 
 ## User control
 
-Per `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` → new skill notifications:
+Per `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/CLAUDE.md` → new skill notifications:
 - **All:** Surface any match
 - **Matching practice profile:** Filter by profile (default)
 - **None:** This skill is off

@@ -6,7 +6,7 @@ argument-hint: "[section \u2014 e.g., 'statement of facts', 'argument II']"
 
 # /brief-section-drafter
 
-1. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → case theory, house style.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → case theory, house style.
 2. Follow the workflow and reference below.
 3. Draft in house format/tone/citation style. Consistent with theory.
 4. Output: draft section. Flag every place a fact or cite needs verification.
@@ -79,9 +79,9 @@ A rebuttal that sounds like a re-read of the opening loses ground. The draft sho
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → case theory, house style (citation format, structure, tone, length norms).
+`~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → case theory, house style (citation format, structure, tone, length norms).
 
-**Conflicts gate — unbypassable.** Before drafting, check `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` for the matter slug this skill is being invoked on. If the matter is not in `_log.yaml`, refuse and route:
+**Conflicts gate — unbypassable.** Before drafting, check `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` for the matter slug this skill is being invoked on. If the matter is not in `_log.yaml`, refuse and route:
 
 > "I don't see [matter slug] in the matter log. Run `/litigation-legal:matter-intake` first so the conflicts check runs and the matter workspace is set up. I won't draft substantive work product on a matter that hasn't been intaken — the conflicts check is the gate."
 
@@ -111,7 +111,7 @@ If the section you're about to draft contradicts the theory — stop. Either the
 
 **Research the forum's local rules and the judge's standing orders for length, formatting, citation, and filing requirements; don't rely on preferences. Cite primary sources (local rule number, standing order section) in the drafting notes. Verify currency — local rules change.**
 
-Per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`:
+Per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`:
 
 - **Citation format:** Bluebook, ALWD, or local — match exactly. Signals, pincites, parentheticals per house practice, confirmed against the local rule.
 - **Structure:** How does this firm organize arguments? CRAC? Topic sentences first? Headings that argue vs. headings that describe?
@@ -136,7 +136,7 @@ A draft with unresolved markers is not final. The markers make the verification 
 
 ### Step 5: Output
 
-**Before the brief is filed (the consequential act — this skill drafts, but the gate runs at the filing step regardless of who triggers it):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before the brief is filed (the consequential act — this skill drafts, but the gate runs at the filing step regardless of who triggers it):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Filing a brief has legal consequences — it becomes the record, binds the client on arguments and facts asserted, and a Rule 11 / equivalent certification attaches to signature. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >

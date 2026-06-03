@@ -22,7 +22,7 @@ re-running the whole cold-start interview and without hand-editing YAML.
 ## What to do
 
 1. **Read the config.** Read
-   `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md`.
+   `~/.claude/plugins/config/claude-for-hk-law/legal-clinic/CLAUDE.md`.
    If the plugin config does not exist or still contains `[PLACEHOLDER]`
    values, say:
 

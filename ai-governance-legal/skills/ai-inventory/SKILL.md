@@ -26,12 +26,12 @@ conversation, not from a table.
 ## What to do
 
 1. **Read the config.** Read
-   `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`.
+   `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/CLAUDE.md`.
    If it doesn't exist or still has `[PLACEHOLDER]` markers, direct the user
    to `/ai-governance-legal:cold-start-interview` first.
 
 2. **Read the inventory.** Inventory lives at
-   `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/ai-systems.yaml`.
+   `~/.claude/plugins/config/claude-for-hk-law/ai-governance-legal/ai-systems.yaml`.
    If it doesn't exist, create it with an empty `systems:` list when the
    first `add` runs.
 

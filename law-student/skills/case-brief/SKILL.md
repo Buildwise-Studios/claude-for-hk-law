@@ -9,7 +9,7 @@ argument-hint: "[case name or citation, or paste the case]"
 
 # /case-brief
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → outline/brief preferences.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → outline/brief preferences.
 2. Apply the workflow below.
 3. Brief in the student's format. If drill-me mode: ask the student to state the holding first.
 
@@ -31,7 +31,7 @@ A brief built on my guess and your good faith is worse than no brief. Better to 
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → outline/brief preferences (format, depth), learning style.
+`~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → outline/brief preferences (format, depth), learning style.
 
 ## The "don't brief it for me" rule (hard rule)
 
@@ -65,7 +65,7 @@ If the student pastes the case text in either mode, the skill can extract the co
 
 The skill produces the **template with questions**, not the filled-in brief. Student fills each section; skill reviews, pushes back, suggests what's missing.
 
-Per the student's format in `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md`. If none captured, default:
+Per the student's format in `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md`. If none captured, default:
 
 ```markdown
 ## [Case Name], [cite]
@@ -97,7 +97,7 @@ professor emphasized it?]
 
 ## Depth calibration
 
-Per `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` — some students want one-line briefs (rule + cite), some want full treatment. Match their format.
+Per `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` — some students want one-line briefs (rule + cite), some want full treatment. Match their format.
 
 If they're a 1L still learning to read cases: fuller briefs. If they're a 3L doing bar prep: rules only.
 

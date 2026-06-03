@@ -22,7 +22,7 @@ What disable does:
   `hooks.json.disabled` so no automatic triggers fire while the skill is
   disabled.
 - Logs the action to
-  `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/install-log.yaml`.
+  `~/.claude/plugins/config/claude-for-hk-law/legal-builder-hub/install-log.yaml`.
 
 Safety rules:
 

@@ -24,7 +24,7 @@ It surfaces approaching deadlines and flags any dates that may have been missed.
 
 ## Schedule
 
-Per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` and the per-matter cadence in `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml`.
+Per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` and the per-matter cadence in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml`.
 
 - **Default:** weekly check of every active matter for approaching deadlines.
 - **Daily:** matters with upcoming hearings inside 14 days, or matters in trial/hearing phase.

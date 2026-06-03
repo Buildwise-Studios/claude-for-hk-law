@@ -16,9 +16,9 @@ flags anything overdue, and surfaces the next priorities.
 
 ## Instructions
 
-1. Load `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/employment-legal/CLAUDE.md`.
 
-2. Identify the tracker file: `~/.claude/plugins/config/claude-for-legal/employment-legal/expansion-[slug].yaml`. If it doesn't
+2. Identify the tracker file: `~/.claude/plugins/config/claude-for-hk-law/employment-legal/expansion-[slug].yaml`. If it doesn't
    exist, respond: "No expansion tracker found for [country]. Run
    `/employment-legal:expansion-kickoff [country]` to start one."
 

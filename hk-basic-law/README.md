@@ -26,9 +26,8 @@ This plugin provides specialised tools for legal practitioners working with the 
 
 ## Related Plugins
 
-- `hk-companies` — Companies Ordinance, directors' duties, winding up
-- `hk-litigation-procedure` — Court procedures and civil procedure
-- `hk-nsl-rules` — National Security Law detailed rules (separate depth plugin)
+- `corporate-legal` — Companies Ordinance (Cap 622), M&A and entity compliance workflows
+- `litigation-legal` — Court procedures and civil litigation portfolio workflows
 
 ## Maintenance
 

@@ -17,18 +17,18 @@ Practitioners work across multiple clients and matters. A matter workspace keeps
 - `/ip-legal:matter-workspace new <slug>` — create a new matter workspace, run a short intake, write `matter.md`
 - `/ip-legal:matter-workspace list` — list matters with status and active flag
 - `/ip-legal:matter-workspace switch <slug>` — set the active matter
-- `/ip-legal:matter-workspace close <slug>` — archive a matter (move to `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/_archived/`, never delete)
+- `/ip-legal:matter-workspace close <slug>` — archive a matter (move to `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/_archived/`, never delete)
 - `/ip-legal:matter-workspace none` — detach from any active matter, work at practice-level only
 
 ## Instructions
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` — confirm the `## Matter workspaces` section is populated. If `Enabled` is `✗`, tell the user: "Matter workspaces are off — you're configured as an in-house practice with one client, so the plugin works from practice-level context automatically. If you actually work across multiple clients, re-run `/ip-legal:cold-start-interview --redo` and select a private-practice setting. Otherwise, you don't need `/ip-legal:matter-workspace` at all." Don't error — the disabled state is the expected one for in-house users.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` — confirm the `## Matter workspaces` section is populated. If `Enabled` is `✗`, tell the user: "Matter workspaces are off — you're configured as an in-house practice with one client, so the plugin works from practice-level context automatically. If you actually work across multiple clients, re-run `/ip-legal:cold-start-interview --redo` and select a private-practice setting. Otherwise, you don't need `/ip-legal:matter-workspace` at all." Don't error — the disabled state is the expected one for in-house users.
 2. Follow the subcommand logic below.
 3. Dispatch on the first token of `$ARGUMENTS`:
-   - `new` → run the intake interview, write `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<slug>/matter.md`, seed `history.md` and `notes.md`.
-   - `list` → enumerate `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/*/matter.md`, print a table, mark the active matter.
+   - `new` → run the intake interview, write `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<slug>/matter.md`, seed `history.md` and `notes.md`.
+   - `list` → enumerate `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/*/matter.md`, print a table, mark the active matter.
    - `switch` → update the `Active matter:` line in the practice-level CLAUDE.md.
-   - `close` → move `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<slug>/` to `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/_archived/<slug>/`, log the close date in `history.md`.
+   - `close` → move `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<slug>/` to `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/_archived/<slug>/`, log the close date in `history.md`.
    - `none` → set `Active matter:` to `none — practice-level context only`.
 4. Show the user what changed and confirm before writing.
 
@@ -49,7 +49,7 @@ Multi-client practitioners (private practice — solo, small firm, large firm) w
 All matter data lives under:
 
 ```
-~/.claude/plugins/config/claude-for-legal/ip-legal/
+~/.claude/plugins/config/claude-for-hk-law/ip-legal/
 ├── CLAUDE.md                       # practice-level practice profile
 └── matters/
     ├── <slug>/

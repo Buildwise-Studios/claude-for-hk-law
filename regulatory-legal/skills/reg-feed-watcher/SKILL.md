@@ -6,7 +6,7 @@ argument-hint: "[optional: --since DATE]"
 
 # /reg-feed-watcher
 
-1. Load `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` → watchlist, materiality threshold, feed config.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` → watchlist, materiality threshold, feed config.
 2. Use the workflow below.
 3. Pull each feed. Filter by materiality.
 4. Output: what's new, categorized by materiality tier.
@@ -20,7 +20,7 @@ value — unfiltered feeds are noise.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` → watchlist, materiality threshold, feed configuration, digest output path (if set).
+`~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` → watchlist, materiality threshold, feed configuration, digest output path (if set).
 
 `references/source-catalog.md` (in this skill's directory) → curated catalog of RSS/JSON/HTML sources across Hong Kong (SFC, HKMA, IA, Competition Commission, LegCo, Gazette), EU/UK, international, and secondary/aggregator categories. Use when configuring new sources or when the user's watchlist has coverage gaps (see Step 0).
 
@@ -35,7 +35,7 @@ Before running the pull, compare the watchlist + feed configuration in CLAUDE.md
 
 If there's an obvious gap — e.g., user watches "HK regulators" in the watchlist but has only SFC configured in feeds, missing HKMA or IA guidelines — surface it once at the top of the digest:
 
-> **Coverage gap noticed:** Your watchlist includes [category], but only [N] feeds are configured. The source catalog lists [X] options in this category (e.g., [top 2-3 names]). Want me to suggest additions? Run `/regulatory-legal:cold-start-interview --redo` to update, or edit `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` directly.
+> **Coverage gap noticed:** Your watchlist includes [category], but only [N] feeds are configured. The source catalog lists [X] options in this category (e.g., [top 2-3 names]). Want me to suggest additions? Run `/regulatory-legal:cold-start-interview --redo` to update, or edit `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` directly.
 
 Don't nag the same gap repeatedly — if the user has explicitly said "skip state AGs for now," respect that. Note state in CLAUDE.md so it sticks.
 
@@ -55,7 +55,7 @@ For each regulator in the watchlist:
   - **Competition Commission** (`https://www.compcomm.hk` → News & Publications) — enforcement, merger decisions, guidance.
   - **Hong Kong Government Gazette** (`https://www.gld.gov.hk` → Gazette) — legal notices, subsidiary legislation.
   - **LegCo** (`https://www.legco.gov.hk` → Bills Database) — bills introduced, committee papers.
-- **Direct regulator RSS/email** — fetch and parse any RSS URLs or email newsletter archives in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md feed configuration (SFC circulars, HKMA newsletters, etc.).
+- **Direct regulator RSS/email** — fetch and parse any RSS URLs or email newsletter archives in ~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md feed configuration (SFC circulars, HKMA newsletters, etc.).
 
 HK regulator feed reference for common watchlist regulators:
 | Regulator | Feed source | Format |
@@ -96,7 +96,7 @@ forward.
 
 ### Step 2: Classify
 
-Each item gets a materiality tier per `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`:
+Each item gets a materiality tier per `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`:
 
 | Item type | Match against threshold |
 |---|---|
@@ -113,7 +113,7 @@ Each item gets a materiality tier per `~/.claude/plugins/config/claude-for-legal
 
 - **Do not** classify an ANPR / RFI as "always material" — the compliance impact is zero until a rule issues.
 - **Do** classify as review-worthy if any of the issue areas in the notice touch the watchlist's always-material categories (e.g., an ANPR on open banking in a fintech watchlist).
-- **Do** log the comment deadline to `~/.claude/plugins/config/claude-for-legal/regulatory-legal/comment-tracker.yaml` with `item_type: ANPR` or `item_type: RFI` so the downstream tracker can distinguish these from compliance gaps.
+- **Do** log the comment deadline to `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/comment-tracker.yaml` with `item_type: ANPR` or `item_type: RFI` so the downstream tracker can distinguish these from compliance gaps.
 - **Do** include in the digest entry a line that says explicitly: "Pre-rule. Comment deadline [date]. Route to `/regulatory-legal:policy-diff` only as a pre-positioning analysis (no compliance gap yet)." This primes the policy-diff skill to use its compressed pre-positioning branch rather than a full gap-closure diff.
 - **Route to the comment-tracker, not the gap-tracker.** Comment-decision items are not compliance gaps; they belong in the comment tracker, and `gap-surfacer` uses the `comment-decision` `gap_type` (or declines to ingest, if the team routes these separately).
 
@@ -121,8 +121,8 @@ Each item gets a materiality tier per `~/.claude/plugins/config/claude-for-legal
 
 For every NPRM classified at any tier above "skip":
 - Extract comment deadline (Federal Register API returns this as structured data)
-- If comment tracking is enabled in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md: append to `~/.claude/plugins/config/claude-for-legal/regulatory-legal/comment-tracker.yaml`
-  with status "undecided" and the default comment decision owner from ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md
+- If comment tracking is enabled in ~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md: append to `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/comment-tracker.yaml`
+  with status "undecided" and the default comment decision owner from ~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md
 - Include comment deadline in the output entry
 
 ### Step 3: Enrich
@@ -142,7 +142,7 @@ The digest goes into the chat by default. **Also write it to a shareable file** 
 
 **File output behavior:**
 
-1. Look for `Digest output path` in `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`. If set, write there. Default if unset: `~/regulatory-legal-digests/reg-digest-YYYY-MM-DD.md`.
+1. Look for `Digest output path` in `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`. If set, write there. Default if unset: `~/regulatory-legal-digests/reg-digest-YYYY-MM-DD.md`.
 2. Create parent directories if needed.
 3. Write the full digest as Markdown (same content as the chat output, including the work-product header, source tags, and the verify-citations footer).
 4. If a file already exists at the path for today, append a new section with a timestamped subheader rather than overwriting — the same day may see multiple runs (morning digest, ad-hoc check).
@@ -199,11 +199,11 @@ Format on disk matches the chat format exactly (below). Markdown renders well in
 
 ## Config-dependent fallbacks
 
-This skill reads the watchlist, materiality threshold, and feed configuration from `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`. When a required value is still `[PLACEHOLDER]` or empty, say so in the output — specifically, not generically:
+This skill reads the watchlist, materiality threshold, and feed configuration from `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`. When a required value is still `[PLACEHOLDER]` or empty, say so in the output — specifically, not generically:
 
-- **Watchlist empty:** stop and say "The watchlist in your configuration is empty. I can't pull feeds without knowing which regulators to watch. Run `/regulatory-legal:cold-start-interview --redo` or edit `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` and add at least one regulator."
-- **Materiality threshold empty:** fall back to the default tiers and append: "This output used the default materiality tiers because your configuration doesn't have custom thresholds set. Tune them with `/regulatory-legal:cold-start-interview --redo` or by editing `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`."
-- **Feed configuration empty:** run Federal Register API only and append: "This output used only the free Federal Register API because your configuration doesn't list direct RSS or paid feeds. Add feeds with `/regulatory-legal:cold-start-interview --redo` or by editing `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md`."
+- **Watchlist empty:** stop and say "The watchlist in your configuration is empty. I can't pull feeds without knowing which regulators to watch. Run `/regulatory-legal:cold-start-interview --redo` or edit `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md` and add at least one regulator."
+- **Materiality threshold empty:** fall back to the default tiers and append: "This output used the default materiality tiers because your configuration doesn't have custom thresholds set. Tune them with `/regulatory-legal:cold-start-interview --redo` or by editing `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`."
+- **Feed configuration empty:** run Federal Register API only and append: "This output used only the free Federal Register API because your configuration doesn't list direct RSS or paid feeds. Add feeds with `/regulatory-legal:cold-start-interview --redo` or by editing `~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md`."
 
 Say nothing about config when the relevant values are populated.
 
@@ -223,5 +223,5 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 
 - Read every item in full. It classifies and enriches; deep reading is for the
   items that survive the filter.
-- Change the materiality threshold. If the filter is wrong, edit ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md.
+- Change the materiality threshold. If the filter is wrong, edit ~/.claude/plugins/config/claude-for-hk-law/regulatory-legal/CLAUDE.md.
 - Require TR or CourtListener. Free feeds are the baseline; paid feeds add depth.

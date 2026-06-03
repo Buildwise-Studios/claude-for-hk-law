@@ -255,6 +255,11 @@ This is where the skill earns its keep — most privacy teams have DPA positions
 - Who handles them — you, or a support team with a runbook?
 - What systems does a DSAR touch — how many places does user data live?
 
+**Language** *(writes `## Language` in CLAUDE.md; see `references/language-output.md`):*
+- Primary analysis language: English, Traditional Chinese (zh-Hant), or bilingual?
+- Client-facing letters (DSAR acknowledgments, data-subject correspondence): same as analysis, or different?
+- Any notes (e.g. "analysis English; client FAQs in plain Chinese")?
+
 ### Part 4: Seed documents (3-4 min)
 
 > I want to see three things. They'll tell me how you actually work.

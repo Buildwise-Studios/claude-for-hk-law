@@ -30,7 +30,7 @@ This plugin provides specialised tools for maritime law practitioners working wi
 ## Related Plugins
 
 - `hk-commercial-law` — Commercial contracts, sale of goods, carriage of goods
-- `hk-litigation-procedure` — Court procedures for admiralty actions
+- `litigation-legal` — Court procedures for admiralty actions
 - `hk-arbitration` — Maritime arbitration under Cap 609
 
 ## Maintenance

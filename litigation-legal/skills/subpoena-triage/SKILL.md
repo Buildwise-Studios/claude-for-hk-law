@@ -8,11 +8,11 @@ argument-hint: "[path-to-subpoena] [--slug=custom-slug]"
 
 1. Read the subpoena from provided path.
 2. Classify (third-party-docs / third-party-depo / party / CID / grand-jury).
-3. If grand jury → stop, escalate per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. Otherwise continue.
-4. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` for cross-check. Load `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → landscape, privilege conventions, escalation norms.
+3. If grand jury → stop, escalate per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. Otherwise continue.
+4. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` for cross-check. Load `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → landscape, privilege conventions, escalation norms.
 5. Follow the workflow and reference below.
 6. Extract key fields, analyze scope/burden/privilege, produce objections framework + compliance plan + deadline calendar.
-7. Write `~/.claude/plugins/config/claude-for-legal/litigation-legal/inbound/[slug]/triage.md`. Copy or link subpoena to `~/.claude/plugins/config/claude-for-legal/litigation-legal/inbound/[slug]/incoming.[ext]`.
+7. Write `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/inbound/[slug]/triage.md`. Copy or link subpoena to `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/inbound/[slug]/incoming.[ext]`.
 8. Hand off: `/legal-hold --issue` if hold not in place; `/matter-intake` if materiality warrants; `/matter-briefing [slug]` if party subpoena in existing matter.
 
 ---
@@ -34,8 +34,8 @@ This skill is inherently defensive — a subpoena has been served on the recipie
 ## Load context
 
 - The subpoena document (user provides path or drops it in-session)
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/matters/_log.yaml` — for related matter lookup and legal hold status
-- `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md` → landscape (regulators we deal with), house privilege conventions, escalation norms
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/matters/_log.yaml` — for related matter lookup and legal hold status
+- `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md` → landscape (regulators we deal with), house privilege conventions, escalation norms
 
 ## Workflow
 
@@ -90,7 +90,7 @@ Subpoenas come in flavors with different rules; confirm the specifics against th
 **Privilege**
 - Attorney-client or work product likely implicated? (Almost always yes for anything legal-related; often yes for communications involving in-house or outside counsel.)
 - Other privileges — trade secret, HIPAA (if applicable), state privilege, common interest
-- Privilege log will be required — flag the format per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`
+- Privilege log will be required — flag the format per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`
 
 **Other objection grounds**
 - Confidentiality — protective order needed?
@@ -131,7 +131,7 @@ Calendar all of them. Immediate action item.
 
 ### Step 8: Write triage
 
-Output: `~/.claude/plugins/config/claude-for-legal/litigation-legal/inbound/[slug]/triage.md`.
+Output: `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/inbound/[slug]/triage.md`.
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
@@ -187,7 +187,7 @@ Output: `~/.claude/plugins/config/claude-for-legal/litigation-legal/inbound/[slu
 
 **Attorney-client / work product likely implicated:** [yes/no + which categories] `[SME VERIFY]`
 **Other privileges:** [trade secret, HIPAA, state, common interest] `[SME VERIFY]`
-**Privilege log format required:** [per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`]
+**Privilege log format required:** [per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`]
 
 ---
 
@@ -251,7 +251,7 @@ Every rule reference, case, statute, and regulation in this triage — including
 
 ### Step 9: Hand off
 
-**Before responding to the subpoena (serving objections, producing documents, appearing for deposition, or filing a motion to quash — any substantive response to the issuing party or court):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before responding to the subpoena (serving objections, producing documents, appearing for deposition, or filing a motion to quash — any substantive response to the issuing party or court):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
 > Responding to a subpoena has legal consequences — missing a deadline risks contempt, over-producing waives privilege, under-producing risks sanctions. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -261,7 +261,7 @@ Every rule reference, case, statute, and regulation in this triage — including
 
 Do not proceed past this gate without an explicit yes. Triage, scoping, and internal calendaring do not require the gate — the response to the issuing authority does.
 
-- If classified as **grand jury subpoena** → stop, flag for escalation per `~/.claude/plugins/config/claude-for-legal/litigation-legal/CLAUDE.md`, do not proceed with standard triage.
+- If classified as **grand jury subpoena** → stop, flag for escalation per `~/.claude/plugins/config/claude-for-hk-law/litigation-legal/CLAUDE.md`, do not proceed with standard triage.
 - If classified as **CID**: flag that regulator-specific norms apply; recommend outside regulatory counsel.
 - Otherwise: offer to create a matter (usually yes — subpoenas are almost always material enough to track).
 - If a legal hold isn't issued with subpoena scope, hand off to `/legal-hold --issue` immediately.

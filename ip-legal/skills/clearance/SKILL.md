@@ -27,7 +27,7 @@ additional CNIPA and Madrid searches are strongly recommended.
 
 ## Instructions
 
-1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. If it
+1. Read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. If it
    contains `[PLACEHOLDER]`, stop and direct to `/ip-legal:cold-start-interview`.
 2. Follow the workflow below.
 3. Run intake (mark, goods/services, classes, jurisdictions, visual/stylization).
@@ -82,20 +82,20 @@ the list in review. Stay on the two-way door side.
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/ip-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
 ## Load the practice profile first
 
-Before running clearance, read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. Pull:
+Before running clearance, read `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`. Pull:
 
 - **Role** from `## Who's using this` (lawyer vs. non-lawyer changes the work-product header and the non-lawyer gate below).
 - **Registered in** and **enforce where** from `## IP practice profile` and `## Enforcement posture` (default jurisdictions if the user doesn't specify).
 - **Integrations** from `## Available integrations` (CourtListener / Solve Intelligence / Descrybe — each determines what searches are available to run, what the fallback is, and what gets attributed in the output).
 - **Decision posture** from `## Decision posture on subjective legal calls` — this skill never concludes "not confusingly similar."
 
-If `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` contains `[PLACEHOLDER]` or `[Your Company Name]`, surface this bounce:
+If `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` contains `[PLACEHOLDER]` or `[Your Company Name]`, surface this bounce:
 
 > I notice you haven't configured your practice profile yet — that's how I tailor posture, jurisdictions, and approval chain to your practice.
 >
@@ -163,7 +163,7 @@ to decide whether confusion is likely. That is the attorney's call.
 
 ### What the user has connected
 
-Read `## Available integrations` from `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`:
+Read `## Available integrations` from `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`:
 
 - **If a trademark search connector is available** (Solve Intelligence,
   Descrybe — or any MCP exposing TM-registry search): run a preliminary search
@@ -303,7 +303,7 @@ cuts each way and where the uncertainty is:
 - **Likelihood of expansion** (bridge-the-gap). Whether the senior user is
   likely to expand into the junior's lane, and vice versa.
 
-Per the decision posture in `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`:
+Per the decision posture in `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md`:
 
 - **Never conclude "not confusingly similar."**
 - If uncertain, write: "Similar marks found — confusion assessment required
@@ -337,7 +337,7 @@ triage found:
 
 ## Output format
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` `## Outputs`.
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` `## Outputs`.
 
 ```markdown
 [WORK-PRODUCT HEADER]
@@ -424,7 +424,7 @@ each way.
   in Class 25 if the intent is to proceed"]
 - [specific next step 3 — e.g., "Reframe the mark — current form is descriptive
   and will require secondary meaning"]
-- [routing per `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md` —
+- [routing per `~/.claude/plugins/config/claude-for-hk-law/ip-legal/CLAUDE.md` —
   trademark OC or in-house IP counsel named in the practice profile]
 
 ## Citation verification
@@ -463,9 +463,9 @@ Deliver the full triage memo alongside the brief. Do not withhold the analysis.
 ## Output location
 
 If matter workspaces are enabled and a matter is active, write the output to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/matters/<matter-slug>/outputs/clearance-<mark-slug>-YYYY-MM-DD.md`.
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/matters/<matter-slug>/outputs/clearance-<mark-slug>-YYYY-MM-DD.md`.
 Otherwise write to
-`~/.claude/plugins/config/claude-for-legal/ip-legal/outputs/clearance-<mark-slug>-YYYY-MM-DD.md`
+`~/.claude/plugins/config/claude-for-hk-law/ip-legal/outputs/clearance-<mark-slug>-YYYY-MM-DD.md`
 and surface the path to the user.
 
 Append a one-line entry to the matter's `history.md` if a matter is active.

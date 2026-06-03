@@ -10,12 +10,12 @@ argument-hint: "[paste essay OR path to draft OR --generate-hypo]"
 
 # /irac-practice
 
-1. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → classes, exam formats, outline locations, learning style.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → classes, exam formats, outline locations, learning style.
 2. Apply the framework below.
 3. Establish mode: student-provided hypo + answer, OR skill-generated hypo with student's answer.
 4. Read the answer closely. Map against expected IRAC components.
 5. Output structured feedback: issues spotted/missed, rule accuracy, analysis depth, organization, grade band, top 3 fixes, at most 1-2 labeled example phrasings (never a full IRAC model).
-6. Append to `~/.claude/plugins/config/claude-for-legal/law-student/irac-sessions/[student]/tracker.md` for pattern detection. Surface patterns after 3+ sessions.
+6. Append to `~/.claude/plugins/config/claude-for-hk-law/law-student/irac-sessions/[student]/tracker.md` for pattern detection. Surface patterns after 3+ sessions.
 
 ---
 
@@ -42,8 +42,8 @@ Watch for: real names, real addresses, real dates, specific dollar amounts, "my 
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → current classes, exam formats, outline locations, learning style
-- `~/.claude/plugins/config/claude-for-legal/law-student/irac-sessions/[student]/tracker.md` if exists — pattern tracking across sessions
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/CLAUDE.md` → current classes, exam formats, outline locations, learning style
+- `~/.claude/plugins/config/claude-for-hk-law/law-student/irac-sessions/[student]/tracker.md` if exists — pattern tracking across sessions
 - Student-provided hypo (if practicing on a specific prompt) and their written answer
 
 ## Workflow
@@ -141,7 +141,7 @@ Use sparingly. One per grade, max two. Never a full IRAC example.
 
 ### Step 4: Track patterns
 
-Append to `~/.claude/plugins/config/claude-for-legal/law-student/irac-sessions/[student]/tracker.md`:
+Append to `~/.claude/plugins/config/claude-for-hk-law/law-student/irac-sessions/[student]/tracker.md`:
 
 ```markdown
 ## [date] — [subject / hypo topic]

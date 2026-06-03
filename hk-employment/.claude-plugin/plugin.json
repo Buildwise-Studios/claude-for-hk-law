@@ -1,9 +1,0 @@
-{
-  "name": "hk-employment",
-  "displayName": "HK Employment",
-  "description": "Hong Kong employment law under the Employment Ordinance (Cap 57), Employees' Compensation Ordinance (Cap 282), MPF Schemes Ordinance (Cap 485), and anti-discrimination ordinances (Cap 480, 487, 527, 602). Covers contract drafting, termination, discrimination, workplace injury, trade unions, and Labour Tribunal procedure.",
-  "author": {
-    "name": "Buildwise-Studios"
-  },
-  "version": "1.0.0"
-}
