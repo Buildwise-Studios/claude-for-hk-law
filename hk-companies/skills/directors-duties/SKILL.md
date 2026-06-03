@@ -105,26 +105,35 @@ Advise on directors' duties under Hong Kong company law, including the codified 
 
 ## Live Data Lookup
 
-You can fetch company information from the Companies Registry open data API.
 
-**By Business Registration Number:**
+
+You can look up live company data using the built-in script:
+
+
+
 ```bash
-curl -s "https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search?query[0][key1]=Brn&query[0][key2]=equal&query[0][key3]=<BR_NUMBER>"
+
+# Search by Business Registration Number
+
+python3 scripts/check_company.py C1234567
+
+
+
+# Search by company name
+
+python3 scripts/check_company.py "Acme Trading"
+
 ```
 
-**By Company Name (Python):**
-```python
-import requests
-name = input("Company name: ")
-r = requests.get("https://data.cr.gov.hk/cr/api/api/v1/api_builder/json/local/search",
-    params={"query[0][key1]": "Eng_Comp_Name", "query[0][key2]": "contains", "query[0][key3]": name})
-for co in r.json():
-    print(f"{co['English_Company_Name']} ({co['Brn']}) — {co['Company_Type']}")
-```
 
-Public API, no auth required. Fields: `Brn`, `Eng_Comp_Name`, `Chi_Comp_Name`. Operators: `equal`, `contains`, `startwith`, `endwith`.
 
-## Tools & Resources
+The script uses the Companies Registry public open data API (data.cr.gov.hk — no auth required).
+
+Returns: company name, BRN, type, status, incorporation date, and registered office address.
+
+
+
+
 
 - HKLII (https://www.hklii.hk) — Directors' duty case law
 - Hong Kong e-Legislation (https://www.elegislation.gov.hk) — Cap 622, Cap 32 provisions
