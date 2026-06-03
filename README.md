@@ -3,7 +3,17 @@
 >
 > **This repo** is a free Claude plugin marketplace for Hong Kong legal workflows. Install it in [Claude Cowork](https://claude.com/product/cowork) or [Claude Code](https://claude.com/product/claude-code) ([QUICKSTART.md](QUICKSTART.md)). Your documents stay in **your** Claude environment—data handling follows **your** Anthropic subscription, not Buildwise.
 >
-> **Want it tailored to your firm?** [contact@buildwise-studios.com](mailto:contact@buildwise-studios.com) · More about us: [BuildwiseLanding](https://github.com/Buildwise-Studios/BuildwiseLanding)
+> **Want it tailored to your firm?**
+>
+> <p align="center">
+>   <a href="mailto:contact@buildwise-studios.com?subject=HK%20Claude%20Plugin%20%E2%80%94%20firm%20enquiry&body=Hi%20Buildwise%20Studios%2C%0A%0AI%20installed%20the%20claude-for-hk-law%20marketplace%20and%20would%20like%20to%20discuss%20tailoring%20it%20for%20our%20firm.%0A%0AFirm%3A%20%0APractice%20area%3A%20%0AWhat%20we%20need%3A%20%0A%0ABest%20regards%2C%0A">
+>     <img src="https://img.shields.io/badge/📧%20Email%20us-Contact-2563eb?style=for-the-badge" alt="Email us" />
+>   </a>
+>   &nbsp;
+>   <a href="https://www.buildwise-studios.com/">
+>     <img src="https://img.shields.io/badge/🌐%20More%20about%20us-buildwise--studios.com-0f172a?style=for-the-badge" alt="buildwise-studios.com" />
+>   </a>
+> </p>
 >
 > **Examples of what we build on engagement:**
 > - Playbook-aware **NDA / vendor MSAs** wired to iManage or your CLM, with tracked changes in Word
