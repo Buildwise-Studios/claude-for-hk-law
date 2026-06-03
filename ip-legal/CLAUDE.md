@@ -54,7 +54,8 @@ before doing anything. Fix something here and it's fixed everywhere.*
 | Integration | Status | Fallback if unavailable |
 |---|---|---|
 | IP management system (Anaqua, CPA Global, PatSnap, Clarivate, etc.) | [PLACEHOLDER ✓/✗] | Portfolio tracked in `portfolio.yaml` by hand; renewal-watcher runs against that register |
-| Legal research (CourtListener, Descrybe) | [PLACEHOLDER ✓/✗] | Manual research — the skill will tell you which cases to pull |
+| Legal research (Westlaw Asia, HKLII, CourtListener, Descrybe) | [PLACEHOLDER ✓/✗] | Manual research — the skill will tell you which cases to pull |
+| IPD Hong Kong online search | [PLACEHOLDER ✓/✗] | TM/P/design searches done via ipd.gov.hk web interface; results pasted manually |
 | Patent research (Solve Intelligence) | [PLACEHOLDER ✓/✗] | FTO and prior-art skills work from user-supplied references; no automated literature pull |
 | Document storage (Drive / SharePoint / Box) | [PLACEHOLDER ✓/✗] | User uploads agreements and exhibits directly for each review |
 | Slack | [PLACEHOLDER ✓/✗] | Alerts and summaries delivered inline instead of posted |
@@ -67,27 +68,27 @@ before doing anything. Fix something here and it's fixed everywhere.*
 
 **Work-product header** (prepended to every analysis, memo, review, or assessment this plugin generates). The header varies by Role and — for patent agents — by matter type, because the scope of the underlying privilege varies:
 
-- If Role is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
-- If Role is Registered patent agent AND the matter is a patent matter before the USPTO: `PRIVILEGED — PATENT AGENT-CLIENT PRIVILEGE — In re Queen's University at Kingston, 820 F.3d 1287 (Fed. Cir. 2016) — USPTO PRACTICE`
-- If Role is Registered patent agent AND the matter is NOT a patent matter (trademark, copyright, OSS, trade secret, contract, other): `RESEARCH NOTES — NOT PRIVILEGED — PATENT AGENT PRIVILEGE DOES NOT REACH NON-USPTO PRACTICE — REVIEW WITH A LICENSED ATTORNEY BEFORE ACTING`
+- If Role is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — LEGAL PROFESSIONAL PRIVILEGE — SUBJECT TO LPP AT COMMON LAW (ARTICLE 8 BL, S.3 LEGAL OFFICERS ORDINANCE CAP 87)`
 - If Role is Non-lawyer (with or without attorney access): `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (RHC 26(b)(3)). It does not exist in Hong Kong or most other legal systems, and asserting it on a document does not create it:
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
+- **Hong Kong:** Legal professional privilege (LPP) under the common law (applied via Article 8 of the Basic Law and s.3 of the Legal Officers Ordinance (Cap 87)) protects confidential communications between lawyer and client for the purpose of legal advice. Litigation privilege protects communications in contemplation of litigation. Internal analyses, IP clearance memos, portfolio reports, and compliance assessments prepared without legal involvement may NOT be privileged. The header alone does not create protection — the content and purpose determine it.
+- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities.
 - **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
 - **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
 
 **When the practice profile's jurisdiction footprint includes non-US jurisdictions,** adjust the header:
 - Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful everywhere).
 - Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking to shield the document from disclosure.]`
+- For HK users: `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — SUBJECT TO LEGAL PROFESSIONAL PRIVILEGE` if prepared at the direction of legal counsel; otherwise `CONFIDENTIAL — INTERNAL ANALYSIS — NOT A SUBSTITUTE FOR LEGAL ADVICE — REVIEW WITH COUNSEL BEFORE ACTING`.
 - For EU users: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
 
-A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield a DPIA from their DPA is the lawyer who loses the argument.
+A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield an internal IP memo from disclosure is the lawyer who loses the argument.
 
-Remove the header from externally-facing deliverables (cease-and-desist letters sent to counterparties, DMCA notices submitted to service providers, stakeholder summaries forwarded outside legal) — see the specific skill's instructions. Confirm the correct marking for your jurisdiction and matter.
+Remove the header from externally-facing deliverables (cease-and-desist letters sent to counterparties, statutory takedown notices submitted to service providers under Cap 528 s. 88-91, stakeholder summaries forwarded outside legal) — see the specific skill's instructions. Confirm the correct marking for your jurisdiction and matter.
 
-**Patent agent scope note.** The federal patent agent-client privilege recognized in *In re Queen's University at Kingston*, 820 F.3d 1287 (Fed. Cir. 2016) is narrow: it covers communications "reasonably necessary and incident to the prosecution of patents" before the USPTO. It does not reach trademark, copyright, OSS, trade secret, general contract, or litigation advice. Skills that run on non-USPTO matters for a patent-agent user must mark outputs `NOT PRIVILEGED`, not privileged — a false "privileged" marking creates a discoverable admission.
+**HK patent agent note.** HK has no equivalent of the US patent agent privilege (recognized in *In re Queen's University at Kingston*, 820 F.3d 1287 (Fed. Cir. 2016) for IPD Hong Kong practice). Patent work in HK is conducted by HK solicitors or by patent attorneys registered with the IPD under the Patents Ordinance (Cap 514). Communications with a patent attorney for patent prosecution purposes in HK may attract legal professional privilege if the patent attorney is also a solicitor or if the communication is for the dominant purpose of litigation. Outputs produced by this plugin for a non-lawyer user on patent matters should be marked `CONFIDENTIAL — NOT LEGAL ADVICE — REVIEW WITH A HONG KONG PATENT ATTORNEY BEFORE ACTING`.
 
 ---
 
@@ -173,11 +174,11 @@ A wrong premise propagated through three paragraphs of analysis is harder to cat
 **When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
-**Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline.
+**Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw Asia, HKLII, Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline.
 
 **Source tags are derived from what you actually did, not what you'd like to claim.**
 
-- `[Westlaw]` / `[CourtListener]` / `[USPTO]` / `[Trellis]` / `[Descrybe]` — ONLY if the citation appears in a tool result from that MCP in this conversation.
+- `[Westlaw Asia]` / `[HKLII]` / `[Westlaw]` / `[CourtListener]` / `[IPD HK]` / `[Trellis]` / `[Descrybe]` — ONLY if the citation appears in a tool result from that MCP in this conversation.
 - `[statute / regulator site]` — ONLY if you fetched the text from the regulator's website or an official source in this session.
 - `[user provided]` — the user pasted or linked it.
 - `[model knowledge — verify]` — everything else. This is the default. If you didn't retrieve it, it's model knowledge, no matter how confident you are.
@@ -189,7 +190,7 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
 - `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[Westlaw Asia]` / `[HKLII]` / `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[HK e-Legislation]` / `[IPD HK]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -220,16 +221,17 @@ The log is per-plugin, not per-matter, so a cite verified for one matter doesn't
 
 ## IP practice profile
 
-**Practice area mix:** [PLACEHOLDER — trademark / copyright / patent / trade secret / open source / all. Which do you actually work in?]
+**Practice area mix:** [PLACEHOLDER — trademark / copyright / patent / registered designs / trade secret / open source / all. Which do you actually work in?]
 
-**Registered in:** [PLACEHOLDER — jurisdictions where you hold registrations: US, EU (EUIPO), UK (UKIPO), Madrid member states, specific national filings, PCT/EPO. Be specific.]
+**Registered in:** [PLACEHOLDER — jurisdictions where you hold registrations: HK (IPD), CN (CNIPA), EU (EUIPO), UK (UKIPO), US (IPD Hong Kong), Madrid member states, specific national filings, PCT/EPO. Be specific.]
 
 **IP management system:** [PLACEHOLDER — Anaqua / CPA Global / PatSnap / Clarivate IPfolio / Alt Legal / spreadsheet / none]
 
 **Practice area ownership:**
-- Trademark: [PLACEHOLDER — name/team or outside counsel firm]
-- Patent: [PLACEHOLDER — name/team or outside counsel firm]
-- Copyright: [PLACEHOLDER — name/team or outside counsel firm]
+- Trademark (HK Trade Marks Ordinance Cap 559): [PLACEHOLDER — name/team or outside counsel firm]
+- Patent (HK Patents Ordinance Cap 514): [PLACEHOLDER — name/team or outside counsel firm]
+- Registered designs (HK Registered Designs Ordinance Cap 522): [PLACEHOLDER — name/team or outside counsel firm]
+- Copyright (HK Copyright Ordinance Cap 528): [PLACEHOLDER — name/team or outside counsel firm]
 - Trade secret: [PLACEHOLDER — name/team]
 - Open source: [PLACEHOLDER — name/team — often engineering with legal sign-off]
 
@@ -260,9 +262,9 @@ The log is per-plugin, not per-matter, so a cite verified for one matter doesn't
 
 **Watched marks:** [PLACEHOLDER — list of marks monitored for third-party use / potential infringement. If none, say "none — reactive only."]
 
-**Watch jurisdictions:** [PLACEHOLDER — US / EU / UK / global via watch service]
+**Watch jurisdictions:** [PLACEHOLDER — HK only / HK + China / regional / global via watch service]
 
-**Watch service:** [PLACEHOLDER — Corsearch / CompuMark / internal / none]
+**Watch service:** [PLACEHOLDER — Corsearch / CompuMark / IPD Gazette monitoring / internal / none]
 
 **Monitoring cadence:** [PLACEHOLDER — weekly / monthly / quarterly / on-demand]
 
@@ -272,28 +274,30 @@ The log is per-plugin, not per-matter, so a cite verified for one matter doesn't
 
 **Default posture:** [PLACEHOLDER — aggressive / measured / conservative]
 
-*Aggressive = send C&Ds early on apparent infringement, willing to file. Measured = start with a soft letter or outreach, escalate only if ignored or commercial impact is real. Conservative = only assert when filing is probable and business has signed off on the fight.*
+*Aggressive = send C&Ds early on apparent infringement, willing to file in the CFI. Measured = start with a soft letter or outreach, escalate only if ignored or commercial impact is real. Conservative = only assert when filing is probable and business has signed off on the fight.*
 
-**When we send a C&D:** [PLACEHOLDER — describe the trigger pattern: confusion likely plus commercial harm? any use of a registered mark? only when take-down won't work?]
+**When we send a C&D:** [PLACEHOLDER — describe the trigger pattern: confusion likely plus commercial harm? any use of a registered mark under Cap 559? only when a Customs referral or takedown won't work?]
 
 **When we send a soft letter first:** [PLACEHOLDER — e.g., "individual infringers, sympathetic counterparties, small commercial use"]
 
-**When we just file:** [PLACEHOLDER — e.g., "repeat infringer who ignored prior letters", "counterparty with known willingness to fight"]
+**When we just file:** [PLACEHOLDER — e.g., "repeat infringer who ignored prior letters", "counterparty with known willingness to fight", "criminal counterfeiting — refer to Customs & Excise Department"]
 
-**Approval to send an assertion letter (C&D, soft letter, DMCA):**
+**Approval to send an assertion letter (C&D, soft letter, Cap 528 takedown):**
 
 | Letter type | Approver | Escalation trigger |
 |---|---|---|
-| DMCA takedown (ordinary) | [PLACEHOLDER — e.g., IP counsel] | [PLACEHOLDER — e.g., counter-notice received] |
+| Cap 528 takedown notice (ordinary) | [PLACEHOLDER — e.g., IP counsel] | [PLACEHOLDER — e.g., counter-notice received under s.91] |
 | Soft letter | [PLACEHOLDER] | [PLACEHOLDER] |
 | Cease-and-desist | [PLACEHOLDER — typically GC or Head of IP] | [PLACEHOLDER] |
-| Filing suit | [PLACEHOLDER — GC + CEO/business sponsor] | [PLACEHOLDER] |
+| Filing suit (CFI) | [PLACEHOLDER — GC + CEO/business sponsor] | [PLACEHOLDER] |
+| Customs referral (criminal counterfeiting) | [PLACEHOLDER] | [PLACEHOLDER] |
 
 **Automatic escalations regardless of default approver:**
 - [PLACEHOLDER — e.g., "counterparty is a current customer or partner"]
 - [PLACEHOLDER — e.g., "counterparty is larger/better-resourced — we could lose"]
-- [PLACEHOLDER — e.g., "assertion involves a patent, not a trademark"]
+- [PLACEHOLDER — e.g., "assertion involves a patent or registered design, not just a trademark"]
 - [PLACEHOLDER — e.g., "anything that could attract press"]
+- [PLACEHOLDER — e.g., "potential cross-border (China/HK) enforcement issues"]
 
 ---
 

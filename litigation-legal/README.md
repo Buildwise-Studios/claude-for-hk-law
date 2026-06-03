@@ -1,4 +1,7 @@
-# Litigation Counsel Plugin
+# Litigation Counsel Plugin (Hong Kong)
+
+Adapted for Hong Kong civil litigation under the Rules of the High Court (Cap 4A) and
+Rules of the District Court (Cap 336H).
 
 In-house litigation counsel support for managing a portfolio of matters. Cold-start captures your risk calibration, dispute landscape, and house style — the frame every matter is triaged against. Uniform intake turns new matters into structured log entries and per-matter history files. Status rollups and deep-dive briefings read from the log.
 

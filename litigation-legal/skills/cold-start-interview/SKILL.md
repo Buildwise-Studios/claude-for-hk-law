@@ -1,6 +1,6 @@
 ---
 name: cold-start-interview
-description: House cold-start for the litigation plugin — branches by role (in-house, firm associate, solo) and side (plaintiff, defense, both), captures risk calibration, landscape, and house style, and writes the practice profile CLAUDE.md. Use on a fresh install, when the user wants to set up or redo the practice profile, or to re-check available integrations.
+description: House cold-start for the HK litigation plugin — branches by role (in-house, firm associate, solo) and side (plaintiff, defense, both), captures risk calibration, landscape, and house style, and writes the practice profile CLAUDE.md. Use on a fresh install, when the user wants to set up or redo the practice profile, or to re-check available integrations.
 argument-hint: "[--redo | --check-integrations]"
 ---
 
@@ -31,7 +31,7 @@ When probing: only report ✓ if an MCP tool call actually succeeded. Configured
 
 ## Purpose
 
-Every matter intake, every chronology build, every brief draft, every status rollup reads from this file. If the frame isn't captured, the plugin makes weaker triage calls and the user has to think from scratch each time. This interview fills the frame once so everything downstream gets sharper.
+Every matter intake, every chronology build, every brief draft, every status rollup reads from this file. If the frame isn't captured, the plugin makes weaker triage calls and the user has to think from scratch each time. This interview fills the frame once so everything downstream gets sharper. The plugin is adapted for Hong Kong civil litigation — Rules of the High Court (Cap 4A), District Court (Cap 336H), and HK common law procedure.
 
 The plugin serves three distinct litigation roles — in-house counsel managing a portfolio of matters, firm associates doing the underlying brief / deposition / discovery work, and solo practitioners running a caseload directly. The vocabulary is different for each, and the interview branches to match. Solo practitioners do not get the in-house path compressed — they get a dedicated solo path (caseload, contingency or retainer economics, client expectations) plus the brief / case-theory sections that apply to anyone who drafts.
 

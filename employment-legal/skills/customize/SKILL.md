@@ -38,7 +38,7 @@ interview and without hand-editing YAML.
      `company-profile.md`)*
    - **Jurisdictional footprint** — states (and countries) where employees
      work, single-state vs. multi-state, and any upcoming expansion. This
-     drives state-specific supplement logic.
+     drives HK legislation compliance logic.
    - **Risk posture** — conservative / middle / aggressive, what each means
      for flagging termination risk, restrictive covenant enforceability, and
      leave accommodation
@@ -48,7 +48,7 @@ interview and without hand-editing YAML.
      posture, background check vendor, standard at-will language
    - **Termination review** — severance framework, release language, final
      pay timing rules per state, high-risk flags
-   - **Handbook** — handbook file path, state supplements approach, review
+   - **Handbook** — handbook file path, HK legislation references, review
      cadence
    - **Investigation preferences** — privileged labeling, interview protocol,
      audience-specific summary templates

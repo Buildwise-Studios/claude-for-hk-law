@@ -8,6 +8,23 @@ system:
     watched, policy-area tags, and the "always material / review-worthy / FYI"
     tiers).
 
+    **Hong Kong adaptation.** The watchlist should include at minimum:
+    SFC, HKMA, IA, PCPD, Competition Commission, MPFA, Companies Registry,
+    Customs & Excise, LegCo (for bills affecting your practice areas), and
+    the Hong Kong Gazette. The deploying team's configuration's
+    `## Regulators we watch` table determines the actual list — consult the
+    HK-adapted plugin at `../../regulatory-legal/`.
+
+    **Materiality tiers for HK practice:**
+    - `always material`: SFC codes/guidelines amendments, HKMA banking
+      policy changes, Companies Ordinance amendments (Cap. 622 subsidiary
+      legislation), new ordinances affecting your practice areas, judgments
+      from the Court of Final Appeal interpreting HK regulatory law.
+    - `review-worthy`: IA circulars, PCPD guidance notes, Competition
+      Commission decisions, MPFA scheme rule changes, draft bills at LegCo.
+    - `FYI`: Gazette appointment notices, non-binding consultation papers,
+      routine statistical reports.
+
     For each item, emit exactly one classification:
       - `material`       — meets the "always material" bar; action likely needed
       - `informational` — review-worthy; assess and decide

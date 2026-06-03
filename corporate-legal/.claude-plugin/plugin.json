@@ -1,8 +1,8 @@
 {
   "name": "corporate-legal",
   "version": "1.0.2",
-  "description": "Runs M&A diligence at scale with cited tabular review, builds disclosure schedules and closing checklists, drafts board consents and minutes in house format, and tracks entity compliance deadlines across jurisdictions.",
+  "description": "Runs M&A diligence at scale with cited tabular review under HK takeover rules, builds disclosure schedules and closing checklists, drafts board consents and minutes under the Companies Ordinance (Cap 622), and tracks HK entity compliance deadlines.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

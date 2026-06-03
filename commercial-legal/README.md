@@ -1,6 +1,8 @@
-# Commercial Counsel Plugin
+# Commercial Counsel Plugin (Hong Kong)
 
-In-house commercial contracts workflows: vendor agreement review, NDA triage, SaaS subscription review, renewal tracking, escalation routing, and business-stakeholder summaries. Built around a team practice profile that gets written by a cold-start interview — the plugin learns *your* playbook, not a generic one.
+Hong Kong commercial contracts workflows adapted for Hong Kong common law: vendor agreement review, NDA triage, SaaS subscription review, renewal tracking, escalation routing, and business-stakeholder summaries. Built around a team practice profile that gets written by a cold-start interview — the plugin learns *your* playbook under Hong Kong law, not a generic one.
+
+Jurisdictional references assume Hong Kong as the governing law and venue. Governing law defaults are set to Hong Kong (HKSAR). Config paths point to `~/.claude/plugins/config/claude-for-hk-law/`. Work-product headers reflect Hong Kong legal professional privilege, not US work-product doctrine.
 
 **Every output is a draft for attorney review — cited, flagged, and gated — not a legal conclusion.** The plugin does the work: reads the documents, applies your playbook, finds the issues, drafts the memo. A lawyer reviews, verifies, and decides. Citations are tagged by source so you know which ones came from a research tool and which ones need checking. Privilege markers are applied conservatively so nothing waives by accident. Consequential actions — filing, sending, executing — are gated behind explicit confirmation.
 
@@ -17,7 +19,7 @@ In-house commercial contracts workflows: vendor agreement review, NDA triage, Sa
 
 On first use, the plugin interviews you — ten minutes, conversational — to learn how your team actually works. It asks about your playbook positions, your escalation rules, and the thing that makes you groan when it hits your desk. Then it asks for 5-10 recent signed agreements (more is better, 20 gives a clearer pattern) so it can see your positions in the wild.
 
-It writes what it learns to `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` — a plain-English document about your team that every other skill reads before doing anything. You edit the document, not a config file.
+It writes what it learns to `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` — a plain-English document about your team that every other skill reads before doing anything. You edit the document, not a config file.
 
 ```
 /commercial-legal:cold-start-interview
@@ -41,7 +43,7 @@ It writes what it learns to `~/.claude/plugins/config/claude-for-legal/commercia
 
 | Skill | Purpose |
 |---|---|
-| **cold-start-interview** | First-run interview that writes `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` |
+| **cold-start-interview** | First-run interview that writes `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` |
 | **vendor-agreement-review** | Full playbook-vs-contract deviation analysis with redlines |
 | **nda-review** | Fast GREEN/YELLOW/RED triage so legal only reads the NDAs that need it |
 | **saas-msa-review** | Subscription-specific overlay: auto-renewal, price escalation, data exit, SLAs |
@@ -87,7 +89,7 @@ With DocuSign connected: track signature status, route envelopes in approver ord
 
 Ten minutes. Have 5-10 recent signed agreements ready to share (more is better, 20 gives a clearer pattern).
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` and survives plugin updates.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` and survives plugin updates.
 
 ### 2. Review a contract
 
@@ -107,7 +109,7 @@ Output: everything with a cancel-by deadline in the next 90 days, grouped by urg
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `playbook-monitor` agent proposes updates when your practice diverges from your playbook. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. The `playbook-monitor` agent proposes updates when your practice diverges from your playbook. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## File structure
 

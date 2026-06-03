@@ -1,4 +1,4 @@
-# Watched Registries
+# Watched Registries — Hong Kong Edition
 # Default set. User adds more via /legal-builder-hub:registry-browser.
 
 registries:
@@ -8,7 +8,8 @@ registries:
     type: "github-repo"
     last_synced: null
 
-  # Add more as the ecosystem grows:
-  # - name: "awesome-legal-skills"
+  # HK-specific registries to watch as the ecosystem develops:
+  # - name: "hk-legal-skills"
   #   url: "https://github.com/..."
+  #   description: "Community skills for Hong Kong legal practice"
   #   type: "github-repo"

@@ -3,19 +3,19 @@ CONFIGURATION LOCATION
 
 User-specific configuration for this plugin lives at a version-independent path that survives plugin updates:
 
-  ~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md
+  ~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md
 
 Rules for every skill, command, and agent in this plugin:
 1. READ configuration from that path. Not from this file.
 2. If that file does not exist or still contains [PLACEHOLDER] markers, STOP before doing substantive work. Say: "This plugin needs setup before it can give you useful output. Run /commercial-legal:cold-start-interview — it takes about 10-15 minutes and every command in this plugin depends on it. Without it, outputs will be generic and may not match how your practice actually works." Do NOT proceed with placeholder or default configuration. The only skills that run without setup are /commercial-legal:cold-start-interview itself and any --check-integrations flag.
 3. Setup and cold-start-interview WRITE to that path, creating parent directories as needed.
 4. On first run after a plugin update, if a populated CLAUDE.md exists at the old cache path
-   (~/.claude/plugins/cache/claude-for-legal/commercial-legal/<version>/CLAUDE.md for any version)
+   (~/.claude/plugins/cache/claude-for-hk-law/commercial-legal/<version>/CLAUDE.md for any version)
    but not at the config path, copy it forward to the config path before proceeding.
 5. This file (the one you are reading) is the TEMPLATE. It ships with the plugin and shows the
    structure the config should have. It is replaced on every plugin update. Never write user data here.
 
-**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
+**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
 # Commercial Contracts Practice Profile
@@ -31,11 +31,11 @@ before doing anything. Fix something here and it's fixed everywhere.*
 
 ## Who we are
 
-[Your Company Name] is a [entity type]. The contracts team is [N] people. [GC name]
+[Your Company Name] is a [entity type] with its principal place of business in Hong Kong. The contracts team is [N] people. [GC/Legal Counsel name]
 is the final escalation point. We process roughly [N] agreements per month, mostly
 [vendor / customer / mixed]. We use [CLM system] for contract lifecycle management.
 
-*(Company name, entity type, industry, and size come from company-profile.md — edit there to change across all plugins. Team size, CLM system, and escalation contact are plugin-specific.)*
+*(Company name, entity type, industry, and size come from company-profile.md — edit there to change across all plugins. Team size, CLM system, escalation contact, and Hong Kong law as default governing law are plugin-specific.)*
 
 **The thing that hurts:** [PLACEHOLDER — what the team said hurts, in their words]
 
@@ -45,7 +45,7 @@ is the final escalation point. We process roughly [N] agreements per month, most
 
 ## Who's using this
 
-**Role:** [PLACEHOLDER — Lawyer / legal professional | Non-lawyer with attorney access | Non-lawyer without attorney access]
+**Role:** [PLACEHOLDER — Lawyer / legal professional | Non-lawyer with solicitor access | Non-lawyer without solicitor access]
 **Attorney contact:** [PLACEHOLDER — Name / team / outside firm / N/A if a lawyer]
 
 ---
@@ -127,10 +127,10 @@ is the final escalation point. We process roughly [N] agreements per month, most
 
 #### Governing law and venue
 
-**Preferred:** [PLACEHOLDER — e.g., "Delaware, our home jurisdiction"]
-**Acceptable:** [PLACEHOLDER]
-**Escalate:** [PLACEHOLDER]
-**Never:** [PLACEHOLDER]
+**Preferred:** [PLACEHOLDER — e.g., "Hong Kong (HKSAR), our home jurisdiction"]
+**Acceptable:** [PLACEHOLDER — e.g., "England and Wales", "Singapore"]
+**Escalate:** [PLACEHOLDER — e.g., "Any PRC/Mainland China governing law — route to counsel"]
+**Never:** [PLACEHOLDER — e.g., "Any jurisdiction without a reciprocal enforcement of judgments arrangement with Hong Kong"]
 
 #### The one thing
 
@@ -194,10 +194,10 @@ is the final escalation point. We process roughly [N] agreements per month, most
 
 #### Governing law and venue
 
-**Preferred:** [PLACEHOLDER — e.g., "Delaware, New York, California"]
-**Acceptable:** [PLACEHOLDER]
-**Escalate:** [PLACEHOLDER]
-**Never:** [PLACEHOLDER]
+**Preferred:** [PLACEHOLDER — e.g., "Hong Kong (HKSAR)"]
+**Acceptable:** [PLACEHOLDER — e.g., "England and Wales", "Singapore"]
+**Escalate:** [PLACEHOLDER — e.g., "Any PRC/Mainland China governing law — route to counsel"]
+**Never:** [PLACEHOLDER — e.g., "US state law or any jurisdiction without a reciprocal enforcement of judgments arrangement with Hong Kong"]
 
 #### The one thing
 
@@ -239,18 +239,18 @@ is the final escalation point. We process roughly [N] agreements per month, most
 - If Role is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
 - If Role is Non-lawyer: `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY, SOLICITOR, BARRISTER, OR OTHER AUTHORISED LEGAL PROFESSIONAL IN YOUR JURISDICTION BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in Hong Kong law, and asserting it on a document does not create it:
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
-- **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
-- **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
+- **Hong Kong:** No general work-product protection. Legal professional privilege (LPP) under Hong Kong common law protects confidential communications between solicitor and client for the purpose of giving or receiving legal advice (legal advice privilege). Litigation privilege covers documents created for the dominant purpose of existing or contemplated litigation. Internal analyses, compliance assessments, and contract reviews are generally NOT shielded from disclosure unless they were prepared for the dominant purpose of obtaining legal advice or for litigation. The Court of Final Appeal has confirmed the scope of LPP in cases such as *Citic Pacific Ltd v Secretary for Justice* (2012).
+- **England and Wales:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
+- **Mainland China:** No equivalent to US work product or common law LPP. Protections for solicitor-client communications are limited under PRC law.
 
-**When the practice profile's jurisdiction footprint includes non-US jurisdictions,** adjust the header:
+**When the practice profile's jurisdiction footprint includes jurisdictions other than Hong Kong,** adjust the header:
 - Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful everywhere).
-- Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking to shield the document from disclosure.]`
-- For EU users: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
+- Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. In Hong Kong, legal professional privilege under common law applies. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking.]`
+- For users in Mainland China: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL LEGAL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
 
-A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield a DPIA from their DPA is the lawyer who loses the argument.
+A false assurance of protection is worse than no marking. The solicitor who relies on "ATTORNEY WORK PRODUCT" to shield a commercial contract review in Hong Kong is the solicitor who loses the argument.
 
 Remove the header from externally-facing deliverables (stakeholder summaries forwarded outside legal, counterparty-facing redlines) — see the specific skill's instructions. Confirm the correct marking for your jurisdiction and matter.
 
@@ -267,7 +267,7 @@ Remove the header from externally-facing deliverables (stakeholder summaries for
 
 If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: CourtListener verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
-**The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
+**The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need solicitor judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
 ---
 
@@ -310,7 +310,7 @@ When the user picks an option, do that thing. Don't re-explain the analysis. The
 
 ## Decision posture on subjective legal calls
 
-When a skill in this plugin faces a subjective legal judgment — is this a P0 blocker, is this claim substantiable, does this launch need GC review, is this risk novel — and the answer is uncertain, the skill **prefers the recoverable error**: flag the specific line with `[review]` inline and note the uncertainty there. Do not silently decide a subjective threshold isn't met; do not emit a standalone caveat paragraph lecturing about the principle. The `[review]` flag IS the mechanism — a lawyer narrows the list, the AI does not. Under-flagging is a one-way door; over-flagging is a two-way door an attorney closes in 30 seconds. Default to the two-way door.
+When a skill in this plugin faces a subjective legal judgment — is this a P0 blocker, is this claim substantiable, does this launch need GC review, is this risk novel — and the answer is uncertain, the skill **prefers the recoverable error**: flag the specific line with `[review]` inline and note the uncertainty there. Do not silently decide a subjective threshold isn't met; do not emit a standalone caveat paragraph lecturing about the principle. The `[review]` flag IS the mechanism — a lawyer narrows the list, the AI does not. Under-flagging is a one-way door; over-flagging is a two-way door a solicitor closes in 30 seconds. Default to the two-way door.
 
 ---
 
@@ -335,7 +335,7 @@ Silence about known doubt is as misleading as confident assertion. The hole the 
 
 A wrong premise propagated through three paragraphs of analysis is harder to catch than a wrong premise flagged at sentence one. Applies to any skill that accepts a user-asserted rule, statute, case citation, date, registration number, or jurisdiction.
 
-**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
+**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
 **Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline.
@@ -353,8 +353,8 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 **Tag vocabulary — at a glance.** The inline tags are load-bearing. Use them consistently across skills:
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
-- `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[review]` — a judgment call the solicitor needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
+- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[IPD HK]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -362,7 +362,7 @@ A reviewer-note shorthand like "CourtListener verified" is honest only when a re
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 
 - If the user names a destination (a channel, a distribution list, a counterparty, "everyone"), ask: is that inside the privilege circle?
-- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the attorney-client relationship and their agents.
+- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the solicitor-client relationship and their agents.
 - When the destination looks outside the circle: flag it. "You asked for a version for #product-all — that's a company-wide channel, which would waive the work-product protection on this analysis. I can give you (a) the privileged version for legal only, (b) a sanitized version for the broader channel, or (c) both. Which do you want?"
 - When the destination is ambiguous: ask.
 - Never silently apply a privileged header and then help send the document somewhere the header doesn't protect it.
@@ -379,7 +379,7 @@ A clause that's 🟢 legal risk and 🔴 business friction (a confidentiality cl
 
 **File access failures.** When you can't read a file the user pointed you at, don't fail silently. Say what happened: "I can't read [path]. This usually means one of: (a) the plugin is installed project-scoped and the file is outside [project dir] — reinstall user-scoped or move the file here; (b) the path has a typo; (c) the file is a format I can't read. Can you paste the content directly, or try one of the fixes?" A silent file-read failure looks like the plugin ignored the user's material.
 
-**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-legal/commercial-legal/verification-log.md`:
+**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/verification-log.md`:
 
 `[YYYY-MM-DD] [cite or fact] verified by [name] against [source] — [verdict: confirmed / corrected to X / could not verify]`
 
@@ -402,7 +402,7 @@ Corollary: when the user asks a doctrinal question (not a document-review questi
 
 ## Ad-hoc questions in this domain
 
-When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-legal/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
+When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
 
 - Use their jurisdiction footprint, risk posture, playbook positions, and escalation chain
 - Apply the guardrails even though no skill is running: source attribution, citation hygiene, jurisdiction recognition, decision posture, the reviewer note format
@@ -433,7 +433,7 @@ The skill's default frameworks, tests, statutes, and procedures are often US-cen
    - **Search for the applicable standard.** If a research connector is available, search for "[jurisdiction] [topic] standard" and report what you find, tagged `[verify against primary source]`.
    - **Route to a specialist.** "A [jurisdiction] practitioner should make this call. Here's what to ask them: [the specific question]."
    - **Flag the gap and continue with a caveat.** "I'll run the US framework as a starting structure, but every conclusion is tagged `[US framework — verify against [jurisdiction] law]`."
-5. **Never produce a confident answer using the wrong jurisdiction's law.** Confident-and-wrong is worse than uncertain-and-flagged. A lawyer who catches you applying *Alice* to their German patent application stops trusting everything else.
+5. **Never produce a confident answer using the wrong jurisdiction's law.** Confident-and-wrong is worse than uncertain-and-flagged. A solicitor who catches you applying Hong Kong contract law to a Mainland China cross-border transaction governed by PRC law stops trusting everything else.
 
 ## Retrieved-content trust
 
@@ -475,7 +475,7 @@ When a user asks to "run all the workflows," "review every document," "process e
 **Active matter:** none
 **Cross-matter context:** off
 
-When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (playbook, escalation matrix, house style) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-legal/commercial-legal/matters/<matter-slug>/`.
+When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (playbook, escalation matrix, house style) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/matters/<matter-slug>/`.
 
 When cross-matter context is off (default), a skill working in matter A never reads matter B's files. Learnings that should carry across matters are written to this practice-level CLAUDE.md, not to a matter folder.
 

@@ -57,34 +57,38 @@ From the answer, route to the appropriate intake template. If the clinic handles
 
 Each practice area asks different questions. Use the template from `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` for this area. Defaults if none provided:
 
-**Immigration:**
-- Current status and how entered
-- Any prior applications, removals, encounters with ICE/CBP
-- Country conditions relevant to any asylum/withholding claim
-- Family members and their statuses
+**Immigration (HK context — non-refoulement, overstayer, torture claims):**
+- Current immigration status and how entered HK
+- Any prior applications, removals, encounters with the Immigration Department
+- Country conditions relevant to any non-refoulement/torture claim
+- Family members in HK and their statuses
 - Criminal history (sensitive — explain why asking)
-- Timeline urgency: any pending hearings, deadlines, NTAs
+- Timeline urgency: any pending hearings, appeal deadlines, removal directions
+- Relevant: Immigration Ordinance (Cap 115), Torture Claim framework
 
-**Housing:**
-- Type of housing (private, subsidized, public)
-- What happened: notice received, lockout, conditions problem, deposit dispute
-- Lease terms and payment history
-- Habitability issues (repairs requested, landlord response, documentation)
-- Timeline urgency: notice date, court date if any
+**Housing (HK context):**
+- Type of housing (private, public housing / HA, subdivided flat, HOS)
+- What happened: notice to quit, distraint, conditions problem, deposit dispute
+- Lease terms and payment history — is the property subject to the Landlord and Tenant (Consolidation) Ordinance (Cap 7)?
+- Habitability issues (repairs requested, landlord response, documentation — note the Maintenance Order regime under Cap 7)
+- If public housing: any Housing Authority notice issues
+- Timeline urgency: notice date, court date if any (Lands Tribunal, District Court)
+- Refer to CLIC (www.clic.org.hk) for tenant rights information
 
-**Family:**
-- Relationship and what's at issue (custody, support, divorce, protection)
+**Family (HK context):**
+- Relationship and what's at issue (custody, access, maintenance, divorce, protection)
 - Children involved — ages, current arrangement
-- Safety: any violence, threats, fear (handle carefully — see cross-area flags)
-- Existing court orders
-- Timeline urgency: any hearings scheduled
+- Safety: any domestic violence (Domestic and Cohabitation Relationships Violence Ordinance Cap 189), threats, fear (handle carefully — see cross-area flags)
+- Existing court orders (Matrimonial Causes Ordinance Cap 179, Separation and Maintenance Orders Ordinance Cap 16)
+- Timeline urgency: any hearings scheduled, urgent protection order needed
 
-**Consumer:**
+**Consumer (HK context):**
 - Type of debt or dispute
-- Who's contacting them and how (FDCPA relevance)
-- Documentation: contracts, statements, collection letters
-- Has anything been filed against them
-- Timeline urgency: answer deadlines, garnishment, judgment
+- Who's contacting them and how
+- Documentation: contracts, statements, demand letters, credit card agreements
+- Has anything been filed against them (Small Claims Tribunal, District Court)
+- Timeline urgency: answer deadlines, judgment enforcement
+- Relevant: Control of Exemption Clauses Ordinance (Cap 71), Unconscionable Contracts Ordinance (Cap 458), Money Lenders Ordinance (Cap 163)
 
 ### Step 3: Cross-practice-area issue spotting
 
@@ -93,10 +97,10 @@ While running the practice-area template, listen for issues outside that area:
 | Client says | Also flags |
 |---|---|
 | "I'm worried about my immigration status" | Immigration issue — even in a housing intake |
-| "My partner [threatening behavior]" | DV / family law / protective order — even in a consumer intake |
-| "I can't work because of my injury" | Possible benefits/disability claim |
-| "They're taking money from my paycheck" | Garnishment — consumer/employment overlap |
-| "The landlord said he'd call ICE" | Housing + immigration + possible retaliation claim |
+| "My partner [threatening behavior]" | DV / family law / protection order (Cap 189) — even in a consumer intake |
+| "I can't work because of my injury" | Possible employee's compensation claim / disability benefit |
+| "They're taking money from my wages" | Garnishment — consumer/employment overlap |
+| "The landlord said he'd report me to Immigration" | Housing + immigration + possible unlawful eviction under Cap 7 |
 
 Note every cross-area issue in the summary. The clinic may handle it, refer it, or both — that's the professor's call. The student should see it.
 
@@ -116,10 +120,10 @@ Not a case-acceptance decision — a triage input:
 
 | Classification | Means |
 |---|---|
-| **Urgent** | Deadline in days, safety issue, irreversible harm imminent |
+| **Urgent** | Deadline in days, safety issue (e.g., risk of domestic violence under Cap 189), irreversible harm imminent, removal directions imminent |
 | **Time-sensitive** | Deadline in weeks, harm ongoing but not immediately irreversible |
 | **Standard** | No immediate deadline, can queue normally |
-| **May be out of scope** | Issue is outside clinic's practice areas — flag for referral assessment |
+| **May be out of scope** | Issue is outside clinic's practice areas — flag for referral assessment (e.g., CLIC, Duty Lawyer Service, Free Legal Advice Scheme) |
 
 ### Step 6: Supervision flag check
 
@@ -137,7 +141,7 @@ Format each deadline as a fenced code block the student can copy, with every fie
   type=[response|hearing|statute-of-limitations|discovery|cure-period|filing-window|notice|other]
   description="[one-line description of what is due]"
   due=[VERIFY — student + supervisor compute from triggering event]
-  source="[triggering event + statute/rule cite, e.g., 'UD complaint served 2026-05-04, CCP § 1167']"
+  source="[triggering event + ordinance/rule cite, e.g., 'Notice to Quit served 2026-05-04, Cap 7 § 4']"
   owner=[student name]
   warnings=[14,7,3,1]
 ```
@@ -145,7 +149,7 @@ Format each deadline as a fenced code block the student can copy, with every fie
 Rules:
 - One block per deadline surfaced. Do not combine. Each one will route through the deadlines skill's pre-add duplicate check.
 - Leave the `due=` value as `[VERIFY — student + supervisor compute]` when the deadline is jurisdictional (response deadline, SOL, notice window under a specific rule). The deadlines skill will not compute for you; the student + supervisor do the math and update the entry.
-- When a date is given in the triggering document (a hearing date on a summons, an ICE check-in date, a renewal deadline on a protective order), put that date in `due=`. When the date is computed (count N days from triggering event), leave the `[VERIFY]` marker.
+- When a date is given in the triggering document (a hearing date on a summons, an Immigration Department check-in date, a renewal deadline on a protection order under Cap 189), put that date in `due=`. When the date is computed (count N days from triggering event), leave the `[VERIFY]` marker.
 - If no deadline is surfaced in the intake, omit this section — don't fabricate one.
 
 ## Output
@@ -171,10 +175,10 @@ Rules:
 
 ## Legal issues identified
 
-*Every statutory, ordinance, regulatory, rule, or case citation in this section carries a provenance tag (see plugin CLAUDE.md `## Shared guardrails` for the tag vocabulary). `[user provided]` if the supervisor uploaded the text, `[statute / regulator site]` if you fetched it this session from an official source, a research-connector tag (`[CourtListener]`, etc.) if it came from a tool result in this conversation, `[model knowledge — verify]` otherwise. The default is `[model knowledge — verify]`. A supervising attorney who cannot verify a cite against a connector needs to see the tag to know what to check first.*
+*Every statutory, ordinance, regulatory, rule, or case citation in this section carries a provenance tag (see plugin CLAUDE.md `## Shared guardrails` for the tag vocabulary). `[user provided]` if the supervisor uploaded the text, `[statute / regulator site]` if you fetched it this session from an official source (e.g., HK e-Legislation), a research-connector tag (`[HKLII]`, etc.) if it came from a tool result in this conversation, `[model knowledge — verify]` otherwise. The default is `[model knowledge — verify]`. A supervising attorney who cannot verify a cite against a connector needs to see the tag to know what to check first.*
 
 ### Primary ([practice area])
-- [Issue 1]: [one line with any cite tagged, e.g., "RLTO §5-12-080 `[model knowledge — verify]`"]
+- [Issue 1]: [one line with any cite tagged, e.g., "Cap 7 § 5 `[model knowledge — verify]`"]
 - [Issue 2]: [one line]
 
 ### Cross-practice-area flags

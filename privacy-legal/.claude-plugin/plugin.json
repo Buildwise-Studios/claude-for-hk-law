@@ -1,8 +1,8 @@
 {
   "name": "privacy-legal",
   "version": "1.0.2",
-  "description": "Triages processing activities, generates PIAs, reviews DPAs as controller or processor, drafts DSAR responses within statutory timelines, and monitors policy drift against practice.",
+  "description": "Triages processing activities under the Personal Data (Privacy) Ordinance (Cap 486), generates PIAs, reviews DPAs as data user or data processor, drafts DSAR responses within statutory timelines, and monitors policy drift against practice.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

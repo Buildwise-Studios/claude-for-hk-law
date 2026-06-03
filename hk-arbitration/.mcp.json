@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "HKLII": {
+      "type": "http",
+      "url": "https://mcp.hklii.hk/mcp",
+      "title": "HKLII",
+      "description": "Search Hong Kong arbitration case law including set-aside applications, enforcement decisions, and interim measures."
+    },
+    "Hong Kong e-Legislation": {
+      "type": "http",
+      "url": "https://mcp.elegislation.gov.hk/mcp",
+      "title": "Hong Kong e-Legislation",
+      "description": "Official Arbitration Ordinance (Cap 609) with Model Law schedules."
+    },
+    "HKIAC": {
+      "type": "http",
+      "url": "https://mcp.hkiac.org/mcp",
+      "title": "HKIAC",
+      "description": "HKIAC Administered Arbitration Rules 2024, Practice Notes, fee calculator, and model arbitration clauses."
+    }
+  },
+  "recommendedCategories": [
+    "arbitration",
+    "dispute-resolution",
+    "international-arbitration",
+    "hong-kong-law"
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "name": "ai-governance-legal",
   "version": "1.0.2",
-  "description": "Triages proposed AI use cases against your registry, runs impact assessments across the regimes in scope, reviews vendor AI terms for training-on-data and liability gaps, and keeps your AI policy current with practice.",
+  "description": "Triages proposed AI use cases against your registry, runs AI impact assessments under Hong Kong's sector-specific AI governance framework (PCPD guidance, SFC/HKMA sector rules, PDPO amendments), reviews vendor AI terms, and keeps your AI policy current with practice across HK and cross-border regimes.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

@@ -19,6 +19,11 @@ system:
       - Check format consistency across rows. Flag mixed formats.
       - Flag implausible values: 99-year terms, $0 caps, dates before
         1900, currencies the deal does not transact in.
+      - **HK adaptation:** Default currency expectation is HKD. Flag any
+        column where values appear in mixed currencies (e.g., USD and HKD
+        in the same column). Stamp duty on HK share transfers is at 0.2%
+        of consideration; flag a column where stamp duty appears
+        miscalculated relative to the stated consideration.
 
     For each `verbatim` column:
       - You cannot re-read the source — that is the extractor's scope.

@@ -82,7 +82,7 @@ Ask the following in a single block:
 >   manager observation)?
 > - Who is the respondent or subject?
 > - What is the approximate timeframe the alleged conduct occurred?
-> - Is this attorney-directed? (If yes: work product protection applies.
+> - Is this attorney-directed? (If yes: legal professional privilege considerations apply.
 >   If no: flag privilege risk before proceeding.)
 >
 > **Investigation type** (helps me suggest the right sources checklist)
@@ -208,8 +208,8 @@ sources:
     status: open
     notes: ""
   - id: 11
-    source: "Upjohn warning documentation — confirm interviews were preceded
-             by Upjohn warnings and documented"
+    source: "Interview privilege/protocol documentation — confirm interviews were preceded
+             by interview protocol warnings and documented"
     status: open
     notes: ""
 ```
@@ -258,7 +258,7 @@ sources:
     status: open
     notes: ""
   - id: 11
-    source: "Upjohn warning documentation"
+    source: "Interview privilege/protocol documentation"
     status: open
     notes: ""
 ```
@@ -308,7 +308,7 @@ sources:
     status: open
     notes: ""
   - id: 11
-    source: "Upjohn warning documentation"
+    source: "Interview privilege/protocol documentation"
     status: open
     notes: ""
 ```
@@ -357,7 +357,7 @@ sources:
     status: open
     notes: ""
   - id: 10
-    source: "Upjohn warning documentation"
+    source: "Interview privilege/protocol documentation"
     status: open
     notes: ""
 ```
@@ -383,7 +383,7 @@ Ask (if not clear from context):
 - Interview notes (whose interview?)
 - Document batch (emails, records, files)
 - Attorney notes or observations
-- Upjohn warning confirmation
+- interview protocol confirmation
 
 ### Step 3 — Document pull criteria
 
@@ -507,7 +507,7 @@ For each issue in the log, identify: the highest-significance log entries,
 any documentary corroboration, and any unresolved conflicts. Present
 issue by issue.
 
-**Upjohn query** ("have we documented Upjohn warnings"):
+**Upjohn query** ("have we documented interview protocol warnings"):
 Check checklist item and any log entries tagged as Upjohn documentation.
 Flag if not yet completed.
 
@@ -729,19 +729,19 @@ support?
 
 ## Consequential-action gate (respond to a demand or complaint)
 
-**Before producing a summary, memo, or content intended for an external response (EEOC/DFEH/state agency charge response, plaintiff's-counsel demand letter response, regulator response, or any formal complaint reply):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before producing a summary, memo, or content intended for an external response (EOC (Equal Opportunities Commission) complaint response / Labour Tribunal claim response, plaintiff's-counsel demand letter response, regulator response, or any formal complaint reply):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
 > Responding to a demand, charge, or complaint has legal consequences — positions taken here are admissions in later proceedings, waivers of defenses can be inadvertent, and privilege over the underlying investigation can be lost. Have you reviewed this response with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
 > - The allegation, the forum, and the deadline
-> - What the investigation surfaced (findings by allegation; documents reviewed; witnesses interviewed; Upjohn warnings given or not)
+> - What the investigation surfaced (findings by allegation; documents reviewed; witnesses interviewed; interview protocol warnings given or not)
 > - Any unresolved evidentiary threads or credibility contests
 > - What the proposed response says and what it implicitly concedes
 > - Open questions and what's unresolved
 > - What could go wrong (privilege waiver, inconsistent factual statements, missed affirmative defense)
 > - What to ask the attorney (is this the right theory; are we preserving defenses; should an outside firm take this over; what needs redaction or a privilege log)
 >
-> If you need to find an attorney, solicitor, barrister, or other authorised legal professional: contact your professional regulator (state bar in the US, SRA/Bar Standards Board in England & Wales, Law Society in Scotland/NI/Ireland/Canada/Australia, or your jurisdiction's equivalent) for a referral service. Agency and demand-letter responses are a place where untrained replies regularly create more exposure than the underlying allegation did.
+> If you need to find an attorney, solicitor, barrister, or other authorised legal professional: contact your professional regulator (Law Society of Hong Kong, or your jurisdiction's equivalent) for a referral service. Agency and demand-letter responses are a place where untrained replies regularly create more exposure than the underlying allegation did.
 
 Do not produce an external-response draft past this gate without an explicit yes. Internal memos, HR summaries, and leadership briefings used only within the organization do not trip this gate (but the privilege-formation caveat at the top of this skill still applies).
 
@@ -756,7 +756,7 @@ Do not produce an external-response draft past this gate without an explicit yes
 - Process documents it cannot read — if files are in formats that cannot
   be parsed, flag them for manual review
 - Conduct interviews — it logs interview notes, it does not interview witnesses
-- Replace Upjohn warnings — it tracks whether they were given, it does not
+- Replace interview protocol warnings — it tracks whether they were given, it does not
   give them
 
 ## Close with the next-steps decision tree

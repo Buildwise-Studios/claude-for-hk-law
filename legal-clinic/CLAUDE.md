@@ -18,7 +18,7 @@ Rules for every skill, command, and agent in this plugin:
 **Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
-# Law School Clinic Practice Profile
+# Hong Kong Law School Clinic Practice Profile
 
 *Written by the professor-facing cold-start interview. Students don't edit this —
 they run `/ramp`. If you see `[PLACEHOLDER]` below, run `/legal-clinic:cold-start-interview`.*
@@ -32,7 +32,7 @@ they run `/ramp`. If you see `[PLACEHOLDER]` below, run `/legal-clinic:cold-star
 Setup must be run by the supervising attorney. Students onboard via `/legal-clinic:ramp`. Clinic clients (including pro se clients served by the clinic) are not plugin users — they are the people the clinic serves, and their materials flow through student and attorney outputs rather than through direct plugin use.
 
 **Supervising attorney(s):** [PLACEHOLDER — name(s), bar admission jurisdiction(s), bar number(s)]
-**Student practice rule authority:** [PLACEHOLDER — e.g., "Cal. Rules of Court 9.42" — the rule under which students appear]
+**Student practice arrangement:** [PLACEHOLDER — e.g., "HKU Faculty of Law Clinical Legal Education Programme — students perform casework under the direct supervision of a qualified solicitor with a current Practising Certificate" — describe the supervision arrangement under which students appear]
 **Ethical preconditions confirmed:** [PLACEHOLDER — yes / no; list unresolved items if any. Captured from Part 0 ethical preconditions.]
 
 When the role is supervising attorney, clinic student, or clinic staff, every output this plugin produces is attorney-supervised student work. The AI-assisted draft label (see `## Output safeguards` below) is the canonical header for student outputs in this environment — it replaces a generic privilege / non-lawyer notice.
@@ -45,8 +45,8 @@ When the role is supervising attorney, clinic student, or clinic staff, every ou
 
 | Integration | Status | Fallback if unavailable |
 |---|---|---|
-| Clio (case management) | [✓ / ✗] | Case metadata captured in local intake / status files; no auto-sync |
-| Document storage (Google Drive / SharePoint / Box) | [✓ / ✗] | Student outputs save to local filesystem; review stays in-plugin |
+| Case management system (e.g., Clio, PracticePanther, or HK-specific) | [✓ / ✗] | Case metadata captured in local intake / status files; no auto-sync |
+| Document storage (Google Drive / SharePoint / OneDrive) | [✓ / ✗] | Student outputs save to local filesystem; review stays in-plugin |
 
 *Re-check: `/legal-clinic:cold-start-interview --check-integrations`*
 
@@ -56,7 +56,7 @@ When the role is supervising attorney, clinic student, or clinic staff, every ou
 
 **Clinic:** [PLACEHOLDER — name] *(From company-profile.md — edit there to change across all plugins)*
 **School:** [PLACEHOLDER] *(From company-profile.md — edit there to change across all plugins)*
-**Practice areas:** [PLACEHOLDER — immigration / housing / family / consumer / criminal defense / civil rights / other] *(From company-profile.md — edit there to change across all plugins)*
+**Practice areas:** [PLACEHOLDER — immigration / housing / family / consumer / criminal / civil rights / administrative law / other] *(From company-profile.md — edit there to change across all plugins)*
 **Supervising professors/attorneys:** [PLACEHOLDER — names]
 **Students this semester:** [PLACEHOLDER — count]
 **Typical active caseload:** [PLACEHOLDER]
@@ -69,9 +69,9 @@ When the role is supervising attorney, clinic student, or clinic staff, every ou
 
 ## Jurisdiction
 
-**State:** [PLACEHOLDER] *(From company-profile.md — edit there to change across all plugins)*
-**Primary court(s):** [PLACEHOLDER — county/district]
-**Local rules ingested:** [PLACEHOLDER — list files, or "none yet — /draft will use state defaults and flag"]
+**Jurisdiction:** Hong Kong Special Administrative Region
+**Primary court(s):** [PLACEHOLDER — Court of First Instance / District Court / Magistrates' Courts / Lands Tribunal / Labour Tribunal / other]
+**Local rules ingested:** [PLACEHOLDER — list files, or "none yet — /draft will use HK default and flag"]
 
 ---
 
@@ -146,19 +146,21 @@ editing here or uploading templates.*
 
 **Work-product header** — regardless of Role in `## Who's using this`, plugin outputs are attorney-supervised student work:
 
-- `[AI-ASSISTED DRAFT — requires student analysis and attorney review]` — the canonical label for student work in a supervised-clinic setting. Does the work a privilege header does in a non-clinical legal plugin (flagging the output as attorney-directed work product) while also signaling the AI-assisted nature of the draft and the pending supervision step.
+- `[AI-ASSISTED DRAFT — requires student analysis and solicitor review]` — the canonical label for student work in a supervised-clinic setting. Does the work a privilege header does in a non-clinical legal plugin (flagging the output as attorney-directed work product) while also signaling the AI-assisted nature of the draft and the pending supervision step.
 
 Skills in this plugin prepend the label to intake write-ups, drafts, client letters (as an internal tag, stripped before sending), status memos, and research-start outputs.
 
 **Remove the header from externally-facing deliverables** — letters that go to clients, filings that go to courts — only after the supervision review step has cleared the document. The individual skill (`client-letter`, `draft`, `status`) specifies where the label goes and when to strip it.
 
-**The "work product" shield is jurisdiction-specific.** The `[AI-ASSISTED DRAFT — requires student analysis and attorney review]` label flags the output as attorney-directed work, but the underlying US work-product doctrine (FRCP 26(b)(3)) does not exist in most other legal systems:
+**Legal professional privilege (LPP) in Hong Kong — the relevant framework.** The `[AI-ASSISTED DRAFT — requires student analysis and solicitor review]` label flags the output as attorney-directed work. Hong Kong follows the English common law position on legal professional privilege, which is a substantive legal right protected under the Basic Law (Art. 35 — right of access to courts and confidential legal advice) and the Hong Kong Bill of Rights (Art. 11 — right to a fair trial).
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice; internal analyses, compliance assessments, and advisory memos are generally NOT shielded from supervisory authorities. A clinic running cross-border matters cannot rely on the label to shield work from an EU regulator.
-- **UK:** Litigation privilege requires litigation to be in reasonable contemplation at the time the document was created. A clinic advisory memo created in the ordinary course is not protected.
-- **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
+- **Legal advice privilege:** Protects confidential communications between a lawyer (solicitor or barrister) and their client for the dominant purpose of giving or receiving legal advice. Must be in the context of a professional legal relationship. In-house counsel communications may attract privilege where the lawyer is acting in a legal advisory capacity (not a business one).
+- **Litigation privilege:** Protects confidential communications between lawyer, client, and third parties for the dominant purpose of reasonably contemplated litigation. In a clinic setting, this is relevant where a case is active or litigation is anticipated.
+- **HK position vs. UK post-Three Rivers:** Hong Kong courts have not adopted the narrow post-Three Rivers (No. 5) approach taken in England — HK continues to apply a broader interpretation of legal advice privilege closer to the pre-Three Rivers position. However, this area remains open and supervising attorneys should verify current authority.
+- **No US work-product doctrine:** Hong Kong does not have a separate work-product doctrine akin to RHC 26(b)(3). The label `[AI-ASSISTED DRAFT]` does not by itself create privilege — the document must meet the tests above to be protected.
+- **Waiver:** Privilege can be waived by disclosure to a third party. Clinic supervision arrangements (student → professor → client) should be structured to avoid inadvertent waiver.
 
-**If the clinic handles matters touching non-US jurisdictions,** the label alone does not create protection — supervising attorneys should confirm the applicable privilege/confidentiality regime and, where needed, substitute `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` on cross-border work. A false assurance of protection is worse than no marking.
+**Cross-border matters:** If the clinic handles matters touching non-HK jurisdictions, confirm the applicable privilege/confidentiality regime with a supervising attorney. In jurisdictions without LPP (e.g., mainland China), the label alone creates no protection.
 
 ---
 
@@ -171,7 +173,7 @@ Skills in this plugin prepend the label to intake write-ups, drafts, client lett
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
 > - **Before relying:** [the 1-2 things the reviewer should actually do — or "ready for your eyes" if clean]
 
-If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: CourtListener verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
+If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: HKLII connected · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
 **The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
@@ -257,18 +259,18 @@ Silence about known doubt is as misleading as confident assertion. The hole the 
 
 A wrong premise propagated through three paragraphs of analysis is harder to catch than a wrong premise flagged at sentence one. Applies to any skill that accepts a user-asserted rule, statute, case citation, date, registration number, or jurisdiction.
 
-**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
+**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
-**Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline. This applies to every skill in this plugin that cites a statute, ordinance, rule, or case — including `client-intake` (Jurisdictional notes, Legal issues), `memo`, `research-start`, and `draft`.
+**Pre-flight check before any skill that cites authority.** Test whether a research connector (HKLII, Westlaw Asia, LexisNexis HK, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline. This applies to every skill in this plugin that cites a statute, ordinance, rule, or case — including `client-intake` (Jurisdictional notes, Legal issues), `memo`, `research-start`, and `draft`.
 
 **Source tags are derived from what you actually did, not what you'd like to claim.**
 
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` — ONLY if the citation appears in a tool result from that MCP in this conversation.
-- `[statute / regulator site]` — ONLY if you fetched the text from the regulator's website or an official source in this session.
-- `[user provided]` — the user pasted or linked it (including any ordinance text, handbook, or state rule the supervisor uploaded).
+- `[HKLII]` / `[Westlaw Asia]` / `[LexisNexis HK]` — ONLY if the citation appears in a tool result from that research platform in this conversation.
+- `[statute / regulator site]` — ONLY if you fetched the text from the HKSAR Government Gazette, the Law Reform Commission, or the official Hong Kong e-Legislation website in this session.
+- `[user provided]` — the user pasted or linked it (including any ordinance text, handbook, or Practice Direction the supervisor uploaded).
 - `[model knowledge — verify]` — everything else. This is the default. If you didn't retrieve it, it's model knowledge, no matter how confident you are.
-- **`[settled — last confirmed YYYY-MM-DD]`** — stable statutory and regulatory references that have been checked against a primary source on the stated date. The date matters: "stable" references change. The 2025 COPPA amendments changed the definition of "personal information," which would have been `[settled]` before April 2026. Colorado AI Act's effective date has moved twice. The date tells the reader when the confidence was earned and whether it's earned it lately. When you can't confirm the date of the last check, use `[model knowledge — verify]` instead — an unconfirmed "settled" is the confident overclaim we built the whole attribution system to prevent.
+- **`[settled — last confirmed YYYY-MM-DD]`** — stable statutory and regulatory references that have been checked against a primary source on the stated date. The date matters: "stable" references change — new ordinances may be enacted, subsidiary legislation may be amended. The date tells the reader when the confidence was earned and whether it's earned it lately. When you can't confirm the date of the last check, use `[model knowledge — verify]` instead — an unconfirmed "settled" is the confident overclaim we built the whole attribution system to prevent.
 
 Do not promote a tag to a more trustworthy tier because the citation "seems right." The tag describes provenance, not confidence. Untagged statutory/ordinance cites in a clinic work product default to `[model knowledge — verify]`, and the supervising attorney needs to see that.
 
@@ -276,7 +278,7 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
 - `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[HKLII]` / `[Westlaw Asia]` / `[LexisNexis HK]` / `[HK e-Legislation]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -284,7 +286,7 @@ A reviewer-note shorthand like "CourtListener verified" is honest only when a re
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 
 - If the user names a destination (a channel, a distribution list, a counterparty, "everyone"), ask: is that inside the privilege circle?
-- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the attorney-client relationship and their agents.
+- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the solicitor-client relationship and their agents.
 - When the destination looks outside the circle: flag it. "You asked for a version for #product-all — that's a company-wide channel, which would waive the work-product protection on this analysis. I can give you (a) the privileged version for legal only, (b) a sanitized version for the broader channel, or (c) both. Which do you want?"
 - When the destination is ambiguous: ask.
 - Never silently apply a privileged header and then help send the document somewhere the header doesn't protect it.
@@ -311,10 +313,10 @@ The log is per-plugin, not per-matter, so a cite verified for one matter doesn't
 a clinical setting.*
 
 Every output includes:
-- **AI-assisted label:** `[AI-ASSISTED DRAFT — requires student analysis and attorney review]`
+- **AI-assisted label:** `[AI-ASSISTED DRAFT — requires student analysis and solicitor review]`
 - **Confidence indicators:** `[UNCERTAIN: ...]` flags where the skill is genuinely unsure, rather than guessing
 - **Verification prompts:** Specific things the student should fact-check before relying on the output
-- **Ethical reminders calibrated to task:** ABA Formal Opinion 512 (2024) established that AI use in legal practice requires competence, supervision, verification, and in some cases client disclosure. Outputs remind accordingly.
+- **Ethical reminders calibrated to task:** The Law Society of Hong Kong's "Guidelines on Practice of Law Using Generative Artificial Intelligence" (September 2024) and the Hong Kong Bar Association's guidance on AI use require competence, supervision, confidentiality, verification, and in some cases client disclosure. Outputs remind accordingly.
 
 **Research outputs specifically:** `/research-start` produces leads, not authoritative
 citations. Every citation is explicitly unverified until the student confirms it.

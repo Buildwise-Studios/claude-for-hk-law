@@ -1,4 +1,17 @@
-# Diligence Grid — managed-agent cookbook
+# Diligence Grid — managed-agent cookbook (HK Law Edition)
+#
+# Adapted for Hong Kong M&A due diligence under:
+# - Companies Ordinance (Cap. 622) — statutory records, registers, director
+#   duties, accounts, share capital, charges, financial assistance
+# - Securities and Futures Ordinance (Cap. 571) — listed company disclosures,
+#   insider dealing, market misconduct, takeovers code implications
+# - Competition Ordinance (Cap. 619) — merger control for telecom/broadcasting
+#   sector; compliance for pricing and distribution arrangements
+# - Employment Ordinance (Cap. 57) — MPF, ORSO, termination entitlements
+# - Personal Data (Privacy) Ordinance (Cap. 486) — cross-border data transfer,
+#   data user registration for specific sectors
+# - Inland Revenue Ordinance (Cap. 112) — tax diligence, stamp duty on share
+#   transfers
 #
 # Fuses the dataroom-watcher (monitor a VDR) and the tabular-review skill
 # (schema-validated extraction across a document set) into the M&A diligence
@@ -15,7 +28,7 @@ system:
 
     **Mode 1 — watch.** Monitor the VDR for new uploads since a cutoff
     timestamp. Classify each new document against the deploying team's
-    diligence request-list categories (see the corporate-legal plugin
+    diligence request-list categories (see the corporate-legal-hk plugin
     configuration). Flag uploads that match high-priority categories
     (Material Contracts, Litigation, IP). Produce an update report to
     `./out/vdr-update-<date>.md`. Do NOT read document contents in this
@@ -26,8 +39,23 @@ system:
     named folder of documents. Follow the workflow in the `tabular-review`
     skill exactly:
       1. Load or confirm the column schema. Default is the M&A diligence
-         standard column set in
-         `skills/tabular-review/references/ma-diligence-columns.md`.
+         standard column set. **HK adaptation:** the column schema should
+         include HK-specific diligence items:
+         - Cap. 622: Register of members, directors' service contracts,
+           statutory registers, charges register (CR), financial assistance
+           compliance, disclosures of interest, substantial shareholder
+           registers
+         - Cap. 571: Discloseable transactions, connected transactions,
+           notifiable transactions for listed targets, inside information
+           disclosures
+         - Cap. 57: Employment contracts, MPF/ORSO scheme compliance,
+           termination costs, long service payment accruals
+         - Cap. 486: PICS (Personal Information Collection Statements),
+           cross-border data transfer clauses, direct marketing consents
+         - Cap. 112: Tax clearance, stamp duty computation, profits tax
+           exposure, property tax
+         - Cap. 619: Competition law risk assessment for distribution
+           agreements, pricing policies
       2. Sample run on 3–5 documents before fanning out. Adjust the schema
          if `classify` columns miss options or `verbatim` columns drift.
       3. Fan out one `extractor` subagent per document. Each cell must

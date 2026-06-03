@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "Immigration Department": {
+      "type": "http",
+      "url": "https://mcp.immd.gov.hk/mcp",
+      "title": "Immigration Department",
+      "description": "Hong Kong visa policies, admission schemes, right of abode procedures, and application forms from the Immigration Department."
+    },
+    "HKLII": {
+      "type": "http",
+      "url": "https://mcp.hklii.hk/mcp",
+      "title": "HKLII",
+      "description": "Search Hong Kong immigration law case law including right of abode decisions, judicial reviews of immigration decisions, and deportation appeals."
+    },
+    "Hong Kong e-Legislation": {
+      "type": "http",
+      "url": "https://mcp.elegislation.gov.hk/mcp",
+      "title": "Hong Kong e-Legislation",
+      "description": "Official Immigration Ordinance (Cap 115) and subsidiary legislation with commentary and cross-references."
+    }
+  },
+  "recommendedCategories": [
+    "immigration-law",
+    "hong-kong-law",
+    "visa-services",
+    "right-of-abode",
+    "deportation"
+  ]
+}

@@ -1,9 +1,9 @@
 ---
 name: cold-start-interview
 description: >
-  Cold-start setup — learns your jurisdictional footprint and escalation rules
-  from your handbook and termination memos. Asks which states and countries
-  have employees, reads seed documents, and builds a jurisdiction-aware
+  Cold-start setup for Hong Kong — learns your jurisdictional footprint and escalation rules
+  from your handbook and termination memos. Asks which offices in Hong Kong
+  have employees, reads seed documents, and builds an Employment Ordinance-aware
   escalation table. Use on fresh install, when CLAUDE.md still has
   [PLACEHOLDER] markers, or when re-running with --redo or --check-integrations.
 argument-hint: "[--redo | --check-integrations]"
@@ -24,7 +24,7 @@ argument-hint: "[--redo | --check-integrations]"
 
 ## Purpose
 
-Employment law is jurisdictional down to the bone. The right answer in Texas is the wrong answer in California. This interview maps your footprint — every state and country with employees — and builds an escalation table that knows which rules apply where.
+Employment law in Hong Kong is governed by a single statutory framework — the Employment Ordinance (Cap 57) — supplemented by anti-discrimination legislation and common law. This interview maps your HK practice, your team size, your risk areas, and your typical hiring/termination patterns.
 
 ## Cold-start check
 
@@ -59,7 +59,7 @@ Open with the fork-first preamble. Keep it to 3-4 short lines. Ask quick-or-full
 
 > **`employment-legal` is for people who handle hiring, terminations, investigations, leave, policies, worker classification, and international expansion.** Not your area? `/legal-builder-hub:related-skills-surfacer`.
 >
-> **2 minutes** gets you your role, practice setting, and jurisdictional footprint (states + countries with employees), plus working defaults for termination risk flags, severance posture, and handbook policies. **15 minutes** adds your real termination review triggers and high-risk flags extracted from prior memos, offer-letter and severance templates, state-specific handbook supplements, worker-classification defaults, and leave-tracker integration.
+> **2 minutes** gets you your role, practice setting, and jurisdictional footprint (states + countries with employees), plus working defaults for termination risk flags, severance posture, and handbook policies. **15 minutes** adds your real termination review triggers and high-risk flags extracted from prior memos, offer-letter and severance templates, HK-specific handbook policies, worker-classification defaults, and leave-tracker integration.
 >
 > Quick or full? (Upgrade any time with `/cold-start-interview --full`.)
 
@@ -79,7 +79,7 @@ Then the fresh-profile note:
 
 Then: "Ready? A few quick questions first, then we'll go deeper."
 
-**Why this matters** (offer if the user pushes back on the time cost). Every command in this plugin reads from the configuration this interview writes. A generic configuration gives generic output — a default jurisdiction table, a default list of high-risk termination flags, a default escalation matrix, and a review that treats California and Texas the same way. Telling the plugin the actual footprint, the actual hiring and termination triggers, and the actual reporting lines is what makes the difference between "an employment AI tool" and "a tool that knows where your people are and what has bitten you before."
+**Why this matters** (offer if the user pushes back on the time cost). Every command in this plugin reads from the configuration this interview writes. A generic configuration gives generic output — a default jurisdiction table, a default list of high-risk termination flags, a default escalation matrix, and a review that does not account for your actual practice. Telling the plugin the actual footprint, the actual hiring and termination triggers, and the actual reporting lines is what makes the difference between "an employment AI tool" and "a tool that knows where your people are and what has bitten you before."
 
 The interview's information comes only from the user's typed answers and documents they explicitly upload. Do not read `~/CLAUDE.md`, personal notes, or any ambient context to fill in practice details. If relevant context is already visible in the conversation (company name, prior mentions), surface it as a question ("I think you mentioned X earlier — should I use that?") before using it.
 
@@ -145,7 +145,7 @@ This one changes how the rest of the interview runs:
 
 - **Solo / small firm (no hierarchy):** Skip or reframe escalation-chain questions later in the interview. Instead of "who approves above your threshold," ask "when do you call in outside counsel or a colleague for a second opinion." Escalation in the practice profile maps to "consult" not "route for approval." The escalation table at the end should have no internal tiers above the user; it lists outside counsel, an insurer, or "no further escalation" instead.
 - **Midsize / large firm / in-house:** Ask the escalation question below — reporting line, who approves terminations above severance threshold, who signs off on RIFs, etc.
-- **Government / legal aid / clinic:** Route to the supervision model — who reviews work product, what the sign-off chain looks like for client communications, whether a supervising attorney of record is assigned per matter.
+- **Government / legal aid / clinic (HK):** Route to the supervision model — who reviews work product, what the sign-off chain looks like for client communications, whether a supervising attorney of record is assigned per matter.
 
 **Escalation question (ask after the practice-setting answer, adapted to the branch above):**
 
@@ -206,7 +206,7 @@ If not:
 
 **Hiring:** When does legal see an offer?
 - Every offer? Only exec? Only with restrictive covenants? Never?
-- What's in the standard offer letter? Restrictive covenants vary by state — non-competes are unenforceable in California, fine in Florida.
+- What's in the standard offer letter? Restrictive covenants under HK common law require a legitimate business interest and reasonableness in scope/duration/geography.
 
 **Termination:** When does legal see a termination?
 - Every term? Performance only? RIFs only?
@@ -253,72 +253,14 @@ If they have poor visibility (scattered folders, no system): accept whatever the
 
 This is the core output. For each state/country in the footprint:
 
-| Jurisdiction | Special rules | Auto-escalate |
+| Issue | HK legislation | Escalate when |
 |---|---|---|
-| California | No non-competes. Final pay due last day (or 72hrs if employee quits w/o notice). Meal/rest break penalties. PAGA exposure. | Any termination. Any restrictive covenant. |
-| New York | Pay transparency in postings. NYC has separate rules. Final pay next regular payday. | Exec hires (pay transparency). |
-| [etc.] | | |
-
-Don't invent rules for jurisdictions they didn't name. If they have one employee in Montana and no memo ever mentioned Montana, note `[Montana: 1 employee, no history — research on first issue]`.
-
-## Writing the practice profile
-
-Per the template structure at `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md`. Write the completed practice profile to the plugin config, creating parent directories as needed. Key sections: jurisdictional footprint, hiring/termination review triggers, high-risk flags, the jurisdiction-specific escalation table.
-
-## After writing
-
-**Show what this plugin can do.** Before closing, offer:
-
-> **Want to see what I can help with?**
-
-If yes, show this tailored list (not a generic template — these are the concrete things this plugin does best):
-
-> **Here's what I'm good at in employment law practice:**
->
-> - **Review an offer letter and restrictive covenants** — e.g., "Jurisdiction check on non-compete enforceability, pay transparency, and required notices." Try: `/employment-legal:hiring-review`
-> - **Termination review with risk flags** — e.g., "Severance, release, final pay timing, and high-risk indicators flagged before the decision." Try: `/employment-legal:termination-review`
-> - **Classify a worker engagement** — e.g., "Employee / IC / temp / vendor — with misclassification gap analysis." Try: `/employment-legal:worker-classification`
-> - **Ask a jurisdiction-aware wage/hour question** — e.g., "Multi-state workforce question routed against the jurisdictions in your footprint." Try: `/employment-legal:wage-hour-qa`
-> - **Kick off international expansion** — e.g., "New country on the roadmap — plan the employment-law workstream." Try: `/employment-legal:expansion-kickoff`
-> - **Open an internal investigation** — e.g., "Create the privileged workspace, start the log, route interviews." Try: `/employment-legal:investigation-open`
->
-> **My suggestion for your first one:** Run `/termination-review` on a hypothetical termination — it's the skill most likely to surface how the risk calibration reads. Or tell me what's on your plate and I'll pick.
-
-This solves the cold-start problem (the supervisor doesn't know what to do first) and the value-prop problem (they don't know what the plugin can do) in one offer. Make the list specific. Skip this step if the supervisor already named a concrete first task during the interview.
-
-
-- "Here's your jurisdiction table. The California row is the one to double-check."
-- "What's the next termination? Let me take a look."
-- Flag handbook gaps: "Your handbook doesn't have a remote work policy and you're remote-first. Want one?"
-- Check HRIS field: "You said your HRIS is [system] — want me to run the leave tracker now to see if anything is open?"
-- If manual leave tracking: "You don't have an HRIS leave module — I'll track leaves in a register file. Use /employment-legal:log-leave to add any leaves that are currently open."
-
-**Before your first review**: connect a research tool. Without one, I'll flag every citation as unverified — with one, I verify them against a current database. In Cowork: Settings → Connectors. In Claude Code: authorize when a skill prompts you.
-
-<!-- COLLATERAL LINKS: when onboarding collateral exists, add here:
-     "Want a walkthrough? [Watch the 3-minute intro](URL) or [read the getting-started guide](URL)." -->
-
-
-### Close with the "you can change anything later" note
-
-After writing the configuration, say:
-
-> "Done. Your configuration is at `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` — a plain text file you can read and edit directly. Anything you answered can be changed:
->
-> - Edit the file directly for a quick change
-> - Run `/employment-legal:cold-start-interview --redo` for a full re-interview
-> - Run `/employment-legal:cold-start-interview --check-integrations` to re-check what's connected
->
-> The three settings people adjust most: the **jurisdiction list** (as your footprint grows), the **high-risk termination flags** (as you calibrate what's actually scary vs. what's noise), and the **escalation matrix** (as reporting lines shift)."
-
-## Your practice profile learns
-
-After writing the configuration, close with this note:
-
-> **Your practice profile learns.** It gets better as you use the plugins:
->
-> - When a skill's output feels off, that's usually a position to tune. The output will tell you which one.
-> - You can always say "update my playbook to prefer X" or "change my escalation threshold to Y" and the relevant skill will write the change.
-> - Run `/employment-legal:cold-start-interview --redo <section>` to re-interview one part, or edit the config file directly.
->
-> Ten minutes of setup gets you a working profile. A month of use gets you one that reads like you wrote it yourself.
+| Wrongful dismissal | Cap 57 ss. 32A–32P | Any termination where employee claims unfair or unreasonable dismissal |
+| Pregnancy dismissal | Cap 57 s. 15 | Immediately — criminal liability, triple damages |
+| Discrimination | Cap 480 / 487 / 527 / 602 | Any allegations of discrimination |
+| Redundancy / Severance | Cap 57 Part VA | Any redundancy exercise |
+| Long Service Payment | Cap 57 Part VB | Employee qualifies for LSP |
+| Employees’ Compensation | Cap 282 | Any work injury claim |
+| MPF non-compliance | Cap 485 | Any failure to enrol or contribute |
+Don't invent rules for legislation the user didn't mention. Review their employment contracts and handbook to determine which provisions are relevant.
+After the interview, format the table as markdown and save it to the CLAUDE.md.

@@ -124,55 +124,57 @@ Cite primary sources. Verify currency.
 
 Read the letter. Check:
 
-**Employment-at-will is US-only.** "At-will" means either party can terminate without cause or notice (subject to statutory exceptions). This concept does not exist outside the US:
+**Hong Kong does not have an "at-will" employment doctrine.** Employment contracts in HK are governed by the Employment Ordinance (Cap 57) and the express terms of the contract. Key requirements for HK offer letters:
 
-- **US (most states):** At-will is the default. Offer letters often include "at-will" language to defeat implied-contract arguments. Check that it's present if US.
-- **Montana:** Not at-will — Wrongful Discharge from Employment Act requires cause after probation.
-- **UK:** No at-will. Employees have statutory protections from day 1 (unfair dismissal after 2 years of service, automatic unfair dismissal for protected reasons from day 1). The offer letter must contain the written statement of particulars (ERA 1996 s.1): pay, hours, notice period, holidays, pension, disciplinary/grievance procedures.
-- **EU:** No at-will. Termination requires cause, notice, and often works council consultation or collective redundancy procedures. The offer letter requirements vary by member state but notice periods and written particulars are standard.
-- **Australia:** No at-will. Fair Work Act minimum notice periods, unfair dismissal protections, NES.
-- **Canada:** No at-will. Common law reasonable notice (can be months), ESA minimums, wrongful dismissal exposure.
-- **Singapore, other APAC:** No at-will. Employment Act and contract-based protections.
+- **Statutory particulars (Cap 57 s.42C):** Employers must provide a written statement of employment terms within 7 days of commencement, including: wages, wage period, end-of-year payment, statutory holiday entitlement, annual leave, sickness allowance, notice period, maternity/paternity leave entitlement, and MPF details.
+- **Notice period:** Must be stated in the contract; statutory minimum is 7 days if no contractual period specified (Cap 57 s. 6).
+- **Probation period:** Common in HK, typically 1-3 months. During probation, shorter notice periods may apply (often 7 days or contractual).
+- **No at-will language needed.** HK law requires cause or notice for termination. Adding "at-will" is legally meaningless and potentially misleading.
+- **Right-to-work verification:** Every employer in HK must verify that the employee has the legal right to work (HKID holder, or valid employment visa). Employing someone without a valid work permit is an offence under the Immigration Ordinance (Cap 115).
+- **Salary and benefits:** State the wage, wage period, bonus structure (13th month / end-of-year payment per Cap 57 s. 41B), MPF contributions (employer standard 5% under Cap 485 s. 7A), and any contractual benefits.
+- **Equity terms (if any):** Consistent with the equity plan.
+- **Integration clause:** So the offer letter is the whole deal.
 
-**Check for at-will language ONLY if the jurisdiction is US.** For non-US jurisdictions, check instead for: notice period (and whether it meets statutory minimum), the written-statement particulars the jurisdiction requires, probation period terms, and any jurisdiction-specific mandatory clauses.
-
-**Never recommend adding at-will language to a non-US offer letter.** It's legally meaningless, it can conflict with mandatory statutory terms, and it signals to the employee's lawyer that the employer didn't understand the jurisdiction.
-
-- At-will language present and not undermined elsewhere (US only — see above)
-- Contingencies clear (background check, reference, I-9 if US / right-to-work verification for the applicable jurisdiction)
+**Checklist for HK offer letters:**
+- Statutory particulars (or reference that they will be provided within 7 days per Cap 57 s.42C)
+- Notice period compliant with Cap 57 s.6 minimum
+- Probation period terms clear
+- Right-to-work status verified (HKID / visa)
+- MPF obligations acknowledged
+- Restrictive covenants (if any) — test for reasonableness
+- Contingencies clear (background check, reference check)
 - Start date, title, salary, reporting structure stated
-- Equity terms (if any) consistent with the plan
-- Integration clause so the letter is the whole deal
-- For non-US: notice period meets statutory minimum, jurisdiction's required written-statement particulars included, probation period compliant with local rules
+- End-of-year payment / bonus terms (if discretionary, clearly state)
 
 ## Output
 
-> **Jurisdiction assumption.** This review applies the rules of the employee's work jurisdiction identified in Step 1. Enforceability of restrictive covenants, exemption thresholds, pay-transparency obligations, salary-history limits, and required notices vary materially by state and locality, and several have shifted recently. If the candidate's work location changes, or the role spans jurisdictions, this review may not apply as written.
+> **Jurisdiction assumption.** This review applies the Employment Ordinance (Cap 57) and related Hong Kong legislation. Employment protections, contractual requirements, and MPF obligations in HK are governed by specific statutory provisions. If the employee works outside HK or choice-of-law is contested, this analysis may not apply as written.
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
 
-## Hiring Review: [Candidate] — [Role] — [Jurisdiction]
+## Hiring Review: [Candidate] — [Role] — Hong Kong SAR
 
 **Overall:** [Clear to send | Changes needed | Escalate]
 
-### Jurisdiction: [State/Country]
-[Jurisdiction table entry. Any auto-escalate triggers that fire.]
+### Jurisdiction
+Hong Kong SAR. Governed by Employment Ordinance (Cap 57) and related legislation.
 
-### Classification
-[Exempt/non-exempt call, grounded in researched thresholds and duties test.
-Any flags.]
+### Employee vs Contractor
+[Employee / Contractor classification under HK common law tests — control test, organisation test.]
 
 ### Restrictive covenants
-[If any. Enforceability call per researched jurisdiction rules, with pinpoint
-cites and currency note. Suggested changes.]
+[If any. Enforceability per HK common law — requires legitimate business interest, reasonableness in scope/duration/geography. Time-limited and geographically limited covenants are more likely enforceable than blanket restrictions. Flag any restraint of trade issues.]
 
-### Jurisdiction-specific requirements
-[Pay transparency, notices, salary-history rules, etc. — each researched and
-cited, or flagged as needing research.]
+### HK requirements
+- Statutory particulars under Cap 57 s.42C (written statement of employment terms within 7 days)
+- MPF enrolment obligations (Cap 485) — must enrol employee in registered scheme within 60 days
+- Probation period terms and notice period compliance
+- Right-to-work verification in HK (valid HKID / visa / work permit)
+- Compliance with PDPO (Cap 486) for collection and processing of candidate personal data
 
 ### Offer letter
-[Any issues with the letter itself]
+[Any issues with the letter itself — does it include or reference the statutory particulars per Cap 57 s.42C?]
 
 ### Action items
 - [ ] [specific change needed before sending]
@@ -184,13 +186,13 @@ cited, or flagged as needing research.]
 
 > Making an offer has legal consequences — the letter is a contract, and restrictive covenants, classification, and jurisdiction-specific terms are difficult to reset once sent. Have you reviewed this offer with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
-> - Candidate, role, jurisdiction (where they'll actually work)
-> - Classification call (exempt/non-exempt) and why
-> - Restrictive covenants in the offer and the enforceability analysis
-> - Jurisdiction-specific requirements that apply (pay transparency, wage notices, salary-history rules)
+> - Candidate, role, jurisdiction (HK SAR)
+> - Employee/contractor classification analysis under HK common law
+> - Restrictive covenants in the offer and enforceability analysis (legitimate business interest / reasonableness)
+> - HK statutory requirements (Cap 57 s.42C particulars, MPF enrolment, right-to-work verification)
 > - Open questions and what's unresolved
-> - What could go wrong (misclassification liability, unenforceable non-compete, missing required notice, conflicting at-will language)
-> - What to ask the attorney (is this the right form for this jurisdiction; can we use our standard non-compete here; what notices need to go with the letter)
+> - What could go wrong (unenforceable restrictive covenant, missing statutory particulars, MPF non-compliance, improper right-to-work procedures)
+> - What to ask the attorney (is this employment or contractor; can we use this non-compete; are the statutory particulars complete)
 >
 > If you need to find an attorney, solicitor, barrister, or other authorised legal professional: contact your professional regulator (state bar in the US, SRA/Bar Standards Board in England & Wales, Law Society in Scotland/NI/Ireland/Canada/Australia, or your jurisdiction's equivalent) for a referral service.
 

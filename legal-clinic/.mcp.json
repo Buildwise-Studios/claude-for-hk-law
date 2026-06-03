@@ -12,30 +12,30 @@
       "title": "Google Drive",
       "description": "Search, read, and fetch documents from Google Drive."
     },
-    "CourtListener": {
+    "HKLII": {
       "type": "http",
-      "url": "https://mcp.courtlistener.com/",
-      "title": "CourtListener",
-      "description": "Free Law Project's legal research platform — millions of U.S. court opinions, PACER dockets, judge profiles, oral arguments, and citation verification."
+      "url": "https://mcp.hklii.hk/",
+      "title": "HKLII",
+      "description": "Hong Kong Legal Information Institute — free access to HK judgments, legislation, and legal materials from the Court of Final Appeal, High Court, District Court, and tribunals."
     },
-    "Courtroom5": {
+    "CLIC": {
       "type": "http",
-      "url": "https://mcp.courtroom5.com",
-      "title": "Courtroom5",
-      "description": "Courtroom5 — jurisdiction-aware guidance for self-represented litigants: case intake, deadline calculations, procedural next steps."
+      "url": "https://mcp.clic.org.hk",
+      "title": "CLIC (Community Legal Information Centre)",
+      "description": "Hong Kong's Community Legal Information Centre — plain-language legal information, self-help guides, and referral information for common legal problems in Hong Kong."
     },
-    "Descrybe": {
+    "Westlaw Asia": {
       "type": "http",
-      "url": "https://mcp.descrybe.com/mcp",
-      "title": "Descrybe",
-      "description": "Primary law research — search cases by concept or wording, find cases from citations, extract authorities, check treatment, verify quoted language."
+      "url": "https://mcp.westlawasia.com/mcp",
+      "title": "Westlaw Asia",
+      "description": "Primary law research for Asia-Pacific — Hong Kong judgments, legislation, and commentary from Thomson Reuters."
     }
   },
   "recommendedCategories": [
     "case-management",
     "legal-research",
     "case-law",
-    "licensing-boards",
+    "hk-courts",
     "documents",
     "chat"
   ]

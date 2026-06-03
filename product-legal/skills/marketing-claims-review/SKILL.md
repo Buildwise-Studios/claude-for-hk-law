@@ -10,7 +10,7 @@ argument-hint: "[paste copy, or file path]"
 
 # /marketing-claims-review
 
-1. Load `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → Marketing claims standards.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → Marketing claims standards.
 2. Apply the claim taxonomy and review workflow below.
 3. Extract every claim. Classify: puffery / factual / comparative / implied / absolute.
 4. For each non-puffery claim: substantiation check, suggested fix.
@@ -25,7 +25,7 @@ argument-hint: "[paste copy, or file path]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -35,26 +35,26 @@ Marketing wants to say the product is the best. Legal needs it to be true, or at
 
 ## Load standards
 
-Read `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → `## Marketing claims`:
+Read `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → `## Marketing claims`:
 - Comparative claims policy (allowed with substantiation / discouraged / never)
 - Substantiation standard (what's required before a claim ships)
 - Common rejected claims (learn from history)
 
 ## Research the applicable standards before clearing copy
 
-Research the currently operative advertising and substantiation standards for the applicable jurisdictions and media (for example, FTC, NAD, state UDAP regimes, sector regulators for healthcare / financial / children's products, and platform-specific policies). Identify what substantiation the *specific claim* requires — who measured it, when, sample size, apples-to-apples basis — not just whether *some* substantiation exists on file. Flag implied claims and comparative claims for heightened scrutiny. Verify currency: endorsement and review guides have been updated recently and continue to evolve. Cite primary sources with pinpoint references. If you cannot verify the current standard, flag for attorney verification — do not state a rule you haven't confirmed.
+Research the currently operative advertising and substantiation standards for the applicable jurisdictions and media (for example, HK Trade Descriptions Ordinance (Cap 362), PCPD guidance on privacy-related claims, HKCFAR case law on misleading conduct, sector regulators for healthcare / financial / children's products, and platform-specific policies). Identify what substantiation the *specific claim* requires — who measured it, when, sample size, apples-to-apples basis — not just whether *some* substantiation exists on file. Flag implied claims and comparative claims for heightened scrutiny. Verify currency: guidance and enforcement actions under the Trade Descriptions Ordinance are updated regularly by the Customs & Excise Department. Cite primary sources with pinpoint references. If you cannot verify the current standard, flag for attorney verification — do not state a rule you haven't confirmed.
 
-> **Only cite the standards that apply to the specific claims under review.** A blanket list of every FTC guideline, NAD practice note, or sector rule makes the load-bearing ones invisible. Do not cite the Endorsement Guides (16 CFR Part 255) unless the copy contains an endorsement, testimonial, or influencer content. Do not cite disclosure-overlay rules unless a claim in the asset triggers the overlay. Do not cite a sector regulator unless the copy targets or implicates that sector. A standard earns its place in the output by mapping to a specific quoted claim; otherwise drop it.
+> **Only cite the standards that apply to the specific claims under review.** A blanket list of every section of the Trade Descriptions Ordinance, PCPD guideline, or sector rule makes the load-bearing ones invisible. Do not cite the Unconscionable Contracts Ordinance (Cap 458) unless the claim relates to contract terms. Do not cite disclosure-overlay rules unless a claim in the asset triggers the overlay. Do not cite a sector regulator unless the copy targets or implicates that sector. A standard earns its place in the output by mapping to a specific quoted claim; otherwise drop it.
 
-> **No silent supplement.** If a research query to the configured legal research tool returns few or no results for the applicable standard (FTC rule, NAD decision, state UDAP, sector rule, platform policy), report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [standard / jurisdiction]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against the issuing authority before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
+> **No silent supplement.** If a research query to the configured legal research tool returns few or no results for the applicable standard (Trade Descriptions Ordinance provisions, PCPD guidance, Competition Ordinance, sector rule, platform policy), report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [standard / jurisdiction]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against the issuing authority before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
 >
 > **Source attribution tiering.** Tag every citation with its source. For model-knowledge citations, use one of three tiers rather than a single blanket "verify" tag:
 >
-> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., FTC Act § 5, Lanham Act § 43(a) as a concept). Still verify before approving copy, but lower priority.
-> - `[verify]` — model-knowledge citations that are real but should be verified: specific FTC enforcement actions, NAD decisions, state UDAP statutes, sector-specific rules, platform policies, case holdings, thresholds, effective dates, recent updates (the Endorsement Guides and disclosure rules update frequently).
-> - `[verify-pinpoint]` — pinpoint citations (specific subsection letters, CFR subpart references, case paragraph numbers) carry the highest fabrication risk and should ALWAYS be verified against a primary source.
+> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., Trade Descriptions Ordinance Cap 362 s. 7 — false trade description in service provision; Cap 362 s. 13 — misleading omissions). Still verify before approving copy, but lower priority.
+> - `[verify]` — model-knowledge citations that are real but should be verified: specific Customs & Excise Department enforcement actions, Competition Tribunal decisions, PCPD enforcement reports, sector-specific rules, platform policies, case holdings, thresholds, effective dates, recent updates (Trade Descriptions Ordinance enforcement guidelines update frequently).
+> - `[verify-pinpoint]` — pinpoint citations (specific section numbers, sub-subsections, Schedule references) carry the highest fabrication risk and should ALWAYS be verified against the HK e-Legislation primary source.
 >
-> Tool-retrieved citations keep their source tag (`[Westlaw]`, `[CourtListener]`, `[FTC site]`, `[NAD]`, `[platform policy]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations (from substantiation files) remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
+> Tool-retrieved citations keep their source tag (`[Legislative Council]`, `[HKLII]`, `[PCPD]`, `[C&E Dept]`, `[platform policy]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations (from substantiation files) remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 
 ## Claim taxonomy
 
@@ -92,7 +92,7 @@ Naming a competitor or implying one. Research the applicable rules for comparati
 | "The only platform that does X" | False if anyone else does X — "The first platform to..." (if true) or drop "only" |
 | "[Competitor] can't do this" | Show your feature. Let the viewer compare. |
 
-Per `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` — if comparative claims are "never," flag all of them. If "allowed with substantiation," check for the substantiation.
+Per `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` — if comparative claims are "never," flag all of them. If "allowed with substantiation," check for the substantiation.
 
 ### Implied claims
 
@@ -142,7 +142,7 @@ Common drift: marketing copy written from an early spec, product changed, nobody
 
 ### Step 4: Output
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs]
@@ -160,13 +160,13 @@ Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/
 
 **Ready to ship:** [Yes | With changes below | No — rewrite needed]
 
-> **Before emitting "Ready to ship: Yes" (i.e., approving a claim for external use / publication):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md`. If the Role is Non-lawyer:
+> **Before emitting "Ready to ship: Yes" (i.e., approving a claim for external use / publication):** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md`. If the Role is Non-lawyer:
 >
 > > Approving a marketing claim for publication is a legal act — once published, substantiation gaps and comparative-claim exposure become enforcement or competitor-challenge risk. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 > >
 > > [Generate a 1-page summary: asset, claims approved, claim types (specific factual / comparative / implied / absolute), substantiation on file for each, any implied claims flagged, and the three things to ask the attorney before the copy goes live.]
 > >
-> > If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (state bar in the US; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or your jurisdiction's equivalent).
+> > If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (Law Society of Hong Kong for solicitors; Hong Kong Bar Association for barristers; or your jurisdiction's equivalent if outside HK).
 >
 > Do not proceed past this gate to "Ready to ship: Yes" without an explicit yes. "With changes below" and "No — rewrite needed" do not require the gate — those are review calls, not approvals.
 
@@ -197,7 +197,7 @@ A meta-description of changes is never an acceptable output for a short asset �
 
 ## Citation check
 
-Any FTC rules, NAD decisions, state UDAP statutes, sector regulations, or platform policies cited in this review were generated by an AI model and have not been verified against a primary source. Before relying on a specific rule to clear or reject copy, verify it against a legal research tool (Westlaw, CourtListener, or your firm's research platform) for accuracy and current effective date — endorsement guides, platform rules, and state UDAP regimes all update frequently. Source tags on each citation (e.g., `[FTC site]`, `[web search — verify]`) show where it came from; `verify` tags carry higher fabrication risk and should be checked first.
+Any HK ordinances (Cap 362, Cap 458, Cap 456, etc.), PCPD guidelines, Customs & Excise enforcement guidance, Competition Tribunal decisions, sector regulations, or platform policies cited in this review were generated by an AI model and have not been verified against a primary source. Before relying on a specific provision to clear or reject copy, verify it against the HK e-Legislation database (https://www.elegislation.gov.hk) for accuracy and current effective date — Trade Descriptions Ordinance enforcement guidelines, PCPD guidance, and Competition Ordinance rules all update frequently. Source tags on each citation (e.g., `[HKLII]`, `[PCPD]`, `[web search — verify]`) show where it came from; `verify` tags carry higher fabrication risk and should be checked first.
 ```
 
 ## Disclosure overlays

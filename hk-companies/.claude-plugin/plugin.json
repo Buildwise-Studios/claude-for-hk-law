@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-companies",
+  "displayName": "HK Companies",
+  "description": "Hong Kong company law under the Companies Ordinance (Cap 622) and winding up (Cap 32). Incorporation, share capital, directors' duties, shareholder remedies, insolvency, corporate governance, and regulatory filings with the Companies Registry.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

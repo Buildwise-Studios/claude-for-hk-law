@@ -115,11 +115,11 @@ policies and guidance.
 
 | Jurisdiction | Model policy sources |
 |---|---|
-| US | ABA Formal Opinion 512, state bar guidance (CA, FL, NY, TX all have published AI guidance), ILTA model policy, CLOC templates, peer firm published AI policies |
+| Hong Kong | Law Society of Hong Kong AI guidance, Hong Kong Bar Association guidance, PCPD guidance on AI, HKMA RegTech principles, SFC AI circulars, Privacy Commissioner guidance |
 | UK | Solicitors Regulation Authority risk outlook, Law Society AI principles, ICO AI guidance, Bar Council guidance |
-| EU | EU AI Act compliance framework (Article 4 AI literacy, Article 17 quality management), national DPA AI guidance (CNIL, DSB, Garante, AEPD), EDPB guidelines, EU institutions' AI policies |
-| Australia | Law Council of Australia AI guidelines, OAIC AI guidance, state law society guidance, Australian AI Ethics Framework |
-| Singapore | PDPC Model AI Governance Framework, MinLaw guidance, MAS AI fairness principles (for financial services) |
+| EU (if cross-border) | EU AI Act compliance framework, national DPA AI guidance, EDPB guidelines |
+| Mainland China (if cross-border) | Cyberspace Administration AI regulations, PIPL for personal data, MIIT AI governance guidelines |
+| Australia / Singapore / Canada | Applicable if operations extend — note divergence from HK sector-specific approach |
 | Canada | Law Society of Ontario/BC/Alberta AI guidance, OPC AI guidance, TBS Directive on Automated Decision-Making |
 | Multi-jurisdiction | Use all applicable, and note where they diverge (e.g., EU requires human oversight documentation US doesn't; Australia focuses on voluntary ethics frameworks; Singapore focuses on sectoral regulation) |
 
@@ -159,12 +159,12 @@ A table of the model policies / guidance / regulations the draft drew from:
 
 | Source | URL | Accessed | What the draft took from it |
 |---|---|---|---|
-| ABA Formal Op. 512 | [url] | [date] | Disclosure and competence framing |
-| ILTA Model AI Policy v.[X] | [url] | [date] | Approval workflow, data handling |
-| [State] Bar Op. [X] | [url] | [date] | Disclosure to clients |
-| [peer firm] published AI policy | [url] | [date] | Scope language |
-| Colorado SB 24-205 | [url] | [date] | High-risk AI definition |
-| EU AI Act, Art. [X] | [url] | [date] | Vendor flow-down |
+| Law Society of Hong Kong AI guidance | [url] | [date] | Disclosure and competence framing |
+| Law Society AI Ethics guidance v.[X] | [url] | [date] | Approval workflow, data handling |
+| HK Bar Association guidance | [url] | [date] | Disclosure to clients |
+| [peer firm] published HK AI policy | [url] | [date] | Scope language |
+| PCPD Guidance on Ethical AI | [url] | [date] | High-risk AI definition |
+| PDPO (Cap. 486), DPP [X] | [url] | [date] | Vendor flow-down |
 
 ### Executive summary
 
@@ -184,7 +184,7 @@ Only the sections the user picked, in the order above. For each:
   `[review — list tools]` is permitted subject to the data handling section."
 - **Source attribution** inline where a rule is adapted from a specific source.
   Example: "Attorneys must verify the accuracy of all AI-generated work product
-  before using it in representation of a client `[ABA Formal Op. 512]`."
+  before using it in representation of a client `[Law Society of Hong Kong AI guidance]`."
 - **Open questions** at the bottom of each section — 2-3 decisions the attorney
   needs to make before the section is ready. These are distinct from inline
   `[review]` flags — these are the "we don't have a position here yet" items,

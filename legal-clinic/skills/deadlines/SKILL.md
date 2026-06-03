@@ -36,7 +36,7 @@ The supervising attorney is on the hook if a deadline is missed. The skill is ca
 - `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → jurisdiction, practice areas, deadline warning days (default 14/7/3/1), supervising attorneys
 - `~/.claude/plugins/config/claude-for-legal/legal-clinic/deadlines.yaml` — the ledger
 
-**Jurisdiction assumption.** Deadline calculations and warning thresholds assume the jurisdiction set in CLAUDE.md. Deadlines, tolling rules, computation-of-time rules, and local court practices vary materially by jurisdiction and by specific court. If a matter involves a different state, a specific court's local rules, or a federal vs. state forum question, confirm the deadline against the governing rule with your supervisor before relying on it.
+**Jurisdiction assumption.** Deadline calculations and warning thresholds assume Hong Kong jurisdiction set in CLAUDE.md. Deadlines, computation-of-time rules (e.g., RHC Ord 3 / RDC Ord 3), and HK Practice Directions vary by court level (CFI, DC, Magistrates', Lands Tribunal, Labour Tribunal). If a matter involves a specific court, confirm the deadline against the governing practice direction with your supervisor before relying on it.
 
 ## Modes
 

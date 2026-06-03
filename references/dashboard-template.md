@@ -22,6 +22,16 @@
 - **Excel (optional, where it fits):** For `tabular-review`, `renewal-tracker`, `entity-compliance`, and anything the user will take into a meeting or share with a non-technical stakeholder. Use the existing Excel output spec. Apply the formula-injection defense.
 - **Escape untrusted input (apply every dashboard, every time).** Every value that came from outside this session — OSS package/license fields from third-party manifests, counterparty contract text, diligence findings, vendor names, matter descriptions, any user- or VDR-supplied string — must be HTML-escaped before it lands in the document. Escape `&`, `<`, `>`, `"`, `'` into entities when writing into table cells, summary lines, chart labels, and tooltip text. In the inline JS sorter/filter, set cell text via `textContent`, never `innerHTML`. Do not emit `<script>` blocks whose contents interpolate untrusted strings. Do not render untrusted URLs into `href` or `src` without scheme-checking (`http:` / `https:` / `mailto:` only). This is the HTML-surface equivalent of the formula-injection defense on the Excel side — same threat (attacker-controlled cell content), different execution surface (browser JS instead of spreadsheet formula). A dashboard the reviewer opens in a browser is a trust boundary; treat it like one.
 
+## HK-specific notes
+
+When producing dashboards for Hong Kong legal firms:
+
+- **Case law references** in tables should follow the HK citation style (see `hk-citation-style.md`). Use neutral citations (`[2024] HKCFI 123`) for post-1997 cases, volume/report for earlier or unreported.
+- **Ordinances** should be cited by chapter number (e.g., Cap. 571 Securities and Futures Ordinance).
+- **Deadline trackers** should account for HK court practice directions and the District Court / CFI / CA / CFA filing timelines.
+- **Regulatory dashboards** (SFC, HKMA, PDPO) should reference `key-hk-ordinances-index.md` for applicable chapter numbers.
+- The remainder of this template is jurisdiction-agnostic and applies as-is.
+
 ## Keep it boring
 
 - **Color palette:** Red / orange / yellow / green for severity. Gray for neutral. Blue for status. Nothing else.

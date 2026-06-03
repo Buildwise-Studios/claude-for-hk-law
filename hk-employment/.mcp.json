@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "Web Search": {
+      "type": "http",
+      "url": "https://web-search.mcp.com/v1",
+      "title": "Web Search",
+      "description": "Search the web for current legal resources, case law, and statutory updates."
+    }
+  },
+  "recommendedCategories": [
+    "legal-research",
+    "documents",
+    "email"
+  ]
+}

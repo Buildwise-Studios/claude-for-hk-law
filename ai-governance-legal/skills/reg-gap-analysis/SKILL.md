@@ -27,7 +27,7 @@ argument-hint: "[regulation name, or paste regulatory text, or attach a document
 
 ## Purpose
 
-The EU AI Act goes live. Colorado passes an AI law. The CFPB issues model risk
+The PCPD updates AI guidance. Colorado passes an AI law. The CFPB issues model risk
 guidance. The FTC publishes an AI enforcement policy. Something moves — and now
 you need to know what, if anything, you have to change.
 
@@ -188,11 +188,11 @@ Cite primary sources with pinpoint references. Flag ambiguity for attorney judgm
 >
 > **Source attribution tiering.** Tag every citation in the gap analysis with its source. For model-knowledge citations, use one of three tiers rather than a single blanket "verify" tag:
 >
-> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., GDPR Art. 22, the existence of Regulation (EU) 2024/1689 as the EU AI Act, Colorado AI Act as C.R.S. § 6-1-1701 et seq.). Still verify before filing, but lower priority.
+> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., the PDPO (Cap. 486), the Basic Law et seq.). Still verify before filing, but lower priority.
 > - `[verify]` — model-knowledge citations that are real but should be verified: specific delegated / implementing acts, regulator guidance, standards, enforcement actions, case holdings, thresholds, effective dates, phase-in provisions, harmonized-standards references.
-> - `[verify-pinpoint]` — pinpoint citations (specific article numbers, annex references, subsection letters, paragraph numbers, standard-clause references) carry the highest fabrication risk and should ALWAYS be verified against a primary source. EU AI Act article numbers in particular shifted during consolidation; every pinpoint cite to the Act should be verified against the Official Journal text.
+> - `[verify-pinpoint]` — pinpoint citations (specific article numbers, annex references, subsection letters, paragraph numbers, standard-clause references) carry the highest fabrication risk and should ALWAYS be verified against a primary source. PDPO section numbers may shift with amendments; verify against current legislation on HK e-Legislation.
 >
-> Tool-retrieved citations keep their source tag (`[Westlaw]`, `[EUR-Lex]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
+> Tool-retrieved citations keep their source tag (`[HKLII]`, `[Westlaw]`, `[e-Legislation]`, `[PCPD]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 >
 > **For non-lawyer users, uncertain dates, thresholds, and phase-in provisions go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a non-lawyer who doesn't know what the tag means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel") and collect all uncertain items in a final gap-analysis section titled: "**Things I'm not certain about — ask your attorney to confirm before relying on this:**" with each item listed (what I said, what's uncertain, why it matters to the gap). Lawyer-role users keep the inline `[verify]` treatment.
 

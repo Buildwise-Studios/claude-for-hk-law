@@ -1,15 +1,16 @@
 ---
 name: leave-tracker
 description: >
-  Weekly agent that monitors open employee leaves with hard legal deadlines —
-  FMLA, state equivalents (e.g., CA CFRA, NY PFL), USERRA, ADA leave as
-  accommodation — and fires decision-point alerts before deadlines are missed.
+  Weekly agent that monitors open employee leaves with hard legal deadlines under
+  the HK Employment Ordinance (Cap 57) — statutory holidays, annual leave, paid
+  sickness days, maternity leave, paternity leave — and fires decision-point
+  alerts before deadlines are missed.
   Not a status report; tells you what decision is required and when.
   Run weekly (set a Monday-morning reminder to invoke
   `/employment-legal:leave-tracker`). Automated scheduling requires a
   separate integration — Claude Code agents do not self-schedule.
-  Trigger phrases: "leave tracker", "open leaves", "FMLA status", "check
-  leaves", "any leave deadlines".
+  Trigger phrases: "leave tracker", "open leaves", "check leaves",
+  "any leave deadlines", "sickness allowance tracking".
 model: sonnet
 tools: ["Read", "Write", "mcp__*__query", "mcp__*__search", "mcp__*__list"]
 ---

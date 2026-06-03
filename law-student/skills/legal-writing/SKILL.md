@@ -36,7 +36,7 @@ Example phrasings are permitted sparingly because seeing structural moves (not c
 
 - Structure feedback (organization, IRAC/CRAC, topic sentences, transitions, conciseness, active-voice usage) — confident. Writing is writing.
 - Content feedback (is the rule you stated correct? is the case you cited applicable?) — flag `[VERIFY]` on anything I'm not certain about. Don't silently trust my substantive calls.
-- Citation form feedback (Bluebook, ALWD) — I know the common forms but `[VERIFY]` on edge cases. Check the Bluebook itself for anything non-routine.
+- Citation form feedback (OSCOLA HK, OSCOLA HK) — I know the common forms but `[VERIFY]` on edge cases. Check the OSCOLA HK itself for anything non-routine.
 
 ## Load context
 
@@ -100,7 +100,7 @@ Feedback organized top-down — structure first, then paragraph-level, then sent
 
 **Wordiness:** [Passages that could be cut in half.]
 
-**Citation form:** [Common errors — signals, pincites, id. vs. ibid. Reference Bluebook / ALWD for anything VERIFY-flagged.]
+**Citation form:** [Common errors — signals, pincites, id. vs. ibid. Reference Hong Kong citation conventions (HKUL, OSCOLA HK) for anything VERIFY-flagged.]
 
 ## Top three fixes (in priority order)
 
@@ -164,4 +164,4 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 - **Write example sentences on the student's actual substantive issue.** Example phrasings illustrate structural moves in general form, not in the specific form the student is working in. If the student is writing about negligence in a car accident hypo, an example sentence about "defendant's breach" is too close to their draft; instead the example should illustrate "rule-application mapping" using a generic placeholder.
 - **Grade like a professor.** Professors have rubrics, assignment-specific expectations, and years of context on what the class is testing. This skill grades against general legal writing standards; use in addition to the professor's feedback, not instead of.
 - **Verify every substantive rule.** Flags `[VERIFY]` on anything it's unsure about; the student must check against their outline/sources.
-- **Fix citation form exhaustively.** Flags common errors and `[VERIFY]` on edge cases. Not a Bluebook checker.
+- **Fix citation form exhaustively.** Flags common errors and `[VERIFY]` on edge cases. Not a OSCOLA HK checker.

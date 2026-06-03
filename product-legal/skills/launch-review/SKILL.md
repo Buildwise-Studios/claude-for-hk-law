@@ -10,7 +10,7 @@ argument-hint: "[PRD file | Drive link | tracker ticket ID]"
 
 # /launch-review
 
-1. Load `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → framework + calibration. Stop if placeholders.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → framework + calibration. Stop if placeholders.
 2. Get PRD + related docs. If tracker connected, pull ticket and comments.
 3. Walk every framework category using the workflow below.
 4. Calibrate each finding against the table. Novel = flag explicitly.
@@ -25,7 +25,7 @@ argument-hint: "[PRD file | Drive link | tracker ticket ID]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -35,11 +35,11 @@ Before producing output, check where it's going. If the user has named a destina
 
 ## Purpose
 
-Read the PRD, check every category in this team's framework, calibrate against what actually blocks here (per `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md`), and output a review in house format. Goal: a PM reads it and knows exactly what has to happen before they ship.
+Read the PRD, check every category in this team's framework, calibrate against what actually blocks here (per `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md`), and output a review in house format. Goal: a PM reads it and knows exactly what has to happen before they ship.
 
 ## Load calibration
 
-Read `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md`:
 - `## Review framework` — the categories to check
 - `## Risk calibration` — what blocks vs. what's FYI *at this company*
 - `## Launch review process` — output format
@@ -81,7 +81,7 @@ ensures it's never skipped even if the PRD is vague.
 
 ### Step 3: Walk the framework
 
-For each category in `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → Review framework. If the team doesn't have one, use the 8-category default below. The categories are stable framing concepts; within each category, research the regulatory regimes applicable to the product's sector, audience, and jurisdictions before calibrating severity. What blocks in one jurisdiction or sector may be routine in another — `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` captures the team's calibration.
+For each category in `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → Review framework. If the team doesn't have one, use the 8-category default below. The categories are stable framing concepts; within each category, research the regulatory regimes applicable to the product's sector, audience, and jurisdictions before calibrating severity. What blocks in one jurisdiction or sector may be routine in another — `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` captures the team's calibration.
 
 | # | Category | Key question | Auto-skip if |
 |---|---|---|---|
@@ -124,20 +124,20 @@ For each category in `~/.claude/plugins/config/claude-for-legal/product-legal/CL
 
 | Sector | Overlay regimes to surface |
 |---|---|
-| **Children / minors** | COPPA (US — operators of services directed to children under 13 or with actual knowledge), CA AADC / state age-appropriate design codes, platform age ratings (ESRB, PEGI), addictive-design scrutiny (NY Safe for Kids Act, CA SB 976 and analogs), FTC endorsement guides for kid-directed influencers |
-| **Gaming / loot boxes / in-game currency** | Loot-box odds disclosure (CA AB 2476-style, Chinese / Korean / Belgian / Dutch regimes), ESRB / PEGI descriptors (In-Game Purchases, Loot Boxes, Real Gambling), state gambling law (games-of-chance vs. games-of-skill lines, sweepstakes promotions law), FTC dark-patterns guidance, platform-store policies (Apple, Google, console) |
-| **Financial / fintech** | GLBA (NPI, Safeguards Rule, Reg P), state money transmission licensing (MTLs across ~50 states + DC), CFPB UDAAP, state UDAP, bank-partner sponsorship requirements and "true lender" exposure, Reg E / Reg Z where applicable, FINRA if brokerage |
-| **Health** | HIPAA (if CE or BA), FDA SaMD / clinical decision support / general wellness exemption, state health-privacy (WA MHMDA, NV SB 370, CT HIPAA-analog), FTC Health Breach Notification Rule for non-HIPAA entities |
-| **Education** | FERPA (if school or school-acting service provider), state student-privacy (NY Ed Law 2-d, IL SOPPA, CA SOPIPA + AB 1584), COPPA if K-12 data under 13 |
-| **Employment / HR tech** | Title VII, EEOC guidance on AI in hiring, ADA, state AI-hiring laws (IL AIVIA, NYC Local Law 144, CA / CO / UT / NJ analogs under consideration or enacted), state biometric laws (IL BIPA, TX / WA analogs) for video-interview and keystroke products, FCRA for background / verification products |
-| **Government / public sector** | FedRAMP (Low / Moderate / High), FAR / DFARS, CMMC where applicable, state-level equivalents (StateRAMP), CJIS for law-enforcement data, IRS Publication 1075 for tax data, StateRAMP and state procurement rules |
-| **Consumer / retail / marketing** | FTC Act § 5, Made-in-USA rule, Green Guides, CAN-SPAM, TCPA (with TCPA-Shaken/Stir for calls), state auto-renewal (ROSCA, CA ARL, NY GBL § 527-a [consumer] or GOL § 5-903 [B2B services] — verify which applies), state sweepstakes/promotions law |
+| **Children / minors** | Trade Descriptions Ordinance (Cap 362) — misleading advertising directed at minors; Personal Data (Privacy) Ordinance (Cap 486) — PCPD guidance on children's data; age reviews under HK law (no direct COPPA equivalent — verify HK-specific protections); platform age ratings (ESRB, PEGI); addictive-design scrutiny under unfair trade practices under Cap 362 |
+| **Gaming / loot boxes / in-game currency** | Gambling Ordinance (Cap 148) — games-of-chance vs. games-of-skill lines; Trade Descriptions Ordinance (Cap 362) — unfair trade practices re loot boxes and odds; HKJC regulatory framework for betting; platform-store policies (Apple, Google, console), SFC guidance on tokenised in-game assets |
+| **Financial / fintech** | SFC codes and guidelines (Fund Manager Code of Conduct, SFC Guidelines on Online Distribution and Advisory Platforms); HKMA supervisory policies (e-money, stored value facilities, virtual banking); Banking Ordinance (Cap 155); Money Service Operators licensing under Cap 615; Competition Ordinance (Cap 619) — first conduct rule for fintech tying practices; PDPO Cap 486 for customer data; SFC's fintech contact point and regulatory sandbox |
+| **Health** | Private Healthcare Facilities Ordinance (Cap 633); Chinese Medicine Ordinance (Cap 549); Pharmacy and Poisons Ordinance (Cap 138) — medicine-related products; PDPO (Cap 486) — health data is sensitive personal data under PCPD guidance; Department of Health regulatory oversight |
+| **Education** | PDPO (Cap 486) — student data as personal data; Education Ordinance (Cap 279); EDB guidelines on procuring EdTech; Cap 362 — no misleading claims about educational outcomes |
+| **Employment / HR tech** | Employment Ordinance (Cap 57) — contract requirements, termination, rest days; PDPO (Cap 486) — employee data processing; Disability Discrimination Ordinance (Cap 487), Sex Discrimination Ordinance (Cap 480), Race Discrimination Ordinance (Cap 602) — potential AI tool bias exposure; Equal Opportunities Commission (EOC) guidance |
+| **Government / public sector** | OGCIO security regulations (HKSAR Government IT security policies); PDPO (Cap 486) for government-held data; Cap 362 for public-sector tenders; public procurement guidelines; G-Cloud / government cloud adoption programme requirements |
+| **Consumer / retail / marketing** | Trade Descriptions Ordinance (Cap 362) — false trade descriptions, misleading omissions, aggressive practices; Consumer Goods Safety Ordinance (Cap 456); Unconscionable Contracts Ordinance (Cap 458); Supply of Services (Implied Terms) Ordinance (Cap 457); Control of Exemption Clauses Ordinance (Cap 71); Competition Ordinance (Cap 619) — first and second conduct rules; Unsolicited Electronic Messages Ordinance (Cap 593) — HK anti-spam |
 
 If a sector hint fires and no dedicated category in the base framework covers it, insert it as a category (e.g., "6a. Sector overlay — children / COPPA + CA AADC"). Don't let it disappear into category 6 Regulatory as an afterthought; the sector regime often supplies the controlling floor, not a footnote.
 
 ### Step 4: Calibrate severity
 
-For each finding, check against the calibration table in ~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md:
+For each finding, check against the calibration table in ~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md:
 
 - If it matches a "usually FYI" pattern → note it, don't block
 - If it matches "usually requires work" → specify the work, estimate timeline from the table
@@ -146,7 +146,7 @@ For each finding, check against the calibration table in ~/.claude/plugins/confi
 
 ### Step 5: Assemble the review
 
-Format per `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → Launch review process → output format. Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`). If no house format is specified:
+Format per `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → Launch review process → output format. Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`). If no house format is specified:
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs]
@@ -164,7 +164,7 @@ Format per `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` �
 
 **Call:** [Clear to ship | Ship with conditions | Blocked pending X | Needs escalation]
 
-> **Before emitting a "Clear to ship" or "Ship with conditions" call:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md`. If the Role is Non-lawyer:
+> **Before emitting a "Clear to ship" or "Ship with conditions" call:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md`. If the Role is Non-lawyer:
 >
 > > Clearing a launch is a legal act — once the product ships, the company is committed to the legal posture documented here. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 > >
@@ -213,7 +213,7 @@ Any cases, statutes, regulations, or enforcement actions referenced in this revi
 
 **Both of the following are REQUIRED outputs of this skill.** Neither is optional. Print them in the order below, with a clear divider between them so the user cannot miss the redacted block.
 
-**Output 1 — Privileged launch review memo.** The full analysis assembled in Step 5: work-product header, bottom line, findings by category with risk rationale, action items, escalations, notes for next time, citation check. This is internal legal work product. Keep it in your matter file (Drive, DMS, or wherever `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` says review docs go). Distribute only to people inside the privilege circle.
+**Output 1 — Privileged launch review memo.** The full analysis assembled in Step 5: work-product header, bottom line, findings by category with risk rationale, action items, escalations, notes for next time, citation check. This is internal legal work product. Keep it in your matter file (Drive, DMS, or wherever `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` says review docs go). Distribute only to people inside the privilege circle.
 
 **Output 2 — Redacted ticket-comment block — SAFE TO POST TO TRACKER.** After the memo, with a clear `---` divider and the header `## SAFE TO POST TO TRACKER (non-privileged)`, produce a short comment block containing ONLY:
 
@@ -256,4 +256,4 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 
 - It doesn't replace a conversation with the PM. Often the PRD is wrong or out of date — the review surfaces questions, a human asks them.
 - It doesn't approve the launch. It informs the approval.
-- It doesn't retroactively calibrate. If this launch turns out fine (or badly) in a way that should update the calibration table, a human updates ~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md.
+- It doesn't retroactively calibrate. If this launch turns out fine (or badly) in a way that should update the calibration table, a human updates ~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md.

@@ -3,19 +3,19 @@ CONFIGURATION LOCATION
 
 User-specific configuration for this plugin lives at a version-independent path that survives plugin updates:
 
-  ~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md
+  ~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md
 
 Rules for every skill, command, and agent in this plugin:
 1. READ configuration from that path. Not from this file.
 2. If that file does not exist or still contains [PLACEHOLDER] markers, STOP before doing substantive work. Say: "This plugin needs setup before it can give you useful output. Run /corporate-legal:cold-start-interview — it takes about 10-15 minutes and every command in this plugin depends on it. Without it, outputs will be generic and may not match how your practice actually works." Do NOT proceed with placeholder or default configuration. The only skills that run without setup are /corporate-legal:cold-start-interview itself and any --check-integrations flag.
 3. Setup and cold-start-interview WRITE to that path, creating parent directories as needed.
 4. On first run after a plugin update, if a populated CLAUDE.md exists at the old cache path
-   (~/.claude/plugins/cache/claude-for-legal/corporate-legal/<version>/CLAUDE.md for any version)
+   (~/.claude/plugins/cache/claude-for-hk-law/corporate-legal/<version>/CLAUDE.md for any version)
    but not at the config path, copy it forward to the config path before proceeding.
 5. This file (the one you are reading) is the TEMPLATE. It ships with the plugin and shows the
    structure the config should have. It is replaced on every plugin update. Never write user data here.
 
-**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
+**Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` — one level above this file, shared by all plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
 # Corporate Practice Profile
@@ -60,7 +60,7 @@ The deliverable should read like a partner wrote it. The meta-commentary goes in
 
 | Integration | Status | Fallback if unavailable |
 |---|---|---|
-| VDR (Intralinks, Datasite, Box) | [✓ / ✗] | Diligence pulls from local folder; user drops docs in `~/.claude/plugins/config/claude-for-legal/corporate-legal/deals/[code]/vdr-mirror/` |
+| VDR (Intralinks, Datasite, Box) | [✓ / ✗] | Diligence pulls from local folder; user drops docs in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/deals/[code]/vdr-mirror/` |
 | Board portal (Diligent, BoardEffect) | [✓ / ✗] | Minutes/consents work from local templates; no portal posting |
 | Document storage (Google Drive, SharePoint, Box) | [✓ / ✗] | Read local paths; no cross-system search |
 | Slack | [✓ / ✗] | Briefs emitted as files only; no in-channel summaries |
@@ -73,25 +73,23 @@ The deliverable should read like a partner wrote it. The meta-commentary goes in
 
 **Work-product header** (prepended to every analysis, memo, review, or draft this plugin generates):
 
-- If Role is **Lawyer / legal professional**: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
-- If Role is **Non-lawyer** (either type): `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY, SOLICITOR, BARRISTER, OR OTHER AUTHORISED LEGAL PROFESSIONAL IN YOUR JURISDICTION BEFORE ACTING`
+- If Role is **Lawyer / legal professional**: `PRIVILEGED & CONFIDENTIAL — LEGAL PROFESSIONAL PRIVILEGE — PREPARED UNDER THE DIRECTION OF SOLICITOR/COUNSEL (HK)`
+- If Role is **Non-lawyer** (either type): `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED HONG KONG SOLICITOR OR BARRISTER BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific (HK context).** Hong Kong recognises legal professional privilege (LPP) under common law preserved by the Basic Law (Art. 8, 35, 87) and confirmed in s.45 of the Legal Practitioners Ordinance (Cap 159). LPP protects:
+- Communications between a solicitor and client for the purpose of giving or receiving legal advice (legal advice privilege)
+- Communications for the dominant purpose of litigation (litigation privilege)
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
-- **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
-- **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
+Internal analyses and diligence workpapers prepared at the direction of a solicitor MAY carry LPP protection if the dominant purpose test is met. However, privilege in Hong Kong is narrower than US work-product doctrine. Review the privilege analysis with a HK practitioner before relying on the marking to resist disclosure.
 
-**When the practice profile's jurisdiction footprint includes non-US jurisdictions,** adjust the header:
 - Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful everywhere).
-- Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking to shield the document from disclosure.]`
-- For EU users: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
+- When producing a deliverable for a jurisdiction outside HK: `[Note: Legal professional privilege protections in [jurisdiction] differ from HK — confirm the applicable privilege regime before relying on this marking.]`
 
-A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield a DPIA from their DPA is the lawyer who loses the argument.
+A false assurance of protection is worse than no marking. The solicitor who relies on "LEGAL PROFESSIONAL PRIVILEGE" to shield internal deal diligence from an SFC investigation without having satisfied the dominant purpose test is the solicitor who loses the argument.
 
 *Remove the header from externally-facing deliverables (executed consents, filed documents, letters, responses) — see the specific skill's instructions. Corporate records (executed consents, adopted minutes) are never labeled privileged; only the drafting notes and analysis attached to them are.*
 
-**Non-lawyer output mode.** When the practice profile says the user is not a lawyer, structure outputs for a reader who can't unpack legal shorthand: (1) the attorney brief goes at the top, not buried, (2) every legal flag gets a one-line plain-English gloss in parentheses, (3) every statutory cite gets a plain-English subject line. Example: "Flag: potential Cal-WARN issue (Cal. Lab. Code §1400) — California requires 60 days notice before large layoffs." Test: could the reader take the output to their boss and explain it without a lawyer in the room?
+**Non-lawyer output mode.** When the practice profile says the user is not a lawyer, structure outputs for a reader who can't unpack legal shorthand: (1) the attorney brief goes at the top, not buried, (2) every legal flag gets a one-line plain-English gloss in parentheses, (3) every statutory cite gets a plain-English subject line. Example: "Flag: potential Winding Up petition (Companies Ordinance Cap 622, ss. 177-181) — a creditor has applied to wind up the company in the HK High Court." Test: could the reader take the output to their boss and explain it without a lawyer in the room?
 
 ---
 
@@ -174,7 +172,7 @@ A wrong premise propagated through three paragraphs of analysis is harder to cat
 - `[statute / regulator site]` — ONLY if you fetched the text from the regulator's website or an official source in this session.
 - `[user provided]` — the user pasted or linked it.
 - `[model knowledge — verify]` — everything else. This is the default. If you didn't retrieve it, it's model knowledge, no matter how confident you are.
-- **`[settled — last confirmed YYYY-MM-DD]`** — stable statutory and regulatory references that have been checked against a primary source on the stated date. The date matters: "stable" references change. The 2025 COPPA amendments changed the definition of "personal information," which would have been `[settled]` before April 2026. Colorado AI Act's effective date has moved twice. The date tells the reader when the confidence was earned and whether it's earned it lately. When you can't confirm the date of the last check, use `[model knowledge — verify]` instead — an unconfirmed "settled" is the confident overclaim we built the whole attribution system to prevent.
+- **`[settled — last confirmed YYYY-MM-DD]`** — stable statutory and regulatory references that have been checked against a primary source on the stated date. The date matters: "stable" references change. The Companies Ordinance (Cap 622) amendments on director duties in 2014 fundamentally changed HK corporate law, and subsequent amendments have modified filing requirements and financial reporting thresholds. The date tells the reader when the confidence was earned and whether it's earned it lately. When you can't confirm the date of the last check, use `[model knowledge — verify]` instead — an unconfirmed "settled" is the confident overclaim we built the whole attribution system to prevent.
 
 Do not promote a tag to a more trustworthy tier because the citation "seems right." The tag describes provenance, not confidence.
 
@@ -182,7 +180,7 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
 - `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[IPD Hong Kong]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -190,7 +188,7 @@ A reviewer-note shorthand like "CourtListener verified" is honest only when a re
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 
 - If the user names a destination (a channel, a distribution list, a counterparty, "everyone"), ask: is that inside the privilege circle?
-- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the attorney-client relationship and their agents.
+- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the solicitor-client relationship and their agents.
 - When the destination looks outside the circle: flag it. "You asked for a version for #product-all — that's a company-wide channel, which would waive the work-product protection on this analysis. I can give you (a) the privileged version for legal only, (b) a sanitized version for the broader channel, or (c) both. Which do you want?"
 - When the destination is ambiguous: ask.
 - Never silently apply a privileged header and then help send the document somewhere the header doesn't protect it.
@@ -201,7 +199,7 @@ Canonical scale: 🔴 Blocking / 🟠 High / 🟡 Medium / 🟢 Low. Any plugin-
 
 **File access failures.** When you can't read a file the user pointed you at, don't fail silently. Say what happened: "I can't read [path]. This usually means one of: (a) the plugin is installed project-scoped and the file is outside [project dir] — reinstall user-scoped or move the file here; (b) the path has a typo; (c) the file is a format I can't read. Can you paste the content directly, or try one of the fixes?" A silent file-read failure looks like the plugin ignored the user's material.
 
-**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-legal/corporate-legal/verification-log.md`:
+**Verification log.** When you or the user verifies a flagged item — confirms a cite against a primary source, checks a deadline against the local rule, verifies a threshold against the current statute — record it so the next person doesn't re-verify. Write a one-line entry to `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/verification-log.md`:
 
 `[YYYY-MM-DD] [cite or fact] verified by [name] against [source] — [verdict: confirmed / corrected to X / could not verify]`
 
@@ -224,7 +222,7 @@ Corollary: when the user asks a doctrinal question (not a document-review questi
 
 ## Ad-hoc questions in this domain
 
-When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-legal/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
+When the user asks a question in this plugin's practice area — not just when they invoke a skill — read the practice profile at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` (and `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`) first, and apply it. If it's populated, answer as the configured assistant:
 
 - Use their jurisdiction footprint, risk posture, playbook positions, and escalation chain
 - Apply the guardrails even though no skill is running: source attribution, citation hygiene, jurisdiction recognition, decision posture, the reviewer note format
@@ -246,16 +244,16 @@ Over-lawyering is a failure mode. It buries the answer, it trains the PM to rout
 
 ## Jurisdiction recognition
 
-The skill's default frameworks, tests, statutes, and procedures are often US-centric. When the user, the matter, or the facts involve a non-US jurisdiction, recognize it and act on it — don't silently apply US doctrine to non-US facts.
+This plugin defaults to **Hong Kong law** as the primary framework. HK corporate law is governed by the Companies Ordinance (Cap 622), supplemented by the Companies (Winding Up and Miscellaneous Provisions) Ordinance (Cap 32) for insolvency, the Securities and Futures Ordinance (Cap 571) for market regulation and takeovers, and the HKEX Listing Rules for listed companies. When the user, the matter, or the facts involve another jurisdiction, recognize it and act on it — don't silently apply HK doctrine to non-HK facts.
 
-1. **Detect.** Check the practice profile's jurisdiction footprint. Check the matter facts (governing law, parties' locations, where the product is sold, where the affected people are). If any of these is non-US, the US framework may not apply.
-2. **Assess.** Does the skill have a framework for this jurisdiction? (Some do — ai-governance-legal has multi-jurisdiction policy sources, commercial-legal has a jurisdiction delta step.) If yes, use it.
-3. **If no framework:** Say so, clearly: "This analysis uses a US framework ([the test/statute]). You're in [jurisdiction], where the law is different. Applying US doctrine here would give you a wrong answer that looks right."
+1. **Detect.** Check the practice profile's jurisdiction footprint. Check the matter facts (governing law, parties' locations, the company's place of incorporation, the target's jurisdiction). If any of these is outside HK, the HK framework may not apply.
+2. **Assess.** Does the skill have a framework for this jurisdiction? If yes, use it.
+3. **If no framework:** Say so, clearly: "This analysis uses a HK framework (Companies Ordinance Cap 622, the HK Takeover Code). You're in [jurisdiction], where the law is different. Applying HK corporate law here would give you a wrong answer that looks right."
 4. **Offer the next step on the decision tree:**
    - **Search for the applicable standard.** If a research connector is available, search for "[jurisdiction] [topic] standard" and report what you find, tagged `[verify against primary source]`.
    - **Route to a specialist.** "A [jurisdiction] practitioner should make this call. Here's what to ask them: [the specific question]."
-   - **Flag the gap and continue with a caveat.** "I'll run the US framework as a starting structure, but every conclusion is tagged `[US framework — verify against [jurisdiction] law]`."
-5. **Never produce a confident answer using the wrong jurisdiction's law.** Confident-and-wrong is worse than uncertain-and-flagged. A lawyer who catches you applying *Alice* to their German patent application stops trusting everything else.
+   - **Flag the gap and continue with a caveat.** "I'll run the HK framework as a starting structure, but every conclusion is tagged `[HK framework — verify against [jurisdiction] law]`."
+5. **Never produce a confident answer using the wrong jurisdiction's law.** Confident-and-wrong is worse than uncertain-and-flagged. A solicitor who catches you applying the HK Companies Ordinance to a Singapore company stops trusting everything else.
 
 ## Retrieved-content trust
 
@@ -299,7 +297,7 @@ When a user asks to "run all the workflows," "review every document," "process e
 
 For corporate-legal in private practice, a "matter" is typically a deal (M&A transaction, financing round, board matter) or a discrete workstream (entity reorganization, integration project).
 
-When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (house style, materiality thresholds, module choices) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/`.
+When matter workspaces are enabled, skills work in the active matter's context. Skills read this practice-level CLAUDE.md for practice profile-level rules (house style, materiality thresholds, module choices) and the matter's `matter.md` for matter-specific facts and overrides. Outputs are written to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/matters/<matter-slug>/`.
 
 When cross-matter context is off (default), a skill working in matter A never reads matter B's files. Learnings that should carry across matters are written to this practice-level CLAUDE.md, not to a matter folder.
 
@@ -313,15 +311,25 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 ---
 
-<!-- MODULE: M&A — activate when company does M&A deals (buy-side, sell-side, or both) -->
+<!-- MODULE: M&A — activate when company does M&A deals (buy-side, sell-side, or both). HK context: governed by the Companies Ordinance (Cap 622), the Takeovers Code (SFC), the Competition Ordinance (Cap 619) merger rule for turnover thresholds, and HKEX Listing Rules for listed targets. -->
 
-## M&A
+## M&A (HK Context)
 
 **Typical side:** [PLACEHOLDER — buy-side / sell-side / both — note: varies by deal, set per-deal context at /corporate-legal:cold-start-interview --new-deal]
 **Deal cadence:** [PLACEHOLDER — serial acquirer N deals/year with standard playbook / bespoke each deal]
 **Deal lead:** [PLACEHOLDER — corp dev / legal / outside counsel as primary]
+**HK-specific deal mechanics:** [PLACEHOLDER — Scheme of Arrangement (Companies Ordinance Cap 622, Part 13, Division 3) vs. takeover offer; voluntary winding up vs. compulsory winding up under Cap 32; whitewash waivers under the Takeovers Code]
 
 ### Diligence structure
+
+**HK-specific diligence categories:**
+- Company incorporation and good standing under Cap 622 (no-par-value shares, share premium account, statutory registers)
+- Directors' compliance with fiduciary duties and disclosure requirements under Cap 622 (ss. 465-487) and Companies Registry practice
+- Charges and debentures registered under Cap 622 Part 3 — charge registration and priority
+- Compliance with the Companies Registry annual return and financial reporting requirements
+- Takeovers Code implications (Rule 26 mandatory general offer trigger at 30% voting rights)
+- Competition Ordinance merger clearance (turnover threshold, substantive test policy)
+- HKEX/Listing Rules disclosure obligations for listed targets
 
 **Request list categories:**
 1. [PLACEHOLDER — pulled from seed request list]
@@ -390,56 +398,57 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 **Approval process:** [PLACEHOLDER — circulated for review / approved at next meeting / other]
 
 **Written consents:**
-- Used for: [PLACEHOLDER — routine officer appointments / equity grants / annual actions / broadly]
-- Limits: [PLACEHOLDER — any charter or committee charter restrictions on consent vs. meeting requirement]
+- Used for: [PLACEHOLDER — routine director appointments / share allotments / annual actions / broadly]
+- Limits: [PLACEHOLDER — any articles of association restrictions on consent vs. meeting requirement (Cap 622 s. 561)]
+- HK-specific note: Under Cap 622 s. 561, written resolutions require unanimous directors' consent or members' consent per s. 548-559 (private companies). Public companies cannot pass written members' resolutions.
 
 **Consents repository:** [PLACEHOLDER — folder path / Google Drive / SharePoint / Box location, or "seed documents only"]
 **Consent format:**
-- Resolution language: [PLACEHOLDER — "RESOLVED, THAT" / "BE IT RESOLVED" / other]
+- Resolution language: [PLACEHOLDER — "IT IS HEREBY RESOLVED" / "RESOLVED" / other — HK companies typically use "IT IS RESOLVED THAT" or "RESOLVED: THAT"]
 - Recital depth: [PLACEHOLDER — full WHEREAS / minimal / none]
 - Authorisation language: [PLACEHOLDER — extracted from seed or repository]
-- Electronic signatures: [PLACEHOLDER — accepted / not accepted]
+- Electronic signatures: [PLACEHOLDER — accepted / not accepted (Cap 622 s. 159 recognises electronic signatures in certain contexts)]
 
 **Minutes template:**
 *Extracted from seed minutes. Used by board-minutes skill for every draft.*
 - Structure: [PLACEHOLDER — long-form narrative / action minutes / hybrid]
-- Resolution language: [PLACEHOLDER — "RESOLVED, THAT" / "BE IT RESOLVED" / other]
+- Resolution language: [PLACEHOLDER — "IT IS RESOLVED THAT" / "RESOLVED" / other]
 - Discussion depth: [PLACEHOLDER — full summary / action only / tiered by item]
 - Header format: [PLACEHOLDER — extracted from seed]
 - Signature block: [PLACEHOLDER — secretary only / chair + secretary]
 - Seed documents: [PLACEHOLDER — list of uploaded minutes used to learn format]
 
 **Annual governance cycle items:**
-- [PLACEHOLDER — e.g., auditor ratification, director elections, say-on-pay if public]
+- [PLACEHOLDER — e.g., auditor re-appointment (Cap 622 s. 406), directors' re-election (Cap 622 s. 463), annual return (Cap 622 s. 662), filing of annual financial statements (Cap 622 s. 429, 433)]
 
 ---
 
-<!-- MODULE: Public Company — activate for SEC reporting, disclosure, §16, insider trading -->
+<!-- MODULE: Public Company — activate for HKEX Main Board / GEM listing, disclosure, directors' dealings, insider trading -->
 
-## Public Company
+## Public Company (HK Listed)
 
-**Exchange:** [PLACEHOLDER — NYSE / Nasdaq / other]
+**Exchange:** [PLACEHOLDER — HKEX Main Board / GEM]
 **Fiscal year end:** [PLACEHOLDER]
-**Filing status:** [PLACEHOLDER — large accelerated / accelerated / non-accelerated filer]
+**Filing status:** [PLACEHOLDER — Main Board / GEM / other]
 
 **Disclosure committee:**
 - Chair: [PLACEHOLDER]
-- Members: [PLACEHOLDER — CFO, CAO, IR, Legal, other]
-- Meeting cadence: [PLACEHOLDER — quarterly pre-earnings / as needed]
+- Members: [PLACEHOLDER — CFO, Company Secretary, IR, Legal, other]
+- Meeting cadence: [PLACEHOLDER — quarterly pre-results / as needed]
 
-**§16 reporting:**
-- Who tracks: [PLACEHOLDER — legal / outside counsel / IR]
-- Form 4 timing target: [PLACEHOLDER — within N business days of transaction]
+**Directors' dealings (Part XV of the SFO):**
+- Who tracks: [PLACEHOLDER — legal / company secretary / outside counsel]
+- Disclosure timing target: [PLACEHOLDER — within 3 business days of transaction per SFO s.341]
 - Pre-clearance required: [PLACEHOLDER — yes/no, who approves]
 
-**Insider trading policy:**
-- Trading windows: [PLACEHOLDER — open window timing relative to earnings]
+**Insider trading / market misconduct (Part XIV, SFO):**
+- Trading windows: [PLACEHOLDER — open window timing relative to annual/interim results announcements per HKEX Listing Rules Appendix 10 / Model Code]
 - Pre-clearance threshold: [PLACEHOLDER — who requires pre-clearance]
-- Blackout exception process: [PLACEHOLDER]
+- Blackout exception process: [PLACEHOLDER — per Listing Rule 14A- and connected-transaction protocols]
 
-**Earnings call prep:**
-- Legal role: [PLACEHOLDER — script review / Q&A prep / none]
-- Timing: [PLACEHOLDER — N days before call]
+**Results announcement prep:**
+- Legal role: [PLACEHOLDER — draft/review announcement, preliminary results, HKEX filing review / none]
+- Timing: [PLACEHOLDER — N days before board meeting]
 
 ---
 
@@ -460,7 +469,7 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 **Intercompany agreements in place:** [PLACEHOLDER — yes / no / partial]
 **Subsidiary governance cadence:** [PLACEHOLDER — how often sub boards meet, if at all]
 
-**Compliance tracker:** `~/.claude/plugins/config/claude-for-legal/corporate-legal/entities/compliance-tracker.yaml`
+**Compliance tracker:** `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/entities/compliance-tracker.yaml`
 **Last compliance report:** [PLACEHOLDER — date or null]
 **Last health audit:** [PLACEHOLDER — date or null]
 
@@ -469,7 +478,7 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 | Entity name | Type | Jurisdiction | Owner | Ownership % | Status |
 |---|---|---|---|---|---|
-| [PLACEHOLDER] | [Corp/LLC/Ltd] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [Active/Dormant] |
+| [PLACEHOLDER] | [HK private company limited by shares / HK public company / HK company limited by guarantee / foreign branch] | [PLACEHOLDER] | [PLACEHOLDER] | [PLACEHOLDER] | [Active/Dormant] |
 
 ---
 

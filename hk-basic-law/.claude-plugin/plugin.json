@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-basic-law",
+  "displayName": "HK Basic Law",
+  "description": "Hong Kong Basic Law, NPCSC interpretations, Annex III national laws, constitutional review, and the 'one country, two systems' framework. Covers the relationship between the HKSAR and the Central Government, fundamental rights and duties, and the legal framework under Articles 8, 18, 84, 158, and 159.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

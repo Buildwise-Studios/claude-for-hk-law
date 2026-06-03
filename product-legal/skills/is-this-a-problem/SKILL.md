@@ -10,7 +10,7 @@ argument-hint: "[the question]"
 
 # /is-this-a-problem
 
-1. Load `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → Risk calibration.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → Risk calibration.
 2. Apply the triage workflow below.
 3. Pattern-match. Check for common traps.
 4. Answer in one minute: ✅ Fine / ⚠️ Needs a look / 🛑 Hold. One sentence why.
@@ -24,7 +24,7 @@ argument-hint: "[the question]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/product-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/product-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -40,7 +40,7 @@ The goal is speed. The PM asked at 4:47pm. They want an answer, not a memo.
 
 ## Load calibration
 
-Read `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → `## Risk calibration`. The whole point of this skill is pattern-matching against that table.
+Read `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → `## Risk calibration`. The whole point of this skill is pattern-matching against that table.
 
 ## The triage
 
@@ -66,18 +66,20 @@ Some questions are fine on the surface but have a twist. Recognize the fact patt
 
 | Question sounds like | Why it might not be simple | Catch it by asking |
 |---|---|---|
-| "Can we add [vendor] to the integration?" | Vendor touches a new data category — flag as potentially implicating privacy and vendor-risk regimes and route for research | "What data flows to them?" |
-| "Can we A/B test the pricing page?" | Differential pricing by segment can implicate consumer-protection and anti-discrimination regimes — flag and route for research | "Are both arms seeing the same price for the same thing? How are users assigned to arms?" |
-| "Can we auto-enroll users in the new feature?" | Default-on behavior for users who previously opted out can implicate consent and consumer-protection rules — flag and route for research | "Does this respect existing preferences?" |
-| "Can we use customer logos on the site?" | Logo use is a separate permission from the contract relationship — flag as potentially implicating publicity / endorsement rules and the customer's own contract terms | "What does the contract say about publicity? Do we have written permission?" |
-| "Can we train on this data?" | Usage rights for the original collection purpose may not extend to training — flag and research the notice/consent the users were given at collection | "What did we tell users when we collected it? What jurisdictions are the users in?" |
-| "It's just an internal tool" | Internal tools still process personal data — flag as potentially implicating privacy regimes and route for research | "Whose data does it touch? Employees, customers, third parties?" |
+| "Can we add [vendor] to the integration?" | Vendor touches a new data category — flag as potentially implicating PDPO (Cap 486) and vendor-risk regimes, route for research | "What data flows to them? Is the vendor outside HK?" |
+| "Can we A/B test the pricing page?" | Differential pricing can implicate Trade Descriptions Ordinance (Cap 362) — unfair trade practices and misrepresentation — and Competition Ordinance (Cap 619) second conduct rule | "Are both arms seeing the same price for the same thing? How are users assigned to arms?" |
+| "Can we auto-enroll users in the new feature?" | Default-on behaviour can implicate Cap 362 unfair trade practices (misleading omissions) and PDPO consent requirements (Cap 486) | "Does this respect existing preferences? What did the privacy policy say at collection?" |
+| "Can we use customer logos on the site?" | Logo use is a separate permission from the contract — can implicate Cap 362 false trade description (implied endorsement) | "What does the contract say about publicity? Do we have written permission?" |
+| "Can we train on this data?" | Usage rights for the original collection purpose may not extend to training — flag PDPO (Cap 486) data purpose limitation and PCPD guidance | "What did we tell users when we collected it? Did the PICS specify this purpose?" |
+| "It's just an internal tool" | Internal tools still process personal data — PDPO (Cap 486) applies to data user control | "Whose data does it touch? Employees, customers, third parties?" |
 | "We already do something similar" | "Similar" is doing a lot of work — the delta is where the issue usually is | "Similar how? What's actually different?" |
-| "Can we use [AI vendor / LLM] for this?" | Vendor AI terms may permit training on inputs; use case may need an AIA — flag and route to `/ai-governance-legal:use-case-triage` | "Is there an AI addendum? What data goes into the model?" |
-| "Can we add AI to this feature?" | May be a new use case not in the registry; may trigger AIA requirement — flag and route to `/ai-governance-legal:use-case-triage` | "What does the AI do — assistive or automated? Who does it act on?" |
-| "The model just decides automatically" | Automated decision-making without human review is regulated in some jurisdictions — flag and research the applicable rules for the affected users' jurisdictions | "Who's affected? Is there a human in the loop? Where are the affected users?" |
-| "It's AI-generated content" | Output IP and disclosure duties vary by jurisdiction and vendor terms — flag and route for research | "What's the content type? Does the vendor's ToS address output ownership? Who is the audience?" |
-| "We're just fine-tuning on our data" | Training data rights, output IP, and vendor obligations all change — flag and route to `/ai-governance-legal:vendor-ai-review` | "What's in the training data? Is any of it customer or employee data?" |
+| "Can we use [AI vendor / LLM] for this?" | Vendor AI terms may permit training on inputs; use case may need AI governance review under SFC/PCPD guidance | "Is there an AI addendum? What data goes into the model?" |
+| "Can we add AI to this feature?" | May be a new use case not in the registry; may trigger governance requirements — route for research | "What does the AI do — assistive or automated? Who does it act on?" |
+| "The model just decides automatically" | Automated decision-making without human review — PDPO (Cap 486) and PCPD cross-border guidance may apply | "Who's affected? Is there a human in the loop? Are affected users in HK?" |
+| "It's AI-generated content" | Output IP, Cap 362 false trade description risks (misleading content attribution), and vendor terms | "What's the content type? Does the vendor's ToS address output ownership? Who is the audience?" |
+| "We're just fine-tuning on our data" | Training data rights, output IP, and vendor obligations all change — route for research | "What's in the training data? Is any of it customer or employee data?" |
+| "It's a product safety issue, not a trade description" | Consumer Goods Safety Ordinance (Cap 456) imposes general safety obligations independent of trade descriptions | "Is the product a consumer good as defined under Cap 456? Does it comply with applicable safety standards?" |
+| "The contract term is standard industry practice" | Unconscionable Contracts Ordinance (Cap 458) and Control of Exemption Clauses Ordinance (Cap 71) limit enforcement of standard-form terms even if "industry practice" | "Is this a consumer contract? Does it exclude or restrict liability for negligence?" |
 
 If a trap might be present, ask the one question before answering. One question, not a checklist. When the answer suggests a real issue, flag for research and route — don't pattern-match to a legal conclusion from the question alone.
 
@@ -85,7 +87,7 @@ If a trap might be present, ask the one question before answering. One question,
 
 **For Slack (the common case):**
 
-Slack triage replies are internal legal advice. If the reply is being pasted into a ticket, document, or channel that's broadly shared with non-legal, prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`):
+Slack triage replies are internal legal advice. If the reply is being pasted into a ticket, document, or channel that's broadly shared with non-legal, prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`):
 
 ```
 [WORK-PRODUCT HEADER — per plugin config ## Outputs]

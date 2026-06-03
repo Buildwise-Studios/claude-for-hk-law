@@ -18,8 +18,23 @@ Rules for every skill, command, and agent in this plugin:
 **Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
-# Litigation Practice Profile
-*Written by cold-start on [DATE]. If `[PLACEHOLDER]` appears below, run `/litigation-legal:cold-start-interview`.*
+# Hong Kong Litigation Practice Profile
+*Written by cold-start on [DATE]. If `[PLACEHOLDER]` appears below, run `/litigation-legal:cold-start-interview`.
+
+---
+
+## Jurisdictional Note
+
+This plugin is adapted for **Hong Kong civil litigation**. The primary procedural rules are:
+- **Rules of the High Court (Cap 4A)** — governing proceedings in the Court of First Instance (CFI) and Court of Appeal (CA)
+- **Rules of the District Court (Cap 336H)** — governing proceedings in the District Court (DC)
+- **Hong Kong civil procedure follows the English tradition:** writ, summons, pleadings, discovery (narrower scope than US), summons for directions, trial
+- **Appeal routes:** DC → CA → CFA (leave required); CFI → CA → CFA
+- **Costs:** HK follows the English costs-shifting model — the losing party generally pays the winner's costs on a party-and-party basis. Indemnity costs are exceptional.
+- **Evidence:** Governed by the Evidence Ordinance (Cap 8) — no US-style discovery; discovery is limited to documents directly relevant to the pleaded issues.
+- **No US-style class action:** HK has representative proceedings under RHC O.15, r.12 and multi-party litigation (group litigation orders not yet statutorily codified as in England).
+- **No jury in civil cases:** All civil trials in the CFI and DC are judge-alone.
+- **Limitation periods:** Governed by the Limitation Ordinance (Cap 347) — 6 years for contract/tort, 3 years for personal injury, 12 years for land recovery.*
 
 This file is the house-level frame every matter is triaged against. Risk calibration, landscape, style. It is persistent across matters. Update whenever the underlying reality changes — don't paper over drift at the matter level.
 
@@ -57,7 +72,7 @@ This file is the house-level frame every matter is triaged against. Risk calibra
 
 ## Who's using this
 
-**Role:** [PLACEHOLDER — Lawyer / legal professional | Non-lawyer with attorney access | Non-lawyer without attorney access]
+**Role:** [PLACEHOLDER — Lawyer / legal professional | Non-lawyer with solicitor access | Non-lawyer without solicitor access]
 **Attorney contact:** [PLACEHOLDER — name / team / outside firm / N/A]
 
 ---
@@ -102,18 +117,21 @@ This file is the house-level frame every matter is triaged against. Risk calibra
 - If Role in `## Who's using this` is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
 - If Role is Non-lawyer: `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)) and does not exist in Hong Kong. Hong Kong applies **Legal Professional Privilege (LPP)**, which is a common law right protected by the Basic Law (Art. 35) and the Hong Kong Bill of Rights (Art. 10):
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
-- **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
-- **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
+- **Legal advice privilege:** Communications between a client and their solicitor (including in-house counsel with proper status) for the dominant purpose of giving or receiving legal advice. Note: In HK, in-house counsel privilege is more established than in some EU jurisdictions but the dominant-purpose test still applies.
+- **Litigation privilege:** Communications between solicitor and client, or with third parties (experts, witnesses), made for the dominant purpose of reasonably contemplated or pending litigation.
+- **No US-style "work product" separate head:** HK does not recognise a distinct work-product doctrine separate from litigation privilege. Documents preparatory to litigation are protected under litigation privilege, not a separate doctrine.
+- **Third-party communications:** Litigation privilege can extend to third-party communications (e.g., expert reports, witness statements). Legal advice privilege generally does not.
+- **Waiver:** Privilege can be waived intentionally by disclosing the communication to a third party, or inadvertently. Once waived, it is generally lost permanently.
+- **No statutory codification:** LPP in HK is governed by common law. The Evidence Ordinance (Cap 8) recognises LPP but does not codify its full scope.
 
-**When the practice profile's jurisdiction footprint includes non-US jurisdictions,** adjust the header:
-- Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful everywhere).
-- Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking to shield the document from disclosure.]`
-- For EU users: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
+**Adjust the header for HK:**
+- Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful).
+- Replace "ATTORNEY WORK PRODUCT" with "LEGAL PROFESSIONAL PRIVILEGE" or use the composite: `PRIVILEGED & CONFIDENTIAL — SUBJECT TO LEGAL PROFESSIONAL PRIVILEGE`.
+- For internal documents not prepared at the direction of litigation counsel: `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL LEGAL ADVICE`.
 
-A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield a DPIA from their DPA is the lawyer who loses the argument.
+A false assurance of protection is worse than no marking. The lawyer who relies on "US legal professional privilege" in Hong Kong proceedings is relying on a doctrine that has no legal effect here.
 
 *Remove the header from externally-facing deliverables (demand letters, legal-hold notices to custodians, filings, OC correspondence) — see each specific skill's instructions.*
 
@@ -130,7 +148,7 @@ A false assurance of protection is worse than no marking. The lawyer who relies 
 
 If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: CourtListener verified · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
-**The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
+**The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need solicitor judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
 ---
 
@@ -173,7 +191,7 @@ When the user picks an option, do that thing. Don't re-explain the analysis. The
 
 ## Decision posture on subjective legal calls
 
-When a skill in this plugin faces a subjective legal judgment — is this a P0 blocker, is this claim substantiable, does this launch need GC review, is this risk novel — and the answer is uncertain, the skill **prefers the recoverable error**: flag the specific line with `[review]` inline and note the uncertainty there. Do not silently decide a subjective threshold isn't met; do not emit a standalone caveat paragraph lecturing about the principle. The `[review]` flag IS the mechanism — a lawyer narrows the list, the AI does not. Under-flagging is a one-way door; over-flagging is a two-way door an attorney closes in 30 seconds. Default to the two-way door.
+When a skill in this plugin faces a subjective legal judgment — is this a P0 blocker, is this claim substantiable, does this launch need GC review, is this risk novel — and the answer is uncertain, the skill **prefers the recoverable error**: flag the specific line with `[review]` inline and note the uncertainty there. Do not silently decide a subjective threshold isn't met; do not emit a standalone caveat paragraph lecturing about the principle. The `[review]` flag IS the mechanism — a lawyer narrows the list, the AI does not. Under-flagging is a one-way door; over-flagging is a two-way door a solicitor closes in 30 seconds. Default to the two-way door.
 
 ---
 
@@ -198,7 +216,7 @@ Silence about known doubt is as misleading as confident assertion. The hole the 
 
 A wrong premise propagated through three paragraphs of analysis is harder to catch than a wrong premise flagged at sentence one. Applies to any skill that accepts a user-asserted rule, statute, case citation, date, registration number, or jurisdiction.
 
-**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
+**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
 **Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline.
@@ -216,8 +234,8 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 **Tag vocabulary — at a glance.** The inline tags are load-bearing. Use them consistently across skills:
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
-- `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[review]` — a judgment call the solicitor needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
+- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[IPD HK]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -467,7 +485,7 @@ The canonical column maps to the cross-plugin severity floor described in `## Sh
 
 *Courts and arbitration forums we actually see. (General core jurisdictions are captured in `## Company profile` above.)*
 
-**Frequent fora:** [PLACEHOLDER — e.g., Delaware Chancery, N.D. Cal., S.D.N.Y., AAA / JAMS arbitration]
+**Frequent fora:** [PLACEHOLDER — e.g., Court of First Instance, District Court, Labour Tribunal, Lands Tribunal, Small Claims Tribunal, HKIAC arbitration]
 
 ### Document storage
 
@@ -518,8 +536,9 @@ The canonical column maps to the cross-plugin severity floor described in `## Sh
 
 ### Privilege conventions
 
-**Marking:** [PLACEHOLDER — e.g., "Privileged & Confidential — Attorney-Client Communication / Attorney Work Product"]
+**Marking:** [PLACEHOLDER — e.g., "Privileged & Confidential — Subject to Legal Professional Privilege — Solicitor-Client / Litigation Privilege"]
 **Default posture on subjective privilege calls:** when a skill encounters content that might be privileged but the test is uncertain (dominant-purpose unclear, litigation contemplation borderline, mixed legal/business content), the skill **applies the privilege marker and flags the item for attorney review**. It never silently withholds a marker based on its own assessment. Under-marking waives privilege (one-way door); over-marking is corrected by the attorney in review (two-way door). Dial this default here if your shop runs a different calibration.
+**HK note:** In HK, the dominant-purpose test governs. Legal advice privilege applies only when legal advice (not commercial/business advice) is the dominant purpose. Litigation privilege requires litigation to be in reasonable contemplation. The skill defaults to applying the marker on anything uncertain.
 **Review mechanic:** [PLACEHOLDER — `inline note on each flagged item` | `review queue collected at end of run` | `both`]
 **Auto-flag threshold:** [PLACEHOLDER — default is "flag anything not clearly non-privileged." Tighten only with an explicit rationale.]
 

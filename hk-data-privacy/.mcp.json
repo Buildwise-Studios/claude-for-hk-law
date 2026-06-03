@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "PCPD": {
+      "type": "http",
+      "url": "https://mcp.pcpd.org.hk/mcp",
+      "title": "PCPD",
+      "description": "Access PCPD enforcement decisions, investigation reports, compliance guidance, and Code of Practice on Personal Data."
+    },
+    "HKLII": {
+      "type": "http",
+      "url": "https://mcp.hklii.hk/mcp",
+      "title": "HKLII",
+      "description": "Search Hong Kong data privacy case law including PCPD appeals, compensation claims, and s.64 doxxing offence cases."
+    },
+    "Hong Kong e-Legislation": {
+      "type": "http",
+      "url": "https://mcp.elegislation.gov.hk/mcp",
+      "title": "Hong Kong e-Legislation",
+      "description": "Official Personal Data (Privacy) Ordinance (Cap 486) with amendments, schedules, and subsidiary legislation."
+    }
+  },
+  "recommendedCategories": [
+    "data-privacy",
+    "data-protection",
+    "compliance",
+    "hong-kong-law",
+    "pdpd"
+  ]
+}

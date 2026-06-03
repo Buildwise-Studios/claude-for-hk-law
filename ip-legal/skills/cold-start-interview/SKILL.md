@@ -153,10 +153,11 @@ Two quick questions before we get into IP specifics. These shape how the plugin 
 
 #### Who's using this?
 
-> Who'll be using this plugin day to day? (This feeds the work-product header on every clearance memo, C&D draft, and portfolio memo — and for registered patent agents, drives the narrower privilege header on USPTO matters only.)
+> Who'll be using this plugin day to day? (This feeds the work-product header on every clearance memo, C&D draft, and portfolio memo.)
 >
-> 1. **Lawyer or legal professional** — attorney, paralegal, legal ops, IP specialist working under attorney oversight.
-> 2. **Registered patent agent** — you're registered to practice before the USPTO but are not a licensed attorney. Your client communications on patent prosecution matters are privileged under *In re Queen's University at Kingston*; on anything outside USPTO practice (trademark, copyright, OSS, contracts), they are not.
+> 1. **Lawyer or legal professional** — solicitor, barrister, paralegal, legal ops, IP specialist working under solicitor oversight.
+> 2. **Non-lawyer with attorney access** — founder, brand protection manager, engineering lead, OSS officer; you have an in-house or outside solicitor you can consult.
+> 3. **Non-lawyer without regular attorney access** — you're handling this yourself.
 > 3. **Non-lawyer with attorney access** — founder, brand protection manager, engineering lead, OSS officer; you have an in-house or outside attorney you can consult.
 > 4. **Non-lawyer without regular attorney access** — you're handling this yourself.
 
@@ -171,11 +172,11 @@ If the answer is 3 or 4, say this once (don't repeat it on every output):
 
 If the answer is 4, add:
 
-> If you need to find a licensed attorney, solicitor, barrister, or other authorised legal professional in your jurisdiction: your professional regulator's referral service is the fastest starting point (state bar in the US, SRA/Bar Standards Board in England & Wales, Law Society in Scotland/NI/Ireland/Canada/Australia, or your jurisdiction's equivalent). Many offer free or low-cost initial consultations. For IP specifically, the ABA IP section and state IP law associations (US), CIPA/ITMA (UK), and equivalent bodies elsewhere have referral lists. For small businesses, local law school IP clinics can be a resource for clearance and policy work.
+> If you need to find a licensed HK solicitor or barrister: the Law Society of Hong Kong maintains a referral service (https://www.hklawsoc.org.hk). For barristers, the Hong Kong Bar Association (https://www.hkba.org). For IP specifically, CIPA/ITMA (UK) and equivalent bodies have referral lists. For small businesses, the law clinics at HKU and CUHK can be a resource.
 
 If the answer is 2 (registered patent agent), say this in addition to the Role-2/3 framing above:
 
-> A note on how I'll handle privilege for your work. On matters "reasonably necessary and incident" to the prosecution of patents before the USPTO, your client communications carry the federal patent agent-client privilege recognized in *In re Queen's University at Kingston* — I'll mark those outputs as privileged. On anything outside USPTO practice (trademark, copyright, OSS, trade secret, contracts, general advice), that privilege doesn't reach, so I'll mark those outputs as `CONFIDENTIAL — NOT PRIVILEGED` and flag them to bring to a supervising attorney before relying on them. This isn't a cautious default; it's the actual scope of the privilege. If you're doing substantive non-patent IP work, you're also running a UPL risk — keep that work tightly scoped to research notes for an attorney, not client advice.
+> A note on how I'll handle privilege for your work. HK does not have an equivalent of the US patent agent privilege. Communications with a patent attorney registered at the IPD may attract legal professional privilege if the patent attorney is also a solicitor or if the communication is for the dominant purpose of litigation. On all matters, I'll mark outputs as `CONFIDENTIAL — INTERNAL ANALYSIS — SUBJECT TO LEGAL PROFESSIONAL PRIVILEGE` when prepared at the direction of legal counsel, or `CONFIDENTIAL — NOT LEGAL ADVICE — REVIEW WITH A LICENSED HK SOLICITOR BEFORE ACTING` otherwise. Keep trademark clearance and enforcement work tightly scoped to research notes for a solicitor, not client advice.
 
 #### Practice mix
 
@@ -190,7 +191,7 @@ interview; a specialist gets a 3-minute one.
 >
 > - **Patents** (prosecution / litigation / licensing / both)
 > - **Trademarks** (clearance / prosecution / enforcement / brand protection)
-> - **Copyright** (clearance / licensing / DMCA / enforcement)
+> - **Copyright** (clearance / licensing / Cap 528 takedown / enforcement)
 > - **Trade secrets** (protection programs / misappropriation / employee exit)
 > - **Open source** (compliance / licensing / policy)
 > - **Design** (design patents / trade dress)
@@ -234,7 +235,7 @@ skipped because they don't apply.
 
 #### What's connected?
 
-> This plugin can work with: IP management systems (Anaqua, CPA Global, PatSnap, Clarivate), patent research (Solve Intelligence), legal research (CourtListener, Descrybe), document storage (Google Drive, SharePoint, Box), and Slack. Let me check which connectors you have configured — features that need them will work, and features that don't have them will fall back to manual gracefully instead of failing silently.
+> This plugin can work with: IP management systems (Anaqua, CPA Global, PatSnap, Clarivate), patent research (Solve Intelligence), legal research (Westlaw Asia, HKLII, CourtListener, Descrybe), document storage (Google Drive, SharePoint, Box), and Slack. Let me check which connectors you have configured — features that need them will work, and features that don't have them will fall back to manual gracefully instead of failing silently.
 
 **Check what's actually connected, not what's configured.** A connector listed in `.mcp.json` is *available*. A connector that's actually responding is *connected*. These are different, and confusing them destroys trust. For each connector this plugin uses:
 
@@ -287,7 +288,7 @@ Write `## Who's using this` and `## Available integrations` sections immediately
 >
 > - **Trademark** — clearance, prosecution, enforcement, brand watch
 > - **Patent** — FTO, infringement triage, portfolio maintenance. *(Not claim drafting — this plugin doesn't go there.)*
-> - **Copyright** — registration, DMCA, licensing, fair use triage
+> - **Copyright** — fair dealing, licensing, Cap 528 takedown, enforcement in CFI
 > - **Trade secret** — classification, misappropriation response, policy
 > - **Open source** — license compliance, copyleft obligations, outbound OSS
 > - **All of the above**
@@ -304,9 +305,9 @@ Record in the practice profile as context, not a gate. Volume affects the cadenc
 
 > Where do you hold registrations and where do you enforce? (This feeds /clearance, /fto, /portfolio — every clearance check and FTO triage needs to know which jurisdictions matter, and the portfolio register tracks renewals in each one.)
 >
-> - **Marks registered in:** US (USPTO)? EU (EUIPO)? UK (UKIPO)? Madrid member states — which? National filings elsewhere? Common-law only?
+> - **Marks registered in:** HK (IPD)? CN (CNIPA)? EU (EUIPO)? UK (UKIPO)? US (USPTO)? Madrid member states — which? National filings elsewhere? Common-law only (passing off)?
 > - **Patents granted in:** US? EPO? PCT national phase countries? Any specific jurisdictions that matter (Germany, Japan, China)?
-> - **Where you enforce:** US federal / state? Outside US? Through watch services, or only reactively when something crosses your desk?
+> - **Where you enforce:** HK (CFI)? China? Outside HK? Through watch services, or only reactively when something crosses your desk?
 
 Ask the three in one batch. If the user only practices one area, ask only the relevant subquestion.
 
@@ -354,7 +355,7 @@ Then drill in:
 
 > Who signs off on each of these before they go out? (This feeds /cd and /takedown — when you tell the skill to draft a letter, it runs the draft through the named approver and waits for sign-off before it goes anywhere.)
 >
-> - **DMCA takedown (ordinary):** often delegated to counsel or brand protection; who owns it on your team?
+> - **Cap 528 takedown (ordinary):** often delegated to counsel or brand protection; who owns it on your team?
 > - **Soft letter:** same question.
 > - **Cease-and-desist:** who approves before it leaves?
 > - **Filing suit:** who approves — GC? CEO? business sponsor?
@@ -445,7 +446,7 @@ This solves the cold-start problem (the supervisor doesn't know what to do first
    >
    > The sections most often adjusted after first setup are **enforcement posture** (teams often realize the real trigger is different from what they wrote), **jurisdiction footprint** (a new filing, a dropped registration), and **watched marks** (adds and removes as the brand portfolio moves). When a skill's output feels off, the fix is usually here."
 
-5. **Before your first clearance**: connect a research tool. Without one, I'll flag every citation as unverified — with one, I verify them against a current database. In Cowork: Settings → Connectors. In Claude Code: authorize when a skill prompts you.
+5. **Before your first clearance**: connect a research tool. Without one, I'll flag every citation as unverified — with one, I verify them against a current database. For HK, consider subscribing to Westlaw Asia or using HKLII (free). In Cowork: Settings → Connectors.
 
 <!-- COLLATERAL LINKS: when onboarding collateral exists, add here:
      "Want a walkthrough? [Watch the 3-minute intro](URL) or [read the getting-started guide](URL)." -->

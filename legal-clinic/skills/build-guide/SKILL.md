@@ -45,11 +45,11 @@ Every output from this skill is a supervisor-facing configuration artifact, not 
 
 Offer this as a checklist the supervisor can skip through or use as the table of contents for the interview:
 
-- What does a student need to know before they touch a case? (Ethics rules, confidentiality, their scope of authority)
+- What does a student need to know before they touch a case? (Professional conduct rules under the Law Society of Hong Kong / Hong Kong Bar Association, confidentiality, their scope of authority under supervision)
 - What are the 3-5 most common mistakes students make in this practice area, and how should the skill catch them?
 - When must the student stop and get your sign-off? (Filing, sending to a client, making a representation, advising on strategy)
-- What's the reading level for client communications? (6th grade is the usual target for legal aid)
-- What local rules, forms, or deadlines should every student know?
+- What's the reading level for client communications? (6th grade is the usual target for legal aid — confirm if bilingual (Chinese/English) letters are needed)
+- What HK ordinances, Practice Directions, or forms should every student know?
 - When should the skill teach vs. do? (Per document type — you can set a default and override per type)
 
 Walk through the checklist at the start of the interview so the supervisor knows what's coming and can flag which items they already have strong views on versus which they want to think through. Skip any item the supervisor waves off; note it in the guide as "not specified — skill uses defaults."

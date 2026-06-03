@@ -12,13 +12,13 @@ argument-hint: '[file path | Drive link | [CLM ID] | paste text]'
 
 # /review
 
-Reviews an inbound agreement against the playbook in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. Identifies the agreement structure from titles, selects the appropriate skill(s), and — if confirm_routing is enabled — checks with the user before proceeding.
+Reviews an inbound agreement against the playbook in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. Identifies the agreement structure from titles, selects the appropriate skill(s), and — if confirm_routing is enabled — checks with the user before proceeding.
 
 ## Instructions
 
-1. **Load `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`.** If placeholders present, stop and prompt: "Run `/commercial-legal:cold-start-interview` first — I need to learn your playbook before I can review against it."
+1. **Load `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`.** If placeholders present, stop and prompt: "Run `/commercial-legal:cold-start-interview` first — I need to learn your playbook before I can review against it."
 
-   Also read `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` → `## Review preferences` → `confirm_routing`. If the field is missing, treat it as `true`.
+   Also read `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` → `## Review preferences` → `confirm_routing`. If the field is missing, treat it as `true`.
 
 2. **Get the agreement:** From file path, Drive link, [CLM ID], or pasted text. If none provided, ask.
 
@@ -51,7 +51,7 @@ Reviews an inbound agreement against the playbook in `~/.claude/plugins/config/c
 
 5. **Confirm routing if enabled.**
 
-   If `confirm_routing` is `true` in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` (or field is absent):
+   If `confirm_routing` is `true` in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` (or field is absent):
 
    ```
    I'm going to review this as: [agreement type(s)].
@@ -70,7 +70,7 @@ Reviews an inbound agreement against the playbook in `~/.claude/plugins/config/c
 
 6. **Run the skill(s).** Follow each skill's workflow fully. If multiple skills apply, run them in sequence and integrate the output into a single memo — don't produce separate memos.
 
-7. **Check for escalations:** If any issue exceeds the reviewer's authority per the `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` matrix, invoke **escalation-flagger** to route and draft the ask.
+7. **Check for escalations:** If any issue exceeds the reviewer's authority per the `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` matrix, invoke **escalation-flagger** to route and draft the ask.
 
 8. **Offer follow-ups:**
    - Stakeholder summary for the business owner
@@ -80,7 +80,7 @@ Reviews an inbound agreement against the playbook in `~/.claude/plugins/config/c
 
 ## Configuring confirm_routing
 
-Add to `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` → `## Review preferences`:
+Add to `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` → `## Review preferences`:
 
 ```markdown
 ## Review preferences
@@ -107,4 +107,4 @@ The cold-start interview should ask about this preference. Default is `true` —
 
 ## Output
 
-Full review memo per the skill's format. Routing decision logged at the top. Deviation-by-deviation, specific redline language, named approver. Saved where `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` → House style says work product goes.
+Full review memo per the skill's format. Routing decision logged at the top. Deviation-by-deviation, specific redline language, named approver. Saved where `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` → House style says work product goes.

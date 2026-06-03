@@ -29,11 +29,7 @@ Rules for every skill, command, and agent in this plugin:
 
 [Company] is a [description — what the company does and who its customers are]. *(From company-profile.md — edit there to change across all plugins)*
 
-**AI role:** *Not set at company level.* Under the EU AI Act, role (provider,
-deployer, importer, distributor, authorized representative, product
-manufacturer) is assessed **per AI system** — see `## AI system inventory`
-below. A single organization can be a provider of one system and a deployer
-of another; a single company-level label produces wrong answers.
+**AI role:** *Not set at company level.* Under Hong Kong's emerging AI governance framework, role classification is sector-dependent — the SFC, HKMA, PCPD, and other regulators apply different criteria to providers, deployers, and users of AI systems. Role is assessed **per AI system** — see `## AI system inventory` below. A single organization may be a provider of one system and a deployer of another; a single company-level label produces wrong answers.
 
 **AI activity summary:** [PLACEHOLDER — one-paragraph sketch of how AI touches
 the company overall: whether you build, deploy, consume vendor AI, train
@@ -41,7 +37,7 @@ models, or some mix. This is orientation only. The authoritative per-system
 classification lives in `ai-systems.yaml`.]
 
 **Regulatory footprint:** [PLACEHOLDER — only list what actually applies.
-EU AI Act / Colorado / BIPA / sector-specific / contractual requirements only.
+PCPD guidance on AI / PDPO amendments / SFC AI guidelines / HKMA RegTech principles / sector-specific rules / Mainland China AI regulations (if cross-border) / contractual requirements only.
 If nothing applies yet, say so.] *(From company-profile.md — edit there to change across all plugins)*
 
 **Open regulatory matters:** [PLACEHOLDER]
@@ -101,28 +97,21 @@ The following are automatic nos, regardless of how a request is framed:
 
 **Inventory file:** `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/ai-systems.yaml`
 
-Under the EU AI Act, **role and risk tier are assessed per AI system, not per
-company.** A single organization can be a provider of System A, a deployer of
-System B, and an importer of System C — each combination triggers a different
-set of obligations. This inventory stores one record per system.
+Under Hong Kong's evolving AI governance framework, **risk and obligations are assessed per AI system, not per company.** A single organization may have different obligations for System A (e.g., a chatbot governed by PCPD guidance) vs System B (e.g., an AI trading system governed by SFC guidelines). This inventory stores one record per system.
 
 Each record carries:
-- `role` — provider / deployer / importer / distributor / authorized_rep / product_manufacturer
-- `role_basis` — one-sentence explanation of why that role applies, tagged `[verify against current AI Act text]`
-- `tier` — prohibited / high_risk / limited / minimal / gpai / gpai_systemic
-- `tier_basis` — the Article 5 practice or Annex III area that matched, tagged `[verify against current AI Act text]`
-- `eu_nexus` — whether the system has EU reach (deployed, offered, or affects people in the EU/EEA)
+- `sector` — the applicable regulatory regime (PCPD / SFC / HKMA / IA / cross-border / none)
+- `risk_tier` — high / medium / low (based on sector-specific guidance and PDPO implications)
+- `tier_basis` — which PCPD guidance, SFC circular, or HKMA principle applies, tagged `[verify against current regulator guidance]`
+- `data_nexus` — whether the system processes personal data (triggering PDPO obligations)
+- `cross_border_nexus` — whether the system has reach outside HK (Mainland China PIPL, EU GDPR/AI Act, etc.)
 - `obligations_note` — a short note on what obligations to assess; not a derived table
 - `next_review` — date and trigger for re-classification
 
 **The inventory does NOT auto-derive obligations.** When the user asks "what
 are my obligations for System X?", the answer is produced in conversation,
 tagged `[verify]`, and routed to `/ai-governance-legal:aia-generation` for
-the formal impact assessment if needed. This is deliberate — the article
-mapping is complex, the Act is phasing in through 2027, and a hardcoded
-role × tier → obligations table is exactly the kind of confident-and-wrong
-artifact that ends up in a board memo. The inventory is a registry for the
-lawyer; the lawyer owns the obligation analysis.
+the formal impact assessment if needed. This is deliberate — the guidance landscape is complex and evolving, and a hardcoded role × risk → obligations table is exactly the kind of confident-and-wrong artifact that ends up in a board memo. The inventory is a registry for the lawyer; the lawyer owns the obligation analysis.
 
 Manage the inventory with `/ai-governance-legal:ai-inventory` —
 `list | add | edit <id> | classify <id> | show <id>`.
@@ -218,21 +207,24 @@ AI use to customers, employees, or affected parties]
 **gaps_found:** [PLACEHOLDER — N, number of REQUIRED + ADVISABLE gaps found in the most recent acknowledged sweep]
 
 **Work-product header** (prepended to every analysis, memo, AIA, triage, or vendor review this plugin generates):
-- If Role in `## Who's using this` is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
-- If Role is Non-lawyer: `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY, SOLICITOR, BARRISTER, OR OTHER AUTHORISED LEGAL PROFESSIONAL IN YOUR JURISDICTION BEFORE ACTING`
+- If Role in `## Who's using this` is Lawyer / legal professional: `PRIVILEGED & CONFIDENTIAL — LEGAL PROFESSIONAL PRIVILEGE — PREPARED AT THE DIRECTION OF COUNSEL`
+- If Role is Non-lawyer: `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED SOLICITOR, BARRISTER, OR OTHER AUTHORISED LEGAL PROFESSIONAL IN YOUR JURISDICTION BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine that does not apply in Hong Kong. In Hong Kong, legal professional privilege (LPP) is governed by common law and the Legal Practitioners Ordinance (Cap. 159). It protects:
+- **Legal advice privilege:** confidential communications between a lawyer and client for the purpose of giving or receiving legal advice.
+- **Litigation privilege:** confidential communications between lawyer and client, or between either and third parties, created for the dominant purpose of existing or reasonably contemplated litigation.
 
-- **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
-- **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
-- **Germany, France, others:** No equivalent to US work product. Protections vary and are generally narrower.
+Internal compliance analyses, DPIAs, AI impact assessments, and launch reviews prepared in the ordinary course of business — even if prepared by or with input from in-house legal — may NOT be protected by LPP in Hong Kong. The Court of Final Appeal in *Citic Pacific Ltd v Secretary for Justice* (2012) confirmed that legal advice privilege applies to communications where legal advice is the dominant purpose, but internal business documents do not attract privilege simply because legal reviewed them.
 
-**When the practice profile's jurisdiction footprint includes non-US jurisdictions,** adjust the header:
-- Keep `PRIVILEGED & CONFIDENTIAL` (confidentiality markings are meaningful everywhere).
-- Add a jurisdiction note: `[Note: "work product" protection is a US doctrine. Protections in [jurisdiction] differ — confirm the applicable privilege/confidentiality regime before relying on this marking to shield the document from disclosure.]`
-- For EU users: consider `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE` which is honest and doesn't assert a protection that doesn't exist.
+The PCPD has broad investigation and inspection powers under the PDPO (Cap. 486), including the power to require production of documents. Asserting privilege against the PCPD requires a proper claim supported by the facts.
 
-A false assurance of protection is worse than no marking. The lawyer who relies on "ATTORNEY WORK PRODUCT" to shield a DPIA from their DPA is the lawyer who loses the argument.
+**Hong Kong-specific header guidance:**
+- Keep `PRIVILEGED & CONFIDENTIAL` — confidentiality markings are meaningful under Hong Kong law and the common law duty of confidence.
+- For internal compliance documents (AIAs, DPIAs, vendor reviews prepared without litigation in contemplation): use `CONFIDENTIAL — INTERNAL LEGAL ANALYSIS — NOT A SUBSTITUTE FOR EXTERNAL COUNSEL ADVICE`. This is honest and doesn't assert a protection that doesn't exist.
+- For documents prepared for the dominant purpose of legal advice: `PRIVILEGED & CONFIDENTIAL — LEGAL PROFESSIONAL PRIVILEGE`.
+- For documents prepared for the dominant purpose of existing or reasonably contemplated litigation: `PRIVILEGED & CONFIDENTIAL — LITIGATION PRIVILEGE`.
+
+A false assurance of privilege is worse than no marking. The lawyer who claims LPP on a routine compliance document before the PCPD is the lawyer who undermines the privilege claim for documents that genuinely deserve protection.
 
 *Remove the header from externally-facing deliverables — see the specific skill's instructions.*
 
@@ -321,7 +313,7 @@ Silence about known doubt is as misleading as confident assertion. The hole the 
 
 A wrong premise propagated through three paragraphs of analysis is harder to catch than a wrong premise flagged at sentence one. Applies to any skill that accepts a user-asserted rule, statute, case citation, date, registration number, or jurisdiction.
 
-**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
+**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
 **Pre-flight check before any skill that cites authority.** Test whether a research connector (Westlaw, CourtListener, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline.
@@ -340,7 +332,7 @@ Do not promote a tag to a more trustworthy tier because the citation "seems righ
 
 - `[verify]` — a factual claim (cite, date, deadline, threshold, registration number, rule text) the reader should confirm against a primary source before relying on it. Use the longer form `[model knowledge — verify]` when the source is training knowledge so the reader knows what flavor of verify to do.
 - `[review]` — a judgment call the attorney needs to make. Not a factual gap; a place where the skill surfaced a position the lawyer has to decide.
-- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[USPTO]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
+- `[Westlaw]` / `[CourtListener]` / `[Trellis]` / `[Descrybe]` / `[IPD Hong Kong]` / `[statute / regulator site]` / `[user provided]` — where a cite actually came from. Provenance, not confidence. Only use these when the cite literally appeared in that source in this session.
 - `[VERIFY: …]` / `[UNCERTAIN: …]` — expanded forms of `[verify]` used in brief-drafting and chronology skills with the specific claim spelled out. Same intent.
 
 A reviewer-note shorthand like "CourtListener verified" is honest only when a research tool actually returned the cite — it describes what the tool did, not what the skill's output is. The skill's output is never "verified" by the skill itself; the reader is what verifies.
@@ -348,7 +340,7 @@ A reviewer-note shorthand like "CourtListener verified" is honest only when a re
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 
 - If the user names a destination (a channel, a distribution list, a counterparty, "everyone"), ask: is that inside the privilege circle?
-- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the attorney-client relationship and their agents.
+- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the solicitor-client relationship and their agents.
 - When the destination looks outside the circle: flag it. "You asked for a version for #product-all — that's a company-wide channel, which would waive the work-product protection on this analysis. I can give you (a) the privileged version for legal only, (b) a sanitized version for the broader channel, or (c) both. Which do you want?"
 - When the destination is ambiguous: ask.
 - Never silently apply a privileged header and then help send the document somewhere the header doesn't protect it.
@@ -433,7 +425,7 @@ When a research MCP, web search, or document fetch returns results, three rules 
 3. **Tool-vs-model conflict.** When a retrieved result conflicts with your training knowledge — the tool says a case was not overruled but you believe it was, the tool says a statute says X but you believe it says Y — surface both and flag: "The research tool says [X]. My training knowledge says [Y]. These conflict. Verify with the primary source before relying on either." Do not silently prefer the tool OR your training. The conflict is the signal.
 
 **Source hierarchy.** When searching for a rule, regulation, or legal development, prefer sources in this order:
-1. **Primary: the official register or regulator.** eCFR, Federal Register, Regulations.gov, EUR-Lex, legislation.gov.uk, Federal Register of Legislation (AU), Singapore Statutes Online, Canada Gazette, the regulator's own website (SEC, FTC, ICO, CNIL, EDPB, OAIC, PDPC, etc.). Tag `[primary source]`.
+1. **Primary: the official register or regulator.** eCFR, Hong Kong Gazette, Regulations.gov, EUR-Lex, legislation.gov.uk, Hong Kong Gazette of Legislation (AU), Singapore Statutes Online, Canada Gazette, the regulator's own website (SEC, FTC, ICO, CNIL, EDPB, OAIC, PDPC, etc.). Tag `[primary source]`.
 2. **Official guidance: the regulator's explanatory material, consultations, enforcement statements.** Tag `[official guidance]`.
 3. **Secondary: law firm alerts, legal commentary, newsletters, trackers.** These are useful for finding out that something happened and where to look, but they're someone's interpretation. Tag `[secondary — verify against primary]` and always try to find the primary source it's describing.
 

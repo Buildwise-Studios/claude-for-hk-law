@@ -52,9 +52,9 @@ If no guide exists, use `guide`. If the guide exists but doesn't set a posture, 
 
 Whatever the posture, the output always includes: "**Pedagogy mode: [assist/guide/teach]** — set by your supervisor's guide. This means I [description of what the student did vs what the skill did]."
 
-## Sign-off and student-attorney disclosure
+## Sign-off and student-solicitor disclosure
 
-Check your jurisdiction's student practice rule for required disclosure language in letters signed by a law student. Some jurisdictions require specific forms; most require that the student identify themselves as a law student / certified legal intern and identify the supervising attorney. The templates below use a generic form — conform the sign-off to your rule before sending.
+Check your clinic's supervision arrangement for required disclosure language in letters signed by a law student. In Hong Kong, letters sent to clients by a clinic student should identify the student as a clinic worker under the supervision of a named solicitor with a current Practising Certificate. The templates below use a generic form — conform the sign-off to your clinic's specific supervision structure and any applicable Law Society rules before sending.
 
 ## Letter types
 

@@ -80,7 +80,7 @@ Open with the fork-first preamble. Keep it to 3-4 short lines. Ask quick-or-full
 
 > **`ai-governance-legal` is for people who run AI governance: use-case triage, impact assessments, vendor AI review, policy monitoring.** Not your area? `/legal-builder-hub:related-skills-surfacer`.
 >
-> **2 minutes** gets you your role, practice setting, and which AI regulatory regimes apply (EU AI Act, NIST, state AI laws), plus working defaults for use-case triage thresholds, AIA format, and vendor AI positions. **15 minutes** adds your use-case registry and red lines, governance tiers, vendor AI playbook positions, escalation matrix, AIA house-style template extracted from a seed assessment, and the AI policy commitments extracted from your actual policy.
+> **2 minutes** gets you your role, practice setting, and which AI regulatory regimes apply (PCPD guidance, SFC AI guidelines, HKMA RegTech principles), plus working defaults for use-case triage thresholds, AIA format, and vendor AI positions. **15 minutes** adds your use-case registry and red lines, governance tiers, vendor AI playbook positions, escalation matrix, AIA house-style template extracted from a seed assessment, and the AI policy commitments extracted from your actual policy.
 >
 > Quick or full? (Upgrade any time with `/cold-start-interview --full`.)
 
@@ -209,7 +209,7 @@ Write a `## Who's using this` section and an `## Available integrations` section
 
 **This is the question that determines everything else.**
 
-> **EU AI Act roles are per-system, not per-company.** If your jurisdiction
+> **Kong regulatory frameworks are per-system, not per-company.** If your jurisdiction
 > footprint includes the EU, your role (provider, deployer, importer,
 > distributor, authorized representative, product manufacturer) and risk tier
 > are assessed for each AI system separately — you might be a deployer of
@@ -218,7 +218,7 @@ Write a `## Who's using this` section and an `## Available integrations` section
 > add the rest later with `/ai-governance-legal:ai-inventory add`. Or skip
 > the inventory for now if you're not in the EU or not ready.
 
-Walk through the role options if the user isn't sure:
+Walk through the sector options if the user isn't sure:
 - **Provider:** You develop an AI system (or have it developed) and place it
   on the EU market or put it into service under your own name or trademark.
 - **Deployer:** You use an AI system under your own authority, not for

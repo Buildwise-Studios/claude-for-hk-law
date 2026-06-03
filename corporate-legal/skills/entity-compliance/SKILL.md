@@ -12,7 +12,7 @@ argument-hint: "[--init | --report [--days N] | --update [--from-report] | --swe
 
 # /entity-compliance
 
-1. Load `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → `## Entity Management` (entity table, jurisdictions, registered agent).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → `## Entity Management` (entity table, jurisdictions, registered agent).
 2. Route to the correct mode below based on flag:
    - No flag or `--init`: Mode 1 — initialize tracker from entity table
    - `--report`: Mode 2 — surface upcoming deadlines and overdue items
@@ -20,60 +20,49 @@ argument-hint: "[--init | --report [--days N] | --update [--from-report] | --swe
    - `--sweep`: Mode 3c — walk through unknown/overdue items one by one
    - `--audit`: Mode 4 — full health audit
    - `--export`: Mode 5 — produce CSV or table export
-3. Read/write `~/.claude/plugins/config/claude-for-legal/corporate-legal/entities/compliance-tracker.yaml`.
+3. Read/write `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/entities/compliance-tracker.yaml`.
 4. After any update: show summary of changes and next action.
 
 ---
 
 ## Purpose
 
-Annual reports, franchise taxes, Statements of Information, biennial filings —
-every entity in every state has its own schedule and its own consequences for
-missing the deadline. This skill maintains a single YAML tracker that knows
-what's due, when, and for which entity. It's lightweight by design: the tracker
-is a file you own, Claude updates it on command, and you export it when you need
-to share it.
+Annual returns, financial statements, directors' reports, and significant controllers registers — every HK company and every foreign jurisdiction has its own filing schedule under the Companies Ordinance (Cap 622) and its own consequences for missing the deadline. This skill maintains a single YAML tracker that knows what's due, when, and for which entity. It's lightweight by design: the tracker is a file you own, Claude updates it on command, and you export it when you need to share it.
 
 ## Important: deadline reference caveat
 
-> The filing deadlines in this skill's reference table reflect publicly available
-> requirements as of the skill's build date. State filing requirements and due
-> dates can change. **Always confirm deadlines with your registered agent or
-> directly with the relevant Secretary of State before relying on them for
-> compliance purposes.** If you use CT Corp, National Registered Agents, or
-> another registered agent service, their compliance calendar is authoritative
-> for your specific entities — use this tracker to organize and surface their
-> data, not to replace it.
+> The filing deadlines in this skill's reference table reflect publicly available requirements as of the skill's build date. HK filing requirements and due dates can change via legislative amendments. **Always confirm deadlines with the Companies Registry (HK) or directly with the relevant registry before relying on them for compliance purposes.** If you use a corporate services provider, their compliance calendar is authoritative for your specific entities — use this tracker to organize and surface their data, not to replace it.
 
 ## Jurisdiction assumption
 
-> This tracker computes deadlines against the state or country of formation / qualification recorded per entity. Filing rules, due-date mechanics, and fee structures vary materially by jurisdiction. If an entity's actual footprint differs from what's in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` (undisclosed foreign qualification, dissolved entities, jurisdictional re-domestication, international filings managed by a local agent), the output may not apply as written — confirm with the registered agent or local counsel for that jurisdiction.
+> This tracker computes deadlines against the jurisdiction of formation / registration recorded per entity. Filing rules, due-date mechanics, and fee structures vary materially by jurisdiction. If an entity's actual footprint differs from what's in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` (undisclosed foreign registration, dissolved entities, jurisdictional changes, international filings managed by a local agent), the output may not apply as written — confirm with the corporate services provider or local counsel for that jurisdiction.
 
-## Entity-type disambiguation (especially Delaware)
+## Entity-type disambiguation (especially HK)
 
-> The filing calendar depends on **entity type**, not just jurisdiction. Treating a "Delaware entity" as a single bucket is a common and consequential error — DE corporations, DE LLCs, and DE LPs have different filings, different deadlines, and different consequences for a miss. Confirm the entity type from the entity table before computing or reporting a deadline, and never copy a deadline from one entity-type to another in the same state.
+> The filing calendar depends on **entity type**, not just jurisdiction. Treating a "HK company" as a single bucket is a common error — HK private companies limited by shares, public companies, and companies limited by guarantee have different filing obligations under Cap 622. Confirm the entity type from the entity table before computing or reporting a deadline.
 >
-> **Delaware — the split that matters:**
+> **HK Companies Ordinance (Cap 622) — the key filings:**
 >
-> - **DE Corporation (Inc., Corp.):** Annual report AND franchise tax, both due **March 1**. Franchise tax is calculated by the authorized-shares method or the assumed-par-value capital method (whichever is lower); the annual report captures director / officer information. Statutory basis: 8 Del. C. §§ 501–502 [verify current].
-> - **DE LLC:** No annual report required. Annual tax is a **flat $300**, due **June 1**. Statutory basis: 6 Del. C. § 18-1107(d) [verify current fee and date].
-> - **DE LP:** No annual report required. Annual tax is a **flat $300**, due **June 1** (parallel to the LLC rule). Statutory basis: 6 Del. C. § 17-1109 [verify current].
+> - **HK private company limited by shares:** Annual return (Cap 622 s. 662) due within 42 days after the anniversary of incorporation or the date of the last annual return. Annual financial statements and directors' report (Cap 622 s. 429-433) — must be prepared within 6 months of the financial year-end for private companies. Significant controllers register (Cap 622 Part 17A) — maintain and update with changes within 7 days.
+> - **HK public company (listed or unlisted):** Same annual return obligations plus filing of annual report and accounts with HKEX (if listed). Financial statements must be prepared within 4 months of the financial year-end (Cap 622 s. 429, for listed companies) or 6 months (unlisted public companies).
+> - **HK company limited by guarantee:** Annual return (Cap 622 s. 662) due on anniversary. Simplified financial reporting requirements per Cap 622 s. 434 for small guarantee companies.
+> - **Foreign companies registered in HK (Part 16 Cap 622):** Must file annual returns (Cap 622 s. 788), financial statements (Cap 622 s. 791), and notification of changes.
 >
-> A DE LLC is NOT required to file a March 1 annual report — writing that deadline for an LLC carries real risk (spurious "overdue" flags that mask actual June 1 exposure, or worse, the inverse: a user who treats the March 1 corporation rule as universal and misses the June 1 LLC deadline). If the entity table records a Delaware entity without a type, flag it as `type_unknown` and ask the user to confirm before computing either deadline.
+> A HK private company limited by shares does NOT file an annual return on a fixed calendar date — it's anniversary-based. Writing a fixed March 1 deadline for a HK company would be incorrect. If the entity table records a HK entity without a type, flag it as `type_unknown` and ask the user to confirm before computing any deadline.
 >
-> The same entity-type discipline applies in every other jurisdiction with divergent filing regimes by entity type (e.g., CA corp Statement of Information vs. CA LLC SOI cadence; TX franchise tax applies to corporations, LLCs, and LPs but with different no-tax-due thresholds). When the reference table for a jurisdiction is populated, make sure it is indexed by entity type, not just by state.
+> The same entity-type discipline applies to every other jurisdiction with divergent filing regimes by entity type. When the reference table for a jurisdiction is populated, make sure it is indexed by entity type, not just by jurisdiction.
 
 ---
 
 ## Tracker file
 
-Lives at `~/.claude/plugins/config/claude-for-legal/corporate-legal/entities/compliance-tracker.yaml`. Structure:
+Lives at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/entities/compliance-tracker.yaml`. Structure:
 
 ```yaml
 # Entity Compliance Tracker
 # Generated: [date]
 # Last updated: [date]
-# Disclaimer: deadlines are reference only — confirm with registered agent or Secretary of State
+# Disclaimer: deadlines are reference only — confirm with registered agent or Companies Registry (HK) / other relevant registry
 
 metadata:
   company: "[Company Name]"
@@ -90,7 +79,7 @@ entities:
     state_of_formation: "[state]"
     formation_date: "[date or null]"
     status: "[active / dormant / dissolving]"
-    registered_agent: "[CT Corp / National / in-house / other]"
+    registered_agent: "[corporate services provider / in-house / other]"
     notes: ""
 
     jurisdictions:
@@ -100,7 +89,7 @@ entities:
         agent_managed: false   # set true for international entities where a local agent handles compliance
         local_agent: "[name or null]"
         filings:
-          - type: "[Annual Report / Franchise Tax / Statement of Information / Biennial Statement / other]"
+          - type: "[Annual Return / Financial Statements / Directors' Report / Annual Confirmation / other]"
             due_date: "[YYYY-MM-DD]"
             due_basis: "[fixed date / anniversary month / other]"
             last_filed: "[date or null]"
@@ -124,19 +113,19 @@ Run when no tracker exists, or with `--rebuild` to regenerate from scratch.
 
 ### Step 1: Load entity table
 
-Read `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → `## Entity Management` → Entity table. If the entity table
+Read `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → `## Entity Management` → Entity table. If the entity table
 is populated (from org chart upload at cold-start), use it directly. If not,
 ask the user to either run the cold-start module or provide the entity list.
 
 ### Step 2: For each entity × jurisdiction, confirm the filing requirements
 
-For each entity, confirm the current filing schedule with the registered agent or the relevant Secretary of State. State filing schedules change (some states move from fixed dates to anniversary-based schedules and back, fee structures are revised, filing categories are reclassified). Do not rely on a cached schedule. The tracker below records the dates you confirm; update them when your registered agent sends reminders.
+For each entity, confirm the current filing schedule with the corporate services provider or the relevant registry. Filing schedules change (some jurisdictions move from fixed dates to anniversary-based schedules and back, fee structures are revised, filing categories are reclassified). Do not rely on a cached schedule. The tracker below records the dates you confirm; update them when your registered agent sends reminders.
 
 For each jurisdiction where the entity is registered (domestic or foreign):
 
 1. Ask the user whether they have a current compliance report from the registered agent — that's the most authoritative source.
 2. If not, ask the user what they know (filing type, due-date basis, last filed date, typical fee). Record what they provide.
-3. For anything the user does not know, flag the entity × jurisdiction entry as `unknown` — do not populate dates from a cached reference. The user's next step is to confirm with the registered agent or Secretary of State.
+3. For anything the user does not know, flag the entity × jurisdiction entry as `unknown` — do not populate dates from a cached reference. The user's next step is to confirm with the registered agent or relevant registry.
 
 **Capture details in the tracker rather than a reference table:**
 
@@ -144,8 +133,8 @@ For each jurisdiction where the entity is registered (domestic or foreign):
 > Let me capture them so we can track this going forward.
 >
 > For [Entity] in [Jurisdiction]:
-> 1. What type of filing is required? (Annual report, franchise tax, confirmation
->    statement, annual return, or something else?)
+> 1. What type of filing is required? (Annual return, confirmation statement, financial
+>    statements, annual return, or something else?)
 > 2. When is it due? (Fixed date like May 1, anniversary month, or other?)
 > 3. What's the typical fee? (Approximate is fine — or "unknown".)
 > 4. Who is your registered agent or local filing agent there?
@@ -191,7 +180,7 @@ If formation_date is null: set status to `unknown` and flag for confirmation.
 
 ### Step 3: Write the tracker
 
-Generate `~/.claude/plugins/config/claude-for-legal/corporate-legal/entities/compliance-tracker.yaml` with all entities and their
+Generate `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/entities/compliance-tracker.yaml` with all entities and their
 calculated filing requirements. Set initial status:
 - `current` if last_filed is within the current filing period
 - `due_soon` if due within 90 days and no last_filed for current period
@@ -265,14 +254,14 @@ Updates one or more entities in the tracker. Three sub-modes:
 
 ### Consequential-action gate (file SOI / annual report)
 
-**Before directing or confirming a filing:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before directing or confirming a filing:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
-> Filing a Statement of Information, annual report, or franchise tax return with a Secretary of State has legal consequences — it's a formal representation from the entity, it carries fees, and missed or incorrect filings can cause loss of good standing or franchise-tax defaults. Have you reviewed this with an attorney (or a qualified registered agent) before filing? If yes, proceed to record the filing. If no, here's a brief to bring to them:
+> Filing an annual return, financial statements, or other statutory filing with the Companies Registry (HK) or other relevant registry has legal consequences — it's a formal representation from the entity, it carries fees, and missed or incorrect filings can cause loss of good standing or strike-off. Have you reviewed this with an attorney (or a qualified corporate services provider) before filing? If yes, proceed to record the filing. If no, here's a brief to bring to them:
 >
 > - Entity, jurisdiction, filing type, and due date
-> - What the tracker says about the last filing (date, fee, officer/director information last reported)
-> - Open questions (is the officer/director information still accurate; has the registered agent changed; has the principal office changed)
-> - What could go wrong (out-of-date officer information, missed deadline triggering franchise tax or dissolution, fee calculation error)
+> - What the tracker says about the last filing (date, fee, director/company secretary information last reported)
+> - Open questions (is the director/company secretary information still accurate; has the registered office changed; has the business address changed)
+> - What could go wrong (out-of-date director information, missed deadline triggering late fees or strike-off (Cap 622 s. 744-746), fee calculation error)
 > - What to ask the attorney (is a filing actually needed this year; are there any charter amendments or officer changes that need to be reflected; who should sign)
 >
 > If you need to find an attorney, solicitor, barrister, or other authorised legal professional: contact your professional regulator (state bar in the US, SRA/Bar Standards Board in England & Wales, Law Society in Scotland/NI/Ireland/Canada/Australia, or your jurisdiction's equivalent) for a referral service.
@@ -300,7 +289,7 @@ Claude updates:
 /corporate-legal:entity-compliance --update --from-report
 ```
 
-User uploads a CT Corp, National Registered Agents, or similar compliance
+User uploads a corporate services provider, legal secretarial firm, or similar compliance
 report (PDF, CSV, or Excel). Claude reads it and updates matching entities:
 
 From the report, extract for each entity:
@@ -352,7 +341,7 @@ Broader review beyond just filing status. Surfaces:
 
 **Entity health:**
 - Entities marked as `dormant` — flag for review: should these be dissolved?
-  Carrying dormant entities costs money (annual fees, registered agent fees)
+  Carrying dormant entities costs money (annual fees, registered office and company secretary fees)
   and creates ongoing compliance obligations.
 - Entities with formation_date older than 5 years and status `dormant` — flag
   as dissolution candidates.
@@ -365,13 +354,13 @@ Broader review beyond just filing status. Surfaces:
   refreshing, especially if M&A or financing is anticipated.
 
 **Foreign qualification gaps:**
-- Based on `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` entity table: are there states in the company's
+- Based on `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` entity table: are there states in the company's
   operational footprint (offices, employees) where entities are not foreign
   qualified? This requires the attorney to confirm operational presence —
   Claude can flag the question but cannot determine presence independently.
 
 **Intercompany agreement gaps:**
-- From `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`: if intercompany agreements are marked as partial or no,
+- From `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`: if intercompany agreements are marked as partial or no,
   flag which entity relationships likely need agreements (parent-subsidiary
   services, IP licenses, loans).
 
@@ -396,8 +385,8 @@ GOOD STANDING
 
 POTENTIAL GAPS
   Foreign qualification: [flag question — confirm operational presence in:]
-    [list of states from `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` footprint not in tracker as qualified]
-  Intercompany agreements: [status from `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`]
+    [list of states from `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` footprint not in tracker as qualified]
+  Intercompany agreements: [status from `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`]
 
 RECOMMENDED ACTIONS
   1. [Highest priority action]
@@ -413,7 +402,7 @@ RECOMMENDED ACTIONS
 ```
 
 Produces a flat export suitable for sharing with finance, legal ops, or
-outside registered agent. Default: CSV.
+outside corporate services provider or local agent. Default: CSV.
 
 CSV columns:
 `Entity Name, Entity Type, State of Formation, Formation Date, Status,
@@ -431,17 +420,17 @@ a report or Slack message, showing only the next 90 days of filings.
 ## What this skill does not do
 
 - It does not file anything. Output is a tracker and a to-do list; filing
-  is done by the attorney, outside counsel, or registered agent.
+  is done by the attorney, outside counsel, or corporate services provider.
 - It does not pull good standing certificates. It tracks when certificates
-  were last confirmed; obtaining them is manual or via registered agent.
-- It does not determine whether foreign qualification is required in a given
-  state. That analysis depends on facts about business activity that the
+  were last confirmed; obtaining them is manual or via the relevant registry.
+- It does not determine whether foreign registration is required in a given
+  jurisdiction. That analysis depends on facts about business activity that the
   attorney must confirm.
-- It does not replace a registered agent service for companies with complex
-  multi-entity structures. CT Corp, National Registered Agents, and similar
-  services have dedicated compliance teams and direct state relationships.
-  This skill is best suited for smaller organizations without agent support,
-  or as a lightweight layer on top of agent data for organizations that do
+- It does not replace a corporate services provider for companies with complex
+  multi-entity structures. Corporate secretarial firms and legal service
+  providers have dedicated compliance teams and direct registry relationships.
+  This skill is best suited for smaller organizations without such support,
+  or as a lightweight layer on top of provider data for organizations that do
   have support.
 - The filing deadline reference table is not legal advice and may not reflect
   current requirements. Confirm all deadlines before relying on them.

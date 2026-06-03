@@ -12,6 +12,9 @@ system:
          (PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT ... for lawyers,
          RESEARCH NOTES — NOT LEGAL ADVICE ... for non-lawyer users). If the
          config is missing, default to the RESEARCH NOTES header.
+         **HK note:** Legal professional privilege in Hong Kong is governed by
+         common law. Verify the header language with HK-qualified counsel
+         before deploying.
       2. "Needs legal review now" — classification == needs-review, sorted by
          review_by_date ascending. One bullet per launch: title, tracker ID
          linked to its URL, target date, triggering domain(s), one-line

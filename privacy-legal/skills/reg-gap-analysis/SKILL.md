@@ -10,7 +10,7 @@ argument-hint: "[regulation name, or paste reg text/summary]"
 
 # /reg-gap-analysis
 
-1. Load `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → privacy policy commitments, regulatory footprint, DSAR systems.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → privacy policy commitments, regulatory footprint, DSAR systems.
 2. Run the workflow below.
 3. Scope: does the regulation apply? (jurisdiction, thresholds, sector)
 4. Extract requirements → diff against current state → gap list.
@@ -18,7 +18,7 @@ argument-hint: "[regulation name, or paste reg text/summary]"
 6. Save dated doc. Even "no gaps" gets documented.
 
 ```
-/privacy-legal:reg-gap-analysis "Colorado Privacy Act"
+/privacy-legal:reg-gap-analysis "PDPO (Cap 486) amended direct marketing provisions"
 ```
 
 ```
@@ -32,13 +32,13 @@ argument-hint: "[regulation name, or paste reg text/summary]"
 
 ## Purpose
 
-A state passes a new privacy law. The ICO issues new guidance. The CPPA finalizes regulations. Something moves — and now you need to know what, if anything, you have to change.
+The PCPD issues new guidance or revised codes of practice. The PDPO is amended. The HKSAR Government proposes new cross-border transfer rules. Something moves — and now you need to know what, if anything, you have to change.
 
-This skill diffs the new requirement against what you currently do (per `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → Privacy policy commitments + the practices documented in PIAs) and produces a gap list with a remediation plan.
+This skill diffs the new requirement against what you currently do (per `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → Privacy policy commitments + the practices documented in PIAs) and produces a gap list with a remediation plan.
 
 ## Load current state
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`:
 - `## Privacy policy commitments` — what you've publicly promised
 - `## Regulatory footprint` — what already applies
 - `## DSAR process` → systems list — what you actually do operationally
@@ -103,7 +103,7 @@ Not every gap is equal. Sort by:
 
 ### Step 5: Remediation plan
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
 
 > **Research-connector pre-flight.** Before emitting the remediation plan, check whether a legal research connector is reachable for this session — Westlaw, an EUR-Lex / regulator-site connector, or any firm-configured research MCP. Collect this into the reviewer note per CLAUDE.md `## Outputs`: if no connector returns results in Step 2 or the Common regulation categories research step (or none is configured at run time), record it in the **Sources:** line of the reviewer note — e.g., `not connected — cites from training knowledge; the highest-fabrication items in privacy gap analyses are new state-law effective dates, enforcement-begins dates, and article/section pinpoints — spot-check those first`. Per-citation `[model knowledge — verify]` tags remain inline. Do not emit a standalone banner above the output.
 
@@ -151,7 +151,7 @@ For each category relevant to the new regulation, **research the currently opera
 >
 > **Source attribution tiering.** Tag every citation in the gap analysis with its source. For model-knowledge citations, use one of three tiers rather than a single blanket "verify" tag:
 >
-> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., GDPR Art. 33, CCPA § 1798.100, FTC Act § 5). Still verify before filing, but lower priority.
+> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., PDPO s. 33, CCPA § 1798.100, FTC Act § 5). Still verify before filing, but lower priority.
 > - `[verify]` — model-knowledge citations that are real but should be verified: specific implementing regulations, agency guidance, case holdings, thresholds, effective dates, newly enacted state statutes.
 > - `[verify-pinpoint]` — pinpoint citations (specific subsection letters, volume/page numbers, paragraph numbers, regulatory subpart references) carry the highest fabrication risk and should ALWAYS be verified against a primary source.
 >

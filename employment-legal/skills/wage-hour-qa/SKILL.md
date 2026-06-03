@@ -27,11 +27,11 @@ argument-hint: "[question]"
 
 ## Purpose
 
-"It depends" is true but unhelpful. This skill produces a jurisdiction-specific
-answer grounded in researched, cited primary sources — and flags when the
-question is close enough to need human judgment. It does not state rules from
-memory: wage-and-hour thresholds, exemption criteria, and final-pay timing
-change frequently and vary meaningfully by state.
+"It depends" is true but unhelpful. This skill produces a Hong Kong-specific
+answer grounded in the Employment Ordinance (Cap 57), Minimum Wage Ordinance (Cap 608), and
+related legislation. HK has fewer jurisdictional variances than the US, but wage-related
+entitlements (minimum wage rates, statutory holiday pay, sickness allowance calculation)
+change periodically and should be verified against current rates.
 
 ## Load context
 
@@ -51,117 +51,54 @@ Which state/country is this about? If not stated:
 
 ### Step 2: Research the rule, then state it
 
-> **Research before answering.** For the jurisdiction and question, identify
-> the currently operative rule. Cite the controlling primary source (statute,
-> regulation, wage order, or case) with a pinpoint cite. Note the effective
-> date and whether the rule has been recently amended, indexed, or is in
-> litigation. If you are uncertain or cannot verify the current state of the
+> **Research before answering.** For the Hong Kong question, identify
+> the currently operative rule. Cite the controlling primary source (Employment Ordinance section,
+> Minimum Wage Ordinance, relevant case law) with a precise cite. Note the effective
+> date and whether the rate or rule has been recently updated. If you are uncertain or cannot verify the current state of the
 > law, say so and flag for attorney verification — do not state a rule you
 > haven't confirmed.
 
-State the rule in one paragraph, tied to the cite. Use your tools (web search,
-legal research integrations, team reference materials) to verify currency —
-especially for:
+State the rule in one paragraph, tied to the cite. Verify currency through
+web search or legal resources — especially for:
 
-> **No silent supplement.** If a research query to the configured legal research tool (Westlaw, CourtListener, or firm platform) returns few or no results for the jurisdiction-and-question, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [jurisdiction / question]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) flag the question as unverified and stop here. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
->
-> **Source attribution.** Tag every citation in the answer with where it came from: `[Westlaw]`, `[CourtListener]`, or the MCP tool name for citations retrieved from a legal research connector; `[web search — verify]` for web-search citations; `[model knowledge — verify]` for citations recalled from training data; `[user provided]` for citations the user supplied. Citations tagged `verify` carry higher fabrication risk and should be checked first. Never strip or collapse the tags.
+> **Source attribution.** Tag every citation in the answer with where it came from.
 
+- Statutory minimum wage rate under Cap 608 (verify current HK$ amount — checked annually by the Minimum Wage Commission).
+- Final-wage timing on termination (Cap 57 s. 25 — within 7 days).
+- Holiday pay and annual leave pay entitlement (Cap 57 Part VIIA and Part IX).
+- Sickness allowance (Cap 57 Part VIII — eligibility after accumulating paid sickness days).
+- Statutory holidays vs. statutory annual leave (Cap 57 Part VIII and Part IX — 12+ statutory holidays).
+- Maternity/paternity leave entitlements (Cap 57 Part III and Part IIIA).
+- End-of-year payment entitlement (Cap 57 Part IIC).
+- Severance payment / Long Service Payment (Cap 57 Parts VA/VB).
+- Employee vs. contractor classification — see `/employment-legal:worker-classification`.
 
-- Salary thresholds for any exemption (federal and state — several states
-  index annually and several have tiered thresholds by employer size).
-- Final-pay timing on termination vs. resignation (many states differ).
-- PTO payout requirements (jurisdiction-specific; some require, some leave
-  it to policy, some depend on accrual-plan design).
-- Meal and rest break rules and any penalty-pay consequence.
-- Daily or weekly overtime rules (some states have daily overtime and
-  double-time rules that federal law does not).
-- Classification tests — see the worker-classification skill; the applicable
-  test depends on jurisdiction and purpose.
+Common HK question types:
 
-Common question types you may be asked — for each, the answer is
-jurisdiction-specific and time-sensitive. Do not state the rule here; route
-to research:
+- "What is the current statutory minimum wage?" — Research the current rate under Cap 608.
+- "How much sickness allowance should we pay?" — Apply Cap 57 Part VIII (4/5 of normal wages, subject to accumulation rules).
+- "Do we have to pay for public holidays?" — Research Cap 57 Part VIII, noting the distinction between statutory holidays and general holidays.
+- "What's the correct notice period?" — Cap 57 s. 6 sets the minimum if the contract is silent.
+- "How is severance payment calculated?" — Cap 57 Part VA formula: (last month's wages × 2/3) × years of service.
+- "Can we classify this person as a contractor?" — Route to `/employment-legal:worker-classification`.
 
-- "Is this role exempt?" — Research the applicable federal and state salary
-  thresholds (verify current amounts and any employer-size tiers) and the
-  applicable duties test(s).
-- "Do we have to pay overtime for X?" — Research federal FLSA overtime plus
-  any state-specific overtime rules (daily OT, double-time, alternative
-  workweeks).
-- "Do we have to provide meal/rest breaks?" — Research the applicable
-  state rule and any penalty-pay consequence for missed breaks.
-- "When is final pay due?" — Research the applicable state rule, including
-  whether timing differs for termination vs. resignation and whether
-  waiting-time or late-pay penalties apply.
-- "Do we have to pay out accrued PTO?" — Research the applicable state rule
-  and any carve-out for accrual-cap or use-it-or-lose-it policies.
-- "Can we classify this person as a contractor?" — Route to
-  `/employment-legal:worker-classification` if the facts are not already clear.
+### Step 2a: HK wage calculations
 
-### Step 2a: FLSA regular-rate and back-pay calculations
+When the question involves computing wages, holiday pay, sickness allowance, or severance/LSP under HK law, use the following principles:
 
-When the question is a back-pay computation, unpaid-OT computation, or any
-question that turns on the FLSA "regular rate," use this scaffold. Do not
-answer from bare hourly wage × OT hours; that's the two most common errors
-this skill exists to catch.
+1. **HK does not have a general statutory overtime regime.** Overtime is governed by the employment contract. If the contract is silent, there is no statutory minimum overtime rate.
+2. **Wages defined (Cap 57 s. 2):** "Wages" includes all remuneration capable of being expressed in money, including commissions, bonuses, tips, and allowances, but EXCLUDES: end-of-year payments, benefits in kind, employer MPF contributions, travelling allowances, and gratuities.
+3. **Sickness allowance:** 4/5 of the employee's normal daily wages. Only payable after the employee has accumulated paid sickness days (at least 4 days of continuous sickness). Cap 57 s. 33 and 35.
+4. **Severance payment formula (Cap 57 Part VA):** (last month's wages × 2/3) × number of years of continuous employment, capped at HK$390,000 per employee `[verify current cap]`.
+5. **Long Service Payment formula (Cap 57 Part VB):** Varies by age group and years of service — a percentage of (last month's wages × 2/3 × years of service). Cap 57 s. 31V.
+6. **Final wages on termination:** Must be paid within 7 days of termination (Cap 57 s. 25). Late payment attracts interest.
+7. **Statutory holidays:** 12+ statutory holidays per year (Cap 57 s. 39 Schedule 3). Holiday pay for employees with 3+ months continuous employment.
+8. **Statutory annual leave:** 7–14 days depending on length of continuous employment (Cap 57 Part IX). Annual leave pay = daily average wages.
+9. **End-of-year payment:** 13th month or contractual bonus. If the contract provides for it, it is payable on termination on a pro-rata basis (Cap 57 Part IIC).
+10. **Limitation period for wage claims:** Labour Tribunal — 12 months from the cause of action; District Court / CFI — 6 years under the Limitation Ordinance (Cap 347).
 
-**The regular rate is NOT just the hourly wage.** Under 29 U.S.C. §207(e),
-the regular rate is **all remuneration** for employment EXCEPT the eight
-statutory exclusions in §207(e)(1)–(8) (e.g., discretionary bonuses, gifts,
-premium pay, expense reimbursements, profit-sharing plans meeting the DOL
-regs, stock options meeting §207(e)(8), retirement/insurance contributions).
-Anything NOT within those eight exclusions is IN.
-
-1. **Non-discretionary bonuses are IN the regular rate.** Productivity
-   bonuses, attendance bonuses, commissions, shift differentials, contest
-   awards, and most "bonuses" a reasonable employee would expect as a matter
-   of course are non-discretionary under §207(e)(3) and 29 C.F.R. §778.211.
-   Divide the bonus by the total hours worked in the bonus period to get
-   the per-hour increase to the regular rate. True discretionary bonuses
-   (§207(e)(3)) require both the fact of payment AND the amount to be
-   within the employer's sole discretion, determined at or near the end of
-   the period — narrow category.
-2. **The unpaid OT premium is 0.5×, not 1.5× — when straight time was
-   already paid for all hours.** If the employee was paid straight time for
-   every hour (including the OT hours) but no premium, they are owed the
-   **half-time premium** on OT hours, not time-and-a-half: `unpaid OT =
-   0.5 × regular rate × OT hours`. 29 C.F.R. §778.110(b). If the employee
-   was NOT paid for the OT hours at all, the owed amount is 1.5× the
-   regular rate on those hours. **State which pay posture you're assuming
-   before you compute** — it determines 0.5× vs. 1.5× and is the most
-   common error in this computation.
-3. **Show your math.** Print the formula and the inputs explicitly:
-   ```
-   Regular rate    = (straight-time wages + non-discretionary bonuses + other non-excluded comp) ÷ total hours worked
-   OT premium owed = 0.5 × regular rate × OT hours    [if straight time already paid for OT hours]
-                   = 1.5 × regular rate × OT hours    [if OT hours were unpaid]
-   ```
-   A number without the formula is not usable by a wage-and-hour lawyer.
-4. **Liquidated damages double the back-pay.** 29 U.S.C. §216(b). Liquidated
-   damages equal the unpaid back-pay amount unless the employer proves, to
-   the court's satisfaction, that the violation was in good faith and based
-   on reasonable grounds to believe it was not a violation. 29 U.S.C.
-   §260. Default assumption is liquidated damages apply; the employer bears
-   the burden to avoid them.
-5. **Statute of limitations is 2 years; 3 for willful.** 29 U.S.C. §255(a).
-   State the lookback explicitly and compute both bookends unless the
-   willfulness posture is already established by the user.
-6. **State overlay.** Many states have longer lookback, higher overtime
-   multipliers (daily OT, double-time), and different regular-rate rules.
-   Check state wage-and-hour law against the jurisdiction gate from Step 1
-   and flag where state law compounds (higher cap) or replaces (different
-   rate) federal. California, New York, Massachusetts, and Washington are
-   the most frequent overlay hits.
-7. **Attach the verify tag to the number.** Any back-pay amount produced by
-   this skill carries `[verify — consult wage-and-hour counsel before
-   asserting or paying]` on the line the number appears. The computation is
-   specialist work; the skill is scaffolding, not opinion.
-
-If the question is a back-pay calculation and any of these inputs are
-missing (bonus breakdown, whether straight time was paid for OT hours,
-willfulness posture, state jurisdiction), **ask before computing**. A
-confident wrong number is the worst output this skill can produce.
+If the question is a wage calculation and any of these inputs are
+missing (wage breakdown, length of service, termination reason), **ask before computing**.
 
 ### Step 3: The flag
 
@@ -184,7 +121,7 @@ Conversational. This is a Q&A, not a memo.
 
 > **Research-connector pre-flight.** Before emitting the answer, check whether a legal research connector is reachable for this session — Westlaw, CourtListener, or any firm-configured research MCP. Collect this into the reviewer note per CLAUDE.md `## Outputs`: if no connector returns results in Step 2 (or none is configured at run time), record it in the **Sources:** line of the reviewer note — e.g., `not connected — cites from training knowledge; pinpoint cites (volume/page/subsection) carry the highest fabrication risk, spot-check those first`. Per-citation `[model knowledge — verify]` tags remain inline. Do not emit a standalone banner above the output.
 
-> **Jurisdiction assumption.** Answers apply only to the jurisdiction identified. Wage-hour rules, exemption thresholds, and final-pay timing vary materially by state and country, and many rules index or change year over year. If the employee works in another jurisdiction, or the question is answered for the default-footprint state, this answer may not apply as written.
+> **Jurisdiction assumption.** Answers apply only to Hong Kong SAR employment law. The Employment Ordinance (Cap 57), Minimum Wage Ordinance (Cap 608), and related statutory provisions govern wage and hour matters in HK. If the employee works outside HK, or if choice-of-law is different, this answer may not apply as written.
 
 ```
 **[Jurisdiction]:** [The researched rule, one paragraph, with pinpoint cite

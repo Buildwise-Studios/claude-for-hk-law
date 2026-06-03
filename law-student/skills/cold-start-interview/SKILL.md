@@ -114,7 +114,7 @@ Two quick questions before we learn how you study. These shape how the plugin wo
 
 > Are you a law student, a recent grad studying for the bar, or someone else using this for legal study? (This feeds every skill's framing — bar-prep jumps straight into drilling, students get study planning first, and the honor-code reminder is gated on role.)
 >
-> 1. **Law student** — 1L, 2L, 3L, LLM; currently enrolled.
+> 1. **Law student** — LLB (Years 1-4), JD (Years 1-2), PCLL (Year 1), LLM; currently enrolled.
 > 2. **Recent grad studying for the bar** — graduated, prepping for a bar exam.
 > 3. **Someone else** — you're using these tools to learn legal material for a non-academic reason (self-study, career change, adjacent-field work).
 
@@ -129,7 +129,7 @@ If the answer is 3 (someone else), say this once:
 
 > You can use every feature — drilling, outlines, writing practice, exam forecasts — the same way a student would. Two things change in how I'll frame things:
 >
-> 1. **I'll frame outputs as study material, not as legal advice.** Learning doctrine is not the same as applying it to your own situation. If you're using this because you're navigating a real legal issue yourself, a study tool isn't the right starting point — find a lawyer (your jurisdiction's lawyer referral service is the fastest door: state bar in the US; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or the jurisdiction's equivalent. Legal aid for individuals; local law school clinics can point you). You can still use this to learn the area, just don't confuse learning with advice.
+> 1. **I'll frame outputs as study material, not as legal advice.** Learning doctrine is not the same as applying it to your own situation. If you're using this because you're navigating a real legal issue yourself, a study tool isn't the right starting point — find a lawyer (your jurisdiction's lawyer referral service is the fastest door: The Law Society of Hong Kong, the Hong Kong Bar Association, or the relevant professional body. Legal aid for individuals; local law school clinics can point you). You can still use this to learn the area, just don't confuse learning with advice.
 > 2. **I'll pause if it looks like you've shifted from study into a real matter.** See the real-client-matter check below.
 
 **Real-client-matter check (applies to all roles):** If the user describes a real matter with real facts (real client name, real dates, real filings, real legal exposure they or someone they know is facing) rather than a study hypothetical, pause:
@@ -137,7 +137,7 @@ If the answer is 3 (someone else), say this once:
 > That sounds like a real matter, not a study hypothetical. If it is:
 >
 > - **If you're in a clinic, externship, or supervised practice:** don't paste client facts into a study tool — use your clinic's approved workflow or talk to your supervising attorney.
-> - **If this is your own legal situation:** a study plugin is the wrong tool. Your jurisdiction's lawyer referral service is the fastest starting point (state bar in the US; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or the jurisdiction's equivalent); legal aid organizations cover many practice areas for individuals.
+> - **If this is your own legal situation:** a study plugin is the wrong tool. Your jurisdiction's lawyer referral service is the fastest starting point (The Law Society of Hong Kong, the Hong Kong Bar Association, or the relevant professional body); legal aid organizations cover many practice areas for individuals.
 >
 > I can still help you study the doctrine in the abstract. Want to convert this into a study hypothetical (names, dates, and identifying details changed)?
 
@@ -169,12 +169,12 @@ Write Part 0 answers to the plugin config under `## Who's using this` and `## Av
 
 *(This feeds `/law-student:study-plan` and `/law-student:outline-builder` — classes become scheduled study blocks, exam formats drive what `/law-student:exam-forecast` and `/law-student:irac-practice` prepare you for, and the bar date schedules `/law-student:bar-prep-questions` backward from the exam.)*
 
-- Year (1L, 2L, 3L, LLM)
-- School type — T1 / T2 / T3 / T4. (This calibrates difficulty in downstream drill and exam-forecast skills; the school *name* isn't needed.)
+- Year (LLB (Years 1-4), JD (Years 1-2), PCLL (Year 1), LLM)
+- School — HKU, CUHK, CityU. (This calibrates difficulty in downstream drill and exam-forecast skills; the school *name* isn't needed.)
 - This semester's classes — name, exam format, where you are in the syllabus
 - Bar jurisdiction and target date (if known) (This feeds `/law-student:bar-prep-questions` — schedules MBE sets and essay practice backward from this date, filtered to your jurisdiction's essay subjects.)
 
-**Situations that don't fit the boxes.** If your situation doesn't match the standard options (non-US law school, JD/LLM hybrid, dual-degree, part-time evening program, self-study for a non-UBE state, foreign-trained attorney preparing for a US bar, visiting scholar, PhD candidate auditing courses, or anything else the standard categories assume away), say so. I'll shift: "It sounds like your program doesn't fit my usual categories. Tell me about it in your own words — what you're studying, what the schedule looks like, what's on the horizon (exam, bar, paper) — and I'll build your profile from that instead of forcing you into boxes that don't fit. I'll skip or adapt the questions that don't apply." Then build the profile from the free-form description, flagging which template fields were filled, adapted, or left empty because they don't apply. A profile built from a forced fit is worse than a sparse profile built from what's actually true.
+**Situations that don't fit the boxes.** If your situation doesn't match the standard options (non-US law school, JD/LLM hybrid, dual-degree, part-time evening program, preparing for the HK PCLL Conversion Exams, overseas-trained lawyer preparing for the HK Overseas Lawyers Qualification Exam (OLQE), visiting scholar, PhD candidate auditing courses, or anything else the standard categories assume away), say so. I'll shift: "It sounds like your program doesn't fit my usual categories. Tell me about it in your own words — what you're studying, what the schedule looks like, what's on the horizon (exam, bar, paper) — and I'll build your profile from that instead of forcing you into boxes that don't fit. I'll skip or adapt the questions that don't apply." Then build the profile from the free-form description, flagging which template fields were filled, adapted, or left empty because they don't apply. A profile built from a forced fit is worse than a sparse profile built from what's actually true.
 
 **Don't ask for the professor's name.** If it shows up on an uploaded past exam or syllabus, the plugin will use it — but typing it in at setup is friction that doesn't add calibration signal. See the materials prompt below.
 
@@ -222,7 +222,7 @@ Then walk the categories below, capturing what the student has. More is always b
 - Old exams from the same professors (especially same-professor; those are highest signal)
 - Syllabi for current classes
 - Reading assignments / casebooks for current classes
-- Practice MBE question sets with answer explanations (Barbri/Themis/Kaplan — full sets if you have them)
+- Practice MBE question sets with answer explanations (PCLL preparation materials, HKLII, e-Legislation — full sets if you have them)
 - Bar prep course outlines if you're at that stage
 
 **Class specifics:**

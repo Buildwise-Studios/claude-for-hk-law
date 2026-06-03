@@ -10,7 +10,7 @@ argument-hint: "[VDR folder path or category name]"
 
 # /diligence-issue-extraction
 
-1. Load `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` + `~/.claude/plugins/config/claude-for-legal/corporate-legal/deals/[code]/deal-context.md`.
+1. Load `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` + `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/deals/[code]/deal-context.md`.
 2. Use the workflow below.
 3. Check `ai-tool-handoff` — if category is bulk and tool is configured, hand off first.
 4. Read docs, apply materiality filter, extract per category.
@@ -20,19 +20,19 @@ argument-hint: "[VDR folder path or category name]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
 ## Purpose
 
-The VDR has 2,000 documents. Somewhere in there are the 30 that matter for the deal. This skill reads documents against the diligence categories and materiality thresholds from `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`, extracts issues, and writes them in house memo format.
+The VDR has 2,000 documents. Somewhere in there are the 30 that matter for the deal. This skill reads documents against the diligence categories and materiality thresholds from `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`, extracts issues, and writes them in house memo format.
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → Diligence structure (categories, materiality thresholds)
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → Issues memo format (how findings are stated)
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/deals/[code]/deal-context.md` → deal-specific thresholds, VDR location
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → Diligence structure (categories, materiality thresholds)
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → Issues memo format (how findings are stated)
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/deals/[code]/deal-context.md` → deal-specific thresholds, VDR location
 
 If deal-context.md doesn't exist, ask which deal this is for.
 
@@ -57,7 +57,7 @@ If VDR MCP (Box/Intralinks/Datasite) is connected, pull the index. Map VDR folde
 
 ### Step 2: Apply materiality filter
 
-Per `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` / deal-context thresholds. Don't review everything if the threshold says contracts >$X.
+Per `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` / deal-context thresholds. Don't review everything if the threshold says contracts >$X.
 
 For contracts specifically: sort by stated value (if in filename/metadata) or by counterparty significance. Review top-down until you hit the threshold or the category is exhausted.
 
@@ -105,7 +105,7 @@ For each document read, check against the standard diligence concerns for its ca
 >
 > **No silent supplement.** If a research query to the configured legal research tool returns few or no results for a legal basis the finding needs (e.g., the rule governing a change-of-control consent requirement, an IP assignment doctrine, an employment classification test), report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [rule / doctrine]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
 
-Per the finding template in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. If the seed memo used this:
+Per the finding template in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. If the seed memo used this:
 
 ```
 Issue #N: [Title]
@@ -158,7 +158,7 @@ Group findings by request list category. Within category, sort by severity.
 
 ## Handoffs
 
-- **To ai-tool-handoff:** If Luminance/Kira is in use per `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`, hand bulk contract review there. This skill handles the nuanced documents (side letters, amendments, anything the AI tool struggles with).
+- **To ai-tool-handoff:** If Luminance/Kira is in use per `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`, hand bulk contract review there. This skill handles the nuanced documents (side letters, amendments, anything the AI tool struggles with).
 - **To deal-team-summary:** Aggregated findings feed the deal team brief.
 - **To material-contract-schedule:** Contract-level extractions feed the disclosure schedule.
 - **To closing-checklist:** Any finding that implies a discrete pre-closing action becomes a checklist item. The handoff is not limited to third-party consents — it also covers:
@@ -186,4 +186,4 @@ If the extraction surfaced more than ~10 issues, or any time the user asks: offe
 
 - It doesn't make the materiality call on close cases. It applies the threshold; a human decides the borderline.
 - It doesn't negotiate reps and warranties. It produces the findings that inform them.
-- It doesn't replace bulk AI review. For high-volume clause extraction, hand off to Luminance/Kira per `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. This skill is for the judgment layer.
+- It doesn't replace bulk AI review. For high-volume clause extraction, hand off to Luminance/Kira per `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. This skill is for the judgment layer.

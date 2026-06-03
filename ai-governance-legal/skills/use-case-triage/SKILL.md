@@ -103,15 +103,15 @@ but if the scope is meaningfully different, it may need its own assessment."
 
 ### Source attribution (applies whenever the triage cites regulation)
 
-Triage typically stays high-level, but if the classification depends on citing a regulation, statute, rule, directive, standard, or guidance — tag the citation. Do not output untagged regulatory citations in the triage reasoning, the red-line explanation, or the conditions list. A triage that says "Art. 22(1)" without a tag is exactly where a fabricated pinpoint slips past the reader.
+Triage typically stays high-level, but if the classification depends on citing a regulation, statute, rule, directive, standard, or guidance — tag the citation. Do not output untagged regulatory citations in the triage reasoning, the red-line explanation, or the conditions list. A triage that says "DPP3 (data protection principle)" without a tag is exactly where a fabricated pinpoint slips past the reader.
 
 **Source attribution tiering.** For model-knowledge citations, use one of three tiers:
 
-- `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., GDPR Art. 22 as a concept, the existence of Regulation (EU) 2024/1689 as the EU AI Act). Still verify before certifying, but lower priority.
+- `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., the existence of the PDPO (Cap. 486), the Basic Law, the Hong Kong Bill of Rights Ordinance (Cap. 383)). Still verify before certifying, but lower priority.
 - `[verify]` — model-knowledge citations that are real but should be verified: specific delegated / implementing acts, regulator guidance, standards, effective dates, thresholds, post-2023 amendments.
-- `[verify-pinpoint]` — pinpoint citations (specific article numbers, annex references, subsection letters, paragraph numbers) carry the highest fabrication risk and should ALWAYS be verified against a primary source. EU AI Act article numbers in particular shifted during consolidation; every pinpoint cite to the Act should be verified against the Official Journal text.
+- `[verify-pinpoint]` — pinpoint citations (specific article numbers, annex references, subsection letters, paragraph numbers) carry the highest fabrication risk and should ALWAYS be verified against a primary source. PDPO section numbers in particular may shift with amendments; every pinpoint cite should be verified against the current legislation on HK e-Legislation.
 
-Other sources keep their own tags: `[registry]` when drawn from the practice profile's use case registry; `[Westlaw]`, `[EUR-Lex]`, `[regulator site]`, or the MCP tool name when retrieved from a connected legal research tool; `[web search — verify]` for web-search citations; `[user provided]` for user-supplied citations. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
+Other sources keep their own tags: `[registry]` when drawn from the practice profile's use case registry; `[HKLII]`, `[Westlaw]`, `[e-Legislation]`, `[regulator site]`, or the MCP tool name when retrieved from a connected legal research tool; `[web search — verify]` for web-search citations; `[user provided]` for user-supplied citations. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 
 **For non-lawyer users, uncertain dates and thresholds go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to someone who doesn't know what the tag means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and an effective date, phase-in, threshold, or deadline is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel") and collect all uncertain assertions in a final triage section titled: "**Things I'm not certain about — ask your attorney to confirm before relying on this:**" with each item listed (what I said, what's uncertain, why it matters). Lawyer-role users keep the inline `[verify]` treatment.
 
@@ -135,9 +135,9 @@ Do not soften red line outcomes. If it's a no, it's a no.
 **Jurisdictional scope.** Ask: "Who's affected, and where are they? (Employees / customers / the general public / specific groups.) Which jurisdictions? (Not just where your company is — where the affected people are.)"
 
 Then check the use case against EVERY regime in the practice profile's `## Regulatory footprint`, not just the primary one. Flag conflicts:
-- "APPROVED under US law, but triggers EU AI Act Article 27 FRIA if EU residents are affected — confirm whether any affected individuals are in the EU."
-- "Standard tier under your governance framework, but NYC LL144 requires a bias audit if used for hiring decisions affecting NYC residents."
-- "Low risk under Australian AI Ethics Framework, but may be high-risk under the Colorado AI Act if Colorado residents are affected."
+- "APPROVED under HK PCPD guidance, but may trigger Mainland China PIPL requirements if PRC residents' data is processed — confirm jurisdiction."
+- "Standard tier under your HK governance framework, but SFC guidelines require additional disclosure if used for retail investment advice."
+- "Low risk under general HK law, but EU AI Act may apply if EU residents are offered the service."
 
 A use case that crosses jurisdictions gets the strictest applicable treatment, not the most convenient one.
 

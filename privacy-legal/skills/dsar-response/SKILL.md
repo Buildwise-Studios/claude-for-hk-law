@@ -12,7 +12,7 @@ argument-hint: "[paste the request, or describe it]"
 
 # /dsar-response
 
-1. Load `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → DSAR process (systems list, verification method, SLA).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → DSAR process (systems list, verification method, SLA).
 2. Run the workflow below.
 3. Classify request type. Check escalation triggers — if any fire, route before proceeding.
 4. Walk through: verify identity → walk systems list → exemption analysis → draft.
@@ -32,7 +32,7 @@ argument-hint: "[paste the request, or describe it]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -42,15 +42,17 @@ A DSAR has a deadline (set by the applicable regime), a process (verify, locate,
 
 ## Jurisdiction assumption
 
-This analysis assumes the jurisdictional scope specified in your configuration. Privacy rules, response deadlines, and lawful bases vary materially by jurisdiction (GDPR vs. state consumer privacy laws vs. sectoral). If the data subject, processing activity, or controller is in a different jurisdiction than configured, this analysis may not apply as written.
+This analysis assumes the jurisdictional scope specified in your configuration. Privacy rules, response deadlines, and lawful basis vary materially by jurisdiction (PDPO vs. GDPR vs. state consumer privacy laws vs. sectoral). If the data subject, processing activity, or data user is in a different jurisdiction than configured, this analysis may not apply as written.
 
 ## Load the process
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## DSAR process`. That section has:
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## DSAR process`. That section has:
 - The systems list (every place user data lives)
 - Identity verification method
-- Response SLA
+- Response SLA (default 40 calendar days under PDPO s.19(2))
 - Who handles routine vs. who gets escalated
+
+**PDPO context:** Under the Personal Data (Privacy) Ordinance (Cap 486), a data access request (DAR) must be responded to within 40 calendar days (s.19(2)). Data correction requests also carry a 40-day deadline (s.24(2)). A fee (prescribed maximum HK$180 for photocopying, plus reasonable search and reproduction costs) may be charged. There is no general right to erasure under the PDPO; deletion is handled under the retention limitation principle (DPP2). The PCPD has issued detailed guidance on handling DARs.
 
 If the systems list is empty or stale, flag it — can't do a complete DSAR without knowing where to look.
 
@@ -74,7 +76,7 @@ Identify which right the data subject is invoking. Common categories:
 >
 > **Source attribution tiering.** Tag every citation with its source. For model-knowledge citations, use one of three tiers rather than a single blanket "verify" tag:
 >
-> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., GDPR Art. 33, CCPA § 1798.100, FTC Act § 5, 45-day CCPA response window under § 1798.130(a)(2) as a concept). Still verify before filing, but lower priority.
+> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., PDPO s. 33, CCPA § 1798.100, FTC Act § 5, 45-day CCPA response window under § 1798.130(a)(2) as a concept). Still verify before filing, but lower priority.
 > - `[verify]` — model-knowledge citations that are real but should be verified: specific implementing regulations, agency guidance, case holdings, thresholds, effective dates, post-2023 amendments.
 > - `[verify-pinpoint]` — pinpoint citations (specific subsection letters, volume/page numbers, paragraph numbers, regulatory subpart references) carry the highest fabrication risk and should ALWAYS be verified against a primary source.
 >
@@ -84,7 +86,7 @@ Some requests are combinations — "delete my account and send me my data first"
 
 ### Step 2: Verify identity
 
-Per the method in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. Common approaches:
+Per the method in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. Common approaches:
 
 - **Logged-in verification:** Request came from within an authenticated session → identity confirmed
 - **Email match:** Request came from an email on file → usually sufficient for low-risk requests
@@ -104,7 +106,7 @@ This pauses the clock (arguably) but don't sit on it — respond to say you need
 
 ### Step 3: Locate the data
 
-Walk the systems list from `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. For each system:
+Walk the systems list from `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. For each system:
 
 | System | Queried? | Data found? | What |
 |---|---|---|---|
@@ -145,9 +147,9 @@ Most regimes expect (or require) a prompt acknowledgment separate from the subst
 - **Step 5a — Acknowledgment letter.** Sent within days of receipt (target: same-day to 3–5 days, always well inside the regime's statutory window). Confirms receipt, states what the controller understands the request to be, states the response clock and the target date, asks for any identity-verification material still outstanding. Does NOT contain the substantive disclosure. A prompt acknowledgment is the first regulator-visible signal that the DSAR process is working; it also reduces the risk of a duplicate request or an early complaint.
 - **Step 5b — Substantive response letter.** The actual disclosure, deletion confirmation, or portability export. Goes out by the statutory deadline (or the internal SLA if tighter). Only after identity verification is complete and the Step 3 / Step 4 data location + exemption analysis is done.
 
-**Before proceeding to send either letter to the data subject:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before proceeding to send either letter to the data subject:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
-> Sending a DSAR response has legal consequences — the content, the exemptions claimed, and the omissions are all reviewable by a regulator, and misstatements become enforcement exposure. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
+> Sending a DSAR response has legal consequences — the content, the exemptions claimed, and the omissions are all reviewable by a regulator, and misstatements become enforcement exposure. Have you reviewed this with a solicitor or barrister? If yes, proceed. If no, here's a brief to bring to them:
 >
 > [Generate a 1-page summary: data subject, right invoked, applicable regime(s), what was located across the systems list, what is being withheld and under which exemption, identity verification posture, response deadline, and the three things to ask the attorney before the letter goes out.]
 >
@@ -155,7 +157,7 @@ Most regimes expect (or require) a prompt acknowledgment separate from the subst
 
 Do not proceed past this gate without an explicit yes.
 
-> **Note:** Both DSAR letters are externally-facing deliverables sent to the data subject. Do **not** include the work-product header from `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` `## Outputs` on either letter. Internal notes, logs, and exemption analyses that accompany the letters are attorney work product — keep those separate and prepend the work-product header per `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` `## Outputs` (which differs by user role — see `## Who's using this`).
+> **Note:** Both DSAR letters are externally-facing deliverables sent to the data subject. Do **not** include the work-product header from `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` `## Outputs` on either letter. Internal notes, logs, and exemption analyses that accompany the letters are attorney work product — keep those separate and prepend the work-product header per `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` `## Outputs` (which differs by user role — see `## Who's using this`).
 
 > **Before sending either letter:** This is a draft for attorney review, not a response to send. Sending commits the controller to a position, may waive exemptions, and may start a regulator's clock. A licensed attorney reviews, edits, and approves before either letter goes to the data subject. Do not send unreviewed.
 
@@ -171,9 +173,9 @@ We received your [access / deletion / portability / correction] request on [date
 **Your request, as we understand it:** [one-sentence restatement — e.g., "a copy of all personal data we hold associated with your account, along with the categories of third parties with whom we share it, and deletion of your account after we provide the copy."]
 
 **What happens next:**
-- Our target date for the substantive response is [date — no later than the regime's statutory deadline; use internal SLA if tighter]. [If identity verification is outstanding: "We need [specific verification step] before we can proceed — see below."]
-- If we need more time because the request is complex or we receive other requests from you at the same time, we will tell you before the initial deadline and explain why. [If the regime allows an extension, cite the controlling provision.]
-- No fee applies to this request. [Or: the fee applies only if the regime permits it and the request is manifestly unfounded or excessive — cite the provision.]
+- Our target date for the substantive response is [date — no later than the regime's statutory deadline; use internal SLA if tighter]. Under PDPO s.19(2), the response is due within 40 calendar days of receipt. [If identity verification is outstanding: "We need [specific verification step] before we can proceed — see below."]
+- The PDPO does not provide for extensions. If we require additional time due to complexity, we will communicate with you within the initial period. [If other regimes apply that allow extensions, cite the controlling provision.]
+- A fee may apply under the PDPO (prescribed maximum HK$180 for photocopying, plus reasonable search and reproduction costs). We will inform you if a fee is required before processing. [Or: for other regimes: the fee applies only if the regime permits it and the request is manifestly unfounded or excessive — cite the provision.]
 
 [If identity verification is outstanding:]
 **To verify your identity,** please [specific verification step — e.g., reply to this email from the address on file with the last 4 digits of the payment method we have on file]. This does not pause our deadline; we continue to work in parallel.
@@ -183,7 +185,7 @@ If you have questions, contact [privacy contact].
 [Sender]
 ```
 
-**Clock-start rule.** The response clock starts on receipt of the request, not on completion of identity verification — unless the applicable regime says otherwise. Do not tacitly toll the clock on verification. If a regime has a different trigger, cite it; do not assume.
+**Clock-start rule.** Under the PDPO, the 40-day clock starts on receipt of the data access request (s.19(2)), not on completion of identity verification. Do not tacitly toll the clock on verification. If a regime has a different trigger, cite it; do not assume.
 
 #### Step 5b — Substantive response letter templates
 
@@ -263,7 +265,7 @@ If your team uses a DSAR tracking tool, create the record there. If not, a log f
 
 ## Escalation triggers
 
-Per `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → Escalation table, escalate when:
+Per `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → Escalation table, escalate when:
 
 - Requester is (or might be) a plaintiff, opposing counsel, or journalist
 - Request scope is unusual ("all data including internal communications about me")
@@ -277,7 +279,7 @@ Per `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → Esca
 
 **Research the currently operative response deadline for the specific right invoked and the applicable jurisdictions.** Check whether an extension mechanism exists, how much extra time it buys, and what notice the data subject must receive to invoke it. Identify when the clock starts (receipt vs. verification vs. some other trigger — default rule is receipt; verify per regime). Cite the controlling statute or regulation with pinpoint references. Note effective dates — data protection response timelines are amended frequently and new state laws introduce their own clocks.
 
-If `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## DSAR process` records an internal SLA that is tighter than the legal deadline, use the internal SLA and note the legal backstop.
+If `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## DSAR process` records an internal SLA that is tighter than the legal deadline, use the internal SLA and note the legal backstop.
 
 If you're going to need an extension, send the "we need more time" notice well before the first deadline. Day-of extensions look bad.
 

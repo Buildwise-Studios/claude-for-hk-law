@@ -11,7 +11,7 @@ argument-hint: "[feature name or description]"
 
 # /pia-generation
 
-1. Load `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → PIA house style (trigger, structure, depth, sign-off).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → PIA house style (trigger, structure, depth, sign-off).
 2. Run the workflow below.
 3. Check: is a PIA actually needed? (House trigger + research the mandatory-assessment triggers for each applicable regime — cite primary sources, verify currency.)
 4. Intake: ask the product-team questions. Can pull from PRD if provided.
@@ -33,7 +33,7 @@ PRD: [Drive link]
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -47,11 +47,11 @@ A PIA is a conversation with the product team, captured. It asks: what data, why
 
 ## Jurisdiction assumption
 
-This assessment assumes the jurisdictional scope specified in your configuration. Privacy rules, assessment triggers, and lawful bases vary materially by jurisdiction (GDPR vs. state consumer privacy laws vs. sectoral). If the processing activity, controller, or affected data subjects fall under a different jurisdiction, this analysis may not apply as written.
+This assessment assumes the jurisdictional scope specified in your configuration. Privacy rules, assessment triggers, and lawful basis vary materially by jurisdiction (PDPO vs. GDPR vs. other regimes). If the processing activity, data user, or affected data subjects fall under a different jurisdiction, this analysis may not apply as written.
 
 ## Load prior context on this feature / activity
 
-Before writing a new PIA, check the outputs folder for prior work on the same feature, processing activity, or counterparty. Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## Outputs` for the path. Scan for:
+Before writing a new PIA, check the outputs folder for prior work on the same feature, processing activity, or counterparty. Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## Outputs` for the path. Scan for:
 
 - **Prior `use-case-triage` results** covering this activity — the triage's risk rating, mandatory conditions, and called-out concerns are the entry point for the PIA.
 - **Prior `pia-generation` outputs** for the same or an overlapping activity — a superseding PIA should reconcile (what changed, what carried over). A PIA that silently produces different conclusions than a prior PIA on the same activity is a contradiction a reviewing attorney cannot see.
@@ -64,14 +64,14 @@ If a prior output is found, cite it in the PIA:
 If a prior PIA exists:
 > "This PIA supersedes the [date] PIA because [reason — scope change, new data category, vendor change, regulatory change]. Conclusions carried over: [X]. Conclusions revised: [Y, because Z]."
 
-**Carry severity from upstream as a floor** per the cross-skill severity floor rule in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## Shared guardrails`. A use-case-triage that rated the activity high-risk cannot become a PIA that concludes low-risk without stating why and what changed.
+**Carry severity from upstream as a floor** per the cross-skill severity floor rule in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## Shared guardrails`. A use-case-triage that rated the activity high-risk cannot become a PIA that concludes low-risk without stating why and what changed.
 
 If no prior output is found, say so explicitly — "No prior triage or PIA on this activity in outputs folder; this is a cold start" — so the reviewing attorney knows the check ran and didn't find anything to reconcile.
 
 ## Load house style
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## PIA house style`. That has:
-- What triggers a PIA here (may not match regulatory DPIA triggers — some teams PIA everything, some only high-risk)
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## PIA house style`. That has:
+- What triggers a PIA here (may not match regulatory personal-data-privacy impact assessment triggers — some teams PIA everything, some only high-risk)
 - The structure template extracted from the seed PIA
 - Typical depth
 - Who signs off
@@ -80,9 +80,9 @@ If the seed PIA structure is in the config CLAUDE.md, **use it**. The point is t
 
 ## Step 0: Is a PIA needed?
 
-Check the trigger criteria in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. That is the team's house answer.
+Check the trigger criteria in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. That is the team's house answer.
 
-In addition, **research the currently operative mandatory-assessment triggers** for each regime in the regulatory footprint (GDPR/UK GDPR DPIA triggers, CCPA/CPRA risk-assessment triggers, other US state data-protection assessment triggers, sectoral regimes). Cite the controlling statute, regulation, or regulator guidance with pinpoint references. Verify currency — assessment thresholds and definitions shift through new state laws, rulemaking, and enforcement guidance. Flag uncertainty rather than guess.
+In addition, **research the currently operative mandatory-assessment triggers** for each regime in the regulatory footprint (GDPR/UK GDPR personal-data-privacy impact assessment triggers, CCPA/CPRA risk-assessment triggers, other US state data-protection assessment triggers, sectoral regimes). Cite the controlling statute, regulation, or regulator guidance with pinpoint references. Verify currency — assessment thresholds and definitions shift through new state laws, rulemaking, and enforcement guidance. Flag uncertainty rather than guess.
 
 > **No silent supplement.** If a research query to the configured legal research tool returns few or no results for a regime's DPIA / risk-assessment triggers or lawful-basis rules, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [regime / question]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
 >
@@ -114,8 +114,8 @@ Before writing anything, get answers to these from the product team. Conversatio
 
 For each applicable regime, **research the currently operative framework** for the question below and cite primary sources:
 
+- **Under the PDPO (Cap 486):** The PDPO does not require a specific "lawful basis" in the sense of GDPR Art. 6. DPP1 requires collection for a lawful purpose directly related to a function/activity of the data user, and collection must be necessary and adequate (not excessive). DPP3 restricts use of data to the original purpose or a directly related purpose unless prescribed consent is obtained. For direct marketing, ss.35A-35J require prescribed written notice and consent/opt-out. Non-compliance with direct marketing provisions is a criminal offence.
 - Under regimes that require an identified lawful basis for processing (e.g., GDPR, UK GDPR), identify the basis for each purpose (contract / legitimate interest / consent / legal obligation / vital interests / public task / other). Research the specific requirements and any balancing-test or consent-standard expectations; cite controlling authority.
-- Under regimes that regulate disclosures (e.g., CCPA/CPRA and other US state privacy laws), check whether any flow looks like a "sale," "share," or other regulated disclosure under the currently operative statutory definitions. Third-party advertising is a recurring trap — research whether it falls within the regulated category for the applicable regime.
 - Under sectoral regimes (HIPAA, GLBA, COPPA, FERPA, etc.), research any regime-specific basis or disclosure rules.
 
 Verify currency; statutory definitions and bases are amended often. Flag uncertainty for attorney verification.
@@ -136,7 +136,7 @@ Verify currency; statutory definitions and bases are amended often. Flag uncerta
 
 ## Writing the PIA
 
-**Use the seed PIA structure from the config CLAUDE.md.** If none was captured, use this default. Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
+**Use the seed PIA structure from the config CLAUDE.md.** If none was captured, use this default. Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs]
@@ -243,7 +243,7 @@ Aim for 2-5 real risks, not 15 padded ones.
 
 ## Privacy policy diff
 
-Every PIA should cross-check against the privacy policy commitments in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. The common drift:
+Every PIA should cross-check against the privacy policy commitments in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. The common drift:
 
 - Policy says "we collect X, Y, Z" — new feature collects W. Policy needs updating, or stop collecting W.
 - Policy says "we don't sell data" — new feature shares with an ad partner. That might be a CCPA sale.
@@ -255,15 +255,15 @@ Flag every mismatch. One of them has to change before launch.
 
 - **To product team:** Conditions list with owners and deadlines. Not "improve security" — "add audit logging to the admin panel's location lookup, owner: [eng lead], before launch."
 - **To reg-gap-analysis skill:** If the PIA uncovered a policy inconsistency, that skill tracks the policy update.
-- **To the sign-off process:** Per `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → who approves PIAs.
+- **To the sign-off process:** Per `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → who approves PIAs.
 
 ## Gate: submitting a DPIA to a regulator
 
-Producing an internal PIA is research and documentation. *Submitting a DPIA to a supervisory authority* — or voluntarily disclosing one to a regulator in response to an inquiry — is the consequential act.
+Producing an internal PIA is research and documentation. *Submitting a DPIA to a Privacy Commissioner for Personal Data (PCPD)* — or voluntarily disclosing one to a regulator in response to an inquiry — is the consequential act.
 
-**Before proceeding to submit a DPIA (or any equivalent impact assessment) to a regulator, supervisory authority, or enforcement body:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before proceeding to submit a DPIA (or any equivalent impact assessment) to a regulator, Privacy Commissioner for Personal Data (PCPD), or enforcement body:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
-> Submitting to a regulator has legal consequences — the document becomes part of the supervisory record and any material omission or error becomes enforcement exposure. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
+> Submitting to a regulator has legal consequences — the document becomes part of the supervisory record and any material omission or error becomes enforcement exposure. Have you reviewed this with a solicitor or barrister? If yes, proceed. If no, here's a brief to bring to them:
 >
 > [Generate a 1-page summary: regime and regulator, why a submission is being made (mandatory trigger or voluntary), the risks identified, residual risk after mitigations, any flagged uncertainty, and the three things to ask the attorney before filing.]
 >
@@ -278,5 +278,5 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 ## What this skill does not do
 
 - It doesn't approve the processing. A human signs the PIA.
-- It doesn't write a DPIA for a supervisory authority — that's a more formal document with specific regulatory requirements. This is the internal assessment.
+- It doesn't write a DPIA for a Privacy Commissioner for Personal Data (PCPD) — that's a more formal document with specific regulatory requirements. This is the internal assessment.
 - It doesn't design the mitigation. It describes what needs mitigating; engineering designs the fix.

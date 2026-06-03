@@ -96,7 +96,7 @@ Debrief: what the intake caught, what the *student* should have probed deeper on
 The point: the draft is competent but not final. The student learns to read critically, not accept.
 
 **Exercise 3 — Research roadmap:**
-> Run `/research-start "habitability defense to eviction in [state]"`. You'll get a roadmap — statutes, case law areas, search terms.
+> Run `/research-start "habitability defence to possession claim in Hong Kong"`. You'll get a roadmap — ordinances, case law areas, search terms.
 >
 > None of those citations are verified. That's on purpose. Pick one statute from the roadmap and tell me how you'd verify it's current and applies here.
 
@@ -108,7 +108,7 @@ The habits that matter:
 
 - **Every output is a starting point.** If it went to a client or a court without you reading it critically, something went wrong.
 - **Verify every citation** before it goes in anything. `/research-start` gives leads, not authorities.
-- **Check jurisdiction-specific details.** The plugin knows your state from setup, but local court quirks change — double-check against current local rules.
+- **Check jurisdiction-specific details.** The plugin knows Hong Kong from setup, but Practice Directions and court procedures change — double-check against current Practice Directions (judiciary.hk) and HK e-Legislation.
 - **When uncertain, it says so.** If an output has a `[UNCERTAIN: ...]` flag, that's a prompt to research or ask the professor, not to delete the flag and move on.
 - **[Supervision reminder per CLAUDE.md style]** — what gets reviewed before it goes out, and how.
 

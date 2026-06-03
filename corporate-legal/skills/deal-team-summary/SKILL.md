@@ -11,7 +11,7 @@ description: >
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -21,13 +21,13 @@ The deal lead doesn't read 200 findings. They read: what's material, what change
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → Deal team briefing (cadence, format, what the business reads)
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/deals/[code]/deal-context.md` → deal lead, timeline
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → Deal team briefing (cadence, format, what the business reads)
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/deals/[code]/deal-context.md` → deal lead, timeline
 - Current findings from diligence-issue-extraction output
 
 ## Audience tiers
 
-Per `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` — what the business reads vs. what's for the file. Default tiers:
+Per `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` — what the business reads vs. what's for the file. Default tiers:
 
 | Audience | Gets | Doesn't get |
 |---|---|---|
@@ -101,7 +101,7 @@ Full finding detail. Same structure as above but every finding gets its full hou
 
 ## Deltas
 
-If this is a recurring brief (per `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` cadence), lead with what changed:
+If this is a recurring brief (per `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` cadence), lead with what changed:
 
 - New findings since last brief
 - Findings upgraded/downgraded in severity

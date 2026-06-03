@@ -1,5 +1,5 @@
 [
   { "event": "Scan renewals 0-180 days out, flag playbook deviations, as-of 2026-05-07", "description": "Scheduled weekly sweep — the default Monday-morning run" },
-  { "event": "Targeted scan: counterparty Acme Corp, all active agreements, surface cancel-by windows and price escalators", "description": "Ad-hoc scan before a renegotiation or relationship review" },
-  { "event": "Deviation check: contract IC-2026-00412 post-signature, compare against playbook and flag any terms outside standard", "description": "Follow-up after a negotiated deal closes to confirm no late-stage changes breached the playbook" }
+  { "event": "Targeted scan: counterparty Swire Pacific, all active agreements governed by HK law, surface cancel-by windows and HKD price escalators", "description": "Ad-hoc scan before a renegotiation or relationship review — HK-adapted with HKD thresholds" },
+  { "event": "Deviation check: contract HK-IC-2026-00412 post-signature, compare against playbook and flag any terms outside standard, including reasonable-notice issues where no express notice period exists", "description": "Follow-up after a negotiated deal closes to confirm no late-stage changes breached the playbook — HK common law notice check" }
 ]

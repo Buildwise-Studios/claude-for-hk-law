@@ -1,8 +1,8 @@
 {
   "name": "regulatory-legal",
   "version": "1.0.2",
-  "description": "Watches regulatory feeds, diffs new rules against your policy library, tracks comment deadlines and open gaps, and writes the digest your team reads Monday morning.",
+  "description": "Monitors Hong Kong regulatory feeds from the SFC, HKMA, and IA, diffs new rules and guidelines against your policy library, tracks LegCo bill comment deadlines, and produces compliance gap reports for HK-regulated firms.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

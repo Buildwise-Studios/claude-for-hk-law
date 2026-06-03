@@ -13,15 +13,15 @@ argument-hint: "[describe a proposed new practice — or omit / use --sweep for 
 # /policy-monitor
 
 **Sweep mode** (no argument or `--sweep`):
-1. Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → outputs folder path, policy document, last sweep date.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → outputs folder path, policy document, last sweep date.
 2. Run the workflow below. Scan outputs folder for files since last sweep.
 3. For each output: extract approved practices → diff against current policy commitments.
 4. Classify gaps: REQUIRED (policy misrepresents current practice) vs ADVISABLE (policy silent).
 5. For each gap: quote current policy, describe gap, draft suggested language.
-6. Update Last policy sweep date in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`.
+6. Update Last policy sweep date in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`.
 
 **Direct query mode** (with description argument):
-1. Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → current policy commitments + actual policy document.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → current policy commitments + actual policy document.
 2. Parse proposed practice. Diff against policy: data categories, purposes, third parties, retention, user rights, disclosure.
 3. Output: covered / missing / conflicting + suggested language for each gap + timing recommendation.
 
@@ -54,7 +54,7 @@ The output is always the same: here's the gap, here's the suggested language.
 
 ## Load current state
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`:
 - `## Who we are` → `## Regulatory footprint` — the regimes in scope (GDPR, CCPA / CPRA / other state consumer privacy, GLBA, HIPAA, FERPA, COPPA, VPPA, CPNI, etc.)
 - `## Privacy policy commitments` — the commitments extracted from the published policy
 - `## Outputs` — outputs folder path, policy document location, last sweep date
@@ -73,7 +73,7 @@ is authoritative for suggesting edits.
 
 The website privacy policy is one surface. Modern privacy programs make binding commitments in at least four more places that regulators actively scrutinize for inconsistencies:
 
-1. **Cookie consent banners / CMPs.** The consent management platform promises specific cookie categories and purposes. If the privacy policy says "we use analytics cookies" and the CMP offers "strictly necessary only," there's a conflict. EU DPAs and the FTC have both enforced against CMP misconfigurations.
+1. **Cookie consent banners / CMPs.** The consent management platform promises specific cookie categories and purposes. If the privacy policy says "we use analytics cookies" and the CMP offers "strictly necessary only," there's a conflict. The PCPD has issued guidance on cookie banners and data collection transparency.
 2. **App store privacy labels.** Apple App Privacy (the "nutrition label") and Google Data Safety are self-declared and FTC-enforceable. A company that updates its privacy policy but doesn't update its App Store label has a material, regulator-visible inconsistency. Check: when was the label last updated? Does it match the current policy's data categories, purposes, and sharing?
 3. **In-product consent flows.** The actual screens where users make data-use choices (onboarding consents, settings toggles, "we've updated our policy" dialogs). The policy says what you do; the consent flow says what the user agreed to. They should match.
 4. **Sector-specific notices.** GLBA privacy notices, HIPAA NPPs, FERPA directory notices, COPPA direct notices. These have their own update obligations and their own consistency requirements with the general privacy policy. (Detail below under "Sectoral notices.")
@@ -127,7 +127,7 @@ If the outputs folder is empty or has no new files since the last sweep:
 > "No new outputs since [last sweep date]. Policy appears current with recent
 > practice. Next scheduled sweep: [date]."
 
-Update **Last policy sweep** in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` to today's date after completing the sweep.
+Update **Last policy sweep** in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` to today's date after completing the sweep.
 
 ### What to read in each output type
 
@@ -335,7 +335,7 @@ to run `/privacy-legal:policy-monitor` weekly. Scheduled execution requires a
 scheduled-tasks integration, which is not bundled with this plugin.
 
 Whenever the sweep runs, it updates `## Outputs` → **Last policy sweep** in
-`~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`, so the next sweep only looks at new files.
+`~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`, so the next sweep only looks at new files.
 
 ---
 

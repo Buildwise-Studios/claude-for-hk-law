@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-arbitration",
+  "displayName": "HK Arbitration",
+  "description": "Hong Kong arbitration under the Arbitration Ordinance (Cap 609), UNCITRAL Model Law, and HKIAC rules. Covers arbitration agreements, interim measures, award enforcement (domestic and China under Arrangement), and court supervision.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

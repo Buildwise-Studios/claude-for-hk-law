@@ -15,15 +15,15 @@ argument-hint: "[section \u2014 e.g., 'statement of facts', 'argument II']"
 
 # Brief Section Drafter
 
-## Witness statements for England & Wales — PD 57AC
+## Witness statements for Hong Kong proceedings
 
 If the user's jurisdiction includes England & Wales and they're asking for a trial witness statement for the Business & Property Courts (or any CPR-governed proceeding), PD 57AC applies. The statement must be in the witness's own words, must not contain argument, must identify the documents the witness used to refresh their memory, and must carry the required confirmation of compliance and the legal representative's certificate.
 
-**Drafting a narrative "as the witness" from a chronology, document set, or your account of the case is exactly what PD 57AC was designed to prevent.** Courts are actively sanctioning AI-assisted witness statement drafting. If you ask me to do it, I won't.
+**Drafting a narrative "as the witness" from a chronology, document set, or your account of the case is not the right approach in any jurisdiction.** I will not draft a witness statement that puts words in a witness's mouth.
 
-What I WILL do: prepare question prompts to elicit the witness's actual recollection; capture and organize what the witness says (their words, not mine); generate the list of documents they were shown; run a PD 57AC compliance checklist against a statement they've drafted; draft the solicitor's certificate of compliance. I help you get the witness's evidence into the statement. I don't write the evidence.
+What I WILL do: prepare question prompts to elicit the witness's actual recollection; capture and organize what the witness says (their words, not mine); flag compliance issues against a statement they've drafted. I help you get the witness's evidence into the statement. I don't write the evidence.
 
-For US depositions, declarations, and affidavits: different rules, but the same discipline applies. A declaration in the declarant's voice that the declarant didn't write is a credibility problem at best.
+For HK affidavits and affirmations: the same discipline applies. An affidavit in the deponent's voice that the deponent didn't write is a credibility problem and potentially a contempt issue.
 
 ## Purpose
 
@@ -40,7 +40,7 @@ Ask before drafting: "Is this for a written submission or oral argument?" They a
 
 Two rules that govern every citation and every quotation in advocacy drafting. The canonical statement lives in the plugin's `CLAUDE.md` shared guardrails; repeated here because this skill is the most common place the rule gets tested.
 
-**Verbatim quotes from the record must be verbatim.** Never put quotation marks around words attributed to opposing counsel, a witness, the court, or any record document unless you have the exact passage in front of you and can cite to it. A quote that's almost right is worse than a paraphrase — it misrepresents the record, it's sanctionable if filed, and it will be caught. When you want to characterize what someone said but can't find the exact words:
+**Verbatim quotes from the record must be verbatim (HK rule: counsel must not misquote the record, per professional conduct rules).** Never put quotation marks around words attributed to opposing counsel, a witness, the court, or any record document unless you have the exact passage in front of you and can cite to it. A quote that's almost right is worse than a paraphrase — it misrepresents the record, it's sanctionable if filed, and it will be caught. When you want to characterize what someone said but can't find the exact words:
 
 - **Paraphrase without quotation marks**, attributing clearly: "Opposing counsel argued that X `[verify against record — Tr. p. __]`."
 - **Mark the placeholder:** `[verify exact quote — record cite pending]`
@@ -56,7 +56,7 @@ When the law is against you, say so. When an argument is weak — the authority 
 
 > "This point is weak — [authority] cuts the other way. Consider whether to press it (here's how you'd frame it), concede and pivot to [stronger point], or drop it. `[review — strategic call]`."
 
-Asserting a weak argument without flagging it erodes the lawyer's credibility with the tribunal and creates a candor problem (MR 3.1 — a lawyer must have a basis in law and fact). The draft should make the lawyer smarter, not confident about a bad position.
+Asserting a weak argument without flagging it erodes the lawyer's credibility with the tribunal and creates a candor problem (HK professional conduct rules require a basis in law and fact). The draft should make the lawyer smarter, not confident about a bad position.
 
 ## Citation extraction coverage
 

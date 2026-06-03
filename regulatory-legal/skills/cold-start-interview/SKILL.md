@@ -44,7 +44,7 @@ The company questions that belong in the shared profile (and should NOT be re-as
 
 Before the orientation, if you notice the working directory is inside a project (not the user's home directory), flag it. Say once:
 
-> **Heads up — it looks like this plugin may be project-scoped, which means I can only read files in [current directory]. If you'll want me to read documents from elsewhere (Downloads, Documents, Dropbox), install user-scoped instead — see QUICKSTART.md. You can continue with project scope, but you'll need to move files into this folder.**
+> **Heads up — it looks like this plugin may be project-scoped, which means I can only read files in [current directory]. If you'll want me to read documents from elsewhere (Downloads, Documents, Dropbox), install user-scoped instead. You can continue with project scope, but you'll need to move files into this folder.**
 
 Ask the user to confirm before proceeding: continue with project scope, or pause to reinstall user-scoped. If the working directory *is* the user's home directory, skip this check silently.
 
@@ -52,9 +52,9 @@ Ask the user to confirm before proceeding: continue with project scope, or pause
 
 Show this preamble first (3-4 short lines, nothing more):
 
-> **`regulatory-legal` is for people who track regulatory developments, assess policy gaps, and manage compliance obligations.** Not your area? `/legal-builder-hub:related-skills-surfacer`.
+> **`regulatory-legal` is for people who track Hong Kong regulatory developments (SFC, HKMA, IA, Competition Commission), assess policy gaps, and manage compliance obligations.** Not your area? `/legal-builder-hub:related-skills-surfacer`.
 >
-> **2 minutes** gets you your role, practice setting, and primary regulatory regime. **15 minutes** adds your full watchlist, materiality thresholds, feed cadence, policy library index, and comment-period sources.
+> **2 minutes** gets you your role, practice setting, and primary regulatory regime. **15 minutes** adds your full watchlist of HK regulators, materiality thresholds, feed cadence (SFC circulars, HKMA guidelines, Gazette), policy library index, and LegCo bill comment-period sources.
 >
 > Quick or full? (Upgrade any time with `/regulatory-legal:cold-start-interview --full`.)
 
@@ -122,7 +122,7 @@ If the answer is 2 or 3, say this once (don't repeat it on every output):
 
 If the answer is 3, add:
 
-> If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (state bar in the US; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or your jurisdiction's equivalent). Many offer free or low-cost initial consultations. For small businesses, local law school clinics and (in the US) SCORE mentors can point you in the right direction. For individuals, legal aid organizations cover many practice areas.
+> If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (Law Society of Hong Kong for solicitors; Hong Kong Bar Association for barristers; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or your jurisdiction's equivalent). Many offer free or low-cost initial consultations. For small businesses, local university law clinics (e.g., HKU, CUHK) can point you in the right direction.
 
 #### What's connected?
 
@@ -134,9 +134,9 @@ If the answer is 3, add:
 - If you can't test (no way to probe from here), report ⚪ "configured but not verified — open your MCP settings to confirm" with a one-line how-to.
 - Never report ✓ based on configuration alone.
 
-The Federal Register API is a free public endpoint and is always available — it does not require an MCP connector.
+The Hong Kong Government Gazette is a free public resource — it does not require an MCP connector. SFC, HKMA, and IA website monitoring is available via their free email alert subscriptions.
 
-For connectors that show as not connected, tell the user how to connect. Example phrasing: "[Feed provider] isn't connected. In Claude Cowork: Settings → Connectors → Add → [provider] → sign in. In Claude Code: add the provider's MCP to your config or via `/mcp`. This plugin works without it — Federal Register + manual paste covers US federal coverage — but connecting it adds enrichment and alert import."
+For connectors that show as not connected, tell the user how to connect. Example phrasing: "[Feed provider] isn't connected. In Claude Cowork: Settings → Connectors → Add → [provider] → sign in. This plugin works without it — Gazette + manual paste covers HK coverage — but connecting it adds enrichment and alert import."
 
 Then report findings in this form:
 
@@ -144,7 +144,7 @@ Then report findings in this form:
 > - ⚪ [Integration] — configured but not verified. Open your MCP settings to confirm.
 > - ✗ [Integration] — not found. [Feature] will fall back to [manual alternative]. [How to connect.]
 
-You don't need all of these. Core features work with free feeds (Federal Register API) and file access alone. Paid feeds add enrichment; manual paste-in always works. If you set something up later, re-run `/regulatory-legal:cold-start-interview --check-integrations`.
+You don't need all of these. Core features work with free HK sources (Gazette, regulator websites) and file access alone. Paid feeds add enrichment; manual paste-in always works. If you set something up later, re-run `/regulatory-legal:cold-start-interview --check-integrations`.
 
 #### Write to the config
 
@@ -187,9 +187,9 @@ Record the practice setting in the practice profile under `## Who's using this`.
 
 If not:
 
-- Which regulators? Name them. (FTC, SEC, CFPB, state AGs, CPPA, EU DPAs, sector-specific?)
-  *Coverage note: this plugin has structured feed support for US federal agencies (Federal Register API), SEC, FTC, and CFPB. State regulators and EU DPAs are supported via user-provided RSS URLs or manual entry — there is no automatic feed for those. Non-US regulators outside the EU DPA table require manual entry or user-provided feeds.*
-- Why each one? ("We're a fintech, CFPB is obvious" vs. "FTC because of the consent decree")
+- Which HK regulators? Name them. (SFC, HKMA, IA, Competition Commission, PCPD, LegCo, sector-specific?)
+  *Coverage note: this plugin has structured monitoring support for HK regulators (SFC, HKMA, IA, Competition Commission) via their websites and the Gazette. EU/UK regulators are supported via user-provided RSS URLs or manual entry. Non-HK regulators require manual entry or user-provided feeds.*
+- Why each one? ("We're a regulated bank, HKMA is obvious" vs. "SFC because of our asset management licence")
 - Any you're *not* watching that maybe you should be?
 
 **If the user didn't upload a watchlist or prior gap analysis:** at the end of this section, offer: "Want me to write this up as a standalone watchlist memo you can share and maintain? Same content I just captured — your regulators, why you watch each, and the feeds behind them — in a format you can circulate or hand to a new hire."
@@ -236,16 +236,16 @@ Paid feeds add enrichment for teams that have them.
 
 **Step 1: Map free feeds for the named watchlist**
 
-The Federal Register API (federalregister.gov/api) is the stable primary source for US federal agencies — it returns structured data by agency, document type, effective date, and comment deadlines. Use it as the default for any federal regulator in the watchlist.
+HK sources are the baseline: SFC website (sfc.hk → Regulatory News), HKMA (hkma.gov.hk → Press Releases & Publications), IA (ia.org.hk → News & Notices), Competition Commission (compcomm.hk → News & Publications), and the Hong Kong Government Gazette (gld.gov.hk → Gazette). Use these as the default for any HK regulator in the watchlist.
 
-For every other named regulator (state AGs, the CPPA (California), EU DPAs, sector-specific regulators, non-US regulators), ask the user for their preferred feed URL, or direct them to the agency's website to find the current feed. Feed URLs change; don't rely on a cached list.
+For every named non-HK regulator, ask the user for their preferred feed URL, or direct them to the agency's website to find the current feed. Feed URLs change; don't rely on a cached list.
 
-If a named regulator has no known free feed: flag it, ask the user how they currently track that regulator, and record the manual-entry fallback (see below).
+If a named HK regulator has no known free feed: flag it, ask the user how they currently track that regulator, and record the manual-entry fallback (see below).
 
 **Step 2: Ask about paid subscriptions (additive, not required)**
 
 - Paid regulatory feed subscription? Which provider, and which alerts are configured?
-- CourtListener? Which trackers?
+- Westlaw Asia / HKLII? Which trackers?
 
 If yes: configure as enrichment layer on top of free feeds. If no: free feeds are sufficient to proceed.
 
@@ -291,13 +291,13 @@ Per the template. Key: the materiality threshold table.
 **Free feeds (always active):**
 | Regulator | Source | URL/method |
 |---|---|---|
-| [name] | Federal Register API / RSS / manual | [endpoint or "manual entry"] |
+| [name] | HK e-Legislation / Gazette / SFC / HKMA / IA / manual | [endpoint or "manual entry"] |
 
 **Paid feeds (if configured):**
 | Service | Subscription | Alerts |
 |---|---|---|
 | [Paid feed provider] | [yes/no] | [alert names] |
-| CourtListener | [yes/no] | [tracker names] |
+| Westlaw Asia / HKLII | [yes/no] | [tracker names] |
 
 **Manual entry:** Enabled — paste any regulatory development to trigger diff + gap tracking.
 

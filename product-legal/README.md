@@ -17,7 +17,7 @@ Product legal workflows: launch review, marketing claims review, feature risk as
 
 Connects to your launch tracker (Jira/Linear), reads ten of your past launch reviews, learns what you actually block vs. what you wave through. Builds a risk calibration table that every other skill reads from.
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` and survives plugin updates.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` and survives plugin updates.
 
 ```
 /product-legal:cold-start-interview
@@ -37,7 +37,7 @@ Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/produ
 
 | Skill | Purpose |
 |---|---|
-| **cold-start-interview** | Writes ~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md from interview + past launch reviews |
+| **cold-start-interview** | Writes ~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md from interview + past launch reviews |
 | **launch-review** | Category-by-category review, calibrated to your company |
 | **marketing-claims-review** | Claims taxonomy: puffery/factual/comparative/implied/absolute |
 | **feature-risk-assessment** | Deep dive on one issue when launch review isn't enough |
@@ -88,7 +88,7 @@ Then:
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## Notes
 
@@ -102,4 +102,4 @@ Some features reference external integrations (document management, launch track
 
 ## Configuration
 
-Your configuration is stored at `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` and survives plugin updates — you only run setup once.
+Your configuration is stored at `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` and survives plugin updates — you only run setup once.

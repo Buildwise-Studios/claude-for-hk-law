@@ -3,7 +3,7 @@
 *Shared by all Claude for Legal plugins. The first plugin you set up writes this; the rest read it.
 Edit directly or re-run any plugin's `/cold-start-interview` to update.*
 
-**Practice setting:** [Solo/small firm | Midsize/large firm | In-house | Government/legal aid/clinic]
+**Practice setting:** [Solo/small firm | Midsize/large firm | In-house | Government/legal aid/clinic | **Solicitor firm** | **Barrister chambers** | **ILP (Incorporated Legal Practice)** | **Foreign law firm registered in HK**]
 **Name:** [Company or firm name]
 **Industry:** [What the company does / the firm's primary practice areas]
 **What we sell / deliver:** [Products, services, who to — or "N/A, law firm"]
@@ -11,9 +11,9 @@ Edit directly or re-run any plugin's `/cold-start-interview` to update.*
 
 ## Geographic and regulatory footprint
 
-**Jurisdictions we operate in:** [e.g., US (CA, NY, TX), UK, EU (DE, FR), AU, SG]
-**Primary jurisdiction:** [Where the bulk of work happens]
-**Regulators we're subject to:** [SEC, FTC, ICO, EDPB, ASIC, OAIC, etc. — only what applies]
+**Jurisdictions we operate in:** [e.g., HK, US (CA, NY, TX), UK, EU (DE, FR), AU, SG, CN]
+**Primary jurisdiction:** [Where the bulk of work happens, with HK-specific carve-outs if any]
+**Regulators we're subject to:** [Law Society of Hong Kong | Hong Kong Bar Association | SFC, HKMA, PDPO, etc. — only what applies]
 **Open regulatory matters:** [or none]
 
 ## Risk posture
@@ -26,6 +26,12 @@ Edit directly or re-run any plugin's `/cold-start-interview` to update.*
 
 **GC / Head of Legal:** [Name]
 **Escalation chain:** [Name → Name → Name, or "set per plugin"]
+
+## Language and systems
+
+**Default working language:** English (primary) / [Cantonese, Mandarin — if applicable]
+**Key legal research systems:** [e-Legislation, HKLII, Westlaw Asia, LexisNexis HK]
+**Practice management / DMS:** [iManage, M365, Aderant, ProLaw, or none yet]
 
 ---
 

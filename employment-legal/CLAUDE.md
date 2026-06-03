@@ -18,8 +18,26 @@ Rules for every skill, command, and agent in this plugin:
 **Shared company profile.** Company-level facts (who you are, what you do, where you operate, your risk posture, key people) live in `~/.claude/plugins/config/claude-for-legal/company-profile.md` — one level above this file, shared by all 12 plugins. Read it before this plugin's practice profile. If it doesn't exist, this plugin's setup will create it.
 -->
 
-# Employment Law Practice Profile
-*Written by cold-start on [DATE]. If `[PLACEHOLDER]`, run `/employment-legal:cold-start-interview`.*
+# Hong Kong Employment Law Practice Profile
+*Written by cold-start on [DATE]. If `[PLACEHOLDER]`, run `/employment-legal:cold-start-interview`.
+
+---
+
+## Jurisdictional Note
+
+This plugin is adapted for **Hong Kong law**. The primary legislation governing employment relationships is the **Employment Ordinance (Cap 57)**, supplemented by:
+- **Mandatory Provident Fund Schemes Ordinance (Cap 485)** — MPF retirement scheme
+- **Employees' Compensation Ordinance (Cap 282)** — work injury compensation
+- **Anti-Discrimination Ordinances:** Sex Discrimination Ordinance (Cap 480), Disability Discrimination Ordinance (Cap 487), Family Status Discrimination Ordinance (Cap 527), Race Discrimination Ordinance (Cap 602)
+- **Minimum Wage Ordinance (Cap 608)** — statutory minimum wage
+- **Personal Data (Privacy) Ordinance (Cap 486)** — employee data privacy
+
+**Key distinctions from US employment law:**
+- HK does not have an "at-will" employment doctrine. Either party may terminate by notice under the contract or statute.
+- HK has no general cap on working hours, except for young persons and certain industries.
+- HK does not have a unified "FMLA" — leave entitlements are specific to each type (maternity, sickness, annual, statutory holidays).
+- HK does not have a jury system in civil cases — employment-related claims are heard by the Labour Tribunal or the District Court / Court of First Instance.
+- Statutory leave entitlements are governed by the Employment Ordinance, not a patchwork of state laws.*
 
 ---
 
@@ -71,7 +89,7 @@ The deliverable should read like a partner wrote it. The meta-commentary goes in
 - If Role is **Lawyer / legal professional**: `PRIVILEGED & CONFIDENTIAL — ATTORNEY WORK PRODUCT — PREPARED AT THE DIRECTION OF COUNSEL`
 - If Role is **Non-lawyer** (either type): `RESEARCH NOTES — NOT LEGAL ADVICE — REVIEW WITH A LICENSED ATTORNEY, SOLICITOR, BARRISTER, OR OTHER AUTHORISED LEGAL PROFESSIONAL IN YOUR JURISDICTION BEFORE ACTING`
 
-**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (FRCP 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
+**The header's protection is jurisdiction-specific.** "Attorney work product" is a US doctrine (RHC 26(b)(3)). It does not exist in most other legal systems, and asserting it on a document does not create it:
 
 - **EU:** No general work-product protection. Legal professional privilege (LPP) protects communications with external counsel for the purpose of legal advice, but internal analyses, DPIAs, compliance assessments, and launch reviews are generally NOT shielded from supervisory authorities. Art. 58(1) GDPR gives DPAs broad investigative powers. A DG COMP dawn raid can seize a "privileged" launch review.
 - **UK:** Litigation privilege (similar to work product) requires litigation to be in reasonable contemplation at the time the document was created. An advisory memo created in the ordinary course is not protected by litigation privilege.
@@ -183,13 +201,13 @@ Silence about known doubt is as misleading as confident assertion. The hole the 
 
 A wrong premise propagated through three paragraphs of analysis is harder to catch than a wrong premise flagged at sentence one. Applies to any skill that accepts a user-asserted rule, statute, case citation, date, registration number, or jurisdiction.
 
-**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for attorney review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
+**When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
 **Destination check.** A `PRIVILEGED & CONFIDENTIAL` header is a label, not a control. Before producing or sending any output, check where it's going:
 
 - If the user names a destination (a channel, a distribution list, a counterparty, "everyone"), ask: is that inside the privilege circle?
-- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the attorney-client relationship and their agents.
+- Destinations that WAIVE privilege: public channels, company-wide lists, counterparty/opposing counsel, vendors, clients (for work product), anyone outside the solicitor-client relationship and their agents.
 - When the destination looks outside the circle: flag it. "You asked for a version for #product-all — that's a company-wide channel, which would waive the work-product protection on this analysis. I can give you (a) the privileged version for legal only, (b) a sanitized version for the broader channel, or (c) both. Which do you want?"
 - When the destination is ambiguous: ask.
 - Never silently apply a privileged header and then help send the document somewhere the header doesn't protect it.
@@ -308,8 +326,8 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 ## Jurisdictional footprint
 
-**US states with employees:** [PLACEHOLDER — list]
-**Countries with employees:** [PLACEHOLDER — list]
+**Jurisdiction:** Hong Kong SAR
+**Offices:** [PLACEHOLDER — Central / Tsim Sha Tsui / Wan Chai / etc.]
 **Remote-first or office-based:** [PLACEHOLDER]
 
 **High-attention jurisdictions** (most employees, most restrictive law, or most litigation):
@@ -319,23 +337,24 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 ## Hiring review
 
-**When legal reviews hires:** [PLACEHOLDER — all offers / exec only / only with restrictive covenants]
+**When legal reviews hires:** [PLACEHOLDER — all offers / exec only]
 
 **Offer letter template:** [PLACEHOLDER — location]
-**Restrictive covenant policy:** [PLACEHOLDER — non-competes Y/N by jurisdiction, non-solicits, etc.]
-**Background check policy:** [PLACEHOLDER]
+**Restrictive covenant policy:** [PLACEHOLDER — non-competes, non-solicits; enforceability requires legitimate business interest and reasonableness in scope/duration/geography per HK common law]
+**Background check policy:** [PLACEHOLDER — note PDPO (Cap 486) data privacy requirements for background checks]
 
 ---
 
 ## Termination review
 
-**When legal reviews terminations:** [PLACEHOLDER — all / performance only / RIFs only / exec only]
+**When legal reviews terminations:** [PLACEHOLDER — all / performance only / redundancy only / exec only]
 
-**Standard severance:** [PLACEHOLDER — formula or none]
-**Release required for severance:** [PLACEHOLDER — Y/N, template location]
+**Notice period:** [PLACEHOLDER — per contract / Employment Ordinance Cap 57 minimum]
+**Severance / Long Service Payment:** [PLACEHOLDER — per Part VA / VB of Cap 57]
+**Release required for severance:** [PLACEHOLDER — Y/N]
 
 **High-risk termination flags (auto-escalate):**
-- [PLACEHOLDER — e.g., protected class + recent complaint, FMLA return, whistleblower report]
+- [PLACEHOLDER — e.g., pregnancy dismissal (Cap 57 s.15), sickness absence, discrimination complaint, trade union activity, employee compensation claim pending]
 
 ---
 
@@ -343,26 +362,31 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 **Current version:** [PLACEHOLDER — location, date]
 **Update cadence:** [PLACEHOLDER]
-**State supplements:** [PLACEHOLDER — which states have addenda]
+**HK-specific policies required:** contractual terms (Cap 57 s.42C statutory particulars), anti-discrimination policy, MPF arrangements, Code of Practice on Employment
 
 ---
 
 ## Wage & hour
 
-**Exempt/non-exempt classification review:** [PLACEHOLDER — when, by whom]
-**Contractor classification review:** [PLACEHOLDER]
-**Overtime policy:** [PLACEHOLDER]
-**Known classification risk areas:** [PLACEHOLDER — roles that are borderline]
+**Minimum wage:** Statutory Minimum Wage under Cap 608 (currently HK$40 per hour `[verify current rate]`)
+**Overtime policy:** [PLACEHOLDER — HK has no general working hours cap; overtime terms governed by contract or industry practice]
+**Employee vs contractor classification tests:** HK common law uses control test and organisation/integration test (not the multi-factor US tests)
+**Known classification risk areas:** [PLACEHOLDER — roles with borderline control/organisation indicators]
 
 ---
 
-## Jurisdiction-specific escalation rules
+## HK-specific escalation rules
 
-*Built from handbook + termination memos at cold-start.*
-
-| Jurisdiction | Special rules | Escalate when |
+| Issue | HK legislation | Escalate when |
 |---|---|---|
-| [PLACEHOLDER — e.g., California] | [No non-competes, final pay on last day, etc.] | [Any termination, any restrictive covenant] |
+| Wrongful dismissal | Cap 57 ss. 32A–32P | Any termination where employee claims unfair or unreasonable dismissal within 3 years of employment commencement or protected reasons |
+| Pregnancy dismissal | Cap 57 s. 15 | Immediately — criminal liability, triple damages |
+| Discrimination | Cap 480 / 487 / 527 / 602 | Any allegations of discrimination, harassment, or victimisation |
+| Redundancy / Severance | Cap 57 Part VA | Any redundancy exercise affecting employees with 2+ years continuous employment |
+| Long Service Payment | Cap 57 Part VB | Employee qualifies for LSP on termination (5+ years continuous) |
+| Employees' Compensation | Cap 282 | Any work injury claim |
+| MPF non-compliance | Cap 485 | Any failure to enrol or contribute |
+| Restrictive Covenants | HK common law | Any non-compete clause — requires legitimate business interest, reasonableness test per common law
 
 ---
 
@@ -371,6 +395,7 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 **HRIS:** [System name / none]
 **Leave data access:** [Legal has read access / manual — `~/.claude/plugins/config/claude-for-legal/employment-legal/leave-register.yaml`]
 **Handbook location:** [Drive folder / SharePoint / local path]
+**MPF Scheme:** [Name of trustee / scheme]
 
 ---
 
@@ -378,10 +403,12 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 | Issue | Handle at | Escalate to | When |
 |---|---|---|---|
-| Routine offer letter | [HR] | [You] | Restrictive covenants, exec, new jurisdiction |
+| Routine offer letter | [HR] | [You] | Restrictive covenants, exec |
 | Performance termination | [HR + you] | [GC] | High-risk flags present |
-| RIF | — | [GC + outside counsel] | Always |
-| Agency complaint (EEOC, DOL, state) | — | [GC immediately] | Always |
+| Redundancy | — | [GC + outside counsel] | Always — complex procedural requirements under Cap 57 |
+| Discrimination complaint (EOC) | — | [GC immediately] | Always |
+| Employees' Compensation | — | [GC + insurance] | Any work injury |
+| Labour Tribunal claim | — | [GC + outside counsel] | Any claim received |
 
 ---
 
@@ -389,10 +416,10 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 | Doc | Location | Date | Notes |
 |---|---|---|---|
-| Handbook | [PLACEHOLDER] | | |
-| Term memo 1 | [PLACEHOLDER] | | |
-| Term memo 2 | [PLACEHOLDER] | | |
-| Term memo 3 | [PLACEHOLDER] | | |
+| Employment contract template | [PLACEHOLDER] | | |
+| Employee handbook | [PLACEHOLDER] | | Must include Cap 57 s.42C statutory particulars |
+| Termination memo sample | [PLACEHOLDER] | | |
+| MPF enrolment procedures | [PLACEHOLDER] | | |
 
 ---
 

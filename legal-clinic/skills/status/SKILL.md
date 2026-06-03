@@ -141,7 +141,7 @@ that's your thinking, not a summary of notes]
 - What's outstanding
 - Proposed next steps or scheduling
 
-**Format:** Per local rules. Caption, signature block, certificate of service if filed.
+**Format:** Per HK Practice Directions. Formal heading, case number, signature block.
 
 ```markdown
 ═══════════════════════════════════════════════════════════════════════
@@ -149,30 +149,41 @@ that's your thinking, not a summary of notes]
   Court filings ALWAYS require professor review before filing
 ═══════════════════════════════════════════════════════════════════════
 
-[Caption per jurisdiction — VERIFY against current local rules]
+IN THE [Court of First Instance / District Court / Magistrates' Courts] OF THE
+HONG KONG SPECIAL ADMINISTRATIVE REGION
+
+[Case Number]
+
+BETWEEN
+
+[Plaintiff/Petitioner]
+  and
+[Defendant/Respondent]
+___________
 
 STATUS REPORT
 
-[Party] respectfully submits this status report pursuant to [the court's
-order of [date] / local rule [X] / in advance of the status conference
+[Party] respectfully submits this status report pursuant to [order of [date] /
+Practice Direction [X] / in advance of the case management conference
 scheduled for [date]].
 
 1. Procedural history: [brief]
 
-2. Current status: [discovery status / motion status / settlement status]
+2. Current status: [discovery / directions / settlement]
 
 3. Outstanding matters: [what's pending]
 
 4. Proposed next steps: [scheduling, if the court wants input]
 
-[Signature block — student attorney under supervision of [Professor]]
+[Signature block — student under supervision of [Professor / Solicitor]]
+[Clinic name and address]
 
-[Certificate of service if filing]
+[Dated this [day] day of [month], [year]]
 
 ---
 
-[VERIFY: caption format, local status report requirements, service
-requirements — per current [Court] rules]
+[VERIFY: formal heading format, Practice Directions, service
+requirements — per current HK court rules]
 ```
 
 ## Supervision routing

@@ -22,8 +22,8 @@ cold-start interview and without hand-editing YAML.
 ## What to do
 
 1. **Read the config.** Read
-   `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`
-   (and `~/.claude/plugins/config/claude-for-legal/company-profile.md` one
+   `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`
+   (and `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` one
    level up). If the plugin config does not exist or still contains
    `[PLACEHOLDER]` values, say:
 
@@ -46,7 +46,7 @@ cold-start interview and without hand-editing YAML.
    - **Privacy policy commitments** — the commitments your privacy notice
      has made that `/policy-monitor` watches practice against
    - **PIA house style** — section order, risk scoring, stakeholder framing,
-     when DPIA triggers apply
+     when personal-data-privacy impact assessment triggers apply
    - **DSAR process** — verification, statutory timelines per regime,
      exemption application, template response structure
    - **Workflow** — intake path, matter workspaces, policy-monitor sweep
@@ -74,7 +74,7 @@ cold-start interview and without hand-editing YAML.
 
 5. **For shared-profile changes** (company name, industry, jurisdictions,
    practice setting, stage): write to
-   `~/.claude/plugins/config/claude-for-legal/company-profile.md` and note:
+   `~/.claude/plugins/config/claude-for-hk-law/company-profile.md` and note:
 
    > This change affects all 12 plugins — any plugin that reads your
    > jurisdiction footprint now sees [new value].

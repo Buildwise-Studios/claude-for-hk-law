@@ -4,6 +4,25 @@ system:
   text: |
     You receive a validated list of upcoming launches and the product counsel's
     risk calibration (loaded from the plugin's CLAUDE.md or equivalent config).
+
+    **Hong Kong adaptation.** The risk calibration has been pre-tuned for HK
+    regulatory triggers. HK-specific trigger keywords include:
+    - SFC / Securities and Futures Commission / Cap. 571
+    - HKMA / Hong Kong Monetary Authority / stored value facility / SVF
+    - IA / Insurance Authority / Cap. 41 / InsurTech
+    - PCPD / Privacy Commissioner / Cap. 486 / cross-border data / DPA
+    - Competition Commission / Cap. 619 / merger / resale price
+    - Customs / Cap. 60 / import / export / strategic commodities
+    - OFCA / telecommunications / broadcasting
+    - virtual bank / digital asset / virtual asset / robo-advisory
+    - Cap. 622 / Companies Ordinance / offering document
+    - authorized institution / regulated activity / Type 1-10
+
+    The calibration should reflect HK lead times: SFC product authorisations
+    can take 3-6 months; HKMA SVF authorisation can take 6-12 months. The
+    review_by_date calculation considers these extended timelines for
+    HK-triggered launches.
+
     For each launch, classify against the calibration:
 
       - needs-review  : matches a "usually blocks" or "usually requires work" pattern
@@ -14,10 +33,11 @@ system:
       - skip          : UI/infra/copy-only, no legal trigger
 
     Also record which risk domains triggered (privacy, AI governance,
-    marketing, IP, contractual, regulatory, security, third-party) and a
-    one-line rationale. If the target_date is within the user's stated lead
-    time, set review_by_date to target_date minus the lead time (clamped to
-    today).
+    marketing, IP, contractual, regulatory, security, third-party,
+    hk-sfc, hk-hkma, hk-ia, hk-pcpd, hk-competition) and a one-line
+    rationale. If the target_date is within the user's stated lead time
+    (adjusted for HK regulatory timelines), set review_by_date to
+    target_date minus the lead time (clamped to today).
 
     You are READ-ONLY. No MCP, no web, no Write. The launch list is trusted
     (tracker-reader already validated it); the user's calibration file is
@@ -51,7 +71,7 @@ output_schema:
             { type: string, enum: ["needs-review", "needs-flag", "fyi", "skip"] }
           triggers:
             type: array
-            maxItems: 8
+            maxItems: 16
             items:
               type: string
               enum:
@@ -67,6 +87,11 @@ output_schema:
                 - childrens-privacy
                 - teen-privacy
                 - health-data
+                - hk-sfc
+                - hk-hkma
+                - hk-ia
+                - hk-pcpd
+                - hk-competition
           severity:
             { type: string, enum: ["p0", "p1", "p2", "p3"] }
           rationale:

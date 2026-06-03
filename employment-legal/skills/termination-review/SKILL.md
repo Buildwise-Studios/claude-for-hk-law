@@ -49,119 +49,68 @@ Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/
 - Jurisdiction (where they work)
 - Reason for termination (performance, misconduct, RIF, position elimination)
 - How long employed
-- Age (relevant to release requirements for older-worker protections)
-- Whether any other employees are being terminated as part of the same
-  decisional unit or program (relevant to group-termination release rules)
+- Length of continuous employment (critical for notice period, severance, and long service payment under Cap 57)
+- Monthly wages and average wages (for calculating statutory entitlements)
+- Whether any other employees are being terminated as part of a redundancy exercise (triggers Part VA of Cap 57)
 - When is the planned term date
 
-### Step 2: High-risk flag scan
+### Step 2: High-risk flag scan (HK Employment Ordinance)
 
-This is the most important step. Check every flag from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. Default
+This is the most important step. Check every flag from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. HK-default
 set:
 
 | Flag | Why it's high-risk | Check |
 |---|---|---|
-| **Recent complaint** | Retaliation claim | Has this employee filed any complaint (HR, ethics hotline, regulatory) recently? |
-| **Protected leave** | Leave-law interference/retaliation | Currently on or recently returned from protected leave (FMLA/state equivalents, disability, parental, military)? |
-| **Protected class + timing** | Discrimination claim | Protected class AND recently disclosed/visible (pregnancy announcement, religious accommodation request, disability disclosure)? |
-| **Whistleblower** | Federal and state whistleblower statutes | Has this employee raised concerns about illegality, safety, fraud? |
-| **Thin documentation** | "Why now?" problem | For performance terms: is there a PIP, written warnings, documented feedback? Or did this come out of nowhere? |
-| **Comparator problem** | Disparate treatment | Is someone else doing the same thing and not being terminated? |
-| **Contract/handbook promise** | Breach | Does the offer letter, handbook, or any writing promise a process that isn't being followed? |
-| **Exempt misclassification** | FLSA + state wage claim with liquidated damages | See the classification check below. Fires on state + classification + title. |
+| **Recent complaint** | Retaliation / victimisation claim | Has this employee filed any complaint (HR, EOC, Labour Department, trade union) recently? |
+| **Protected leave / sickness absence** | Unlawful dismissal under Cap 57 s.15 | Currently on or recently returned from statutory maternity leave, paternity leave, or paid sickness days? |
+| **Pregnancy** | Absolute prohibition on dismissal | Is the employee pregnant? Dismissal during pregnancy is a criminal offence under Cap 57 s.15 — triple damages payable |
+| **Discrimination / harassment complaint** | Cap 480 / 487 / 527 / 602 | Has the employee raised discrimination or sexual harassment concerns? |
+| **Trade union activity** | Anti-union dismissal | Is the employee a trade union member or organiser? Dismissal for trade union membership/activity is unlawful |
+| **Whistleblower** | Protected disclosures | Has this employee raised concerns about illegality, safety, fraud? |
+| **Employees' Compensation pending** | Cap 282 | Is there an active work injury claim? Dismissal while compensation pending is high-risk |
+| **Thin documentation** | "Why now?" problem | For performance terms: is there a written warning process, documented feedback? Or did this come out of nowhere? |
+| **Comparator problem** | Disparate treatment discrimination | Is someone else doing the same thing and not being terminated? |
+| **Contract/handbook promise** | Breach of contract | Does the employment contract or handbook promise a process that isn't being followed? |
 
-**Exempt/non-exempt classification flag.** Fire this flag when ALL of the
-following are true:
+**Wrongful dismissal flag (Cap 57 ss. 32A–32P).** An employee with not less than 2 years of continuous employment is protected against unreasonable and unfair dismissal. The employee can claim reinstatement or terminal payment. This applies even if proper notice was given. Fire this flag when the termination reason might be contested as unreasonable.
 
-1. The employee works in a state with a high exempt salary threshold — **CA,
-   NY, WA, CO, AK** (and any other state listed in
-   `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` →
-   `## Wage & hour` → Known classification risk areas as a high-threshold
-   state) — **AND**
-2. The employee is classified **exempt** (salaried, no overtime) — **AND**
-3. The employee's title contains **"supervisor," "lead," "coordinator,"
-   "analyst," "administrator,"** or **"specialist"** (case-insensitive, and
-   any equivalent-scope title the practice profile flags as risky).
-
-When all three fire, emit:
-
-> 🔴 **Potential exempt misclassification** — [title] earning $[X] in
-> [state]. The exempt salary threshold in [state] is approximately $[Y]
-> `[model knowledge — verify]`. Before termination, route to
-> `/employment-legal:wage-hour-qa` for a classification check — a misclassified
-> employee who's terminated has a ready-made FLSA and state-wage claim with
-> liquidated damages, attorneys' fees, and (in CA) PAGA exposure, which
-> the separation agreement may not be able to release cleanly. A terminated
-> plaintiff with unpaid-OT exposure is the most litigated wage-and-hour
-> fact pattern in these states.
-
-Do not suppress this flag because the title "looks managerial" — the whole
-premise of the misclassification claim is that titles lie. Route to
-`/employment-legal:wage-hour-qa` for the actual duties-and-salary test.
-
-**If a back-pay number is being computed as part of this review (severance
-modeling, settlement posture, exposure estimate), do NOT compute it in this
-skill.** Route to `wage-hour-qa` → Step 2a and use its regular-rate
-scaffold: §207(e) inclusions (non-discretionary bonuses, commissions,
-shift diffs) in the regular rate, 0.5× premium when straight time was
-already paid for OT hours (else 1.5×), liquidated damages under §216(b),
-and 2-year / 3-year willful SOL under §255(a). Every back-pay number
-carries `[verify — consult wage-and-hour counsel before asserting or
-paying]`. A clean-looking wrong number here is the specific failure mode
-this scaffold prevents.
+**Summary dismissal flag (Cap 57 s. 9).** Summary dismissal without notice is only permitted for gross misconduct. If the employer relies on summary dismissal and the conduct doesn't meet the high threshold, the dismissal is unlawful and the employee is entitled to damages in lieu of notice.
 
 **Any flag fires → escalate per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` before the term proceeds.** Not
 after. Before.
 
-### Step 3: Jurisdiction-specific requirements
+### Step 3: HK-specific requirements
 
-> **Research the applicable rules for the employee's jurisdiction before
+> **Research the applicable rules under the Employment Ordinance (Cap 57) before
 > finalizing the plan.** Specifically:
 >
-> - Final-pay timing — this varies widely by state and often depends on
->   whether the employee was terminated or resigned. Research the currently
->   operative rule, including any waiting-time or late-pay penalties.
-> - Accrued-PTO payout — research whether the jurisdiction requires payout,
->   and any interaction with accrual-cap or use-it-or-lose-it policies.
-> - Required notices — research any jurisdiction-specific notices required at
->   termination (e.g., state unemployment, continuation-coverage notices
->   beyond federal COBRA, benefits continuation).
-> - Mass-layoff / plant-closing notices — research federal WARN Act and any
->   state "mini-WARN" or local ordinance that may apply if this is part of a
->   larger reduction. Coverage thresholds and notice periods differ.
+> - Notice period — determine the contractual and statutory minimum notice period under Cap 57 s. 6. Note whether the contract provides for payment in lieu of notice or summary dismissal provisions.
+> - Wage timing — wages due on termination must be paid as soon as practicable, and in any case within 7 days (Cap 57 s. 25). Late payment attracts interest.
+> - Holiday pay and annual leave pay — whether accrued but untaken statutory holidays and annual leave must be paid out on termination.
+> - Long Service Payment (LSP) — under Cap 57 Part VB, an employee with 5+ years continuous employment who is dismissed (other than for summary dismissal or redundancy) may be entitled to LSP.
+> - Severance payment — under Cap 57 Part VA, an employee with 2+ years continuous employment who is laid off or dismissed by reason of redundancy is entitled to severance payment.
+> - Required notices — Cap 57 s. 42C requires employers to provide a written statement of statutory particulars; ensure the statement reflects the termination terms.
 >
 > Cite primary sources. Verify currency.
 >
-> **No silent supplement.** If a research query to the configured legal research tool returns few or no results for the jurisdiction's final-pay, PTO, notice, or WARN rule, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [jurisdiction / rule]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) stop here and flag for attorney verification. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
+> **No silent supplement.** If a research query returns few or no results for the relevant Cap 57 provision, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking.
 >
-> **Source attribution.** Tag every citation in the plan — final-pay rule, PTO rule, notices, WARN / mini-WARN, OWBPA consideration periods, state release restrictions — with where it came from: `[Westlaw]`, `[CourtListener]`, or the MCP tool name for citations retrieved from a legal research connector; `[web search — verify]` for web-search citations; `[model knowledge — verify]` for citations recalled from training data; `[user provided]` for citations the user supplied. Citations tagged `verify` carry higher fabrication risk and should be checked first. Never strip or collapse the tags.
+> **Source attribution.** Tag every citation — notice period rule, holiday pay rule, LSP/severance calculation, Cap 57 section — with where it came from.
 
-### Step 4: Severance and release
+### Step 4: Severance, LSP, and release
 
 Per `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → standard severance:
 
-- Is severance being offered? Per formula or discretionary?
-- Release required? (Usually yes if paying severance — that's the
-  consideration.)
+- Is the employee entitled to statutory severance payment (Cap 57 Part VA) or Long Service Payment (Cap 57 Part VB)? Note that severance and LSP are mutually exclusive — the employee receives the higher.
+- Is a contractual ex gratia payment being offered beyond the statutory minimum?
+- Release required? (Usually yes if paying ex gratia severance — that's the consideration.)
 
-> **Research the applicable release-consideration rules.** If the employee is
-> 40 or over, federal law (OWBPA) imposes specific requirements that affect
-> the consideration period, revocation period, required advisements, and —
-> for group terminations — required decisional-unit disclosures. The specific
-> consideration period differs between an individual termination, a group
-> RIF, and a group exit incentive; the rule also depends on the employee's
-> age and the number of employees affected. Do not state the day count from
-> memory — research the currently operative rule for the specific situation
-> and cite primary sources. Also research any state-law analogs or parallel
-> release requirements. Verify currency.
+> **HK does not have a direct equivalent of OWBPA.** There is no federal-age-discrimination-specific release framework. However, general contract law governs releases — ensure any release is supported by fresh consideration beyond what the employee is already legally entitled to.
 
-Separately, consider whether any of the following apply to the release:
-- State-specific waiver restrictions (some states limit what can be released
-  or require specific language).
-- Federal or state restrictions on non-disclosure or non-disparagement
-  clauses that relate to sexual harassment, discrimination, or other
-  protected categories.
-- Separation-agreement rules on NLRA-protected activity.
+Separately, consider whether:
+- The settlement agreement contains non-disclosure/non-disparagement clauses compatible with the Equal Opportunities Commission's guidance on discrimination-related settlement terms.
+- The employee is waiving statutory rights (some rights under Cap 57 cannot be contracted out of; Cap 57 s. 70).
+- Independent legal advice is advisable (it strengthens the enforceability of the release).
 
 ### Step 5: Documentation check
 
@@ -179,18 +128,20 @@ what changed? The answer should be documented.
 
 > **Research-connector pre-flight.** Before emitting the memo, check whether a legal research connector is reachable for this session — Westlaw, CourtListener, or any firm-configured research MCP. Collect this into the reviewer note per CLAUDE.md `## Outputs`: if no connector returns results in Step 3 (or none is configured at run time), record it in the **Sources:** line of the reviewer note — e.g., `not connected — cites from training knowledge; the highest-fabrication topics in termination-law memos are final-pay timing, OWBPA group/individual distinctions, state-specific NDA / non-disparagement rules (e.g., CA SB 331), and NLRB positions (e.g., McLaren Macomb) — spot-check those first`. Per-citation `[model knowledge — verify]` tags remain inline. Do not emit a standalone banner above the memo.
 
-> **Jurisdiction assumption.** This review assumes the employee's jurisdiction as stated in Step 1 and any defaults from `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` → Jurisdictional footprint. Employment rules, final-pay timing, release requirements, and notice obligations vary materially by jurisdiction. If the employee works in a different state or country, or if choice-of-law is contested, this analysis may not apply as written.
+> **Jurisdiction assumption.** This review applies the Employment Ordinance (Cap 57) and related Hong Kong legislation as stated in Step 1. Employment rules under Cap 57 apply to all employees in Hong Kong SAR. If the employee works under a different employment regime or choice-of-law is contested, this analysis may not apply as written.
 
 Match the memo format from seed term memos referenced in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`. If none:
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
 
-## Termination Review: [Role/Name] — [Date]
+## Termination Review: [Employee] — [Date]
 
-**Jurisdiction:** [State]
-**Reason:** [Performance / Misconduct / RIF / Elimination]
+**Jurisdiction:** Hong Kong SAR
+**Legislation:** Employment Ordinance (Cap 57), [other applicable ordinances]
+**Reason:** [Performance / Misconduct / Redundancy / Mutual agreement / Summary dismissal]
 **Planned date:** [Date]
+**Length of continuous employment:** [years/months]
 
 ---
 
@@ -208,24 +159,22 @@ Match the memo format from seed term memos referenced in `~/.claude/plugins/conf
 
 ---
 
-### Jurisdiction requirements ([State])
+### HK requirements (Cap 57)
 
-- Final pay: [researched rule and cite; state whether PTO is included per the
-  researched rule and any team policy]
-- Required notices: [list, each researched and cited]
-- Mass-layoff notice (if applicable): [researched rule and cite]
+- Notice period: [contractual minimum + statutory minimum under Cap 57 s.6]
+- Wage payment on termination: [within 7 days / as soon as practicable per Cap 57 s.25]
+- Holiday pay / annual leave pay: [accrued entitlements to be paid out]
+- Long Service Payment / Severance Payment: [applicable / not applicable — cite Part VA/VB]
+- Employees' Compensation implications: [if any]
 
 ---
 
 ### Severance and release
 
-- Severance: [amount per formula / none]
-- Release: [required / not — if required, research and apply the
-  consideration-period, revocation-period, advisement, and (for groups)
-  decisional-unit-disclosure requirements that govern this specific
-  situation; cite primary sources and verify currency]
-- [Any state-law release rules or non-disclosure/non-disparagement
-  restrictions that apply]
+- Statutory severance/LSP: [amount per formula / none]
+- Ex gratia payment: [if offered]
+- Release: [required / not — if required, confirm fresh consideration; recommend independent legal advice]
+- [Non-disclosure/non-disparagement clause check]
 
 ---
 
@@ -239,15 +188,16 @@ Match the memo format from seed term memos referenced in `~/.claude/plugins/conf
 
 [Clear to proceed | Proceed with changes below | Hold — escalation pending]
 
-### Checklist for term day
+### Checklist for termination day
 
-- [ ] Final paycheck ready, correct amount, delivered per researched rule
-- [ ] Continuation-coverage notices (COBRA / state analogs) prepared
-- [ ] [State] unemployment notice prepared
-- [ ] Severance agreement (if applicable) with the consideration period
-      required for this specific situation
-- [ ] Return of property / access cutoff coordinated
-- [ ] [etc.]
+- [ ] Final wages paid within 7 days (Cap 57 s.25)
+- [ ] Accrued holiday pay / annual leave pay calculated and paid
+- [ ] Severance payment / LSP calculated (if applicable)
+- [ ] MPF accrued benefits — ensure employer contributions are properly dealt with (Cap 485)
+- [ ] Letter of employment / reference letter prepared
+- [ ] Settlement agreement (if applicable) with independent legal advice recommended
+- [ ] Return of company property / access revocation coordinated
+- [ ] PDPO data privacy obligations — handling of employee personal data after termination
 ```
 
 ## Consequential-action gate (terminate an employee)

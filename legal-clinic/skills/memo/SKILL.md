@@ -66,18 +66,18 @@ For each issue:
 
 **Rule:** This is a research gap, not a conclusion. State what the student needs to find:
 
-> `[RESEARCH NEEDED: [State] habitability doctrine — warranty of habitability
-> elements, what conditions qualify, remedies available including rent offset.
-> Start with: [State] landlord-tenant statute, then case law on heater/heat
-> specifically. See /research-start for a roadmap.]`
+> `[RESEARCH NEEDED: HK possession claim defence — requirements for a defence
+> based on disrepair/habitability under Cap 7, what conditions qualify, remedies available.
+> Start with: Cap 7 (Landlord and Tenant (Consolidation) Ordinance), then HK case law on
+> habitability/disrepair specifically. See /research-start for a roadmap.]`
 
 If the skill has high confidence in the general rule framework (e.g., "most states recognize an implied warranty of habitability"), state that as a framework starting point — **but explicitly mark it as unverified**:
 
-> *Framework (unverified — confirm for [State]):* Most jurisdictions recognize
-> an implied warranty of habitability requiring landlords to maintain
-> conditions fit for human occupation. Breach may give rise to rent withholding,
-> repair-and-deduct, or rent abatement.
-> `[VERIFY: [State]'s specific elements and remedies]`
+> *Framework (unverified — confirm for HK):* Hong Kong recognises an implied
+> obligation on landlords to maintain premises in a state fit for human
+> habitation under Cap 7 and common law. Breach may give rise to rent abatement,
+> orders for specific repair, or a defence to possession proceedings.
+> `[VERIFY: HK's specific elements and remedies — is the obligation statutory or common law?]`
 
 **Application:** This is where the student's analysis goes. Scaffold the structure, don't fill it:
 
@@ -85,8 +85,7 @@ If the skill has high confidence in the general rule framework (e.g., "most stat
 > - Heater broken since November — how long is "unreasonable"?
 > - Client notified landlord [when? how? documented?]
 > - Landlord's response or lack thereof
-> - [State]-specific: does client need to have given written notice?
->   deposited rent in escrow? other procedural prerequisites?]`
+> - HK-specific: what notice was required? did client use the prescribed forms under Cap 7?]`
 
 List the facts that matter. Let the student do the applying.
 
@@ -104,7 +103,7 @@ Separate section, after the IRAC blocks:
 
 **Weaknesses (apparent from facts — student should assess how serious):**
 - [Fact that seems harmful and why]
-- `[UNCERTAIN: whether [X] is actually a weakness — depends on [State] rule on [Y]]`
+- `[UNCERTAIN: whether [X] is actually a weakness — depends on HK rule / Practice Direction on [Y]]`
 
 **Open questions (things the memo can't answer without more info):**
 - Factual: [what we don't know from the client]

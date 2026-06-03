@@ -74,7 +74,7 @@ Reminder at 3 days before deadline if still undecided — elevated urgency.
 > - What could go wrong (adverse admissions, inconsistent prior positions, coordination-of-comment concerns with trade associations)
 > - What to ask the attorney (should we file at all; should we file jointly through a trade group; are there positions we should not take)
 >
-> If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (state bar in the US; SRA/Bar Standards Board in England & Wales; Law Society in Scotland/NI/Ireland/Canada/Australia; or your jurisdiction's equivalent).
+> If you need to find a lawyer: your professional regulator's referral service is the fastest starting point (Law Society of Hong Kong for solicitors; Hong Kong Bar Association for barristers; or your jurisdiction's equivalent).
 
 Do not log a "filing" decision or produce a submission-ready draft past this gate without an explicit yes. Tracking views, deadline reminders, and "not-filing / waived" decisions do not require the gate.
 

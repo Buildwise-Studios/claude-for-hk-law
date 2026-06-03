@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "Companies Registry": {
+      "type": "http",
+      "url": "https://mcp.cr.gov.hk/mcp",
+      "title": "Companies Registry",
+      "description": "Search Hong Kong company records, file annual returns, and access the Integrated Companies Registry Information System (ICRIS)."
+    },
+    "HKLII": {
+      "type": "http",
+      "url": "https://mcp.hklii.hk/mcp",
+      "title": "HKLII",
+      "description": "Search Hong Kong company law case law including unfair prejudice petitions, winding-up judgments, and directors' duty decisions."
+    },
+    "Hong Kong e-Legislation": {
+      "type": "http",
+      "url": "https://mcp.elegislation.gov.hk/mcp",
+      "title": "Hong Kong e-Legislation",
+      "description": "Official Companies Ordinance (Cap 622) and winding-up provisions under Cap 32, with commentary and cross-references."
+    }
+  },
+  "recommendedCategories": [
+    "corporate-law",
+    "company-formation",
+    "insolvency",
+    "compliance",
+    "hong-kong-law"
+  ]
+}

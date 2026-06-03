@@ -18,6 +18,9 @@ system:
          Row 1 is the work-product header from the deploying team's
          `## Outputs` configuration (entire row, prefixed `# `). Row 2 is
          the column labels.
+         **HK note:** Legal professional privilege in Hong Kong is governed
+         by common law. Verify the header language with HK-qualified counsel
+         before deploying.
 
       2. `./out/diligence-grid-<date>_sources.csv` — the evidence grid.
          Same shape, but each cell is `<quote> | <location>`. Keeps the

@@ -1,7 +1,7 @@
 ---
 name: policy-drafting
 description: >
-  Draft an employment policy with state supplements where law differs across
+  Draft an employment policy for Hong Kong where Employment Ordinance (Cap 57) governs
   the jurisdictional footprint. Use when the user says "draft a [topic]
   policy", "we need a policy on", "update our [topic] policy", or names a
   policy gap.
@@ -39,21 +39,24 @@ A policy that's right for California may be wrong (or unnecessary) in Texas. Thi
 - Why now? (Legal requirement, incident, growth, gap noticed)
 - Who does it apply to? (All employees, certain roles, certain locations)
 
-### Step 2: Jurisdictional scan
+### Step 2: HK legislative scan
 
-For each state/country in the footprint, check: does this jurisdiction have a specific rule on this topic?
+For each topic, check whether the Employment Ordinance (Cap 57) or related HK legislation prescribes a specific rule that must be reflected in the policy. Unlike the US approach of state-by-state variance, HK has a single legal regime. However, common law principles and Equal Opportunities Commission guidelines may impose additional requirements beyond the statutory text.
 
 **Common topics with jurisdictional variance:**
 
-| Topic | Variance |
+| Topic | HK legislation / rule |
 |---|---|
-| Paid leave | State mandates (CA, NY, CO, WA, etc.) with different accrual rates, uses, carryover |
-| Parental leave | State programs layer on top of FMLA (CA PFL, NY PFL, etc.) |
-| Meal and rest breaks | CA is the outlier (penalty pay); most states minimal |
-| Expense reimbursement | CA requires; most states don't |
-| Pay transparency | Growing list of states requiring ranges in postings |
-| Non-competes | See hiring-review skill — unenforceable in some states |
-| Final pay | Timing varies widely |
+| Statutory holidays | Must provide 12+ statutory holidays per year (Cap 57 s. 39 Sch. 3); general holidays are not mandatory |
+| Annual leave | Statutory minimum 7–14 days depending on length of continuous employment (Cap 57 Part IX) |
+| Maternity leave | 14 weeks' entitlement (Cap 57 Part III); 4 weeks' pre-confinement + 10 weeks' post-confinement |
+| Paternity leave | 5 days' entitlement (Cap 57 Part IIIA) |
+| Sick leave | Accrual of paid sickness days; 4/5 of normal wages (Cap 57 Part VIII) |
+| MPF contributions | Mandatory employer 5% of relevant income (Cap 485 s. 7A) |
+| End-of-year payment | 13th month / contractual bonus rules (Cap 57 Part IIC) |
+| Anti-discrimination | Policies must comply with Cap 480, 487, 527, 602 |
+| Restrictive covenants | Enforceability under HK common law (legitimate business interest + reasonableness) |
+| Employee data privacy | Must comply with PDPO (Cap 486) — collection, use, retention, and transfer of employee personal data |
 
 If the topic has no jurisdictional variance (dress code, say), skip this step.
 
@@ -88,8 +91,10 @@ Keep supplements tight. Only what's different — don't repeat the core.
 ### Step 5: Cross-check
 
 - Does this policy conflict with anything already in the handbook?
-- Does it promise more than the company intends to deliver? (A policy is a promise — courts hold employers to handbook promises.)
-- Does it inadvertently create a contract? (Some states treat handbook policies as contractual — include the standard "this is not a contract" language if the handbook doesn't already.)
+- Does it promise more than the company intends to deliver? (A policy can become a contractual term if incorporated into the employment contract.)
+- Does it comply with Cap 57 s. 42C statutory particulars requirements?
+- Does it conflict with MPF obligations under Cap 485?
+- Does it comply with anti-discrimination requirements under the DDO/SDO/FSDO/RDO?
 
 ## Output
 
@@ -100,13 +105,13 @@ Keep supplements tight. Only what's different — don't repeat the core.
 
 [Full text]
 
-## State Supplements
+## References to applicable HK legislation
 
-### [State 1]
-[Supplement]
+### Employment Ordinance (Cap 57)
+[Relevant sections]
 
-### [State 2]
-[Supplement]
+### Anti-Discrimination Ordinances
+[Cap 480 / 487 / 527 / 602 as applicable]
 
 ---
 

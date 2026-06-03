@@ -12,7 +12,10 @@ system:
 
     Prepend the deploying team's work-product header from the playbook
     configuration — the alert report is attorney work product in most
-    deployments.
+    deployments. **HK note:** Legal professional privilege in Hong Kong
+    is governed by common law (not statute). The deploying team's
+    work-product header should be verified with HK-qualified counsel to
+    ensure it properly invokes privilege under HK law.
 
     Report structure:
       1. Overdue — needs immediate action (tagged business owner, cancel-by

@@ -1,4 +1,4 @@
-# Clinic deadline ledger — legal-clinic
+# Clinic deadline ledger — legal-clinic (HK)
 #
 # Populated by /legal-clinic:deadlines --add (or by extraction from /client-intake,
 # /draft, /status when those skills surface a deadline). Read by
@@ -13,15 +13,16 @@
 # - id:             string (slug: [case]-[short-description]-[YYYY-MM])
 #   case_id:        string — references the case / client in intake system
 #   case_name:      string — human-readable case name
-#   practice_area:  immigration | housing | family | consumer | criminal-defense | civil-rights | other
+#   practice_area:  immigration | housing | family | consumer | criminal | civil-rights | administrative | other
 #   type:           filing | hearing | statute-of-limitations | discovery | cure-period | response | notice | other
 #   description:    string — one-line what's due
 #   due_date:       YYYY-MM-DD
 #   time:           HH:MM (optional; for hearings or filing deadlines with specific cutoffs)
-#   timezone:       string (optional; default from CLAUDE.md jurisdiction)
-#   source:         string — where the deadline came from (court order, statute, client doc, etc.)
+#   timezone:       string (optional; default Asia/Hong_Kong)
+#   court:          string — which HK court (CFI | DC | Magistrates | Lands Tribunal | Labour Tribunal | SCT)
+#   source:         string — where the deadline came from (court order, Cap ordinance, Practice Direction, client doc, etc.)
 #   owner_student:  string — which student owns this deadline
-#   owner_attorney: string — supervising attorney (usually from CLAUDE.md)
+#   owner_attorney: string — supervising solicitor (usually from CLAUDE.md)
 #   status:         upcoming | today | overdue | completed | closed
 #   completed_date: YYYY-MM-DD | null
 #   notes:          string | null

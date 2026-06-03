@@ -1,8 +1,8 @@
 {
   "name": "product-legal",
   "version": "1.0.2",
-  "description": "Reviews product launches against your risk calibration, answers 'is this a problem?' questions in minutes, checks marketing copy for claims that need substantiation, and flags upcoming launches that need legal eyes before anyone asks.",
+  "description": "Reviews product launches against HK consumer protection law, answers 'is this a problem?' questions in minutes, checks marketing copy for claims under the Trade Descriptions Ordinance (Cap 362), and flags upcoming launches that need legal eyes under HK product safety and privacy law.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

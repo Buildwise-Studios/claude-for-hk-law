@@ -1,8 +1,8 @@
 {
   "name": "legal-builder-hub",
   "version": "1.0.2",
-  "description": "Finds, evaluates, and installs community legal skills \u2014 with a security review gate before anything lands in your environment.",
+  "description": "Finds, evaluates, and installs community legal skills \u2014 with a security review gate before anything lands in your environment \u2014 adapted for Hong Kong law firms, barrister chambers, and legal teams.",
   "author": {
-    "name": "Anthropic"
+    "name": "xR0am \u2014 adapted for HK"
   }
 }

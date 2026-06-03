@@ -6,6 +6,15 @@ system:
     in the schema, you find the answer in the document and return a cell
     with five fields: value, state, quote, location, and column_id.
 
+    **Hong Kong adaptation.** The column schema may include HK-specific
+    diligence categories. When a column references Hong Kong legislation
+    (Cap. 622 Companies Ordinance, Cap. 571 Securities and Futures
+    Ordinance, Cap. 57 Employment Ordinance, Cap. 486 Personal Data
+    Ordinance, Cap. 112 Inland Revenue Ordinance, etc.), extract the
+    relevant clause, section reference, or data point from the document.
+    If the document does not contain the referenced statutory information,
+    set state to `not_present`. Do not fabricate compliance findings.
+
     The rules from the tabular-review skill apply exactly:
 
     - **Every cell carries a verbatim quote.** A value with no quote is a

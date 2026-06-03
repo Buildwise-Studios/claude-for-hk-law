@@ -3,7 +3,7 @@ name: cold-start-interview
 description: >
   Run the cold-start interview to learn your commercial contracts practice and write
   your team practice profile. Use on first use of the plugin, when
-  `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` is missing or still contains template
+  `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` is missing or still contains template
   placeholders, or when the user says "set up the plugin", "configure commercial
   contracts", "onboard me", or "let's get started". This is the only skill that
   should run on a fresh install.
@@ -12,11 +12,11 @@ argument-hint: "[--redo to re-run on an already-configured plugin] [--check-inte
 
 # /cold-start-interview
 
-Runs the cold-start interview. First run writes `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`; subsequent runs with `--redo` re-interview and show a diff before overwriting.
+Runs the cold-start interview. First run writes `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`; subsequent runs with `--redo` re-interview and show a diff before overwriting.
 
 ## Instructions
 
-1. **Check current state:** Read `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. If it contains `[PLACEHOLDER]` or `[Your Company Name]`, proceed with fresh interview. If populated and `--redo` not passed, ask: "Looks like you're already set up. Want to re-run the interview? This will overwrite `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` (I'll show you a diff first)."
+1. **Check current state:** Read `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. If it contains `[PLACEHOLDER]` or `[Your Company Name]`, proceed with fresh interview. If populated and `--redo` not passed, ask: "Looks like you're already set up. Want to re-run the interview? This will overwrite `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` (I'll show you a diff first)."
 
 2. **Follow the interview script below.**
 
@@ -24,24 +24,24 @@ Runs the cold-start interview. First run writes `~/.claude/plugins/config/claude
 
 4. **Read the seed docs** and extract actual playbook positions. Note deltas between stated positions and what was signed.
 
-5. **Migration:** If a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-legal/commercial-legal/*/CLAUDE.md` but not at the config path, copy it to the config path and show the user what was migrated.
+5. **Migration:** If a populated CLAUDE.md (no `[PLACEHOLDER]` markers) exists at `~/.claude/plugins/cache/claude-for-hk-law/commercial-legal/*/CLAUDE.md` but not at the config path, copy it to the config path and show the user what was migrated.
 
-6. **Write `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`** (create parent directories as needed) per the structure below. Use the lawyer's own words where possible.
+6. **Write `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`** (create parent directories as needed) per the structure below. Use the lawyer's own words where possible.
 
 7. **Show summary + propose next steps:**
-   - "Here's what I heard — `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` is written. What did I get wrong?"
+   - "Here's what I heard — `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` is written. What did I get wrong?"
    - Offer a test review: "Want to throw a contract at me?"
    - If a [CLM] is connected: offer to bulk-load the renewal register
 
 ## `--check-integrations`
 
-Re-runs the integration availability check (CLM, e-signature, document storage, Slack) and updates `## Available integrations` in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. Does not re-interview. Use when you connect or disconnect an MCP and want the plugin to notice without rerunning the full setup.
+Re-runs the integration availability check (CLM, e-signature, document storage, Slack) and updates `## Available integrations` in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. Does not re-interview. Use when you connect or disconnect an MCP and want the plugin to notice without rerunning the full setup.
 
 When probing: only report ✓ if an MCP tool call actually succeeded. Configured-but-untested connectors should be marked ⚪ with a one-line how-to for confirming. Never report ✓ based on `.mcp.json` declarations alone — that misleads users into thinking something is wired up when it isn't.
 
 ## `--side sales` / `--side purchasing`
 
-Re-runs only the playbook section of the interview, calibrated to the specified side, and writes the answers to the matching subsection (`### Sales-side playbook` or `### Purchasing-side playbook`) in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. Does NOT re-ask practice setting, role, integrations, team details, or the escalation matrix — those are side-agnostic.
+Re-runs only the playbook section of the interview, calibrated to the specified side, and writes the answers to the matching subsection (`### Sales-side playbook` or `### Purchasing-side playbook`) in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. Does NOT re-ask practice setting, role, integrations, team details, or the escalation matrix — those are side-agnostic.
 
 Use this when (a) you initially picked "both" at setup and want to build the second side now, or (b) you want to rebuild one side without disturbing the other.
 
@@ -75,7 +75,7 @@ The lawyer should leave this conversation feeling like they just onboarded a sha
 
 ## What "cold start" means
 
-Read `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`:
+Read `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`:
 - **Does not exist** → start the interview.
 - **Contains `<!-- SETUP PAUSED AT: -->`** → greet the user and offer to resume from that section.
 - **Contains `[PLACEHOLDER]` or `[Your Company Name]` markers but no pause comment** → the template was never completed; offer to start fresh or resume from wherever the placeholders begin.
@@ -89,13 +89,13 @@ Update the `**Active side:**` marker in `## Playbook`: if only one side was buil
 
 The template structure lives at `${CLAUDE_PLUGIN_ROOT}/CLAUDE.md` — use it as the section scaffold. Write the completed practice profile to the config path, creating parent directories as needed.
 
-If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-legal/commercial-legal/*/CLAUDE.md` but not at the config path, copy it forward to the config path before proceeding.
+If a CLAUDE.md exists at the old cache path `~/.claude/plugins/cache/claude-for-hk-law/commercial-legal/*/CLAUDE.md` but not at the config path, copy it forward to the config path before proceeding.
 
 If the user explicitly asks to re-run setup ("let's redo the interview", "my playbook changed"), run it again and show a diff before overwriting.
 
 ## Check for the shared company profile
 
-Look for `~/.claude/plugins/config/claude-for-legal/company-profile.md`.
+Look for `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`.
 
 - **If it exists:** Read it. Show a one-line confirmation: "You're [name], [practice setting], at [company], [industry], operating in [jurisdictions]. Right? (Or say 'update' to change the shared profile.)" If confirmed, skip the company questions — go straight to the plugin-specific ones.
 - **If it doesn't exist:** You'll be the first plugin this user set up. After the orientation and fork, ask the company questions and write them to the shared profile (per the template at `references/company-profile-template.md` in the plugin root), then continue with the plugin-specific questions. Tell the user: "I've saved your company profile — the other legal plugins will read it and skip these questions."
@@ -153,7 +153,7 @@ Corollary: the interview's inputs are the user's typed answers and documents the
 - **For uploads and seed docs:** "Paste the contents, share a file path, or say 'skip for now.' If you skip, I'll flag the gap in your practice profile so you can fill it later." Then actually wait.
 - **Before writing the practice profile:** review the interview and list any questions that were skipped or answered with placeholders — especially the playbook positions, the "one thing," and the seed agreements. Say: "Before I write your practice profile, here's what's still open: [list]. Want to fill any of these now, or leave them as placeholders?" Then wait.
 - **Never** write a practice profile with silent gaps. Every placeholder should be a deliberate choice the user made to skip, not a question that scrolled past.
-- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/commercial-legal:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /commercial-legal:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
+- **Pause and resume.** Tell the user up front: "If you need to stop, say 'pause' (or 'stop', or 'let me come back to this') and I'll save your progress. Run `/commercial-legal:cold-start-interview` again later and I'll pick up where you left off." When the user pauses, write a partial configuration to `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` with a `<!-- SETUP PAUSED AT: [section name] — run /commercial-legal:cold-start-interview to resume -->` comment at the top and `[PENDING]` markers (distinct from `[PLACEHOLDER]`) on unanswered fields. When setup re-runs and finds a paused config, greet the user: "Welcome back. You paused at [section]. Your earlier answers are saved. Pick up where we left off, or start over?" Do not re-ask questions already answered.
 
 **Verify user-stated legal facts as they come up in setup.** When the user answers an interview question with a specific rule citation, statute number, case name, deadline, threshold, jurisdiction, or registration number — and it's something you can sanity-check — do the check before writing it into the configuration. If what they said conflicts with your understanding or with something they've pasted, surface it: "You said the threshold is X; my understanding is Y — can you confirm which goes in the profile? `[premise flagged — verify]`" A wrong fact written into CLAUDE.md propagates into every future output; catching it here is one of the highest-leverage moments in the product.
 
@@ -607,7 +607,7 @@ This solves the cold-start problem (the supervisor doesn't know what to do first
 
 5. **Close with a note on changeability.** End with something like:
 
-   > "Done. Your practice profile is at `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` — it's a plain text file you can read and edit directly. Anything you answered can be changed:
+   > "Done. Your practice profile is at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` — it's a plain text file you can read and edit directly. Anything you answered can be changed:
    >
    > - Edit the file directly for a quick change (a new fallback, a revised threshold, a name swap)
    > - Run `/commercial-legal:cold-start-interview --redo` for a full re-interview

@@ -161,7 +161,7 @@ understand what the question is testing.
 >
 > **Purpose(s) of the classification**
 > - What legal purposes does the classification need to serve — federal
->   payroll tax, FLSA wage/hour, state wage/hour, unemployment insurance,
+>   payroll tax, Cap 57 wage protections, common law entitlements,
 >   workers' compensation, benefits eligibility? Different purposes are often
 >   governed by different tests, and the answers can diverge.
 >
@@ -171,22 +171,19 @@ understand what the question is testing.
 Wait for responses before proceeding. If the attorney can't answer certain
 questions, note the gaps — they affect the analysis.
 
-### Step 2 — Identify the applicable tests
+### Step 2 — Identify the applicable test under HK common law
 
-> **Research the applicable tests before proceeding.** For the jurisdiction(s)
-> and purpose(s) identified in intake, research the currently operative
-> classification test(s). Jurisdictions commonly use one or more of: an ABC
-> test, an economic-realities test, a common-law right-to-control test, a
-> hybrid, or a purpose-specific statutory test. The test that governs for
-> federal payroll tax may not be the same test that governs for state
-> wage/hour, unemployment, or workers' compensation — run each purpose on its
-> own track. Cite the controlling statute, regulation, or case. Note the
-> effective date of each rule and whether it has been recently amended.
-> Identify any carve-outs or exceptions that may apply (e.g., B2B,
-> professional services, construction, referral-agency, business-to-business
-> contracting relationship). Verify currency. If you are uncertain about the
-> current state of the law in any jurisdiction, flag it for attorney
-> verification — do not state a test you haven't confirmed.
+> **Research the applicable HK test before proceeding.** Hong Kong does not have a statutory multi-factor test for employee vs. independent contractor classification. The courts apply the common law tests:
+>
+> **1. The Control Test (classic)** — Who controls the manner in which the work is done? Does the employer direct how, when, and where the work is performed, or does the worker retain control over the method of performance?
+>
+> **2. The Organisation/Integration Test** — Is the worker integrated into the employer's organisation, or is the work merely ancillary to it? A person whose work is an integral part of the business is more likely an employee (*Stevenson, Jordan & Harrison v MacDonald & Evans*).
+>
+> **3. The Multiple Factor / Economic Reality Test** — A balancing approach considering: (a) degree of control, (b) ownership of equipment, (c) financial risk, (d) opportunity for profit/loss, (e) whether the worker is in business on their own account, (f) exclusivity, (g) provision of holidays/sick pay, (h) method of payment (regular wage vs. fee for service), (i) intention of the parties (labels are not determinative).
+>
+> The HK courts adopt a holistic approach — no single factor is determinative. The ultimate question is whether the person is in business on their own account (*Market Investigations Ltd v Minister of Social Security*).
+>
+> Cite the controlling case law. Verify currency. If you are uncertain about the current state of the law, flag for attorney verification — do not state a test you haven't confirmed.
 
 If `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md` records the company's house classification policy, apply it
 first and flag any tension with the researched test.
@@ -289,18 +286,18 @@ triggers recorded in that config:
 
 ### Step 5 — Output
 
-> **Research-connector pre-flight.** Before emitting the analysis, check whether a legal research connector is reachable for this session — Westlaw, CourtListener, or any firm-configured research MCP. Collect this into the reviewer note per CLAUDE.md `## Outputs`: if no connector returns results in Step 2 (or none is configured at run time), record it in the **Sources:** line of the reviewer note — e.g., `not connected — cites from training knowledge; the highest-fabrication pinpoints in classification analyses are ABC-test codifications, state carve-out subsections (e.g., CA Lab. Code §§ 2775/2776/2783), element counts in B2B exemptions, and purpose-specific test selection — spot-check those first`. Per-citation `[model knowledge — verify]` tags remain inline. Do not emit a standalone banner above the output.
+> **Research-connector pre-flight.** Before emitting the analysis, check whether a legal research connector is reachable for this session. If no connector returns results in Step 2 (or none is configured at run time), record it in the **Sources:** line of the reviewer note — e.g., `not connected — cites from training knowledge; HK classification decisions turn on fact-specific analysis of common law tests, which are not easily retrieved from incomplete sources — verify the leading HK cases before relying`. 
 
-> **Jurisdiction assumption.** This analysis applies the tests operative in the jurisdiction(s) identified in intake. Classification rules vary materially by state and country, and the test that governs for one purpose (e.g., federal payroll tax) often differs from the test that governs another (e.g., state wage/hour). If the work will be performed in a jurisdiction not analyzed here, or if a new purpose is added later, this analysis may not apply as written.
+> **Jurisdiction assumption.** This analysis applies the common law tests operative in Hong Kong SAR. HK does not have a statutory definition of "employee" — the common law tests (control, organisation, economic reality) govern. If the work will be performed in another jurisdiction, or if a different legal regime applies, this analysis may not apply as written.
 
 ```markdown
 [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
 
 ## Worker Classification Analysis
 **Proposed arrangement:** [what they described]
-**Jurisdiction:** [state/country]
-**Purpose(s):** [federal tax / state wage-hour / UI / WC / benefits]
-**Tests applied:** [list, each with pinpoint cite and currency date]
+**Jurisdiction:** Hong Kong SAR
+**Relevant legislation:** Employment Ordinance (Cap 57) / common law
+**Tests applied:** Control test, Organisation/Integration test, Multiple factor/Economic reality test
 
 ---
 

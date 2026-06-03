@@ -2,7 +2,7 @@
 name: vendor-agreement-review
 description: >
   Reference: review of an inbound vendor agreement against the team playbook in
-  `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. Flags deviations, assesses risk, generates
+  `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. Flags deviations, assesses risk, generates
   specific redline language, and routes to the right approver. Loaded by
   /commercial-legal:review when a vendor MSA, services agreement, or similar is detected.
 user-invocable: false
@@ -12,7 +12,7 @@ user-invocable: false
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/commercial-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/commercial-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/commercial-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -22,19 +22,19 @@ Before producing output, check where it's going. If the user has named a destina
 
 ## Purpose
 
-Read a vendor agreement against the playbook this team actually uses (in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`), find every term that deviates, and tell the lawyer what to do about each one — with specific redline language, not vague "consider revising."
+Read a vendor agreement against the playbook this team actually uses (in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`), find every term that deviates, and tell the lawyer what to do about each one — with specific redline language, not vague "consider revising."
 
 The output is a review memo the lawyer can act on in one pass. Every issue has a severity, a business-impact explanation, a proposed fix, and an escalation call if one is needed.
 
 ## Precondition: load the playbook
 
-**Before reading the contract, read `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`.** If it's missing or still has placeholders, surface this bounce:
+**Before reading the contract, read `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`.** If it's missing or still has placeholders, surface this bounce:
 
 > I notice you haven't configured your practice profile yet — that's how I tailor playbook positions, escalation, and house style to your practice.
 >
 > **Two choices:**
 > - Run `/commercial-legal:cold-start-interview` (2 minutes) to configure your profile, then I'll review tailored to YOUR playbook.
-> - Say **"provisional"** and I'll review against generic defaults — US jurisdiction, middle risk appetite, lawyer role, no playbook (flag all common vendor-contract risks from first principles) — and tag every output `[PROVISIONAL — configure your profile for tailored output]` so you can see what I do before committing.
+> - Say **"provisional"** and I'll review against generic defaults — Hong Kong jurisdiction, middle risk appetite, lawyer role, no playbook (flag all common vendor-contract risks from first principles) — and tag every output `[PROVISIONAL — configure your profile for tailored output]` so you can see what I do before committing.
 
 ### Provisional mode
 
@@ -46,7 +46,7 @@ If the user says "provisional," run the review normally using these generic defa
 
 This skill is typically used for purchasing-side contracts (vendors supplying you), but the side check still applies — a "vendor agreement" could be your own template sent to a vendor as part of a reseller arrangement (sales-side).
 
-The playbook in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` is the source of truth. It tells you:
+The playbook in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` is the source of truth. It tells you:
 - What this team's standard positions are (not market standard — *their* standard)
 - What fallbacks they've accepted before
 - What they never accept
@@ -92,7 +92,7 @@ Do not silently proceed as if the DPA were absent when it is incorporated by ref
 
 ### Step 2: Deal-breaker check
 
-Check the "one thing" from `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` first. If present:
+Check the "one thing" from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` first. If present:
 
 ```markdown
 ## ⛔ DEAL-BREAKER PRESENT
@@ -109,14 +109,14 @@ resolved.
 
 ### Step 3: Term-by-term comparison
 
-For each playbook category in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`, find the corresponding contract section and compare.
+For each playbook category in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`, find the corresponding contract section and compare.
 
 **For each deviation, produce:**
 
 ```markdown
 ### [Section X.X]: [Issue name]
 
-**Playbook says:** [our standard position, quoted from `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`]
+**Playbook says:** [our standard position, quoted from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`]
 
 **Contract says:**
 > "[exact quote from the contract]"
@@ -132,7 +132,7 @@ for the business if this term stays as-is]
 **Proposed redline:**
 > "[the specific replacement language — ready to paste into a markup]"
 
-**If they won't move:** [the fallback from `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`, or "escalate to [person]"
+**If they won't move:** [the fallback from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`, or "escalate to [person]"
 if no fallback exists]
 ```
 
@@ -140,12 +140,12 @@ if no fallback exists]
 
 | Level | Means |
 |---|---|
-| 🔴 Critical | Don't sign without fixing. A term on the team's "never accept" list in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`, or a deal-breaker. |
+| 🔴 Critical | Don't sign without fixing. A term on the team's "never accept" list in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`, or a deal-breaker. |
 | 🟠 High | Strongly push; escalate if they won't move. A term outside the playbook's stated fallback range. |
 | 🟡 Medium | Push in first round; accept if it's the last open item. A term inside the fallback range but short of the standard position. |
 | 🟢 Low | Note it, don't spend capital. A term the playbook explicitly tolerates, or a purely stylistic deviation. |
 
-Severity is always applied *against `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`*. If a term doesn't map cleanly to a playbook position, ask the user which bucket it belongs in and offer to record the answer in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`.
+Severity is always applied *against `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`*. If a term doesn't map cleanly to a playbook position, ask the user which bucket it belongs in and offer to record the answer in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`.
 
 #### Liability cap decision procedure
 
@@ -165,7 +165,7 @@ Severity is always applied *against `~/.claude/plugins/config/claude-for-legal/c
 
 - **Non-solicits/non-competes:** Unenforceable in CA (Bus. & Prof. Code §16600). Restricted in many EU jurisdictions. Enforceable with limitations elsewhere. `[jurisdiction — verify]`
 - **Auto-renewal:** CA GBL §17600-17606, NY GBL §527-a, IL 815 ILCS 601 have specific consumer/B2B notice requirements. Other states vary. `[jurisdiction — verify]`
-- **Liability exclusions:** EU and UK unfair contract terms rules (UCTA 1977, Consumer Rights Act 2015) constrain consumer exclusions. Some US states limit exclusion of gross negligence or willful misconduct. `[jurisdiction — verify]`
+- **Liability exclusions:** EU and UK unfair contract terms (for contracts governed by English law) rules (UCTA 1977, Consumer Rights Act 2015) constrain consumer exclusions. Some US states limit exclusion of gross negligence or willful misconduct. `[jurisdiction — verify]`
 - **Indemnification:** Some states void indemnification for the indemnitee's own negligence. `[jurisdiction — verify]`
 - **Confidentiality term:** Some jurisdictions limit "perpetual" confidentiality to a reasonable period. `[jurisdiction — verify]`
 
@@ -181,7 +181,7 @@ Two short lists:
 
 ### Step 5: Escalation routing
 
-Check the escalation matrix in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` against:
+Check the escalation matrix in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` against:
 - Contract dollar value
 - Presence of any 🔴 critical issues
 - Any automatic-escalation triggers (unlimited liability, IP assignment, etc.)
@@ -200,9 +200,9 @@ Based on [dollar value / issue severity], this agreement requires:
 responding | Get business input on commercial term X before legal responds]
 ```
 
-**Before proceeding to send redlines to the counterparty:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before proceeding to send redlines to the counterparty:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
-> Sending redlines is a legal act — the counterparty will treat every edit as our negotiating position. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
+> Sending redlines is a legal act — the counterparty will treat every edit as our negotiating position. Have you reviewed this with a solicitor or barrister? If yes, proceed. If no, here's a brief to bring to them:
 >
 > [Generate a 1-page summary: counterparty, agreement type, the specific redlines proposed, the playbook positions behind each, the fallbacks, and what to ask the attorney before the package leaves.]
 >
@@ -225,11 +225,11 @@ When in doubt, smaller. A client who receives a surgical redline trusts that you
 
 ### Step 6: Assemble the memo
 
-Prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
+Prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`).
 
 This memo and the underlying agreement may be privileged, confidential, or both. The output inherits that status from the source. Distribute only within the privilege circle; mark and store it where privileged materials live; strip the work-product header before any external delivery (e.g., counterparty redlines, stakeholder summaries).
 
-The playbook positions applied below reflect the jurisdiction recorded in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` → `Governing law and venue`. Legal rules and enforceability vary materially by jurisdiction. If this deal implicates a different governing law or a choice-of-law question, flag it in the memo — the analysis may not transfer as written.
+The playbook positions applied below reflect the jurisdiction recorded in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` → `Governing law and venue`. Legal rules and enforceability vary materially by jurisdiction. If this deal implicates a different governing law or a choice-of-law question, flag it in the memo — the analysis may not transfer as written.
 
 > **No silent supplement.** If a research query to the configured legal research tool returns few or no results for a rule the memo needs (enforceability of a limitation clause, indemnity scope, governing-law choice), report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [rule / jurisdiction]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) flag as unverified and stop. Which would you like?" A lawyer decides whether to accept lower-confidence sources.
 >
@@ -306,9 +306,9 @@ If DocuSign MCP is connected and the agreement is ready to sign (all greens or a
 
 Do **not** send anything for signature without explicit instruction. "Ready to sign" is the lawyer's call, not yours.
 
-**Before generating a signature envelope or routing for countersignature:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md`. If the Role is Non-lawyer:
+**Before generating a signature envelope or routing for countersignature:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`. If the Role is Non-lawyer:
 
-> This step has legal consequences (signing binds the company to the whole agreement). Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
+> This step has legal consequences (signing binds the company to the whole agreement). Have you reviewed this with a solicitor or barrister? If yes, proceed. If no, here's a brief to bring to them:
 >
 > [Generate a 1-page summary: counterparty, contract value, the issues found and how they resolved, any risk the lawyer accepted, and what to ask the attorney before envelope goes out.]
 >
@@ -318,7 +318,7 @@ Do not proceed past this gate without an explicit yes.
 
 ## Output formats
 
-**Full memo (default):** As above. Goes in the [CLM] record or the Drive folder from `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` house-style section.
+**Full memo (default):** As above. Goes in the [CLM] record or the Drive folder from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` house-style section.
 
 **Slack-sized summary:** Two lines and a link. For when someone asks "is this okay?" in a channel.
 
@@ -330,7 +330,7 @@ Do not proceed past this gate without an explicit yes.
 
 ## Quality checks before delivering
 
-- [ ] `~/.claude/plugins/config/claude-for-legal/commercial-legal/CLAUDE.md` was loaded and quoted — not generic market positions
+- [ ] `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md` was loaded and quoted — not generic market positions
 - [ ] Deal-breaker checked first
 - [ ] Every issue has specific replacement language
 - [ ] Risk levels are calibrated (not everything is Critical)

@@ -17,6 +17,14 @@ judgment. A "no obvious conflicts" result means the triage
 didn't find anything — it does not mean the mark is clear. Clients have been
 sued over marks that passed a knockout search.
 
+**Jurisdiction note:** This clearance framework is adapted for Hong Kong.
+Trademark rights in HK are governed by the Trade Marks Ordinance (Cap 559).
+The HK Intellectual Property Department (IPD) maintains the official register.
+Clearance searches should cover the HKIPD database for word, device, and
+series marks. HK does not have a separate state-level register — the IPD is
+the sole authority. For marks used or registered in Mainland China,
+additional CNIPA and Madrid searches are strongly recommended.
+
 ## Instructions
 
 1. Read `~/.claude/plugins/config/claude-for-legal/ip-legal/CLAUDE.md`. If it
@@ -56,14 +64,14 @@ decides.
 **Say this at the top of every output. Do not drop it. Do not soften it.**
 
 > **This is a first pass, not a clearance opinion.** A trademark clearance opinion
-> requires a full professional search (TESS, state registries, common law sources,
-> international registries, domain and social, trade dress and design marks where
+> requires a full professional search (HKIPD register, CNIPA, WIPO Madrid,
+> common law sources, domain and social, trade dress and design marks where
 > relevant) and attorney judgment on likelihood of confusion, which depends on
 > factors a structured triage cannot fully assess. A "no obvious conflicts" result
 > from this skill means the triage didn't find anything — it does not mean the
 > mark is clear. Clients have been sued over marks that passed a knockout search.
-> A registered trademark attorney evaluates before anyone adopts, files, or
-> invests in this mark.
+> A registered trademark attorney (in HK, a solicitor or patent attorney registered
+> with the IPD) evaluates before anyone adopts, files, or invests in this mark.
 
 This is the loudest guardrail in the plugin. Under-calling a conflict is a
 one-way door — a logo on trucks, a product launched, a TM application filed, all
@@ -159,11 +167,14 @@ Read `## Available integrations` from `~/.claude/plugins/config/claude-for-legal
 
 - **If a trademark search connector is available** (Solve Intelligence,
   Descrybe — or any MCP exposing TM-registry search): run a preliminary search
-  across the relevant classes and jurisdictions. Attribute every result to its
-  source. Note the date of the search and the scope (which registries, which
-  classes, exact-match vs. fuzzy, design search or not).
-- **If a legal research connector is available** (CourtListener for litigation for case law and TTAB decisions): sweep for reported disputes involving
-  the mark or a close variant. Same attribution rule.
+  across the relevant classes and jurisdictions. For HK, search the IPD online
+  database at `https://esearch.ipd.gov.hk` for word and device marks, by class,
+  owner, or mark text. Attribute every result to its source. Note the date of
+  the search and the scope (which registries, which classes, exact-match vs.
+  fuzzy, design search or not).
+- **If a legal research connector is available** (Westlaw Asia, HKLII, CourtListener): sweep for reported disputes involving
+  the mark or a close variant in HK (CFI, CA) and HKIPD opposition decisions.
+  Same attribution rule.
 - **If no search connector is available:** say so, explicitly, in the output.
   Do not infer results from model knowledge and present them as search findings.
 
@@ -171,8 +182,8 @@ Read `## Available integrations` from `~/.claude/plugins/config/claude-for-legal
 
 Write out, in the output, this exact statement:
 
-> **No database search was run.** This triage did not hit TESS, Solve
-> Intelligence, Descrybe, CourtListener, state registries, Madrid/WIPO, or any
+> **No database search was run.** This triage did not hit the HKIPD e-Search,
+> Solve Intelligence, Descrybe, Westlaw Asia, HKLII, Madrid/WIPO, CNIPA, or any
 > common law / unregistered-mark sources. A knockout or full search across those
 > databases is required before any conclusion about availability. The triage
 > below is limited to intrinsic-bar analysis and structured confusion factors
@@ -253,29 +264,23 @@ do not silently skip the sweep.
 
 ## Likelihood-of-confusion factors
 
-> **Confusion framework is jurisdiction-specific.** The US and EU assess likelihood of confusion differently. Don't apply the wrong one.
+> **Confusion framework is jurisdiction-specific.** HK, the US, and the EU assess likelihood of confusion differently. Don't apply the wrong one.
 >
-> - **US (federal circuits):** Multi-factor tests (*du Pont*, *Polaroid*, *Sleekcraft*) — strength of the mark, similarity (sight/sound/meaning), proximity of goods, channels, buyer sophistication, actual confusion, intent.
-> - **EU (Art. 8(1)(b) EUTMR):** Global appreciation — all relevant factors assessed holistically through the eyes of the average consumer. Key differences: greater weight on phonetic similarity; translation equivalents as standard (the mark translated into EU languages); "likelihood of association" beyond source confusion; the distinctiveness of the earlier mark carries more weight.
-> - **UK (TMA 1994 §5(2)):** Follows the EU global appreciation approach post-Brexit but diverging case law. Check for UK-specific decisions.
-> - **Other jurisdictions:** If the intake includes a jurisdiction without a framework above, say: "I don't have [jurisdiction]'s confusion framework. Applying the US test would give you a wrong answer that looks right. Options: (a) I search for the applicable standard, (b) you route to a [jurisdiction] trademark specialist, (c) I note this jurisdiction is out of scope." Never silently apply US doctrine.
+> - **Hong Kong (Trade Marks Ordinance Cap 559 s. 12):** The test under s.12(1) is whether the mark is identical or similar to an earlier trade mark for identical or similar goods/services and there exists a likelihood of confusion on the part of the public. HK courts apply a global appreciation approach influenced by UK/EU case law (*British Sugar v James Robertson* [1996] RPC 281; *Bristol-Myers Squibb v Baker Norton* [2000] FSR 816). Key factors: similarity of marks (visual, aural, conceptual); similarity of goods/services; distinctiveness of the earlier mark; degree of attention of the average consumer; actual confusion if any. The common law action for passing off (in addition to s.12) requires goodwill, misrepresentation, and damage.
+> - **EU (Art. 8(1)(b) EUTMR):** Global appreciation — all relevant factors assessed holistically. Greater weight on phonetic similarity; translation equivalents as standard.
+> - **US (federal circuits):** Multi-factor tests (*du Pont*, *Polaroid*, *Sleekcraft*) — strength of the mark, similarity, proximity of goods, channels, buyer sophistication, actual confusion, intent.
+> - **Other jurisdictions:** If the intake includes a jurisdiction without a framework above, say: "I don't have [jurisdiction]'s confusion framework. Applying the wrong test would give you a wrong answer that looks right. Options: (a) I search for the applicable standard, (b) you route to a [jurisdiction] trademark specialist, (c) I note this jurisdiction is out of scope." Never silently apply a foreign doctrine.
 
-The relevant circuit's test determines the factors to walk through. Cite the
-test that applies:
+For HK, apply the global appreciation approach under Cap 559 s.12(1). Factors to walk through:
 
-- **TTAB / Federal Circuit:** *In re E. I. du Pont de Nemours & Co.*, 476 F.2d
-  1357 (C.C.P.A. 1973) (13 factors).
-- **Second Circuit:** *Polaroid Corp. v. Polarad Electronics Corp.*, 287 F.2d 492
-  (2d Cir. 1961) (8 factors).
-- **Ninth Circuit:** *AMF Inc. v. Sleekcraft Boats*, 599 F.2d 341 (9th Cir. 1979)
-  (8 factors).
-- **Other circuits:** walk through the circuit's named multi-factor test (e.g.,
-  *Frisch's Restaurants* in the Sixth Circuit, *Scotch Whisky Association* in the
-  Seventh, *Lapp* in the Third).
-
-Pick based on where the user plans to enforce (practice profile), the TTAB if
-the immediate forum is registration, or the primary commercial forum otherwise.
-Note your pick in the output.
+- **Similarity of marks** (visual, aural, conceptual — assessed globally)
+- **Similarity of goods or services** (identical, similar, or unrelated)
+- **Distinctiveness of the earlier mark** (inherently distinctive vs. descriptive)
+- **Average consumer** (degree of attention, purchasing habits in HK market)
+- **Family of marks** (if the earlier party owns a series)
+- **Honest concurrent use** (a recognized HK defence)
+- **Actual confusion** (any evidence, particularly in the HK market)
+- **Passing off** (if common law rights are claimed — goodwill in HK, misrepresentation, damage)
 
 For each factor, produce a **flag**, not a verdict. Each factor should say what
 cuts each way and where the uncertainty is:

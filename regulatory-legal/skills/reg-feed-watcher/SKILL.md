@@ -22,7 +22,7 @@ value — unfiltered feeds are noise.
 
 `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` → watchlist, materiality threshold, feed configuration, digest output path (if set).
 
-`references/source-catalog.md` (in this skill's directory) → curated catalog of RSS/JSON/HTML sources across US federal, US state, EU/UK, international, and secondary/aggregator categories. Use when configuring new sources or when the user's watchlist has coverage gaps (see Step 0).
+`references/source-catalog.md` (in this skill's directory) → curated catalog of RSS/JSON/HTML sources across Hong Kong (SFC, HKMA, IA, Competition Commission, LegCo, Gazette), EU/UK, international, and secondary/aggregator categories. Use when configuring new sources or when the user's watchlist has coverage gaps (see Step 0).
 
 ## Workflow
 
@@ -33,7 +33,7 @@ Before running the pull, compare the watchlist + feed configuration in CLAUDE.md
 - Which categories (US federal / US state / EU-UK / international) does the user care about per their watchlist?
 - Which of those categories have zero or very few sources configured?
 
-If there's an obvious gap — e.g., user watches "EU regulators" in the watchlist but has only `edpb.europa.eu` configured in feeds, missing ICO, CNIL, DPC Ireland — surface it once at the top of the digest:
+If there's an obvious gap — e.g., user watches "HK regulators" in the watchlist but has only SFC configured in feeds, missing HKMA or IA guidelines — surface it once at the top of the digest:
 
 > **Coverage gap noticed:** Your watchlist includes [category], but only [N] feeds are configured. The source catalog lists [X] options in this category (e.g., [top 2-3 names]). Want me to suggest additions? Run `/regulatory-legal:cold-start-interview --redo` to update, or edit `~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md` directly.
 
@@ -48,39 +48,39 @@ and 3 are additive — use them if configured, skip if not.
 
 For each regulator in the watchlist:
 
-- **Federal Register API** (`https://www.federalregister.gov/api/v1/documents`)
-  — query by agency slug, date range (since last check), document type. Returns
-  structured data: document type, title, abstract, effective date, comment
-  deadline (for NPRMs), and citation. Covers all US federal agencies.
-- **Direct regulator RSS** — fetch and parse any RSS URLs in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md feed
-  configuration (SEC, FTC, CFPB, state agencies, EU DPAs, etc.).
+- **Hong Kong sources** — pull from regulator websites and the Gazette:
+  - **SFC website** (`https://www.sfc.hk` → Regulatory News → Circulars & Guidelines) — browse or scrape for announcements, circulars, consultation papers, enforcement news.
+  - **HKMA website** (`https://www.hkma.gov.hk` → Press Releases & Publications) — guidelines, supervisory letters, policy announcements.
+  - **IA website** (`https://www.ia.org.hk` → News & Notices) — guidelines, enforcement, industry notices.
+  - **Competition Commission** (`https://www.compcomm.hk` → News & Publications) — enforcement, merger decisions, guidance.
+  - **Hong Kong Government Gazette** (`https://www.gld.gov.hk` → Gazette) — legal notices, subsidiary legislation.
+  - **LegCo** (`https://www.legco.gov.hk` → Bills Database) — bills introduced, committee papers.
+- **Direct regulator RSS/email** — fetch and parse any RSS URLs or email newsletter archives in ~/.claude/plugins/config/claude-for-legal/regulatory-legal/CLAUDE.md feed configuration (SFC circulars, HKMA newsletters, etc.).
 
-Agency slug reference for common watchlist regulators:
-| Regulator | API slug |
-|---|---|
-| FTC | federal-trade-commission |
-| SEC | securities-and-exchange-commission |
-| CFPB | consumer-financial-protection-bureau |
-| CPPA (CA) | RSS only — cppa.ca.gov/feed |
-| DOL | labor-department |
-| HHS | health-and-human-services-department |
-| FCC | federal-communications-commission |
+HK regulator feed reference for common watchlist regulators:
+| Regulator | Feed source | Format |
+|---|---|---|
+| SFC | sfc.hk → Regulatory News | HTML + email subscription |
+| HKMA | hkma.gov.hk → Press Releases | HTML + email subscription |
+| IA | ia.org.hk → News & Notices | HTML + email subscription |
+| Competition Commission | compcomm.hk → News | HTML + email subscription |
+| LegCo | legco.gov.hk → Bills | HTML |
+| HK Govt Gazette | gld.gov.hk → Gazette | RSS + HTML |
 
-For any regulator not in this list: check federalregister.gov/agencies for the
-correct slug, or fall back to direct RSS.
+For any HK regulator not in this list: check the regulator's website for latest news/circular sections and email alert sign-up.
 
 **Tier 2 — Paid feeds (if configured)**
 
 - **Paid regulatory feed MCP:** Query for updates since last check date,
   filtered to watchlist regulators.
-- **CourtListener MCP:** Same.
+- **Westlaw Asia / HKLII MCP:** Same — HK case law, regulatory tribunal decisions, and court judgments.
 
 De-duplicate across tiers — the same document may appear in multiple sources.
 Prefer the richest source for the enriched output.
 
 **No silent supplement.** If the feed pull returns few or no results for a regulator in the watchlist, report what was found and stop. Do NOT fill the gap from web search or model knowledge without asking. Say: "The feed check returned [N] items from [regulators hit]. Coverage appears thin for [regulator / topic]. Options: (1) broaden the date window, (2) try a different feed or MCP, (3) search the web — results will be tagged `[web search — verify]` and should be checked against the issuing authority's website before relying, or (4) stop here. Which would you like?" A lawyer decides whether to accept lower-confidence sources; Claude does not decide for them.
 
-**Source attribution.** Tag every citation and regulatory item with where it came from: `[Federal Register]`, `[<regulator> RSS]`, `[CourtListener]`, or the specific MCP tool name for items retrieved via connector; `[web search — verify]` for items from web search; `[model knowledge — verify]` for items surfaced from the model's training data; `[user provided]` for manually-pasted items. Items tagged `verify` carry higher fabrication risk than tool-retrieved items and should be checked first. Never strip or collapse the tags — they are the user's fastest signal about which citations to verify.
+**Source attribution.** Tag every citation and regulatory item with where it came from: `[SFC]`, `[HKMA]`, `[IA]`, `[Comp Comm]`, `[Gazette]`, `[LegCo]`, `[Westlaw Asia]`, `[HKLII]`, or the specific MCP tool name for items retrieved via connector; `[web search — verify]` for items from web search; `[model knowledge — verify]` for items surfaced from the model's training data; `[user provided]` for manually-pasted items. Items tagged `verify` carry higher fabrication risk than tool-retrieved items and should be checked first. Never strip or collapse the tags — they are the user's fastest signal about which citations to verify.
 
 **Secondary sources.** Some catalog entries (IAPP, FPF, Hogan Lovells, Covington, Lexology, JD Supra, Artificial Lawyer, LawSites, and similar commentators/aggregators) report on primary regulatory action but are not the primary source. Tag any item pulled from these feeds with `[secondary source]` in addition to the feed-name tag — e.g., `[IAPP Daily Dashboard] [secondary source]`. In the digest, when a secondary-source item describes a regulator action, add a note: "→ Trace to primary: [link to regulator site if known, otherwise 'find on <regulator>.gov before relying']." Do not classify a secondary-source item as "Always material" on its own strength — bump it down a tier until the primary source is located.
 
@@ -194,7 +194,7 @@ Format on disk matches the chat format exactly (below). Markdown renders well in
 
 ---
 
-**Verify citations before relying on them.** Regulatory citations here were AI-generated and have not been checked against a primary source. Before acting on any rule, guidance, or enforcement action above, confirm it against Westlaw, your firm's research platform, or the issuing authority's website — check accuracy, effective date, and current status. AI-generated regulatory citations are sometimes fabricated, misquoted, or stale. Source tags on each item (e.g., `[Federal Register]`, `[web search — verify]`) show where the citation came from; `verify` tags carry higher fabrication risk and should be checked first.
+**Verify citations before relying on them.** Regulatory citations here were AI-generated and have not been checked against a primary source. Before acting on any rule, guideline, enforcement action, or regulatory notice above, confirm it against Westlaw Asia, the HK e-Legislation website (https://www.elegislation.gov.hk), or the issuing authority's website (SFC, HKMA, IA, Competition Commission) — check accuracy, effective date, and current status. AI-generated regulatory citations are sometimes fabricated, misquoted, or stale. Source tags on each item (e.g., `[SFC circular]`, `[Gazette]`, `[web search — verify]`) show where the citation came from; `verify` tags carry higher fabrication risk and should be checked first.
 ```
 
 ## Config-dependent fallbacks

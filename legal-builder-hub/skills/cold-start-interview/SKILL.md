@@ -124,7 +124,7 @@ If the answer is 2 or 3, say this once:
 
 If the answer is 3, add:
 
-> If you need to find an attorney, solicitor, barrister, or other authorised legal professional: your professional regulator's referral service is the fastest starting point (state bar in the US, SRA/Bar Standards Board in England & Wales, Law Society in Scotland/NI/Ireland/Canada/Australia, or your jurisdiction's equivalent). Many offer free or low-cost initial consultations. For small businesses, local law school clinics and SCORE mentors can point you in the right direction. For individuals, legal aid organizations cover many practice areas.
+> If you need to find an attorney, solicitor, barrister, or other authorised legal professional: your professional regulator's referral service is the fastest starting point (Law Society of Hong Kong, Hong Kong Bar Association, or your jurisdiction's equivalent). The Duty Lawyer Service (dutylawyer.org.hk) provides free legal representation and advice. CLIC (clic.org.hk) offers plain-language legal information and referral directories. The Free Legal Advice Scheme operates through evening centres across Hong Kong. Many offer free or low-cost initial consultations. For small businesses, local law school clinics (HKU, CUHK, CityU) may be able to point you in the right direction.
 
 #### What's connected?
 

@@ -20,7 +20,7 @@ In-house corporate counsel workflows across four practice areas: M&A deals, boar
 /corporate-legal:cold-start-interview
 ```
 
-Walks through module selection, then a short targeted interview for each active area. Writes a modular `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` with only the relevant sections. Your configuration is stored at that path and survives plugin updates.
+Walks through module selection, then a short targeted interview for each active area. Writes a modular `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` with only the relevant sections. Your configuration is stored at that path and survives plugin updates.
 
 Per-deal setup (M&A module only):
 
@@ -89,11 +89,11 @@ Intralinks, Datasite, and other VDR connectors can be added to `.mcp.json` when 
 
 ## How it learns
 
-Your practice profile at `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
+Your practice profile at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` isn't static — it improves as you use the plugin. Skills tell you when an output used a default you should tune. You can re-run setup, edit the file directly, or tell a skill to record a new position.
 
 ## M&A notes
 
 - Issue extraction applies materiality thresholds — does not read every document if threshold says top N by value.
 - Buy-side and sell-side are both supported. Practice Profile captures which side applies to this deal; skills adjust posture accordingly.
-- AI tool handoff (Luminance/Kira) is optional. If `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` says no tool, all extraction runs through the direct skill.
+- AI tool handoff (Luminance/Kira) is optional. If `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` says no tool, all extraction runs through the direct skill.
 - Closing checklist initializes from the purchase agreement, then self-updates as diligence surfaces consents required.

@@ -1,8 +1,8 @@
 {
   "name": "employment-legal",
   "version": "1.0.2",
-  "description": "Reviews hires and terminations for jurisdiction-specific risk flags, classifies workers against the controlling state test, tracks leave deadlines before they're missed, runs internal investigations, and drafts policies with state supplements where the law differs.",
+  "description": "Reviews hires and terminations for Hong Kong employment law risk flags under the Employment Ordinance (Cap 57) and related legislation, classifies workers under HK common law tests, tracks statutory leave deadlines (annual, sick, maternity, paternity), runs internal investigations, and drafts policies for HK employers.",
   "author": {
-    "name": "Anthropic"
+    "name": "Buildwise-Studios"
   }
 }

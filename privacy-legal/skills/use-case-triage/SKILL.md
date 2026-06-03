@@ -11,7 +11,7 @@ argument-hint: "[describe the data processing activity or feature]"
 
 # /use-case-triage
 
-1. Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. Confirm privacy practice is configured — if not, stop and direct to setup.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. Confirm privacy practice is configured — if not, stop and direct to setup.
 2. Run the workflow below. Clarify the activity if vague.
 3. House trigger check → mandatory DPIA check (if GDPR in footprint) → privacy policy conflict check.
 4. Output: classification (PROCEED / PIA REQUIRED / DPIA MANDATORY / STOP), reasoning, conditions table if required, cross-plugin handoffs.
@@ -27,7 +27,7 @@ argument-hint: "[describe the data processing activity or feature]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/privacy-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -55,11 +55,11 @@ The output is one of four classifications:
 
 ## Jurisdiction assumption
 
-This triage assumes the jurisdictional scope specified in your configuration. Privacy rules, assessment triggers, and lawful bases vary materially by jurisdiction (GDPR vs. state consumer privacy laws vs. sectoral). If the processing activity, controller, or affected data subjects fall under a different jurisdiction, this classification may not apply as written.
+This triage assumes the jurisdictional scope specified in your configuration. Privacy rules, assessment triggers, and lawful basis vary materially by jurisdiction (PDPO vs. GDPR vs. state consumer privacy laws vs. sectoral). If the processing activity, data user, or affected data subjects fall under a different jurisdiction, this classification may not apply as written.
 
 ## Read the config first
 
-Before triaging, always read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md`. The PIA trigger criteria, regulatory
+Before triaging, always read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md`. The PIA trigger criteria, regulatory
 footprint, and privacy policy commitments there are authoritative. Generic privacy
 law reasoning is not a substitute for what this company has actually committed to.
 
@@ -99,7 +99,7 @@ If the description is vague, ask before classifying. Get specific on:
 
 ### Step 2: Check house triggers
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## PIA house style` → Trigger criteria. Apply them.
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## PIA house style` → Trigger criteria. Apply them.
 
 If the house trigger is met → at minimum **PIA REQUIRED**.
 
@@ -112,18 +112,18 @@ activities need a PIA regardless of internal policy.
 
 **Before researching regime-specific triggers, ask the activity-based federal overlay question first.** If the processing touches a federally-regulated data category, the federal overlay is usually the controlling framework, not state privacy law, and the triage needs to surface that early rather than as an afterthought.
 
-> **Activity-based federal overlays — ask first:**
+> **Activity-based HK sectoral overlays — ask first:**
 >
-> Does this processing touch:
-> - **Financial account data or "nonpublic personal information" about consumers** (GLBA / Reg P — applies to financial institutions and their non-affiliated third parties; imposes substantive restrictions on sharing NPI for marketing, separate from and on top of any state privacy-law exemption)?
-> - **Protected health information held by a covered entity or business associate** (HIPAA Privacy / Security Rules — substantive restrictions on use and disclosure, breach notification at 500+ records, BAA required for any vendor)?
-> - **Education records held by a school or a service provider acting for a school** (FERPA — consent requirements for disclosure, directory-information carve-outs)?
-> - **Data from children under 13 collected by an operator of an online service directed to children or with actual knowledge** (COPPA — parental consent, notice, deletion rights, strict limits on retention and sharing)?
-> - **Another sectoral federal regime** (e.g., VPPA for video-viewing records, CPNI for carrier data, DPPA for DMV records, TCPA for SMS/call consent)?
+> Does this processing involve:
+> - **Financial data subject to HKMA regulation** (Banking Ordinance, Cap 155 — imposes outsourcing, data security, and customer confidentiality requirements beyond the PDPO)?
+> - **Health or medical data** (relevant HK ordinances and DH guidelines — supplement PDPO DPP4 security requirements; note PDPO has no separate "sensitive data" category)?
+> - **Telecommunications customer data** (Telecommunications Ordinance, Cap 106 — OFCA regulations on confidentiality)?
+> - **Personal information of individuals in Mainland China** (PRC PIPL — cross-border transfer, consent, and assessment requirements that are independent of and additional to PDPO rules)?
+> - **Another sectoral regime** (e.g., data from children — note HK does not have a COPPA equivalent, but DPP1 and the PCPD's guidance on children's data apply)?
 >
-> If yes to any: the federal overlay usually supplies the controlling substantive restriction, not just an exemption from a state consumer privacy law. Research and cite the specific provision before continuing. An activity that is "exempt" from CCPA under § 1798.145(e) because it is GLBA-covered is still subject to the GLBA restrictions (e.g., § 6802(a)-(c) on NPI sharing) — the CCPA exemption does not make the activity lawful; it just moves the governing framework to GLBA.
+> If yes to any: the sectoral overlay may supply the controlling substantive restriction, separate from the PDPO. Research and cite the specific provision before continuing.
 
-For each regime in `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## Regulatory footprint`, **research the currently operative mandatory privacy/data-protection assessment triggers**. Cite controlling statute, regulation, or regulator guidance with pinpoint references. Note effective dates — national and state regulators publish and update trigger lists regularly; do not rely on a static checklist. Flag uncertainty for attorney verification rather than guess.
+For each regime in `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## Regulatory footprint`, **research the currently operative mandatory privacy/data-protection assessment triggers**. Cite controlling statute, regulation, or regulator guidance with pinpoint references. Note effective dates — national and state regulators publish and update trigger lists regularly; do not rely on a static checklist. Flag uncertainty for attorney verification rather than guess.
 
 If **any** applicable regime's mandatory trigger is met → **DPIA MANDATORY** (or the equivalent regime-specific mandate), regardless of house trigger.
 
@@ -142,7 +142,7 @@ One or more strong indicators with no researched mandatory trigger → escalate 
 
 ### Step 4: Privacy policy conflict check
 
-Read `~/.claude/plugins/config/claude-for-legal/privacy-legal/CLAUDE.md` → `## Privacy policy commitments`. Check the proposed activity
+Read `~/.claude/plugins/config/claude-for-hk-law/privacy-legal/CLAUDE.md` → `## Privacy policy commitments`. Check the proposed activity
 against every stated commitment.
 
 **Common conflicts to catch:**
@@ -178,7 +178,7 @@ proceeds.
 **CLASSIFICATION:** [PROCEED / PIA REQUIRED / DPIA MANDATORY / STOP]
 
 **House trigger met?** [Yes / No]
-**GDPR mandatory DPIA trigger?** [Yes — [trigger] / No / N/A (GDPR not in footprint)]
+**GDPR mandatory personal-data-privacy impact assessment trigger?** [Yes — [trigger] / No / N/A (GDPR not in footprint)]
 **Privacy policy conflict?** [None / Yes — [specific conflict]]
 
 **Reasoning:**

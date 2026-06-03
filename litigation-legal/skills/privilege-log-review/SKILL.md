@@ -19,8 +19,8 @@ argument-hint: "[log file, or document set]"
 
 Before working with a set of litigation documents, ask: "Were any of these documents obtained through disclosure or discovery in legal proceedings?" If yes:
 
-- **England & Wales (CPR 31.22):** Documents obtained through disclosure are subject to the implied undertaking — you may only use them for the purpose of the proceedings in which they were disclosed, unless the court grants permission, the disclosing party consents, or the document has been read in open court. Using them for a different matter, a different claim, or a commercial purpose without permission is a contempt.
-- **US:** Protective orders and Rule 26(c) may impose similar restrictions. Check the order.
+- **Hong Kong (RHC O.24, r.14A):** Documents obtained through discovery are subject to the implied undertaking — you may only use them for the purpose of the proceedings in which they were disclosed, unless the court grants permission, the disclosing party consents, or the document has been read in open court.
+- **England & Wales (CPR 31.22):** Same implied undertaking applies.
 - **Other jurisdictions:** Similar restrictions commonly apply. Check the local rule.
 
 Confirm: "This use is within the proceedings in which the documents were disclosed, or I have permission / consent, or the documents are now public." If not confirmed, flag it: "⚠️ Disclosed documents may have use restrictions. Confirm this use is permitted before proceeding."
@@ -59,7 +59,7 @@ When this skill cites a rule, local variant, or authority for a privilege call (
 
 > "I don't see [matter slug] in the matter log. Run `/litigation-legal:matter-intake` first so the conflicts check runs and the matter workspace is set up. I won't review a privilege log on a matter that hasn't been intaken — the conflicts check is the gate, and a privilege log review is work product that needs to live in the matter file."
 
-**Jurisdiction matters.** Privilege scope (A/C and work product), waiver doctrine, and log-form requirements vary materially across federal circuits and state courts. This review applies the rules for the forum specified in config. If the matter involves a different forum, a transferred case, multi-jurisdictional production, or a choice-of-law question on privilege, the calls here may not transfer — re-run against the controlling forum.
+**Jurisdiction matters.** Legal Professional Privilege (LPP) in Hong Kong is governed by common law. HK recognises legal advice privilege and litigation privilege governed by the dominant purpose test. HK does not recognise a separate work product doctrine. Waiver rules differ from US. This review applies HK privilege law. If the matter involves another jurisdiction, re-run against the controlling law.
 
 ## Step 0: Research the forum's privilege-log rules
 
@@ -179,7 +179,7 @@ Do not treat the log as service-ready without an explicit yes. First-pass review
 
 ## Privilege Log Review: [Matter] — [date]
 
-**Applicable rule:** [FRCP 26(b)(5)(A) / state rule / local rule / standing order — pinpoint cites] `[UNCERTAIN — verify currency]`
+**Applicable rule:** [RHC O.24 / RDC equivalent / Practice Direction — pinpoint cites] `[UNCERTAIN — verify currency]`
 **Entries reviewed:** [N]
 **Results:** [N] ✅ confident priv / [N] ✅+⚠️ priv kept & flagged / [N] ❌ recommend remove (attorney confirms)
 

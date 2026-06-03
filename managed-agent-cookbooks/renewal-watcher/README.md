@@ -1,8 +1,10 @@
-# Renewal Watcher — managed-agent template
+# Renewal Watcher — managed-agent template (HK Law Edition)
 
 ## Overview
 
 Scans the contract repository for upcoming renewal and cancel-by deadlines, cross-references against the team's playbook, flags contracts with upcoming deadlines, playbook deviations, and escalation triggers, and writes an alert report. Same source as the [`renewal-watcher`](../../commercial-legal/agents/renewal-watcher.md) Claude Code agent and the [`renewal-tracker`](../../commercial-legal/skills/renewal-tracker) skill — this directory is the Managed Agent cookbook for `POST /v1/agents`.
+
+**Hong Kong adaptation.** Contract renewals and notice periods in Hong Kong are governed by the Law of Contract (Cap. 406 in part; primarily common law) and the express terms of each agreement. Unlike some US states with statutory notice defaults, HK has no general statutory minimum notice period for commercial contracts — notice windows are whatever the parties negotiated. The Hong Kong Court of Final Appeal and High Court interpret termination and renewal clauses under English common law principles as received in HK. This cookbook adapts the lookahead, escalation, and playbook-deviation logic for an HK commercial practice.
 
 This is a **cookbook, not a product.** It assumes Ironclad as the CLM of record because that is what the paired plugin assumes; teams on Agiloft, Ironclad alternatives, iManage, or a Google Drive of signed PDFs should swap the MCP endpoint accordingly.
 
@@ -21,6 +23,9 @@ export GDRIVE_MCP_URL=...
 # Optional — enable in the manifest if your signed agreements live here
 export IMANAGE_MCP_URL=...
 export DOCUSIGN_MCP_URL=...
+# HK-specific: if your contracts are governed by HK law, set this flag
+# so the deadline calculator adjusts notice-period heuristics
+export HK_JURISDICTION=1
 ../../scripts/deploy-managed-agent.sh renewal-watcher
 ```
 
@@ -52,7 +57,7 @@ Before you trust the output on your workflow:
 
 - **Point at your CLM.** `IRONCLAD_MCP_URL` is the default. If signed agreements live in iManage, flip `imanage` to `default_config: { enabled: true }` in `agent.yaml` and `subagents/repo-reader.yaml` and set `IMANAGE_MCP_URL`. If they live in a Google Drive folder, rely on `gdrive` and the repo-reader's fallback search path. If they live in a CLM without a public MCP (Agiloft, Conga), wire a custom connector and update the MCP server block.
 - **Set the Slack channel.** The alert-writer emits a `handoff_request` that names a Slack channel. The orchestrator reads that channel from your playbook configuration's **House style → Renewal alerts** field. Set it before the first scheduled run or the handoff will dead-letter.
-- **Tune the lookahead windows.** The deadline-calculator's default tiers are overdue / 30 / 60 / 90 / 180 days. If your renewal cycle is shorter (SaaS order forms under one year) or longer (multi-year enterprise MSAs with 12-month notice windows), adjust the tier thresholds in the deadline-calculator prompt and the corresponding sections in `alert-writer.yaml`.
-- **Adjust the escalation matrix.** The deadline-calculator reads your playbook's escalation matrix to decide whether to set `escalation_needed: true` and who to route to. Confirm the matrix reflects your current approval authority (who signs off on letting an auto-renewal lapse, who signs off on a renegotiation above a dollar threshold) before enabling scheduled runs. The [`escalation-flagger`](../../commercial-legal/skills/escalation-flagger) skill is loaded in `alert-writer` for formatting.
-- **Confirm the work-product header.** The headless append in `agent.yaml` instructs the agent to prepend your playbook's work-product header. Verify the header language with your GC before turning this on.
+- **Tune the lookahead windows.** The deadline-calculator's default tiers are overdue / 30 / 60 / 90 / 180 days. If your renewal cycle is shorter (SaaS order forms under one year) or longer (multi-year enterprise MSAs with 12-month notice windows), adjust the tier thresholds in the deadline-calculator prompt and the corresponding sections in `alert-writer.yaml`. **HK note:** Under HK common law, notice periods for contracts of indefinite duration may be subject to a requirement of "reasonable notice" in the absence of an express term. For contracts governed by HK law, flag those with no express notice period for human review.
+- **Adjust the escalation matrix.** The deadline-calculator reads your playbook's escalation matrix to decide whether to set `escalation_needed: true` and who to route to. Confirm the matrix reflects your current approval authority (who signs off on letting an auto-renewal lapse, who signs off on a renegotiation above a dollar threshold) before enabling scheduled runs. **HK note:** Use HKD for monetary thresholds throughout. Ensure the escalation chain includes HK-qualified lawyers where legal advice on termination is needed. The [`escalation-flagger`](../../commercial-legal/skills/escalation-flagger) skill is loaded in `alert-writer` for formatting.
+- **Confirm the work-product header.** The headless append in `agent.yaml` instructs the agent to prepend your playbook's work-product header. Verify the header language with your GC before turning this on. **HK note:** Legal professional privilege in HK is governed by common law (not statute). Confirm the header language with your GC before deploying.
 - **Cadence.** Weekly is the default. High-volume teams should run daily; small teams can run monthly. The cadence lives in your own workflow engine — the cookbook does not schedule itself.

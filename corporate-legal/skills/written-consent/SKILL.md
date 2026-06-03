@@ -12,11 +12,11 @@ argument-hint: "[describe the action needing board approval]"
 
 # /written-consent
 
-1. Load `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → Board & Secretary (consents repository, resolution language, state of incorporation, board composition).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → Board & Secretary (consents repository, resolution language, state of incorporation, board composition).
 2. Use the workflow below.
 3. Identify the action and classify (routine / review-flag).
 4. If review-flag: show outside counsel warning and confirm before proceeding.
-5. Search consents repository for closest precedent. If no repository: use seed consents from `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`.
+5. Search consents repository for closest precedent. If no repository: use seed consents from `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`.
 6. Draft consent in house format using precedent as base.
 7. Output: consent draft + signatory checklist + review prompts.
 
@@ -24,7 +24,7 @@ argument-hint: "[describe the action needing board approval]"
 
 ## Matter context
 
-**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-legal/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
+**Matter context.** Check `## Matter workspaces` in the practice-level CLAUDE.md. If `Enabled` is `✗` (the default for in-house users), skip the rest of this paragraph — skills use practice-level context and the matter machinery is invisible. If enabled and there is no active matter, ask: "Which matter is this for? Run `/corporate-legal:matter-workspace switch <slug>` or say `practice-level`." Load the active matter's `matter.md` for matter-specific context and overrides. Write outputs to the matter folder at `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/matters/<matter-slug>/`. Never read another matter's files unless `Cross-matter context` is `on`.
 
 ---
 
@@ -72,7 +72,7 @@ Do not proceed to Step 1 or any drafting under this gate without an explicit res
 
 ## Load context
 
-- `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` → `## Board & Secretary`:
+- `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → `## Board & Secretary`:
   - Consents repository location
   - House resolution language
   - State of incorporation (for notice requirements)
@@ -107,7 +107,7 @@ Ask the user what action the board needs to approve. Gather:
 - **What is being approved?** (One sentence.)
 - **Any supporting detail?** For example: the name of the officer being appointed, the grant amount and price for an equity grant, the counterparty and contract value for a contract approval.
 - **Effective date:** Today, or a specific date?
-- **Signatories:** Full board, or a specific committee? If the `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` written-consent scope says certain actions require a meeting rather than consent, flag it now.
+- **Signatories:** Full board, or a specific committee? If the `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` written-consent scope says certain actions require a meeting rather than consent, flag it now.
 - **Any director conflict?** Does any director have a material interest in the action being approved? If yes: flag it. The conflicted director may still be able to sign depending on state law and the nature of the conflict, but the consent should disclose it and the user should confirm.
 
 ### Action classification
@@ -160,7 +160,7 @@ Search the repository for the closest prior consent. Search strategy:
 
 ### If no repository (seed documents only)
 
-Extract the format from the seed consents in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. Note that no precedent search is available — the draft will follow house format but without substantive precedent matching. Flag this to the user:
+Extract the format from the seed consents in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. Note that no precedent search is available — the draft will follow house format but without substantive precedent matching. Flag this to the user:
 
 > No consents repository is connected, so I'm working from your seed documents for format. For this action type specifically, you may want to check whether you have a prior consent to use as a substantive starting point.
 
@@ -235,7 +235,7 @@ Date: _______________
 
 ## Step 4: Confirm the consent rules for the state of incorporation
 
-Check the state of incorporation in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. Research the written-consent requirements for that state before drafting:
+Check the state of incorporation in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. Research the written-consent requirements for that state before drafting:
 
 - Is unanimity required for a board written consent, or is a lower threshold permitted?
 - Is notice to non-signatory directors required? On what timing?
@@ -245,13 +245,13 @@ Check the state of incorporation in `~/.claude/plugins/config/claude-for-legal/c
 
 Cite the controlling statute section and any charter/bylaw provisions relied on. Verify currency — state corporate codes are amended regularly. Flag uncertainty for attorney verification rather than stating a rule you haven't confirmed.
 
-If `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` records a house position on any of these questions, apply it and note the legal backstop being relied on. Add a short "State-law notice" block to the output summarizing what you confirmed (or flagged) so the user isn't left wondering.
+If `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` records a house position on any of these questions, apply it and note the legal backstop being relied on. Add a short "State-law notice" block to the output summarizing what you confirmed (or flagged) so the user isn't left wondering.
 
 ---
 
 ## Step 4.5: Consequential-action gate (execute consent)
 
-**Before proceeding to output:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
+**Before proceeding to output:** Read `## Who's using this` in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`. If the Role is **Non-lawyer**:
 
 > Executing a written consent has legal consequences — it binds the entity and becomes a corporate record. Have you reviewed this with an attorney? If yes, proceed. If no, here's a brief to bring to them:
 >
@@ -271,7 +271,7 @@ Do not produce the final signatory-ready draft past this gate without an explici
 
 Produce:
 
-1. **The consent draft** — complete, ready to review and circulate. The executed written consent itself is a corporate record, not privileged; do not apply the work-product header to the consent as circulated. The drafting notes, signatory tracker, and analysis below are work product — prepend the work-product header from `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`):
+1. **The consent draft** — complete, ready to review and circulate. The executed written consent itself is a corporate record, not privileged; do not apply the work-product header to the consent as circulated. The drafting notes, signatory tracker, and analysis below are work product — prepend the work-product header from `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` `## Outputs` (it differs by user role — see `## Who's using this`):
 
    ```
    [WORK-PRODUCT HEADER — per plugin config ## Outputs — differs by role; see `## Who's using this`]
@@ -287,7 +287,7 @@ Required signatories (unanimous consent required):
 □ [Director Name 1]
 □ [Director Name 2]
 □ [Director Name 3]
-[etc. — pulled from board composition in `~/.claude/plugins/config/claude-for-legal/corporate-legal/CLAUDE.md`]
+[etc. — pulled from board composition in `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md`]
 
 Conflict disclosures:
 [None / [Director Name] has a disclosed interest — confirm whether recusal or disclosure is appropriate]

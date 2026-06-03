@@ -63,11 +63,11 @@ Match the request to the clinic's template set (from `~/.claude/plugins/config/c
 
 | Practice area | Documents |
 |---|---|
-| **Immigration** | I-589 asylum application narrative, client declaration, motion to change venue, motion to continue, FOIA request, country conditions summary |
-| **Housing** | Eviction answer, demand letter (repairs/deposit), motion to stay execution, discovery requests |
-| **Family** | Protective order petition, custody declaration, motion to modify, financial affidavit |
-| **Consumer** | Debt validation letter, FDCPA demand letter, answer to collection complaint, motion to vacate default |
-| **General litigation** | Motion template, notice of appearance, certificate of service |
+| **Immigration (HK)** | Non-refoulement claim submission, torture claim written representations, witness statement, request for release from detention, country conditions evidence summary |
+| **Housing (HK)** | Defence to eviction/possession claim, demand letter (repairs/deposit — Cap 7 maintenance order), application for stay of execution, summons to the Lands Tribunal |
+| **Family (HK)** | Petition for protection order (Cap 189), custody/access application (Cap 179), maintenance application, financial affidavit |
+| **Consumer (HK)** | Debt validation letter, demand letter, defence to money claim, application to Small Claims Tribunal |
+| **General litigation (HK)** | Writ of Summons template, Statement of Claim, Defence, skeleton argument format (HK Court of First Instance / District Court / Magistrates' Courts), certificate of service |
 
 If the requested document isn't in the template set: "The clinic's templates don't include [X]. I can attempt a draft from general principles, but flag this heavily — it hasn't been tuned for your practice area or jurisdiction. Better to ask [Professor] if there's an existing template."
 
@@ -85,9 +85,10 @@ Missing required facts → don't guess. Mark them: `[FACT NEEDED: client's entry
 
 Per `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` jurisdiction:
 
-- **Caption format:** state and local court rules. If local rules were ingested at cold-start, use them. If not, use state default and flag: `[VERIFY CAPTION: local rules not loaded — confirm format against [Court]'s current rules]`
-- **Service requirements:** who gets served, how, by when per the court's rules
-- **Local quirks:** page limits, font requirements, standing orders. Apply what's ingested; flag what isn't.
+- **Caption format:** Hong Kong court format (Court of First Instance / District Court / Magistrates' Courts / Lands Tribunal / Labour Tribunal). If Practice Directions were ingested at cold-start, use them. If not, use HK default and flag: `[VERIFY CAPTION: Practice Directions not loaded — confirm format against current PDs at judiciary.hk]`
+- **Service requirements:** who gets served, how (personal service, substituted service), by when per the Rules of the High Court (Cap 4A) or District Court Rules (Cap 336H)
+- **Language:** English or Chinese — confirm with student which language the court proceeding is in. Bilingual formats may be required.
+- **Local quirks:** page limits per Practice Direction, font requirements, costs thresholds. Apply what's ingested; flag what isn't.
 
 ### Step 4: Draft
 
@@ -150,9 +151,7 @@ Before showing this to [Professor]:
 
 **Before this leaves the clinic.** This is a student draft for supervising-attorney review, not a final letter, filing, or form. Filing it with a court or agency, or sending it to a client or opposing party, has legal consequences for the client. A licensed supervising attorney reviews, edits, and signs off before it leaves the clinic. Strip the AI-assisted draft header only after that sign-off. Do not send or file this draft without supervisor approval.
 
-*ABA Formal Opinion 512 (2024): generative AI use requires competence,
-supervision, and verification. This draft is designed to be supervised and
-verified — it is not designed to be trusted without that.*
+*Law Society of Hong Kong "Guidelines on Practice of Law Using Generative Artificial Intelligence" (September 2024): generative AI use requires competence, supervision, client confidentiality, and verification. This draft is designed to be supervised and verified — it is not designed to be trusted without that.*
 ```
 
 ## What this skill does NOT do

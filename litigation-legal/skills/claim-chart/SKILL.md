@@ -25,12 +25,22 @@ argument-hint: '[--patent | --civil] [--infringement | --invalidity | --review] 
 
 # Claim Chart
 
+## HK jurisdictional context
+
+This skill is adapted for Hong Kong civil litigation. The Rules of the High Court (Cap 4A) and
+Rules of the District Court (Cap 336H) govern procedure. Key differences from US civil litigation:
+- HK uses the English procedure: writ of summons, statement of claim, defence, reply, discovery, summons for directions, trial
+- Discovery is narrower than US: limited to documents directly relevant to pleaded issues (RHC O.24)
+- No jury in civil cases
+- Costs follow the event (loser pays)
+- Limitation periods under Cap 347
+
 ## Disclosed-document use restrictions
 
 Before working with a set of litigation documents, ask: "Were any of these documents obtained through disclosure or discovery in legal proceedings?" If yes:
 
-- **England & Wales (CPR 31.22):** Documents obtained through disclosure are subject to the implied undertaking — you may only use them for the purpose of the proceedings in which they were disclosed, unless the court grants permission, the disclosing party consents, or the document has been read in open court. Using them for a different matter, a different claim, or a commercial purpose without permission is a contempt.
-- **US:** Protective orders and Rule 26(c) may impose similar restrictions. Check the order.
+- **Hong Kong (RHC O.24, r.14A):** Documents obtained through discovery are subject to the implied undertaking — you may only use them for the purpose of the proceedings in which they were disclosed, unless the court grants permission, the disclosing party consents, or the document has been read in open court.
+- **UK (CPR 31.22):** Similar restriction.
 - **Other jurisdictions:** Similar restrictions commonly apply. Check the local rule.
 
 Confirm: "This use is within the proceedings in which the documents were disclosed, or I have permission / consent, or the documents are now public." If not confirmed, flag it: "⚠️ Disclosed documents may have use restrictions. Confirm this use is permitted before proceeding."
@@ -64,7 +74,7 @@ If `CLAUDE.md` has `[PLACEHOLDER]` markers, surface this bounce:
 >
 > **Two choices:**
 > - Run `/litigation-legal:cold-start-interview` (2 minutes) to configure your profile, then I'll run this tailored to YOUR practice.
-> - Say **"provisional"** and I'll run this against generic defaults — US jurisdiction, middle risk appetite, lawyer role, no playbook — and tag every output `[PROVISIONAL — configure your profile for tailored output]` so you can see what I do before committing.
+> - Say **"provisional"** and I'll run this against generic defaults — HK jurisdiction (Rules of the High Court), middle risk appetite, lawyer role, no playbook — and tag every output `[PROVISIONAL — configure your profile for tailored output]` so you can see what I do before committing.
 
 ### Provisional mode
 
@@ -91,7 +101,7 @@ Ask at the top, before anything else:
 
 Plus intake (common to both):
 
-- **Side.** Asserting or defending? (In civil mode this flips the burden; in patent mode it flips infringement/invalidity framing.)
+- **Side.** Plaintiff or defendant? (This determines which party bears the burden of proof under HK civil procedure.)
 - **Jurisdiction / forum.** State and court — pattern instructions vary (CACI in California, NYPJI in New York, federal circuits' pattern charges, state-specific variations). In patent mode, Patent Local Rules vary (N.D. Cal., E.D. Tex., D. Del., ITC, PTAB). Flag which controls.
 - **Phase.** Pre-filing, pleadings, discovery, MSJ, trial prep, post-trial. The chart is the same; the framing of the output changes.
 - **Existing chart?** If `--review`, load it.
@@ -323,9 +333,9 @@ Gap detection is not a conclusion about the merits. It's a map of where the case
 
 Ask the phase. Same chart; different framing on the output:
 
-- **Pre-filing / pleadings.** Does the complaint allege each element with plausibility (*Ashcroft v. Iqbal*, 556 U.S. 662 (2009); *Bell Atl. Corp. v. Twombly*, 550 U.S. 544 (2007))? Any element pleaded on information and belief without factual support is a 12(b)(6) target.
+- **Pre-filing / pleadings.** Does the statement of claim disclose a reasonable cause of action? In HK, the court can strike out a pleading that discloses no reasonable cause of action (RHC O.18, r.19). Pleadings must contain material facts, not evidence.
 - **Discovery.** For each `gap` or `needs-discovery` element, what discovery is needed? Which witnesses, which document custodians, which interrogatories, which RFAs.
-- **MSJ.** For each element, is there a genuine dispute of material fact? A `supported` cell for the movant with no contradicting evidence is summary-judgment ammunition; a `disputed` cell is MSJ-defeating.
+- **Summons for directions / Summary judgment.** In HK, a plaintiff may apply for summary judgment under RHC O.14 (or RDC O.14 equivalent) if there is no arguable defence. For each element, is there a triable issue? A `supported` cell with no contradicting evidence supports summary judgment; a `disputed` cell means the matter proceeds to trial.
 - **Trial.** Order of proof. Which witness proves element 1, which exhibit proves element 2, who authenticates, what's the foundation. The chart becomes the trial outline.
 
 ### Step 6 (review sub-mode): Audit
@@ -334,7 +344,7 @@ For an opposing party's MSJ brief, a motion to dismiss, or outside counsel's dra
 
 ## Civil-mode guardrails (in addition to shared guardrails)
 
-- **Jurisdiction.** The element list is a baseline. Always confirm the controlling pattern instruction (CACI, NYPJI, federal circuit pattern charge, etc.) or statute. State the source on the chart's `_elements` sheet.
+- **Jurisdiction.** The element list is a baseline. Always confirm the controlling HK statute or common law cause of action. State the source on the chart's `_elements` sheet.
 - **Pleaded counts only.** Chart what's actually pleaded. Don't add a count the complaint doesn't allege just because the facts might support it — that's a different analysis.
 - **Affirmative defenses.** If mapping defenses, note whether the burden is on the defendant (most) or whether raising the defense shifts a burden to the plaintiff.
 - **"Gap" ≠ "case over."** A gap is a lead. Discovery, a declaration, or an expert report can close it. The chart shows where to dig.

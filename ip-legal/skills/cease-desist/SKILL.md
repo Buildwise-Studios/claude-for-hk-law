@@ -64,7 +64,7 @@ If the user does not pass a flag, ask once: "Are we sending a cease-and-desist (
 
 ## Jurisdiction assumption
 
-Trademark rights are territorial — a US registration does not travel. Copyright is Berne-multilateral but enforcement is jurisdiction-specific, and statutory remedies (including US §504 statutory damages) turn on local law. This skill assumes the jurisdiction declared in the matter or the practice profile's `Registered in:` footprint. If the infringing conduct, counterparty, or forum is somewhere else, flag it — the draft may not apply as written.
+IP rights are territorial — an HKIPD registration does not reach Mainland China, and a CNIPA registration does not reach HK. Copyright is Berne-multilateral but enforcement is jurisdiction-specific. HK has no equivalent of US statutory damages; remedies in HK are primarily damages, account of profits, or injunctive relief under the Trade Marks Ordinance (Cap 559), Patents Ordinance (Cap 514), Copyright Ordinance (Cap 528), or common law passing off. This skill assumes the jurisdiction declared in the matter or the practice profile's `Registered in:` footprint. If the infringing conduct, counterparty, or forum is somewhere else, flag it — the draft may not apply as written.
 
 ## Load context
 
@@ -80,11 +80,13 @@ Ask, in one batch:
 
 > Which IP right are we asserting?
 >
-> - **Trademark** — is it registered? Where (USPTO, EUIPO, UKIPO, national)? Reg number and class(es)? Or common-law-only (first-use date, geographic scope)?
-> - **Copyright** — is it registered? Title, registration number, date? Or unregistered (note: US suits require registration for filed claims; statutory damages and fees require pre-infringement registration)?
+> - **Trademark** — is it registered under Cap 559? Where (HKIPD, CNIPA, EUIPO, UKIPO)? Reg number and class(es)? Or common-law-only (passing off — need goodwill in HK, first-use date, geographic scope of reputation)?
+> - **Registered design** — is it registered under Cap 522 at HKIPD?
+> - **Patent** — is it a standard patent or short-term patent under Cap 514?
+> - **Copyright** — no registration required in HK (Cap 528 is automatic upon creation). Has ownership been established? Is the work an original literary, dramatic, musical, or artistic work?
 > - **Both** — identify each.
 
-Record each right. Registered rights get cited by number. Common-law rights get the first-use evidence paragraph. Unregistered copyrights get a flag: "We may not be able to file suit on an unregistered US copyright without registering first — `[SME VERIFY]` before the letter threatens litigation."
+Record each right. Registered rights get cited by ordinance and registration number. Common law passing off rights get the goodwill and reputation evidence paragraph. HK copyright is automatic — confirm authorship and ownership.
 
 ### Step 2: Identify the conduct
 
@@ -124,16 +126,19 @@ This changes tone, approver, and whether to draft at all without escalation.
 
 Pick the actual remedies. The demand must be proportionate to the harm — an overbroad demand is evidence of bad faith if the matter is ever litigated.
 
-**Channel-takedown parallel path (marketplace infringement).** If the accused conduct is on a marketplace (Amazon, Etsy, eBay, Alibaba, TikTok Shop, AliExpress, Walmart Marketplace, Shopify-hosted storefronts), flag the platform's brand-protection / IP-infringement reporting path as a faster, cheaper parallel track that does not require a C&D or litigation:
+**Channel-takedown parallel path (marketplace infringement).** If the accused conduct is on a marketplace (Amazon, Etsy, eBay, Alibaba, TikTok Shop, AliExpress, Walmart Marketplace, Shopify-hosted storefronts, Carousell, HKTVmall), flag the platform's brand-protection / IP-infringement reporting path as a faster, cheaper parallel track that does not require a C&D or litigation:
 
 - **Amazon Brand Registry** (trademark and copyright takedown, counterfeit removal)
 - **Etsy IP Infringement reporting** (trademark / copyright / patent forms)
 - **eBay VeRO** (Verified Rights Owner program)
 - **Alibaba IPP** (IP Protection Platform)
+- **Carousell IP policy** (popular in HK/SE Asia for second-hand goods)
+- **HKTVmall brand protection** (major HK online marketplace)
 - **TikTok Shop IP Protection**
 - **Shopify DMCA / trademark reporting**
+- **Customs & Excise Department referral** (for counterfeit goods entering HK – s.273 of the Import and Export Ordinance and Trade Descriptions Ordinance Cap 362)
 
-A marketplace takedown often resolves in days; a C&D gives the infringer time to sell through inventory while negotiating. The two paths are not mutually exclusive — recommend filing both when the conduct is marketplace-based, with the C&D covering off-platform conduct (DTC site, wholesale, social, physical retail) that the platform report cannot reach. Note in the pre-send brief whether the parallel-path has been filed, is queued, or is declined (and why).
+A marketplace takedown often resolves in days; a C&D gives the infringer time to sell through inventory while negotiating. The two paths are not mutually exclusive — recommend filing both when the conduct is marketplace-based, with the C&D covering off-platform conduct (DTC site, wholesale, social, physical retail) that the platform report cannot reach. For physical counterfeit goods, also consider reporting to the HK Customs & Excise Department (IP Rights Investigation Division). Note in the pre-send brief whether the parallel-path has been filed, is queued, or is declined (and why).
 
 ### Step 5: Calibrate to posture
 
@@ -153,12 +158,12 @@ Matter-level overrides in `matter.md` beat the practice default.
 
 Collect and present — in one block, for user sign-off — the following:
 
-- **Legal entity** — exact corporate name, state/country of formation, registered agent, any `d/b/a` aliases. USPTO / EUIPO ownership records; state Secretary of State business search; public company filings if any. Flag `[SME VERIFY]` if the source is unconfirmed.
-- **Size and resources** — approximate headcount, revenue band if publicly known, funding if a startup, parent company if a subsidiary. Public sources (LinkedIn headcount, press, Crunchbase, SEC filings). Flag honestly if size can't be determined.
-- **IP portfolio** — do they hold registered marks, patents, or copyrights in adjacent classes? A counterparty with its own IP portfolio is more likely to (a) understand the posture, (b) counter-assert, and (c) file DJ. USPTO TESS / TSDR quick search on the accused entity and affiliates.
-- **Litigation history** — PACER / Court Listener quick pass for prior IP litigation as plaintiff or defendant. A repeat litigant or DJ-happy counterparty changes the calculus. Flag any prior C&D campaigns in the industry.
-- **Counsel** — do they have known outside IP counsel? Firm, lead partner if identifiable from prior filings. "No counsel on file" is itself a data point.
-- **DJ-plaintiff risk posture** — given size, IP portfolio, litigation history, counsel, and forum: is this a counterparty likely to welcome a C&D as an invitation to file DJ in a forum of their choosing? Flag high / medium / low with a one-sentence reason.
+- **Legal entity** — exact corporate name, HK company registration number (from Companies Registry), place of incorporation, registered address, any trading names. HKIPD / CNIPA ownership records; Companies Registry (ICRIS) search; public company filings if any. Flag `[SME VERIFY]` if the source is unconfirmed.
+- **Size and resources** — approximate headcount, revenue band if publicly known, funding if a startup, parent company if a subsidiary. Public sources (LinkedIn headcount, press, Companies Registry annual returns). Flag honestly if size can't be determined.
+- **IP portfolio** — do they hold registered marks, patents, or registered designs at HKIPD or CNIPA in adjacent classes? A counterparty with its own IP portfolio is more likely to (a) understand the posture, (b) counter-assert, and (c) file counterclaims. HKIPD e-Search quick search on the accused entity and affiliates.
+- **Litigation history** — HKLII / HK Legal Reference System quick pass for prior IP litigation in the CFI as plaintiff or defendant. A repeat litigant changes the calculus. Flag any prior groundless-threats claims.
+- **Counsel** — do they have known outside IP counsel in HK? Firm, lead partner if identifiable from prior CFI filings. "No counsel on file" is itself a data point.
+- **Counterclaim risk posture** — given size, IP portfolio, litigation history, counsel, and forum: is this a counterparty likely to respond with a groundless threats claim (Cap 559 s.29), a counterclaim for infringement of their own HKIPD-registered rights, or an application for declaratory relief? Also consider whether they could refer the matter to Customs & Excise (criminal counterfeiting). Flag high / medium / low with a one-sentence reason.
 - **Relationship risk** — are we a customer of theirs, do we share investors, are they a potential acquirer or partner? "Not a customer" confirmation pulled from the practice profile; anything else flagged.
 
 Present this as a short memo in-chat BEFORE the draft:
@@ -166,12 +171,12 @@ Present this as a short memo in-chat BEFORE the draft:
 ```
 ## Counterparty diligence — [Entity Name]
 
-- **Entity:** [name, state of formation, parent if any]
+- **Entity:** [name, HK Co. No., parent if any]
 - **Size:** [headcount band, revenue band, funding stage] — [source, `[SME VERIFY]` where applicable]
-- **IP portfolio:** [registered marks / patents / copyrights in adjacent classes — or "none found"]
-- **Litigation history:** [prior IP cases as plaintiff or defendant — or "none found in quick pass"]
-- **Counsel:** [known outside IP counsel — or "none identified"]
-- **DJ-plaintiff risk:** [high / medium / low — reasoning]
+- **IP portfolio:** [registered marks / patents / designs at HKIPD or CNIPA — or "none found"]
+- **Litigation history:** [prior IP cases in CFI as plaintiff or defendant — or "none found in quick pass"]
+- **Counsel:** [known outside IP counsel in HK — or "none identified"]
+- **Counterclaim risk:** [high / medium / low — reasoning]
 - **Relationship risk:** [any customer / investor / partner / acquirer overlap — or "none identified"]
 
 **Automatic escalations this triggers** (per practice profile `## Enforcement posture` → Automatic escalations):
@@ -198,7 +203,7 @@ Draft structure:
 4. **Opening** — identify the sender, the right, the registration (if any), and the fact of the letter
 5. **The right** — trademark: reg number, class, first-use date, registration status; copyright: registration number, title, year, work description; common-law: first-use date, geographic scope, evidence of acquired distinctiveness
 6. **The infringing conduct** — specific: who, what, where, when, evidence
-7. **The legal basis** — `[CITE: Lanham Act §32 / §43(a) / 17 U.S.C. §501 / state UCL / contract §]` as applicable
+7. **The legal basis** — `[CITE: Trade Marks Ordinance Cap 559 s.18 (infringement) / s.12 (likelihood of confusion) / Copyright Ordinance Cap 528 s.23 (primary infringement) / s.30 (secondary infringement) / common law passing off / Registered Designs Ordinance Cap 522 s.43 (infringement) / Patents Ordinance Cap 514 s.73 (infringement) / Trade Descriptions Ordinance Cap 362 (criminal sanctions) / contract §]` as applicable
 8. **The demand** — numbered, specific, proportionate
 9. **The deadline** — calendar date, method of confirmation
 10. **Consequences of non-compliance** — calibrated to posture
@@ -211,8 +216,8 @@ Draft structure:
 - **Specificity over adjectives.** Dates, URLs, reg numbers, samples. Adjectives are a draftsperson's tell that the facts are thin.
 - **No overbroad assertions.** If the mark is registered in one class and the accused use is in a different class, say so — don't pretend the registration covers both. Overbroad C&Ds are evidence of bad faith and can support §43(a)(1)(B) or Rule 11 exposure.
 - **Citations as placeholders unless verified.** `[CITE: Lanham Act §32, 15 U.S.C. §1114]` stays as a placeholder unless the user provided the cite or a research tool returned it. Tag every citation with source — `[Westlaw]`, `[user provided]`, `[model knowledge — verify]`, `[web search — verify]`. Never strip the tags.
-- **Consequence language matches posture.** Aggressive → specific relief threatened (injunction, statutory damages under 15 U.S.C. §1117 / 17 U.S.C. §504, attorneys' fees). Measured → "we reserve all rights." Conservative → "we'd like to discuss before considering further steps."
-- **Jurisdiction-specific hooks** — if US, watch for Anti-Cybersquatting (15 U.S.C. §1125(d)) for domain matters, §43(a) for unregistered marks, §504(c) for pre-registration timing. Non-US: flag the forum and note the draft may need foreign associate review.
+- **Consequence language matches posture.** Aggressive → specific relief threatened (injunction in CFI, damages or account of profits, delivery up / destruction of infringing goods). Measured → "we reserve all rights." Conservative → "we'd like to discuss before considering further steps."
+- **Jurisdiction-specific hooks** — if HK: passing off for unregistered marks (requires goodwill in HK, misrepresentation, damage); Copyright Ordinance s.23 (primary infringement) vs. s.30 (secondary infringement — knowing possession, sale, or distribution); Cap 528 s.88-91 (online service provider liability — safe harbor for OSPs that comply with takedown notices); Trade Descriptions Ordinance Cap 362 (criminal penalties for false trade descriptions including counterfeit goods). For cross-border (HK/China) enforcement, note that a HK registration does not give rights in China and vice versa — separate filings needed. Non-HK: flag the forum and note the draft may need foreign associate review.
 
 ### Step 7: The loud gate before delivery
 
@@ -233,8 +238,13 @@ Before presenting the draft in-chat or writing the .docx, display this gate verb
 │    hostile forum.                                           │
 │                                                             │
 │  • Overbroad or bad-faith assertions can be used against    │
-│    the sender — §43(a)(1)(B) claims, Rule 11 sanctions,     │
-│    attorneys' fees under the Lanham Act / Copyright Act.    │
+│    the sender — risk of a costs order (HK courts follow the │
+│    general rule that costs follow the event), and potential │
+│    counterclaims for groundless threats of infringement      │
+│    (under Cap 559 s.29 for trademarks, Cap 514 s.89 for    │
+│    patents, Cap 522 s.54 for designs). A groundless threats │
+│    claim can result in damages, a declaration of non-       │
+│    infringement, or an injunction against further threats.  │
 │                                                             │
 │  • It starts a dispute that may not settle cheaply.         │
 │                                                             │
@@ -250,7 +260,7 @@ Before presenting the draft in-chat or writing the .docx, display this gate verb
 │    4. Whoever has authority to start a fight has approved.  │
 │    5. Counterparty diligence (Step 5.5) was presented       │
 │       and confirmed — entity, size, IP portfolio, prior     │
-│       litigation, counsel, DJ-plaintiff risk, and           │
+│       litigation, counsel, counterclaim risk, and           │
 │       relationship risk. Not conditional. Required.         │
 │                                                             │
 │  Approver per your practice profile: [approver name/role    │
@@ -312,7 +322,7 @@ Extract:
 
 Not a legal opinion — a structured read:
 
-- **Rights validity.** Are the asserted registrations real and active? (Check USPTO TSDR, EUIPO eSearch, Copyright Office records — flag any that look dormant or not in force.) For common-law claims, what evidence do they actually cite?
+- **Rights validity.** Are the asserted registrations real and active? (Check HKIPD e-Search for Cap 559 marks, CNIPA for Chinese marks, EUIPO eSearch for EU marks — flag any that look dormant or not in force.) For passing off claims, what evidence do they actually cite of goodwill in the HK market? For copyright claims, what evidence of ownership and originality?
 - **Plausibility of confusion / similarity / infringement.** On the facts as alleged, is this a colorable claim or is it stretching? For trademark: likelihood of confusion turns on multi-factor tests (Polaroid / AMF / Sleekcraft depending on circuit — `[SME VERIFY]` the forum's test). For copyright: access + substantial similarity. Flag where the claim looks weakest.
 - **Overbreadth.** Are they demanding more than the conduct warrants? (They want the mark transferred when registration would at most cover re-labeling? They want all sales when only one channel touched the right?) Overbroad demands weaken leverage and strengthen a §43(a)(1)(B) / unclean-hands counter.
 - **Timing.** Laches, statute of limitations, registration timing (for US copyright statutory damages) — flag any date issues on the face of the letter.
@@ -462,14 +472,8 @@ Output: `<matter-folder>/cease-desist/inbound/<slug>/triage.md` (or at practice 
 - **Role = Lawyer / legal professional:**
   > **Privilege inheritance.** This triage records our first-pass merit read and response posture on an adverse assertion. It is attorney-client and/or work-product material. Do not forward, attach to an insurance tender without scrubbing, or share with counterparty. Store with privileged matter material and mark per house privilege conventions.
 
-- **Role = Registered patent agent, matter is a patent matter before the USPTO:**
-  > **Privilege (patent agent-client).** This triage is privileged under the federal patent agent-client privilege recognized in *In re Queen's University at Kingston*, 820 F.3d 1287 (Fed. Cir. 2016), because it relates to a matter reasonably necessary and incident to the prosecution of patents before the USPTO. That privilege is narrow: it does not extend to matters outside USPTO practice. Do not forward, attach to an insurance tender without scrubbing, or share with counterparty. Bring to supervising counsel for matter-specific privilege decisions.
-
-- **Role = Registered patent agent, matter is NOT a patent matter** (trademark, copyright, OSS, trade secret, contract, or anything else outside USPTO practice):
-  > **CONFIDENTIAL — NOT PRIVILEGED.** This triage is not privileged because a registered patent agent's privilege is limited to patent prosecution before the USPTO (*In re Queen's University at Kingston*, 820 F.3d 1287 (Fed. Cir. 2016)). A trademark, copyright, OSS, or other non-patent matter falls outside that privilege. Treat this document as confidential, store it with care, bring it to counsel, and let counsel mark it. Do not forward it as a privileged document.
-
 - **Role = Non-lawyer and not a registered patent agent:**
-  > **CONFIDENTIAL — NOT PRIVILEGED.** This document is not privileged unless and until reviewed by a licensed attorney. Treat it as confidential; do not forward to anyone outside the legal review chain; bring it to counsel and let counsel mark it. Forwarding this document as "privileged" before an attorney reviews it does not make it so and can harm you if the matter becomes contested.
+  > **CONFIDENTIAL — NOT PRIVILEGED.** This document is not privileged unless and until reviewed by a licensed HK solicitor or barrister. Treat it as confidential; do not forward to anyone outside the legal review chain; bring it to counsel and let counsel mark it. Forwarding this document as "privileged" before an attorney reviews it does not make it so and can harm you if the matter becomes contested.
 
 Close the in-chat presentation with this guardrail verbatim:
 

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-family-law",
+  "displayName": "HK Family Law",
+  "description": "Hong Kong family law under the Matrimonial Causes Ordinance (Cap 179), Matrimonial Proceedings and Property Ordinance (Cap 192), Guardianship of Minors Ordinance (Cap 13), and Separation and Maintenance Orders Ordinance (Cap 16). Covers divorce, financial relief, child custody, and adoption.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

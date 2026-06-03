@@ -1,8 +1,8 @@
 {
   "name": "legal-clinic",
   "version": "1.0.2",
-  "description": "Sets up the clinic, onboards students, runs structured intake, tracks deadlines with malpractice-aware caution, and hands off cases at semester end \u2014 built within ABA Formal Op. 512.",
+  "description": "Sets up the clinic, onboards students, runs structured intake, tracks deadlines with malpractice-aware caution, and hands off cases at semester end \u2014 adapted for Hong Kong law school clinics (HKU, CUHK, CityU) within the Duty Lawyer Service, CLIC, and Free Legal Advice Scheme framework.",
   "author": {
-    "name": "Anthropic"
+    "name": "xR0am — adapted for HK"
   }
 }

@@ -16,7 +16,7 @@ argument-hint: "<subject> <n> [--mbe | --essay | --flashcards]"
 2. Load `~/.claude/plugins/config/claude-for-legal/law-student/CLAUDE.md` → jurisdiction, exam format, weak subjects.
 3. Load `~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml` if it exists. Read `session_history` for this subject to weight subtopics toward where the student has been weak.
 4. Route by method flag:
-   - `--mbe` (default for bar prep subjects): load `bar-prep-questions` skill, run N MBE-style questions. Apply jurisdiction handling (see that skill's `## Jurisdiction handling`). Label each `[UBE/majority]` or `[state-specific]`.
+   - `--mbe` (default for bar prep subjects): load `bar-prep-questions` skill, run N MBE-style questions. Apply jurisdiction handling (see that skill's `## Jurisdiction handling`). Label each `[Hong Kong law]` or `[Hong Kong-specific]`.
    - `--essay`: load `bar-prep-questions`, run N essay prompts. Grade per essay-mode rubric.
    - `--flashcards`: load `flashcards` skill, run N cards in `--drill` mode.
 5. Run N questions one at a time. After each, explain right/wrong and flag rule-body when jurisdictions diverge.

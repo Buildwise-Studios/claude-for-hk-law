@@ -23,7 +23,7 @@ Run daily. Set a morning reminder (calendar block, cron, or team ritual) to invo
 
 ## What it does
 
-1. Read `~/.claude/plugins/config/claude-for-legal/product-legal/CLAUDE.md` → launch tracker location, calibration table, escalation channel.
+1. Read `~/.claude/plugins/config/claude-for-hk-law/product-legal/CLAUDE.md` → launch tracker location, calibration table, escalation channel.
 2. Query the tracker for tickets with a target date ≤30 days out.
 3. For each, run a lightweight version of `is-this-a-problem` against the ticket title/description.
 4. Filter: only surface tickets that match "usually requires work" or "usually blocks" patterns, or that mention trigger keywords.
@@ -33,16 +33,23 @@ Run daily. Set a morning reminder (calendar block, cron, or team ritual) to invo
 
 Beyond calibration patterns, also flag tickets mentioning:
 
-**Privacy triggers:**
+**HK-specific privacy triggers (PDPO Cap 486):**
 - "new data" / "collect" / "tracking"
-- "under 13" / "children" / "COPPA" — triggers children's privacy review
-- "teen" / "minor" / "13-17" / "age-appropriate" / "student" — triggers teen / age-appropriate-design review (different regime, different calibration)
-- "health" / "medical" / "HIPAA"
+- "children" / "under 18" / "minor" — triggers PCPD guidance on children's data
+- "health" / "medical" / "patient data" — triggers PCPD guidance on sensitive data
 - "personal data" / "PII" / "user data"
-- Third-party vendor names not on the approved list
-- "terms" / "policy" / "agreement" changes
-- Country names (jurisdictional expansion)
+- "cross-border" / "transfer to [jurisdiction]" — triggers PDPO data transfer restrictions
+- Third-party vendor names not on the approved list (PCPD outsourced data processing)
+- "PICS" / "privacy policy" / "terms" changes
+- Country names outside HK (jurisdictional expansion — PDPO direct marketing rules)
 - "beta" → "GA" transitions (commitments change)
+
+**HK consumer protection triggers (Cap 362, Cap 456):**
+- "free trial" / "subscription" / "auto-renewal" — triggers Cap 362 unfair trade practices
+- "guarantee" / "warranty" — triggers Supply of Services (Implied Terms) Ordinance (Cap 457)
+- "safety" / "safe" / "compliant" — triggers Consumer Goods Safety Ordinance (Cap 456)
+- "unlimited" / "unbeatable" / "best price" — triggers Cap 362 false trade descriptions
+- "excluded" / "not responsible" / "no liability" — triggers Control of Exemption Clauses Ordinance (Cap 71)
 
 **AI governance triggers:**
 - "AI" / "ML" / "model" / "LLM" / "GPT" / "Claude" / "Gemini" / "Copilot"

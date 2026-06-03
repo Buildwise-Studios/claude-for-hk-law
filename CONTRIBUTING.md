@@ -1,6 +1,6 @@
-# Contributing to Claude for Legal
+# Contributing to Claude for HK Law
 
-Notes for anyone writing or editing a plugin in this repo. Keep this short — the
+Notes for anyone writing or editing a plugin in this repo for Hong Kong legal practice. Keep this short — the
 design principles that matter most for the quality of the output, not a style
 guide.
 
@@ -10,6 +10,10 @@ Sign the CLA. The first time you open a pull request, the CLA Assistant bot will
 comment with a link to the [CLA](CLA.md) and ask you to confirm. Reply with
 `I have read the CLA Document and I hereby sign the CLA` and the check will pass.
 You only need to do this once.
+
+Before your first PR, ensure you have the references directory populated — see
+`QUICKSTART.md` for the prerequisite reference docs on the HK legal system,
+ordinances index, court structure, and citation style.
 
 ## Design principle: SKILL.md encodes the right behavior; CLAUDE.md guardrails
 are the net
@@ -71,7 +75,9 @@ Examples of this rule in practice:
 
 ## Workflow notes
 
-- **Read the plugin's `CLAUDE.md` before editing any skill in that plugin.** The
+- **Read the plugin's `CLAUDE.md` before editing any skill in that plugin.** For
+  HK-adapted plugins, the CLAUDE.md carries the jurisdiction-specific guardrails
+  and practice profile — do not skip it. The
   practice profile, the integrations table, the shared guardrails, and the
   decision-posture statement all shape what the skill should say and omit.
 - **Bump the plugin version on a material change.** Patch bumps for behavior

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-nsl-rules",
+  "displayName": "HK National Security Law",
+  "description": "Hong Kong National Security Law (NSL) — Annex III national law applicable in Hong Kong. Covers NSL offences, court procedures, designated judges, police powers, bail provisions, trial procedures without jury, and implications for legal practitioners and their clients.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

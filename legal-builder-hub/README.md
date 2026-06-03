@@ -1,12 +1,12 @@
-# Legal Builder Hub Plugin
+# Legal Builder Hub Plugin — Hong Kong Edition
 
-Community legal skills discovery and installation. Browses GitHub registries (lpm-skills, [additional registries — add via /legal-builder-hub:registry-browser], and others), installs and auto-updates, surfaces related community skills inside your other legal plugins. The cold-start interview IS the starter pack recommender — asks your practice type, recommends what to install.
+Community legal skills discovery and installation for Hong Kong legal teams. Browses GitHub registries, installs and auto-updates, surfaces related community skills inside your other legal plugins. The cold-start interview IS the starter pack recommender — asks your practice type, recommends what to install.
 
 **Every community skill is surfaced raw before install, scanned for prompt-injection patterns, and evaluated against the Legal Skill Design Framework. The plugin helps you find and evaluate; you decide what to trust.**
 
 ## Who this is for
 
-Everyone using the other legal plugins. This is the app store.
+Everyone using the other legal plugins in a Hong Kong practice — solicitors firms, barrister chambers, in-house legal teams, international law firms (ILPs) operating in HK, and law school clinics. This is the app store for your legal AI environment.
 
 ## First run: cold-start
 
@@ -35,6 +35,7 @@ If a skill goes wrong after install: `/legal-builder-hub:disable [skill]` quiets
 
 - Slack notifications from the registry-sync agent require a Slack MCP server configured in your environment. Without one, the agent writes its digest to a file.
 - The default registry list in `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md` ships empty except for `lpm-skills`. Add registries you trust via `/legal-builder-hub:registry-browser` or by editing `~/.claude/plugins/config/claude-for-legal/legal-builder-hub/CLAUDE.md`.
+- For HK-specific legal content, you may add registries from local law societies or HK legal tech communities.
 
 ## Commands
 
@@ -79,6 +80,8 @@ The default allowlist ships with the community registries we've reviewed pre-con
 - **Lawvable / awesome-legal-skills** — Curated list of AI agent skills for legal work — `github.com/lawvable/awesome-legal-skills`
 - **Lawvable / agent-skills** — Curated collection of agent skills for legal work — `github.com/lawvable/agent-skills`
 - Add your own via `/legal-builder-hub:registry-browser` or by editing the allowlist
+
+**For HK-specific skills**, consider adding registries from the Hong Kong legal tech community, the Law Society of Hong Kong's innovation initiatives, or HK law schools as they become available.
 
 ## How it learns
 

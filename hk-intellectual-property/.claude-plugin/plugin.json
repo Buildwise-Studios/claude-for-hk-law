@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "hk-intellectual-property",
+  "displayName": "HK Intellectual Property",
+  "description": "Hong Kong intellectual property law under the Trade Marks Ordinance (Cap 559), Patents Ordinance (Cap 514), Copyright Ordinance (Cap 528), and Registered Designs Ordinance (Cap 522). Covers registration, enforcement, licensing, passing off, fair dealing, IPD practice, and Customs & Excise enforcement.",
+  "author": { "name": "Buildwise-Studios" },
+  "version": "1.0.0"
+}

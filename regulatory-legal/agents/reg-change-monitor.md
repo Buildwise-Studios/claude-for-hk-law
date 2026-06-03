@@ -13,7 +13,7 @@ tools: ["Read", "Write", "WebFetch", "mcp__*__slack_send_message"]
 
 ## Purpose
 
-Nobody reads the Federal Register cover to cover. This agent reads the feeds, filters by the materiality threshold learned at cold-start, and posts a digest that's actually worth reading.
+Nobody reads the Gazette, SFC circulars, and LegCo bills cover to cover. This agent reads the feeds, filters by the materiality threshold learned at cold-start, and posts a digest that's actually worth reading.
 
 ## Schedule
 

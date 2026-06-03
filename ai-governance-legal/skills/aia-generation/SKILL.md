@@ -88,11 +88,11 @@ Research the applicable risk classification framework for each regime in the use
 >
 > **Source attribution tiering.** Tag every citation in the AIA — regulatory text, delegated acts, guidance, standards — with its source. For model-knowledge citations, use one of three tiers rather than a single blanket "verify" tag:
 >
-> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., GDPR Art. 22 as a concept, the existence of Regulation (EU) 2024/1689 as the EU AI Act). Still verify before certifying, but lower priority.
+> - `[settled]` — stable, well-known statutory and regulatory references unlikely to have changed (e.g., the existence of the PDPO (Cap. 486), the Basic Law). Still verify before certifying, but lower priority.
 > - `[verify]` — model-knowledge citations that are real but should be verified: specific delegated / implementing acts, regulator guidance, NYC DCWP rules, Colorado AI Act provisions, harmonized standards, effective dates, EEOC guidance, and anything post-2023.
-> - `[verify-pinpoint]` — pinpoint citations (specific EU AI Act article numbers, annex references, Colorado AI Act subsections, NYC LL 144 rule sections, sub-paragraph letters) carry the highest fabrication risk and should ALWAYS be verified against a primary source. EU AI Act article numbers in particular shifted during consolidation; every pinpoint cite to the Act should be verified against the Official Journal text.
+> - `[verify-pinpoint]` — pinpoint citations (specific EU AI Act article numbers, annex references, Colorado AI Act subsections, NYC LL 144 rule sections, sub-paragraph letters) carry the highest fabrication risk and should ALWAYS be verified against a primary source. PDPO section numbers in particular may shift with amendments; every pinpoint cite should be verified against the current legislation on HK e-Legislation.
 >
-> Tool-retrieved citations keep their source tag (`[Westlaw]`, `[EUR-Lex]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
+> Tool-retrieved citations keep their source tag (`[HKLII]`, `[Westlaw]`, `[e-Legislation]`, `[regulator site]`, or the MCP tool name); web-search citations remain `[web search — verify]`; user-supplied citations remain `[user provided]`. The tiering surfaces the real verification work — a reader who verifies everything verifies nothing. Never strip or collapse the tags.
 >
 > **For non-lawyer users, uncertain dates go in a confirm-list, not inline.** A `[verify]` tag on "effective February 1, 2026" reads as "effective February 1, 2026" to a CISO who doesn't know what `[verify]` means. Read `## Who's using this` in `~/.claude/plugins/config/claude-for-legal/ai-governance-legal/CLAUDE.md`. If Role is **Non-lawyer** and a date, deadline, phase-in, threshold, or effective-date assertion is uncertain (would carry `[verify]` or `[verify-pinpoint]` if inline), replace the inline assertion with "effective date: confirm with counsel" (or "threshold: confirm with counsel", etc.) and collect all uncertain assertions in a final AIA section titled:
 >
@@ -186,7 +186,7 @@ Research tasks:
 - Are there prohibited practices the system might touch? Treat any possible match as critical — flag immediately.
 - Are there transparency obligations that apply regardless of tier (disclosure that a user is interacting with AI, labeling of AI-generated content, notice to people subject to automated decisions)?
 - If the company is a builder providing a general-purpose or foundation model, what provider-level obligations apply (technical documentation, training data transparency, copyright compliance, systemic-risk testing)?
-- **Does any regime in the footprint require a separate fundamental-rights impact assessment (FRIA)?** EU AI Act Art. 27 requires a FRIA for certain deployers of high-risk AI systems (public bodies and private entities providing public services, plus certain creditworthiness and insurance-risk-assessment use cases). Check each regime for an equivalent fundamental-rights or human-rights impact assessment that is a distinct deliverable from this AIA. If a FRIA (or regime equivalent) is required, flag it as a separate deliverable in the recommendation and conditions — do not treat this AIA as a substitute.
+- **Does any regime in the footprint require a separate fundamental-rights impact assessment (FRIA)?** Regulatory framework. 27 requires a FRIA for certain deployers of high-risk AI systems (public bodies and private entities providing public services, plus certain creditworthiness and insurance-risk-assessment use cases). Check each regime for an equivalent fundamental-rights or human-rights impact assessment that is a distinct deliverable from this AIA. If a FRIA (or regime equivalent) is required, flag it as a separate deliverable in the recommendation and conditions — do not treat this AIA as a substitute.
 
 Don't assume internal-only systems are out of scope — most regimes treat employee data as personal data and employee monitoring as consequential. Verify the specific rule.
 
@@ -283,7 +283,7 @@ three conditions required before production deployment."]
 **Classification under this regime:** [tier, with pinpoint citation to the controlling provision]
 **Prohibited practices triggered:** [none identified / [specific provision and why]]
 **Applicable obligations:** [researched list with citations — transparency, documentation, human oversight, testing, registration, etc.]
-**Fundamental-rights impact assessment required?** [Yes — e.g., EU AI Act Art. 27 FRIA applies / regime equivalent / No / Not applicable. If yes, this is a separate deliverable, not subsumed by this AIA.]
+**Fundamental-rights impact assessment required?** [Yes — e.g., Regulatory framework. 27 FRIA applies / regime equivalent / No / Not applicable. If yes, this is a separate deliverable, not subsumed by this AIA.]
 **Effective / enforcement date:** [date(s)]
 **Ambiguity or open interpretation:** [flag anything not yet settled]
 

@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "HKLII": {
+      "type": "http",
+      "url": "https://mcp.hklii.hk/mcp",
+      "title": "HKLII",
+      "description": "Search Hong Kong legislation, case law, and Basic Law materials including NPCSC interpretations and CFA judgments."
+    },
+    "Hong Kong e-Legislation": {
+      "type": "http",
+      "url": "https://mcp.elegislation.gov.hk/mcp",
+      "title": "Hong Kong e-Legislation",
+      "description": "Official, consolidated Hong Kong legislation database — ordinances, subsidiary legislation, and Basic Law text."
+    },
+    "Westlaw Asia": {
+      "type": "http",
+      "url": "https://mcp.westlaw.asia/mcp",
+      "title": "Westlaw Asia",
+      "description": "HK constitutional law commentary, journal articles, and case citator for Basic Law litigation."
+    }
+  },
+  "recommendedCategories": [
+    "legal-research",
+    "constitutional-law",
+    "legislation",
+    "case-law",
+    "hong-kong-law"
+  ]
+}

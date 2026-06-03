@@ -1,4 +1,4 @@
-# Plausibility bands — California (and federal, always loaded)
+# Plausibility bands — Court of First Instance, High Court, HK
 
 These are rough plausibility ranges, not computations. If a student-entered due date falls outside the range, the `/legal-clinic:deadlines --add` flow flags it for re-check. The skill does **not** compute — it catches gross arithmetic errors in the student's own work. Every citation here is `[model knowledge — verify]` unless the supervisor has replaced it with a connector-retrieved or user-provided source.
 
@@ -6,41 +6,27 @@ These are rough plausibility ranges, not computations. If a student-entered due 
 
 - One row per deadline type the clinic sees regularly.
 - Typical range is a plausibility window, not a holding.
-- Cite the governing rule in the Notes column so the student has somewhere to recompute against.
-- Computation-of-time rules (e.g., CCP § 12, § 12a for CA; FRCP 6 for federal) apply to every entry; re-state them in Notes when relevant.
+- Cite the governing rule (RHC = Rules of the High Court, Cap 4A) in the Notes column so the student has somewhere to recompute against.
+- Computation-of-time rules (RHC Ord 3) apply to every entry.
 
-## California
+## Common deadline ranges — Court of First Instance
 
-| Deadline type | Typical range from triggering event | Notes |
-|---|---|---|
-| CA UD response (post-AB 2347) | ~10-14 calendar days after service | Computed in court days per CCP § 1167 + § 12a; confirm against the current rule |
-| CA answer to complaint (non-UD) | ~30 days after service | CCP § 412.20 / § 430.40; confirm |
-| CA demurrer / MTD | ~30 days after service | Filed in lieu of answer; CCP § 430.40 |
-| Notice of appeal (CA civil) | ~60 days after notice of entry | CRC 8.104; confirm triggering event (notice served vs. mailed) |
-| CA statute of limitations — personal injury | ~2 years from injury | CCP § 335.1; discovery rule complications |
-| CA statute of limitations — written contract | ~4 years from breach | CCP § 337 |
-| CA statute of limitations — oral contract | ~2 years from breach | CCP § 339 |
-| CA statute of limitations — fraud | ~3 years from discovery | CCP § 338(d) |
-| CA small claims appeal | ~30 days after clerk mails notice of entry | CCP § 116.710; limited de novo scope |
-| CA FEHA right-to-sue lawsuit | ~1 year from RTS notice (CRD) | Gov. Code § 12965; older accrual rules may apply pre-amendment |
-| CA unlawful-detainer post-judgment — motion to stay | ~5 calendar days | CCP § 918, local rules; emergency timelines |
+| Deadline type | Typical range | Governing rule | Notes |
+|---|---|---|---|
+| Appearance to Writ of Summons (personal service within HK) | 14 days | RHC Ord 12, r 3 | From service, not from date of writ |
+| Defence to Statement of Claim | 28 days | RHC Ord 18, r 2 | From time for appearance expires, or from service of statement of claim, whichever is later |
+| Reply to Defence | 14 days | RHC Ord 18, r 3 | From service of defence |
+| Summons for directions | 28 days | RHC Ord 25, r 1 | After close of pleadings |
+| Discovery (list of documents) | 14 days | RHC Ord 24, r 2 | From order |
+| Notice of Appeal (CA) | 28 days | RHC Ord 59, r 4 | From date of judgment/order |
+| Time for service of writ | 12 months | RHC Ord 6, r 8 | Extendable by order; may be renewed |
+| Skeleton argument | 14 days before hearing | Practice Direction SL1 | PD on skeleton arguments |
+| Certificate of Mediation | 14 days after mediation | Practice Direction 31 | |
+| Summons for judgment (Ord 14) | Set down within 14 days of defence | RHC Ord 14, r 2 | |
 
-## Federal (always loaded alongside any state)
+## Computation-of-time notes (RHC Ord 3)
 
-| Deadline type | Typical range from triggering event | Notes |
-|---|---|---|
-| Federal civil answer (Rule 12(a)) | ~21 days after service (60 / 90 if waived) | FRCP 12(a); confirm by service method |
-| Federal MTD / Rule 12 motion | Same as answer window | Filed in lieu of answer; FRCP 12(b) |
-| Notice of appeal (federal civil) | ~30 days after judgment entry | FRAP 4(a)(1)(A); 60 days if US is a party (FRAP 4(a)(1)(B)) |
-| Rule 4 service of process | 90 days after complaint filed | FRCP 4(m); court may extend |
-| Rule 26(f) conference | Before scheduling order, typically ~21 days before Rule 16 | FRCP 26(f); local rules vary |
-| Asylum one-year filing rule | ~1 year from most recent entry | 8 USC § 1158(a)(2)(B); exceptions exist |
-| EOIR / immigration court — typical response/motion | Per NTA or order — no universal default | Read the order; do not assume |
-| Motion for reconsideration (EOIR) | ~30 days after final order | 8 CFR § 1003.23(b)(1); confirm |
-| Habeas petition — § 2254 1-year SOL | ~1 year from final state judgment or new fact/law | 28 USC § 2244(d); tolling rules |
-
-## Computation-of-time reminder
-
-- **California courts:** CCP § 12 (excludes first day, includes last), § 12a (extends to next court day if deadline falls on weekend/holiday), § 1010.6 / § 1013 (service-method extensions for mail, fax, electronic).
-- **Federal courts:** FRCP 6(a) (calendar day counting, weekend/holiday extension), FRCP 6(d) (3-day mail extension where applicable).
-- **Local rules:** Always confirm. This band file is a plausibility check, not a substitute for the court's own rule.
+- **Clear days rule:** For any period of less than 7 days, exclude weekends and public holidays (Ord 3, r 2(5)).
+- **First day excluded:** The day of the event triggering the period is not counted.
+- **Last day:** If the last day falls on a weekend or public holiday, the deadline extends to the next business day.
+- **HK public holidays:** Lunar New Year (3 days), Ching Ming Festival, Easter, Labour Day (1 May), Tuen Ng Festival, HKSAR Establishment Day (1 July), Mid-Autumn Festival, National Day (1 Oct), Chung Yeung Festival, Christmas (25-26 Dec). Full list published annually by the Government.

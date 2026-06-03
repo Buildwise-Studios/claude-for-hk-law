@@ -2,7 +2,7 @@
 name: handbook-updates
 description: >
   Diff a proposed handbook change against the current version, flag ripple
-  effects and state supplement impacts. Use when user says "update the
+  effects and HK legislation impacts. Use when user says "update the
   handbook", "add this to the handbook", "handbook change", or has a policy
   ready for insertion.
 ---
@@ -17,7 +17,7 @@ description: >
 
 ## Purpose
 
-Handbook changes have ripple effects. Change the PTO policy and you've affected the final pay calculation, the leave policy cross-reference, and three state supplements. This skill finds the ripples before they become inconsistencies.
+Handbook changes have ripple effects. Change the annual leave policy and you may affect the final pay calculation, the leave policy cross-reference, and multiple HK legislation compliance areas. This skill finds the ripples before they become inconsistencies.
 
 ## Load context
 
@@ -52,11 +52,11 @@ Each cross-reference: does it still make sense after the change? Flag any that b
 
 ### Step 4: State supplement impact
 
-For each state supplement in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`:
+For each HK legislative requirement in `~/.claude/plugins/config/claude-for-legal/employment-legal/CLAUDE.md`:
 
-- Does this supplement modify the section being changed?
-- Does the change make the supplement obsolete, wrong, or incomplete?
-- Does the change create a need for a *new* supplement in a state that didn't need one before?
+- Does the statutory requirement modify the section being changed?
+- Does the change make the existing policy non-compliant?
+- Does the change require updating other sections of the handbook or statutory particulars per Cap 57 s.42C?
 
 ### Step 5: Promise check
 
@@ -81,7 +81,7 @@ Flag this. Don't block it — but flag it.
 |---|---|---|---|
 | [name] | [how] | ✅/⚠️ | [what] |
 
-### State supplement impact
+### HK legislation impact
 
 | State | Current supplement | After change | Action |
 |---|---|---|---|

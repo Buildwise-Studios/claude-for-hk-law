@@ -33,7 +33,7 @@ It also gives downstream skills (bar-prep, flashcards, drill, irac) a shared sch
 
 A plan is opinion, not doctrine. The skill states clearly what's an estimate:
 
-- **Time-per-topic estimates** are general guidance (based on typical Barbri/Themis/Kaplan weightings). Flag them as estimates — the student's real pace will differ.
+- **Time-per-topic estimates** are general guidance (based on typical PCLL prep materials weightings). Flag them as estimates — the student's real pace will differ.
 - **Subject weightings** are derived from the student's own reported weak subjects and session history. Confident.
 - **High-yield-topic prioritization in cram mode** is based on multi-year bar exam release patterns (MBE/MEE subject frequency). Flag any "this is definitely on the exam" claim as `[UNCERTAIN — past frequency is not a prediction]`.
 
@@ -67,7 +67,7 @@ For (3) semester: ask for the term-end date as the anchor.
 **Ask and wait.** Do not bulk all questions into one prompt and move on.
 
 - **Exam date:** confirmed? (If bar: ask for jurisdiction if not in practice profile — study content depends on it.)
-- **Subjects to cover:** for bar, read from NCBE subject outline for the exam format (NextGen / traditional UBE / state-specific). For a class, the syllabus. Confirm with student — "any subject I should add or drop?"
+- **Subjects to cover:** for bar, read from NCBE subject outline for the exam format (PCLL Conversion Exams). For a class, the syllabus. Confirm with student — "any subject I should add or drop?"
 - **Strongest subjects:** least priority. Still reviewed, not drilled heavily.
 - **Weakest subjects:** most priority. Get more sessions.
 - **Hours per week available:** realistic, not aspirational. "I can do 20 hours" is different from "I will do 20 hours for 8 weeks." Ask what they can actually sustain.
@@ -131,7 +131,7 @@ Write to `~/.claude/plugins/config/claude-for-legal/law-student/study-plan.yaml`
 ```yaml
 plan_type: bar  # or law-school-exam or semester
 exam_date: 2026-07-28
-jurisdiction: CA
+jurisdiction: UK
 exam_format: state-specific  # or NextGen / UBE
 created: 2026-05-08
 last_updated: 2026-05-08
@@ -244,5 +244,5 @@ On the next `/law-student:study-plan --update` run (or when any skill detects th
 
 - **Guarantee you pass.** The plan is a scaffold. The work is on you.
 - **Predict the exam.** Cram mode uses historical subject frequency; high-yield ≠ guaranteed-tested.
-- **Replace your prep course schedule.** If you're on Barbri/Themis/Kaplan, this plan can supplement — don't run two full curricula against each other. Use one as primary.
+- **Replace your prep course schedule.** If you're on PCLL prep materials, this plan can supplement — don't run two full curricula against each other. Use one as primary.
 - **Schedule your life.** Hours available is what you tell me. If you overstate, the plan will break in week 2. Be honest.

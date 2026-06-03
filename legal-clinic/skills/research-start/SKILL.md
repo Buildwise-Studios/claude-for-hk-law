@@ -1,8 +1,8 @@
 ---
 name: research-start
 description: >
-  Research roadmap for a legal issue — statutes to check, case law areas to
-  investigate, regulatory frameworks, Westlaw search terms. Leads and
+  Research roadmap for a legal issue — ordinances to check, case law areas to
+  investigate, regulatory frameworks, HKLII / Westlaw Asia search terms. Leads and
   frameworks, NOT authoritative citations; students verify and develop
   everything. Use when a student asks where to start researching, wants a
   research roadmap for an issue, or needs gaps identified in existing research.
@@ -18,7 +18,7 @@ argument-hint: "[legal issue]"
 5. Output with prominent "leads not authorities" header. Everything is a starting point the student verifies.
 
 ```
-/legal-clinic:research-start "habitability defense to nonpayment eviction in [State]"
+/legal-clinic:research-start "habitability defense to possession claim in Hong Kong"
 ```
 
 ---
@@ -29,19 +29,19 @@ argument-hint: "[legal issue]"
 
 Legal research is essential to clinical education. But the initial phase — figuring out *what* to research, finding the right statute, understanding the framework — is often the most time-consuming and least educational part. Students spend hours finding the starting point before they can do the actual research.
 
-This skill produces the starting point: statutes to check, case law areas to investigate, search terms for Westlaw and CourtListener. **None of it is verified. None of it is authoritative. All of it is a lead for the student to run down.**
+This skill produces the starting point: ordinances to check, case law areas to investigate, search terms for HKLII and Westlaw Asia. **None of it is verified. None of it is authoritative. All of it is a lead for the student to run down.**
 
 **This is a pedagogical safeguard, not just an ethical one.** Students still learn to research. They just start from a better place.
 
 ## Load context
 
-`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → jurisdiction (state), practice areas.
+`~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → jurisdiction (Hong Kong), practice areas.
 
 ## Workflow
 
 ### Step 0: Seed documents first
 
-**Before building the roadmap, read the clinic's own seed documents.** The supervising attorney uploaded them at cold-start (handbook, filing guides, local court rules, intake forms, example case files, prior memos) — they are pre-vetted, jurisdiction-specific, and will beat any Westlaw query on the first 20 minutes of a student's research.
+**Before building the roadmap, read the clinic's own seed documents.** The supervising attorney uploaded them at cold-start (handbook, filing guides, Practice Directions, intake forms, example case files, prior memos) — they are pre-vetted, jurisdiction-specific, and will beat any HKLII or Westlaw Asia query on the first 20 minutes of a student's research.
 
 1. Read `~/.claude/plugins/config/claude-for-legal/legal-clinic/CLAUDE.md` → `## Seed documents`. Identify any item whose purpose or filename matches the research area (e.g., "Alameda UD filing guide" for a UD habitability question; a redacted sample case file in the same practice area; a prior memo on the same issue).
 2. For each match, surface it as a **Seed documents to read first** block at the top of the roadmap output. Name the file, say why it matters for this specific question, and say what it likely covers vs. where outside research will still be needed.
@@ -52,51 +52,55 @@ The roadmap still covers statutes, case law areas, secondary sources, and search
 
 ### Step 1: Frame the issue
 
-What's the research question? Be specific. Not "eviction defenses" — "habitability defense to nonpayment eviction in [State], specifically whether a broken heater qualifies and whether the tenant had to give written notice."
+What's the research question? Be specific. Not "eviction defences" — "habitability defence to nonpayment possession claim in Hong Kong, specifically whether a broken water heater qualifies under Cap 7 and whether the tenant needed written notice."
 
 If the question is too broad, narrow it with the student: "That's three research questions. Let's take them one at a time. Which first?"
 
 ### Step 2: Build the roadmap
 
 **Statutory starting points:**
-List statutes *likely* relevant. State explicitly these are likely, not confirmed.
+List ordinances *likely* relevant. State explicitly these are likely, not confirmed.
 
-> **Likely relevant statutes** (UNVERIFIED — confirm currency and applicability):
-> - [State] Landlord-Tenant Act, likely at [State Code Title X] — look for "warranty of habitability" or "repair and deduct"
-> - Local housing code for [City/County] — may define specific conditions (heat, water) as required
-> - `[VERIFY each citation is current and correct — codes get renumbered]`
+> **Likely relevant ordinances** (UNVERIFIED — confirm currency and applicability via HK e-Legislation):
+> - [Cap number] — look for [specific sections or parts]
+> - Subsidiary legislation under the parent Ordinance — check for amendments
+> - Relevant Practice Directions from the Judiciary website
+> - `[VERIFY each citation is current — check HK e-Legislation for amendment history]`
 
 **Case law areas to investigate:**
 Not cases — *areas*. The student finds the cases.
 
 > **Case law areas:**
-> - [State] Supreme Court or appellate decisions on implied warranty of habitability — look for the leading case establishing the doctrine
-> - Cases on what conditions qualify — heat specifically, if any
-> - Cases on procedural prerequisites — did tenant have to give notice? withhold rent? escrow?
-> - Cases on the remedy — offset against rent owed, or a separate damages claim?
+> - Court of Final Appeal or Court of Appeal decisions on [area] — look for the leading HK authority
+> - Cases on what the test/requirements are
+> - English and Commonwealth decisions may be persuasive — search those too
+> - HKLII (hklii.hk) covers HK judgments for free; Westlaw Asia / LexisNexis HK for more comprehensive search
 
 **Regulatory / administrative sources:**
 If applicable (immigration especially).
 
 > **Administrative sources:**
-> - [Agency] regulations at [CFR cite area]
-> - Agency guidance or policy manuals — often more current than regs
-> - For immigration: USCIS Policy Manual, BIA precedent decisions
+> - Immigration Department policies — relevant to non-refoulement / torture claims
+> - Torture Claims Appeal Board / Non-refoulement Claim Petition Board decisions
+> - Other HK government departments and authorities (Housing Authority, Companies Registry, etc.)
 
 **Secondary sources to orient:**
 Where to get the framework before diving into primary.
 
 > **Secondary sources (for framework, not to cite):**
-> - [State] practice guide on landlord-tenant (check clinic library)
-> - Relevant CLE materials
-> - Law review notes on the specific issue if it's contested
+> - CLIC (clic.org.hk) — plain-language HK legal information
+> - HK Law Reform Commission reports
+> - Hong Kong Law Journal or relevant HK legal periodicals
+> - LexisNexis HK / Westlaw Asia commentary and practice guides
+> - Butterworths HK practice guides
 
 **Search terms:**
-For Westlaw, or whatever the clinic uses.
+For HKLII, Westlaw Asia, or LexisNexis HK.
 
 > **Search terms to try:**
-> - Westlaw: `"warranty of habitability" /s heat! & [State]`
-> - CourtListener: `implied warranty of habitability AND (heat OR heater) AND [State]`
+> - HKLII: `"[Ordinance short title]" AND [keyword]`
+> - Westlaw Asia: `[keyword] AND Hong Kong`
+> - HK e-Legislation: browse the parent Ordinance and check subsidiary legislation
 > - Refine based on what comes back — these are starting queries
 
 ### Step 3: Flag what's uncertain
@@ -108,9 +112,9 @@ If the skill is unsure whether a source is relevant or current:
 
 Uncertainty is stated, not hidden.
 
-> **No silent supplement.** This skill produces leads, not authoritative citations — by design, students run the citations down themselves. But if a query to a configured research tool (Westlaw, CourtListener) returns few or no results for a specific rule or case, say so and stop. Do NOT manufacture citations from web search or model knowledge to fill a thin result set without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [rule]. Options: (1) broaden the search query, (2) try a different research tool, (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source before relying, or (4) stop here and flag the gap for your supervisor. Which would you like?" The supervising attorney decides whether to accept lower-confidence sources.
+> **No silent supplement.** This skill produces leads, not authoritative citations — by design, students run the citations down themselves. But if a query to a configured research tool (HKLII, Westlaw Asia, LexisNexis HK) returns few or no results for a specific rule or case, say so and stop. Do NOT manufacture citations from web search or model knowledge to fill a thin result set without asking. Say: "The search returned [N] results from [tool]. Coverage appears thin for [rule]. Options: (1) broaden the search query, (2) try a different research tool (e.g., check HKLII if Westlaw Asia was thin), (3) search the web — results will be tagged `[web search — verify]` and should be checked against a primary source (HK e-Legislation, Judiciary website) before relying, or (4) stop here and flag the gap for your supervisor. Which would you like?" The supervising attorney decides whether to accept lower-confidence sources.
 >
-> **Source attribution.** Tag every suggested citation with where it came from: `[Westlaw]`, `[CourtListener]`, `[Fastcase]`, or the MCP tool name for citations retrieved from a legal research connector; `[web search — verify]` for web-search citations; `[model knowledge — verify]` for citations recalled from training data; `[user provided]` for citations supplied by the supervising attorney or case file. Citations tagged `verify` carry higher fabrication risk and should be checked first. Never strip or collapse the tags — they tell the student which leads are raw research and which are model guesses to verify against a primary source.
+> **Source attribution.** Tag every suggested citation with where it came from: `[HKLII]`, `[Westlaw Asia]`, `[LexisNexis HK]`, or the MCP tool name for citations retrieved from a legal research connector; `[web search — verify]` for web-search citations; `[model knowledge — verify]` for citations recalled from training data; `[user provided]` for citations supplied by the supervising attorney or case file; `[HK e-Legislation]` for text retrieved from the official legislation database. Citations tagged `verify` carry higher fabrication risk and should be checked first. Never strip or collapse the tags — they tell the student which leads are raw research and which are model guesses to verify against a primary source.
 
 ### Step 4: Synthesize uploaded research (if any)
 
@@ -135,7 +139,7 @@ If the student has already done some research and uploads it: read it, identify 
 
 # Research Roadmap: [Issue]
 
-**Jurisdiction:** [State] | **Practice area:** [area]
+**Jurisdiction:** Hong Kong | **Practice area:** [area]
 
 ## Seed documents to read first
 
@@ -161,7 +165,7 @@ match this issue — proceeding to primary sources."]
 
 ## Search terms
 
-**Westlaw:** [queries]
+**HKLII / Westlaw Asia:** [queries]
 
 ## Uncertainty flags
 
@@ -183,12 +187,12 @@ match this issue — proceeding to primary sources."]
   to verify, not an authority to rely on.
 - **It does not do the research.** You do the research. This gets you to the
   starting line faster.
-- **It does not replace Westlaw.** Those have the actual cases. This
+- **It does not replace HKLII or Westlaw Asia.** Those have the actual cases. This
   tells you where to point them.
 
 ---
 
-**Cite verification — required before use.** Citations above were generated by an AI model and have not been verified. Before relying on any case, statute, or rule — or including it in client work — run it through Westlaw, Fastcase, CourtListener, or your clinic's research platform for accuracy and current good-law status. Flag unverified citations to your supervisor.
+**Cite verification — required before use.** Citations above were generated by an AI model and have not been verified. Before relying on any case, ordinance, or rule — or including it in client work — run it through HKLII, Westlaw Asia, LexisNexis HK, or your clinic's research platform for accuracy and current good-law status. Flag unverified citations to your supervisor.
 ```
 
 ## What this skill does NOT do

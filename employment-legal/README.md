@@ -1,6 +1,6 @@
-# Employment Counsel Plugin
+# Employment Counsel Plugin (Hong Kong)
 
-In-house employment law workflows: hiring review, termination review, policy drafting, handbook updates, jurisdiction-aware wage & hour Q&A. Built around a jurisdictional footprint learned at cold-start — the plugin knows which states you're in and what's different about each.
+In-house employment law workflows for Hong Kong: hiring review, termination review, policy drafting, handbook updates, HK Employment Ordinance (Cap 57) Q&A. Built around Hong Kong employment law learned at cold-start — the plugin knows the Employment Ordinance, anti-discrimination legislation, MPF requirements, and common law principles.
 
 **Every output is a draft for attorney review — cited, flagged, and gated — not a legal conclusion.** The plugin does the work: reads the documents, applies your playbook, finds the issues, drafts the memo. A lawyer reviews, verifies, and decides. Citations are tagged by source so you know which ones came from a research tool and which ones need checking. Privilege markers are applied conservatively so nothing waives by accident. Consequential actions — filing, sending, executing — are gated behind explicit confirmation.
 
@@ -8,13 +8,13 @@ In-house employment law workflows: hiring review, termination review, policy dra
 
 | Role | Primary workflows |
 |---|---|
-| **Employment counsel** | Termination review, policy drafting, wage/hour analysis |
-| **HR business partners** | Hiring review, handbook questions, first-line wage/hour Q&A |
+| **Employment counsel (HK)** | Termination review, policy drafting, Cap 57 wage analysis |
+| **HR business partners** | Hiring review, handbook questions, first-line Cap 57 Q&A |
 | **GC** | Escalation recipient for high-risk terms and RIFs |
 
 ## First run: cold-start
 
-Asks which states and countries you have employees in, reads your handbook and three recent termination memos, builds a jurisdiction-aware escalation table.
+Asks about your HK practice, the relevant Employment Ordinance provisions, reads your employment contracts and termination memos, and builds a Cap 57-aware escalation table.
 
 ```
 /employment-legal:cold-start-interview
