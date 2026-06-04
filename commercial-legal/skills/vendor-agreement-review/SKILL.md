@@ -26,6 +26,10 @@ Read a vendor agreement against the playbook this team actually uses (in `~/.cla
 
 The output is a review memo the lawyer can act on in one pass. Every issue has a severity, a business-impact explanation, a proposed fix, and an escalation call if one is needed.
 
+## Jurisdiction assumption
+
+This review applies the team's positions from `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`, which default to **Hong Kong (HKSAR)**, **England and Wales**, and **Singapore** governing law unless the profile or contract says otherwise. If the agreement picks a different governing law, or the deal spans jurisdictions with statutory overrides (e.g., US state consumer rules, EU data-protection law, PDPO issues for HK data subjects), flag it — the analysis may not transfer as written.
+
 ## Precondition: load the playbook
 
 **Before reading the contract, read `~/.claude/plugins/config/claude-for-hk-law/commercial-legal/CLAUDE.md`.** If it's missing or still has placeholders, surface this bounce:
@@ -163,8 +167,9 @@ Severity is always applied *against `~/.claude/plugins/config/claude-for-hk-law/
 
 **The playbook applies one governing-law preference globally. Enforceability varies materially.** Check the contract's actual governing law against the top divergences before accepting playbook positions at face value:
 
-- **Non-solicits/non-competes:** Unenforceable in CA (Bus. & Prof. Code §16600). Restricted in many EU jurisdictions. Enforceable with limitations elsewhere. `[jurisdiction — verify]`
-- **Auto-renewal:** CA GBL §17600-17606, NY GBL §527-a, IL 815 ILCS 601 have specific consumer/B2B notice requirements. Other states vary. `[jurisdiction — verify]`
+- **Governing law / venue (HK default):** Hong Kong contracts — Control of Exemption Clauses Ordinance (Cap 71), unfair terms under common law, PDPO for personal data. Flag PRC/Mainland governing law or non-reciprocal jurisdictions per the playbook **Never** list. `[jurisdiction — verify]`
+- **Non-solicits/non-competes:** HK common-law restraint-of-trade analysis; also unenforceable in CA (Bus. & Prof. Code §16600) and restricted in many EU jurisdictions if the contract is US/EU-governed. `[jurisdiction — verify]`
+- **Auto-renewal:** For US-governed deals: CA GBL §17600-17606, NY GBL §527-a, IL 815 ILCS 601, etc. For HK/UK/SG, rely on contract notice mechanics unless a sector rule applies. `[jurisdiction — verify]`
 - **Liability exclusions:** EU and UK unfair contract terms (for contracts governed by English law) rules (UCTA 1977, Consumer Rights Act 2015) constrain consumer exclusions. Some US states limit exclusion of gross negligence or willful misconduct. `[jurisdiction — verify]`
 - **Indemnification:** Some states void indemnification for the indemnitee's own negligence. `[jurisdiction — verify]`
 - **Confidentiality term:** Some jurisdictions limit "perpetual" confidentiality to a reasonable period. `[jurisdiction — verify]`

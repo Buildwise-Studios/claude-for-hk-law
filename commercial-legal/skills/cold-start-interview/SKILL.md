@@ -100,7 +100,9 @@ Look for `~/.claude/plugins/config/claude-for-hk-law/company-profile.md`.
 - **If it exists:** Read it. Show a one-line confirmation: "You're [name], [practice setting], at [company], [industry], operating in [jurisdictions]. Right? (Or say 'update' to change the shared profile.)" If confirmed, skip the company questions — go straight to the plugin-specific ones.
 - **If it doesn't exist:** You'll be the first plugin this user set up. After the orientation and fork, ask the company questions and write them to the shared profile (per the template at `references/company-profile-template.md` in the plugin root), then continue with the plugin-specific questions. Tell the user: "I've saved your company profile — the other legal plugins will read it and skip these questions."
 
-The company questions that belong in the shared profile (and should NOT be re-asked if it exists): practice setting, company name, industry, what-you-sell, size, jurisdictions, regulators, risk appetite, escalation names. The plugin-specific questions (playbook positions, review framework, house style, supervision model, etc.) stay per-plugin.
+The company questions that belong in the shared profile (and should NOT be re-asked if it exists): practice setting, company name, **entity type**, **place of incorporation**, industry, what-you-sell, size, jurisdictions, regulators, risk appetite, escalation names. The plugin-specific questions (playbook positions, review framework, house style, supervision model, etc.) stay per-plugin.
+
+When creating the shared profile, ask entity type with Hong Kong defaults first: private company limited by shares (most common under Companies Ordinance Cap 622), public company, company limited by guarantee, unlimited company, or branch of a foreign company registered in Hong Kong. If incorporated elsewhere, capture place of incorporation and the foreign form.
 
 ## Install scope check
 
@@ -243,10 +245,10 @@ Write `## Who's using this` and `## Available integrations` sections immediately
 
 Ask conversationally, one cluster at a time. Don't interrogate — listen for what they volunteer beyond the question.
 
-**What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest 10-K, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
+**What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, your latest HKEX annual report or listing documents, Companies Registry filings (e.g. annual return NAR1), or annual accounts under Cap 622 — or your website/about page if you're private — and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
 
-**Who are you?**
-- Company name and entity type (Delaware C-corp? LLC? Something else?)
+**Who are you?** (Skip company name, entity type, and place of incorporation if you just captured them in the shared company profile.)
+- Company name and entity type — for Hong Kong: private company limited by shares (most common under Cap 622), public company, company limited by guarantee, unlimited company, or branch of a foreign company registered in HK? If incorporated elsewhere, say where and what form.
 - How big is the contracts team? Just you? A few lawyers? Paralegals?
 - Who's the GC or whoever the buck stops with?
 
@@ -283,11 +285,11 @@ Carry the selected side through Part 2. When phrasing playbook questions, frame 
 - **AI/ML training rights.** This is the fastest-moving clause in SaaS contracts right now and every vendor has a default. If you don't have a position, you'll get the vendor's default. "Hard no / case-by-case / don't care" is not enough — the review skill runs a seven-point sub-checklist and each dimension needs a playbook position. Ask through each:
   1. **Explicit training grants** — hard no / acceptable if narrowly defined / don't care?
   2. **Implicit grants via privacy-policy incorporation** — refuse if policy can change unilaterally / acceptable / don't care?
-  3. **Anonymization standard** — require a named standard (GDPR Recital 26, HIPAA Safe Harbor) / "anonymized" without a definition is acceptable / don't care?
+  3. **Anonymization standard** — require a named standard (PDPO Cap 486 / PDPC guidance on anonymisation; or GDPR Recital 26, HIPAA Safe Harbor, etc. only if your footprint includes those regimes) / "anonymized" without a definition is acceptable / don't care?
   4. **Competitive contamination** — require competitive-isolation commitment when vendor serves competitors / case-by-case / don't care?
   5. **Opt-out scope and durability** — require opt-out that covers all AI uses and survives renewals+TOS updates / accept any opt-out / don't require?
   6. **Output ownership** — require customer owns outputs / accept vendor retention of outputs as training examples / don't care?
-  7. **Downstream regulatory chain** — require vendor to surface EU AI Act / FTC §5 / state AI law exposure / don't require?
+  7. **Downstream regulatory chain** — require vendor to surface PDPO cross-border / HK regulatory exposure; and EU AI Act, FTC §5, or other foreign AI/privacy law only if your footprint includes those users or data / don't require?
 
   Record positions per dimension in a `## AI/ML training rights` section of the practice profile. "Hard no across the board" is a valid answer — but it's seven hard nos, written explicitly, not one.
 
@@ -409,7 +411,7 @@ fix it here and it's fixed everywhere.*
 
 ## Who we are
 
-[Company name] is a [entity type]. The contracts team is [N] people: [names/roles
+[Company name] is a [entity type — from company-profile.md if set]. The contracts team is [N] people: [names/roles
 if given]. [GC name] is the final escalation point. We process roughly [N]
 agreements per month, mostly [vendor/customer/mix]. We use [CLM/other] for
 contract lifecycle management.

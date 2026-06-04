@@ -5,6 +5,8 @@ Edit directly or re-run any plugin's `/cold-start-interview` to update.*
 
 **Practice setting:** [Solo/small firm | Midsize/large firm | In-house | Government/legal aid/clinic | **Solicitor firm** | **Barrister chambers** | **ILP (Incorporated Legal Practice)** | **Foreign law firm registered in HK**]
 **Name:** [Company or firm name]
+**Entity type:** [e.g., private company limited by shares under Cap 622]
+**Place of incorporation:** [Hong Kong / other — if other, specify jurisdiction and form]
 **Industry:** [What the company does / the firm's primary practice areas]
 **What we sell / deliver:** [Products, services, who to — or "N/A, law firm"]
 **Size:** [Employee count / lawyers / relevant headcount]
