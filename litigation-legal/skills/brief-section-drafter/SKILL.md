@@ -189,3 +189,15 @@ The statement of facts is advocacy through selection and sequence, not argument.
 - Produce a final brief. It produces a draft. Every cite needs verification, every argument needs a partner's eyes.
 - Decide strategy. If there are two ways to argue the issue, flag both and let the partner choose.
 - File anything. Ever.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

@@ -84,14 +84,13 @@ argument-hint: "[describe the work injury — nature, circumstances, injuries, e
 **Append:** `⚠️ This is not legal advice or a formal assessment. Verify the injury against Cap 282, the Assessment Board's guidelines, and current schedules. Review with a licensed HK solicitor or barrister before proceeding with any claim.`
 
 
-## Scripts
+## HK primary sources (run before citing)
 
-Use these scripts to fetch live data:
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
 
 ```bash
-# Search legislation index by keyword
-python3 scripts/download_legislation_list.py --search "keyword"
-
-# Download full ordinance text
-python3 scripts/download_legislation_text.py <cap_no>
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
 ```

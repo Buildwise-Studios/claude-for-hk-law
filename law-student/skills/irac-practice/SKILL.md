@@ -176,3 +176,15 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 - **Grade content correctness on jurisdictions or areas the skill doesn't know well.** In those cases, skill grades structure only and says so — "I can grade your IRAC shape but can't verify rules here."
 - **Give a precise numeric score.** Pass/borderline/not-yet bands only. Grading is qualitative; precision is false precision.
 - **Substitute for a professor's grading.** Professors have rubrics and preferences this skill doesn't know. Use feedback to improve; don't treat it as the final word.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

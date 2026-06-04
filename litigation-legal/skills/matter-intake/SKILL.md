@@ -308,3 +308,15 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 - **Run the conflicts check itself.** It records the result, status, method, and the entities checked. The actual clearance happens in whatever system (or judgment) the house practice profile declares. If the user says "cleared," the skill takes that at face value and captures the metadata.
 - Decide the initial theory. It captures what the user says; it doesn't invent one.
 - Issue the legal hold. Flags it if missing. User issues it.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

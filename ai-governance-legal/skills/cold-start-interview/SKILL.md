@@ -205,7 +205,7 @@ Write a `## Who's using this` section and an `## Available integrations` section
 
 ### Part 1: Builder, deployer, or both? (3-4 min)
 
-**What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest 10-K, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription). The builder/deployer question below only makes sense on top of this.
+**What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest HKEX annual report, Companies Registry annual return (NAR1), or annual accounts under Cap 622, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription). The builder/deployer question below only makes sense on top of this.
 
 **This is the question that determines everything else.**
 

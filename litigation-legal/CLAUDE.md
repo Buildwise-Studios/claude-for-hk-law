@@ -44,10 +44,10 @@ This file is the house-level frame every matter is triaged against. Risk calibra
 
 *Team-level context — kept separate from litigation-specific material below. If you've populated this section in another `-counsel` plugin, copy it here rather than re-entering.*
 
-**Org / legal entity:** [PLACEHOLDER — e.g., "Acme Corporation, a Delaware corporation"] *(From company-profile.md — edit there to change across all plugins)*
+**Org / legal entity:** [PLACEHOLDER — e.g., "Acme Holdings Limited, a company incorporated in Hong Kong"] *(From company-profile.md — edit there to change across all plugins)*
 **Industry:** [PLACEHOLDER] *(From company-profile.md — edit there to change across all plugins)*
 **Public / private / subsidiary:** [PLACEHOLDER]
-**Regulated status:** [PLACEHOLDER — e.g., SEC-registrant, HIPAA-covered, FINRA, FTC scrutiny, none] *(From company-profile.md — edit there to change across all plugins)*
+**Regulated status:** [PLACEHOLDER — e.g., HKEX-listed, PDPO-covered, SFC/HKMA-regulated, none] *(From company-profile.md — edit there to change across all plugins)*
 **Core jurisdictions:** [PLACEHOLDER — operational + frequent-fora] *(From company-profile.md — edit there to change across all plugins)*
 **Headcount:** [PLACEHOLDER] *(From company-profile.md — edit there to change across all plugins)*
 **Legal team size:** [PLACEHOLDER]
@@ -140,7 +140,7 @@ A false assurance of protection is worse than no marking. The lawyer who relies 
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Repo scripts (`references/hk-primary-sources-setup.md`) or paid MCP ran this session | not connected — verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
@@ -417,14 +417,14 @@ The canonical column maps to the cross-plugin severity floor described in `## Sh
 
 ### Materiality thresholds
 
-*Drives the `materiality:` field in `_log.yaml` — `reserved | disclosed | monitored | none`. This whole sub-section is **in-house-only**. If your `## Practice role` is `firm-associate` or `solo`, ASC 450 / 10-Q disclosure / board-audit committee framing does not apply — leave this section omitted or replace with the solo equivalents ("case-value read" for plaintiff, "exposure read" for defense) captured in the solo path. The cold-start interview writes the right shape for your role; you should not be filling in ASC 450 as a solo practitioner.*
+*Drives the `materiality:` field in `_log.yaml` — `reserved | disclosed | monitored | none`. This whole sub-section is **in-house-only**. If your `## Practice role` is `firm-associate` or `solo`, HKFRS provision / HKEX disclosure / board-audit committee framing does not apply — leave this section omitted or replace with the solo equivalents ("case-value read" for plaintiff, "exposure read" for defense) captured in the solo path. The cold-start interview writes the right shape for your role.*
 
 | Trigger | Threshold | Action |
 |---|---|---|
-| Reserve required (ASC 450 — in-house only) | [PLACEHOLDER — e.g., "probable AND estimable"] | Loss booked; finance notified |
-| Disclosure required (10-Q / 10-K — public-company in-house only) | [PLACEHOLDER — e.g., "reasonably possible AND material"] | Footnote drafted with outside counsel |
+| Provision required (HKFRS/IFRS — in-house only) | [PLACEHOLDER — e.g., "probable AND estimable"] | Loss booked; finance notified |
+| Disclosure required (HKEX listed — in-house only) | [PLACEHOLDER — e.g., inside information / results announcement trigger] | Draft with outside counsel |
 | Board / audit committee report (in-house only) | [PLACEHOLDER — e.g., "any matter with exposure >$10M OR reputational risk"] | Quarterly memo; urgent escalation if status shifts |
-| GC-only escalation (in-house only) | [PLACEHOLDER — e.g., "new matter >$1M, regulator inquiry, class action threat"] | Brief within 48 hours |
+| GC-only escalation (in-house only) | [PLACEHOLDER — e.g., "new matter >$1M, regulator inquiry, representative action threat"] | Brief within 48 hours |
 
 ### Settlement authority ladder
 

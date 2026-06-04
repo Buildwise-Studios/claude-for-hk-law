@@ -160,3 +160,15 @@ Before showing this to [Professor]:
 - **Guess at missing facts.** Flags them for the student to get.
 - **Decide the legal theory.** Uses the common approach; the student decides if it's the right one for this case.
 - **Replace jurisdiction-specific research.** Applies ingested local rules; flags where rules weren't ingested or might have changed.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

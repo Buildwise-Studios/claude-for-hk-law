@@ -61,7 +61,7 @@ Configure MCP servers in `.mcp.json` at the repo or user level. Skills and agent
 | **ai-tool-handoff** | M&A | Luminance/Kira integration — bulk extraction + QA layer |
 | **board-minutes** | Board & Secretary | Calendar-detected meetings → draft minutes in house format |
 | **written-consent** | Board & Secretary | Unanimous written consents with precedent search from consents repository; scope warning for major one-off actions |
-| **entity-compliance** | Entity Management | Compliance calendar tracker (YAML); filing deadlines by entity and state; health audit; CT Corp report ingestion; CSV export |
+| **entity-compliance** | Entity Management | Compliance calendar tracker (YAML); filing deadlines by entity and jurisdiction; health audit; secretarial report ingestion; CSV export |
 | **integration-management** | M&A | Post-closing integration tracker; phased workplan (Day 1/30/90/180); Required Consents tracker with PA deadlines; contract assignment at scale (repository or manual list); weekly status reports |
 | **matter-workspace** | Create, list, switch, and close matter workspaces for multi-client practices; isolates each client/matter so context does not leak across them |
 

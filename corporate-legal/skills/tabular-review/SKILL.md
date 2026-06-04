@@ -188,7 +188,7 @@ Write the table in three formats:
 | Document | Counterparty | Effective Date | Change of Control | Assignment | ⚠️ Flags |
 |---|---|---|---|---|---|
 | Vendor MSA — Acme | Acme Corp | 2023-04-01 | consent_required | consent_required | — |
-| Supply Agmt — Beta | Beta LLC | 2021-11-15 | ⚠️ unclear | silent | CoC ambiguous §14.2 |
+| Supply Agmt — Beta | Beta Supply Limited | 2021-11-15 | ⚠️ unclear | silent | CoC ambiguous §14.2 |
 ```
 
 **CSV** (`.csv`, always):

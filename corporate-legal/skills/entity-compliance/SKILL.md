@@ -12,7 +12,7 @@ argument-hint: "[--init | --report [--days N] | --update [--from-report] | --swe
 
 # /entity-compliance
 
-1. Load `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → `## Entity Management` (entity table, jurisdictions, registered agent).
+1. Load `~/.claude/plugins/config/claude-for-hk-law/corporate-legal/CLAUDE.md` → `## Entity Management` (entity table, jurisdictions, company secretarial provider).
 2. Route to the correct mode below based on flag:
    - No flag or `--init`: Mode 1 — initialize tracker from entity table
    - `--report`: Mode 2 — surface upcoming deadlines and overdue items
@@ -70,13 +70,13 @@ metadata:
   last_updated: "[date]"
   last_audit: "[date or null]"
 
-custom_jurisdictions:   # manually added — US states or countries not in built-in reference table
+custom_jurisdictions:   # manually added — jurisdictions not in built-in reference table (e.g. BVI, Cayman)
   []                    # populated when a new jurisdiction is encountered
 
 entities:
   - name: "[Entity Name]"
-    type: "[Corporation / LLC / LP / other]"
-    state_of_formation: "[state]"
+    type: "[private company limited by shares / public company / company limited by guarantee / registered branch / other]"
+    place_of_incorporation: "[Hong Kong / BVI / Cayman / other]"
     formation_date: "[date or null]"
     status: "[active / dormant / dissolving]"
     registered_agent: "[corporate services provider / in-house / other]"
@@ -275,7 +275,7 @@ Do not record a new `last_filed` date past this gate without an explicit yes. Tr
 ```
 
 Attorney tells Claude what was filed:
-> "We filed the Delaware annual report for [Entity] on March 1. Fee was $450."
+> "We filed the annual return (NAR1) for [Entity] on March 1. Fee was $105."
 
 Claude updates:
 - `last_filed` → March 1 date
@@ -299,7 +299,7 @@ From the report, extract for each entity:
 - Any flags or warnings from the agent
 
 Match report entities to tracker entities by name (flag near-matches for
-confirmation — "Acme Holdings LLC" vs. "Acme Holdings, LLC" are probably
+confirmation — "Acme Holdings Ltd" vs. "Acme Holdings Limited" are probably
 the same entity).
 
 After processing:

@@ -201,7 +201,7 @@ Write `## Who's using this` and `## Available integrations` sections immediately
 
 **The business model question (this determines everything):**
 
-> **What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest 10-K, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
+> **What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest HKEX annual report, Companies Registry annual return (NAR1), or annual accounts under Cap 622, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
 
 - Whose data flows through the company?
 - Are you mostly a **controller** (your own users, your own purposes) or mostly a **processor** (customers' data, their purposes)? Both? (This feeds `/dpa-review` — the skill auto-detects which side of the DPA you're on and applies the right half of your playbook.)

@@ -2,7 +2,8 @@
 name: research-start
 description: >
   Research roadmap for a legal issue — ordinances to check, case law areas to
-  investigate, regulatory frameworks, HKLII / Westlaw Asia search terms. Leads and
+  investigate, regulatory frameworks, HKLII search terms (repo script or paid DB).
+  Leads and
   frameworks, NOT authoritative citations; students verify and develop
   everything. Use when a student asks where to start researching, wants a
   research roadmap for an issue, or needs gaps identified in existing research.
@@ -29,7 +30,15 @@ argument-hint: "[legal issue]"
 
 Legal research is essential to clinical education. But the initial phase — figuring out *what* to research, finding the right statute, understanding the framework — is often the most time-consuming and least educational part. Students spend hours finding the starting point before they can do the actual research.
 
-This skill produces the starting point: ordinances to check, case law areas to investigate, search terms for HKLII and Westlaw Asia. **None of it is verified. None of it is authoritative. All of it is a lead for the student to run down.**
+This skill produces the starting point: ordinances to check, case law areas to investigate, and search terms. **None of it is verified. None of it is authoritative. All of it is a lead for the student to run down.**
+
+When the repo is available, run primary-source tools from the repo root (see `references/hk-primary-sources-setup.md`):
+
+- `python3 scripts/download_legislation_list.py --cap <n>` and `python3 scripts/download_legislation_text.py <n>`
+- `python3 scripts/hklii_search.py "<query>" --cases` for judgment leads
+- `python3 scripts/judiciary_search.py "<query>"` for judiciary.hk site pages only
+
+There is no HKLII or CLIC MCP in this marketplace. Tag tool-backed cites `[HK e-Legislation / DOJ open data]` or `[HKLII search]`; never claim MCP verification without a successful tool call this session.
 
 **This is a pedagogical safeguard, not just an ethical one.** Students still learn to research. They just start from a better place.
 

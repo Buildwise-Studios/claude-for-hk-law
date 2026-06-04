@@ -277,3 +277,15 @@ When counsel wants history events in the chronology, they can paste them. The de
 - **Invent events not in the sources.** If it's not in the documents (and not in matter.md or the configuration as a captured fact), it's not in the chronology — but "Gaps" might call it out as missing.
 - **Guarantee completeness.** A chronology is only as good as the sources. If the eDiscovery production is ongoing and only 20% has landed, the chronology reflects that. Name the limitation.
 - **Decide privilege status for the user.** The Step 0 gate forces the posture choice; the per-entry `priv` flag captures first-pass classification. Actual privilege determinations are counsel's call per `[SME VERIFY]` flags.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

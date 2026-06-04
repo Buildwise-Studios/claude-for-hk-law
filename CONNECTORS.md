@@ -19,32 +19,44 @@ The plugins are at their best when connected to authoritative sources. If you bu
 
 ## Current connectors
 
-Connectors shipped in the default `.mcp.json` of each plugin:
+**Authoritative list:** each plugin's `.mcp.json`. The table below matches what is in the repo today (not a wishlist).
 
 | Connector | Plugins | Notes |
 |---|---|---|
-| **Microsoft 365** | all 12 | Common in HK law firms |
-| **Slack** | all 12 | |
-| **Google Drive** (`gdrive`) | all 12 | |
-| **HKLII** | all 12 | Hong Kong judgments and legislation — public, free |
-| **e-Legislation API** | all 12 | Official Hong Kong e-Legislation — ordinances, regulations, commencement notices |
-| **Companies Registry e-Search** | corporate-legal | HK company searches via CR cyberport.gov.hk |
-| **Descrybe** | legal-clinic, ip-legal, law-student | |
+| **Slack** | 12 core practice plugins | |
+| **Google Drive** | 12 core practice plugins | |
+| **Ironclad** | commercial-legal | |
+| **DocuSign** | commercial-legal | |
+| **iManage** | commercial-legal, corporate-legal | |
 | **Definely** | commercial-legal, corporate-legal | |
-| **iManage** | commercial-legal, corporate-legal | Widely used in HK law firms |
-| **Solve Intelligence** | corporate-legal, ip-legal | |
 | **TopCounsel** | commercial-legal, corporate-legal, litigation-legal | |
 | **Box** | corporate-legal | |
-| **Ironclad** | commercial-legal | |
-| **DocuSign / DocuSign CLM** | commercial-legal | |
+| **Solve Intelligence** | corporate-legal, ip-legal | |
 | **Everlaw** | litigation-legal | |
-| **Aurora** | litigation-legal | |
-| **Lawve AI** | legal-builder-hub | |
+| **Aurora (Consilio)** | litigation-legal | |
 | **Linear** | product-legal | |
-| **Atlassian (Jira)** | product-legal | |
+| **Atlassian (Jira/Confluence)** | product-legal | |
 | **Asana** | product-legal | |
+| **Lawve AI** | legal-builder-hub | |
+| **Descrybe** | law-student only | |
+| **CourtListener** | law-student only | US case law |
+| **CoCounsel Legal** | external_plugins/cocounsel-legal | Vendor plugin |
 
-See the `.mcp.json` in each plugin directory for the authoritative list.
+**HK specialty plugins** (`hk-property`, `hk-arbitration`, `hk-basic-law`, `hk-immigration`, `hk-shipping-maritime`) ship **empty** `mcpServers` stubs with a note to build custom connectors.
+
+### Repo scripts (not MCP)
+
+| Script | Notes |
+|---|---|
+| `scripts/download_legislation_list.py` | DOJ HK e-Legislation open data (`resource.data.one.gov.hk`) |
+| `scripts/download_legislation_text.py` | Ordinance text ZIPs from the same feed |
+| `scripts/hklii_search.py` | HKLII public `simplesearch` API (`www.hklii.hk/api/simplesearch`) |
+| `scripts/judiciary_search.py` | GovHK Judiciary site search HTML parser (`search.gov.hk`) |
+| `corporate-legal/scripts/check_company.py` | Companies Registry open data (`data.cr.gov.hk`) |
+
+Setup: [references/hk-primary-sources-setup.md](references/hk-primary-sources-setup.md).
+
+**Not shipped as MCP:** `mcp.hklii.hk` and `mcp.clic.org.hk` (no public DNS as of repo testing). CLIC offers a **website** chatbot at [clic.org.hk](https://www.clic.org.hk), not a documented MCP for Claude. Microsoft 365 is the separate Claude for M365 add-in. Paid Westlaw/Lexis MCP URLs come from the vendor.
 
 ## Wanted connectors
 

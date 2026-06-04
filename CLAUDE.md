@@ -121,6 +121,10 @@ Cite Hong Kong Ordinances as: `Cap <number>`, e.g. Cap 622 (Companies
 Ordinance). When referring to a specific section: s 123 of the Companies
 Ordinance (Cap 622) or Companies Ordinance (Cap 622), s 123.
 
+## HK primary sources (scripts)
+
+First-time installers and skills should follow [references/hk-primary-sources-setup.md](references/hk-primary-sources-setup.md): `download_legislation_*.py`, `hklii_search.py`, `judiciary_search.py` from repo root. Do not document `mcp.hklii.hk` or `mcp.clic.org.hk` as shipped connectors unless DNS and MCP handshake are verified.
+
 ## Validation — run before opening a PR
 
 This repo follows the same conventions `anthropics/claude-plugins-official`

@@ -259,7 +259,7 @@ Remove the header from externally-facing deliverables (stakeholder summaries for
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Repo scripts (`references/hk-primary-sources-setup.md`) or paid MCP ran this session | not connected — verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]

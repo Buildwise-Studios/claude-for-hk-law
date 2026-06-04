@@ -49,12 +49,12 @@ and without hand-editing YAML.
    - **Board & Secretary module** — house consent format, signatory
      preferences, committee structure
    - **Public Company module** — reporting calendar, disclosure controls,
-     10-K/10-Q review timing
+     HKEX annual/interim results and Cap 622 accounts review timing
    - **Entity Management module** — entity table, registered agent, filing
      jurisdictions, annual report calendar
    - **Workflow** — matter workspaces (deal rooms), closing checklist
      location, VDR watcher cadence
-   - **Integrations** — Box / Intralinks / Datasite / CT Corp / Slack status,
+   - **Integrations** — Box / Intralinks / Datasite / company secretarial provider / Slack status,
      fallbacks
 
 3. **Ask what they want to change.**

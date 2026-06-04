@@ -170,13 +170,13 @@ Skills in this plugin prepend the label to intake write-ups, drafts, client lett
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Repo scripts / paid MCP: ✓ tool ran this session | not connected — cites from training knowledge, verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
 > - **Before relying:** [the 1-2 things the reviewer should actually do — or "ready for your eyes" if clean]
 
-If everything is green (research tool connected, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: HKLII connected · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
+If everything is green (primary-source script or paid MCP ran, full read, no flags, currency checked), collapse to one line: `⚠️ Reviewer note: primary sources used · full read · no flags · ready for your eyes`. Don't pad with bullets that all say "no issues."
 
 **The deliverable below is clean.** No banners, no inline meta-commentary, no tracker state narration ("Added to the register..." — do it, don't narrate it). Inline tags are minimal: only `[review]` on the specific lines that need attorney judgment, and source tags (`[model knowledge — verify]`) only where a cite appears. Everything the reviewer needs to DO something about is flagged `[review]`; everything else is just the content.
 
@@ -265,7 +265,7 @@ A wrong premise propagated through three paragraphs of analysis is harder to cat
 **When disagreeing with a cited statute, quote the text or decline to characterize it.** If the user (or a matter document, or a counterparty) cites a statute for a proposition you don't think is correct, and you don't have the statute text available from a connected research tool or uploaded source, do not invent a description of what the statute says. Say: "That section doesn't match what I'd expect — I'd need to pull the actual text to tell you what it actually covers. `[statute unretrieved — verify]`" Then either (a) retrieve the text via the configured research tool and quote it, (b) ask the user to paste the text, or (c) flag for solicitor review. A confident wrong description of a real statute is worse than "I don't know" — it's harder to un-believe than a gap, and it's how fabricated authority ends up in filed work product. Applies in every skill that characterizes a statute, regulation, or rule.
 
 
-**Pre-flight check before any skill that cites authority.** Test whether a research connector (HKLII, Westlaw Asia, LexisNexis HK, or a statute/regulator MCP) is actually responding, not just configured. If none is, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline. This applies to every skill in this plugin that cites a statute, ordinance, rule, or case — including `client-intake` (Jurisdictional notes, Legal issues), `memo`, `research-start`, and `draft`.
+**Pre-flight check before any skill that cites authority.** Test whether a primary-source tool actually ran this session: repo scripts (`scripts/download_legislation_text.py`, `scripts/hklii_search.py`, etc. — see `references/hk-primary-sources-setup.md` in the marketplace repo) or a **working** paid research MCP your clinic configured. Do not treat `.mcp.json` entries or `mcp.hklii.hk` URLs as connected unless a tool call succeeded. If none ran, record it in the **Sources:** line of the reviewer note (see `## Outputs`) — e.g., `not connected — cites from training knowledge, verify before relying`. Do not emit a standalone banner above the header. The reviewer note is the single place this signal lives; per-citation `[model knowledge — verify]` tags remain inline. This applies to every skill in this plugin that cites a statute, ordinance, rule, or case — including `client-intake` (Jurisdictional notes, Legal issues), `memo`, `research-start`, and `draft`.
 
 **Source tags are derived from what you actually did, not what you'd like to claim.**
 

@@ -107,3 +107,15 @@ End with the next-steps decision tree per CLAUDE.md `## Outputs`. Customize the 
 - Predict outcomes. Risk rating is a captured judgment, not a forecast.
 - Recommend strategy. Surfaces questions; the counsel answers them.
 - Re-triage. If the user wants to re-triage, that's an `/matter-update` with field changes — this skill reads, doesn't write.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+

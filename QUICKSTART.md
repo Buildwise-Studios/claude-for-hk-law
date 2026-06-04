@@ -2,16 +2,11 @@
 
 **60 seconds.** This gets you to using your plugins.
 
-## Install in Claude Cowork
-1. [Install Claude Desktop](https://claude.com/download)
-2. Get access to Claude Cowork
-3. Follow the instructions in the video below:
-
-https://github.com/user-attachments/assets/51394f0a-5277-4fe2-b81c-5c5e9ac876b5
-
 ## Install in Claude Code
 
-1. **Open Claude Code** (in your terminal) or **Claude Cowork** (the desktop app). Not sure which you have? If you have a terminal window open with Claude in it, that's Claude Code.
+Walkthrough video: [README — Getting started in Claude Code](README.md#getting-started-in-claude-code)
+
+1. **Open Claude Code** in your terminal ([install](https://docs.anthropic.com/en/docs/claude-code/overview)). Not sure which you have? If Claude runs in a terminal window, that's Claude Code.
 
 2. **Add the marketplace.** From GitHub (recommended once the repo is public):
 
@@ -45,11 +40,9 @@ https://github.com/user-attachments/assets/51394f0a-5277-4fe2-b81c-5c5e9ac876b5
    /commercial-legal:cold-start-interview
    ```
 
-6. **Connect a research tool.** Citations are flagged unverified without one. The Hong Kong plugin ecosystem supports the following research connectors:
-   - **Hong Kong e-Legislation** — official ordinances database (elegislation.gov.hk)
-   - **HKLII** — Hong Kong Legal Information Institute (hklii.org)
-   - **Judiciary of Hong Kong** — official judgments database (judiciary.hk)
-   - In Cowork: Settings → Connectors. In Claude Code: the plugin lists research MCPs in its config; you'll be prompted to authorize them the first time a skill needs one.
+6. **HK primary sources (recommended).** Clone this repo and run the smoke test in [references/hk-primary-sources-setup.md](references/hk-primary-sources-setup.md) — legislation text, HKLII search, Judiciary site search. No HKLII/CLIC MCP is shipped (those hostnames do not resolve); use the Python scripts from the repo root.
+
+7. **Connect MCP servers (optional).** Check your plugin's `.mcp.json` — most plugins ship **Slack** and **Google Drive** only. Add paid research MCPs only if your vendor gives you a working URL. Company lookup: `corporate-legal/scripts/check_company.py` when using corporate HK skills.
 
 ## Install user-scoped, not project-scoped
 
@@ -93,12 +86,12 @@ Each plugin learns your playbook through a setup interview, writes it to a pract
 
 ## What's in the box
 
-12 core practice-area plugins (privacy, employment, IP, corporate, and litigation include merged Hong Kong doctrine skills), 9 HK specialty plugins, 5 managed-agent cookbooks, and connectors for Hong Kong e-Legislation, HKLII, and the Judiciary of Hong Kong. The full reference is in [README.md](README.md).
+12 core practice-area plugins (privacy, employment, IP, corporate, and litigation include merged Hong Kong doctrine skills), 9 HK specialty plugins, 5 managed-agent cookbooks, optional vendor MCPs per plugin, and repo scripts for HK legislation and Companies Registry lookup. The full reference is in [README.md](README.md).
 
 ## Stuck?
 
 - **"Command not found"** after install → you forgot step 4. Restart Claude Code.
 - **"Run setup first"** → run `/<plugin>:cold-start-interview` before any other command.
-- **Citations flagged `[verify]`** → connect a research tool (step 6). Without one, every cite is from training data, not a current database. Connect HKLII, Hong Kong e-Legislation, or the Judiciary portal.
+- **Citations flagged `[verify]`** → run the repo scripts from [references/hk-primary-sources-setup.md](references/hk-primary-sources-setup.md) (`download_legislation_text.py`, `hklii_search.py`) or your firm's paid database. Without a tool run this session, cites are from training data.
 - **"I can't read [file]"** → most often this means the plugin is project-scoped and the file is outside the project folder. See "Install user-scoped, not project-scoped" above — reinstall user-scoped or move the file into the project folder.
 - **The plugin doesn't do X** → run `/legal-builder-hub:related-skills-surfacer` to find a better match, or check the plugin's README for "What this plugin does not do."

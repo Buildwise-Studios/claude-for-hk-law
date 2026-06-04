@@ -164,14 +164,13 @@ argument-hint: "[describe the judgment — court, amount, debtor information, kn
 **Append:** `⚠️ Enforcement is fact-dependent and subject to the debtor's asset position, cooperation, and any appeals or challenges. This is a guide only — specific legal advice should be sought before taking enforcement steps. Review with a licensed HK solicitor or barrister.`
 
 
-## Scripts
+## HK primary sources (run before citing)
 
-Use these scripts to fetch live data:
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
 
 ```bash
-# Search legislation index by keyword
-python3 scripts/download_legislation_list.py --search "keyword"
-
-# Download full ordinance text
-python3 scripts/download_legislation_text.py <cap_no>
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
 ```

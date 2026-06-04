@@ -11,31 +11,10 @@
       "url": "https://drivemcp.googleapis.com/mcp/v1",
       "title": "Google Drive",
       "description": "Search, read, and fetch documents from Google Drive."
-    },
-    "HKLII": {
-      "type": "http",
-      "url": "https://mcp.hklii.hk/",
-      "title": "HKLII",
-      "description": "Hong Kong Legal Information Institute — free access to HK judgments, legislation, and legal materials from the Court of Final Appeal, High Court, District Court, and tribunals."
-    },
-    "CLIC": {
-      "type": "http",
-      "url": "https://mcp.clic.org.hk",
-      "title": "CLIC (Community Legal Information Centre)",
-      "description": "Hong Kong's Community Legal Information Centre — plain-language legal information, self-help guides, and referral information for common legal problems in Hong Kong."
-    },
-    "Westlaw Asia": {
-      "type": "http",
-      "url": "https://mcp.westlawasia.com/mcp",
-      "title": "Westlaw Asia",
-      "description": "Primary law research for Asia-Pacific — Hong Kong judgments, legislation, and commentary from Thomson Reuters."
     }
   },
   "recommendedCategories": [
     "case-management",
-    "legal-research",
-    "case-law",
-    "hk-courts",
     "documents",
     "chat"
   ]

@@ -148,7 +148,7 @@ understand what the question is testing.
 > - Do they work for other companies, or will this be exclusive?
 > - Will they bear any financial risk — can they profit beyond the fee, or
 >   lose money on the engagement?
-> - Do they have their own business entity (LLC, S-corp, sole proprietor)?
+> - Do they have their own business entity (sole proprietor, partnership, private company limited by shares)?
 >
 > **The arrangement**
 > - How do you want to structure this — direct contractor, staffing agency

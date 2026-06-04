@@ -126,18 +126,25 @@ The safeguards above — labels, confidence indicators, verification prompts, th
 
 *(Two deprecated skills — `form-generation`, `plain-language-letters` — redirect to `/draft` and `/client-letter` + `/status client` respectively.)*
 
-## Connectors and citation verification
+## Primary sources and citation verification
 
-**Connect a research tool first — the citation guardrails depend on it.** Without one, every cite is tagged `[verify]` and the reviewer note above each deliverable records that sources weren't verified. The plugin works either way; it just does more of the verification for you when a research tool is connected.
+**Clone this repo and run the smoke test in [references/hk-primary-sources-setup.md](../references/hk-primary-sources-setup.md).** The plugin ships **Python scripts**, not HKLII/CLIC MCP servers (`mcp.hklii.hk` / `mcp.clic.org.hk` do not resolve publicly).
 
-The legal research connectors in this plugin aren't just data sources — they're the difference between a verified citation and a citation you have to check. A citation retrieved through **HKLII** (Hong Kong Legal Information Institute — free access to HK judgments and legislation) or **Westlaw Asia** / **LexisNexis HK** is tagged with its source and can be traced back. A citation from the model's knowledge or from web search is tagged `[verify]` and should be checked against a primary source (HK e-Legislation, the Judiciary's website) before anyone relies on it. The plugin tiers its citations so your verification time goes where it matters.
+| Tool | Command |
+|---|---|
+| Ordinance list / Cap lookup | `python3 scripts/download_legislation_list.py --cap 57` |
+| Ordinance text (DOJ open data) | `python3 scripts/download_legislation_text.py 57` |
+| Case / legislation search leads | `python3 scripts/hklii_search.py "query" --cases` |
+| Judiciary **website** search | `python3 scripts/judiciary_search.py "query"` |
 
-**Hong Kong-specific research tools:**
-- **HK e-Legislation** (https://www.elegislation.gov.hk) — official legislation database
-- **HKLII** (https://www.hklii.hk) — free judgments and legislation
-- **Judiciary website** (https://www.judiciary.hk) — Practice Directions, court lists
-- **CLIC** (https://www.clic.org.hk) — Community Legal Information Centre
-- **Law Reform Commission** (https://www.hkreform.gov.hk) — reports and recommendations
+A cite is only tool-backed when Claude ran one of these (or your firm's paid MCP) **in that session** and tagged it `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, etc. Model knowledge and web search stay `[verify]`.
+
+**Human sites students still use:**
+- [HK e-Legislation](https://www.elegislation.gov.hk) — authoritative legislation
+- [HKLII](https://www.hklii.hk) — free judgments (open URLs from the script)
+- [Judiciary](https://www.judiciary.hk) — Practice Directions, court information
+- [CLIC](https://www.clic.org.hk) — plain-language guides and on-site chat (not an MCP)
+- [Law Reform Commission](https://www.hkreform.gov.hk) — reports
 
 ## Integrations (open questions)
 

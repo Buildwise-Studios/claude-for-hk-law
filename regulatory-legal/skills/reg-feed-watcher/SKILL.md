@@ -73,7 +73,7 @@ For any HK regulator not in this list: check the regulator's website for latest 
 
 - **Paid regulatory feed MCP:** Query for updates since last check date,
   filtered to watchlist regulators.
-- **Westlaw Asia / HKLII MCP:** Same — HK case law, regulatory tribunal decisions, and court judgments.
+- **HKLII / paid databases:** Use `python3 scripts/hklii_search.py "<query>" --cases` from the repo root when the feed references HK case law (tag `[HKLII search]`). No HKLII MCP is shipped.
 
 De-duplicate across tiers — the same document may appear in multiple sources.
 Prefer the richest source for the enriched output.

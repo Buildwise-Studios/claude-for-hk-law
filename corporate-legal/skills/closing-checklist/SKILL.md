@@ -83,7 +83,7 @@ Each becomes a checklist item with a source cite to the agreement section.
 
 **Research obligations before populating regulatory/approval items.** Antitrust, foreign-investment, and sector-specific approvals (for example, HSR-style filings, CFIUS, industry regulators) have jurisdiction-specific mechanics, thresholds, and timing windows that change. Extract the name of each regulatory condition from the PA, then research the currently operative mechanics (who files, when, what triggers a second request, what the waiting period is). Cite primary sources and verify currency. Do not populate a timing assumption from memory.
 
-**Material-adverse-effect / material-adverse-change closing conditions.** Pull the defined term from the PA — MAC/MAE framing is negotiated, not a standard. Research the governing-law interpretation of the specific language used (Delaware, New York, and other jurisdictions treat carve-outs and quantitative tests differently) before flagging an event as a potential MAC trigger.
+**Material-adverse-effect / material-adverse-change closing conditions.** Pull the defined term from the PA — MAC/MAE framing is negotiated, not a standard. Research the governing-law interpretation of the specific language used (Hong Kong / English law and other governing laws treat carve-outs and quantitative tests differently) before flagging an event as a potential MAC trigger.
 
 **Consent-requirement extraction from material contracts** depends on governing-law default rules and the specific anti-assignment language in each contract. Research the applicable rule per contract rather than assuming a default.
 
@@ -107,7 +107,7 @@ handoff:
   severity: "[🔴 / 🟠 / 🟡 / 🟢 — carried from upstream, see severity-floor rule in CLAUDE.md]"
 
   # Consent / third-party action fields
-  counterparty: "[e.g., Dunmore Holdings LLC]"
+  counterparty: "[e.g., Dunmore Holdings Limited]"
   guarantor: "[e.g., Buyer parent guaranty required, or N/A]"
   conditions: "[any substantive condition the counterparty attached — e.g., 'replacement guaranty from buyer parent required before consent effective']"
   notice_deadline: "[e.g., 30 days prior to closing, or specific date]"

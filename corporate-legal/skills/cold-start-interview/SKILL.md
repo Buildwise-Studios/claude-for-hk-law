@@ -24,7 +24,7 @@ argument-hint: "[--redo | --new-deal | --check-integrations | --module [m&a | bo
 
 ## Purpose
 
-Corporate counsel roles vary more than almost any other in-house function. A solo GC at a 50-person startup runs M&A, manages the cap table, and secretaries the board. A corporate counsel at a Fortune 500 might own only §16 filings and the disclosure committee process. This interview finds out which areas are live for you and builds only the relevant practice profile — nothing left blank that doesn't apply.
+Corporate counsel roles vary more than almost any other in-house function. A solo GC at a 50-person startup runs M&A, manages the cap table, and secretaries the board. A corporate counsel at a HKEX-listed group might own only Part XV SFO disclosures, results announcements, and the disclosure committee process. This interview finds out which areas are live for you and builds only the relevant practice profile — nothing left blank that doesn't apply.
 
 ## Cold-start check
 
@@ -201,7 +201,7 @@ Ask which of the following apply. More than one is common. All four is not unusu
 >
 > 1. **M&A** — deals: buying, selling, investing, or divesting business units
 > 2. **Board & Secretary** — board meeting prep, minutes, resolutions, committee management
-> 3. **Public Company** — SEC reporting, disclosure committee, §16 filings, insider trading
+> 3. **Public Company** — HKEX/SFC reporting, disclosure committee, Part XV notifiable interests, Model Code / insider dealing
 > 4. **Entity Management** — subsidiary management, registered agents, cap table, annual filings
 >
 > Tell me the numbers that apply. You can always add a module later with `/corporate-legal:cold-start-interview --module [name]`.
@@ -220,7 +220,7 @@ If the user uploads: read it, extract company identity, legal-team size, and esc
 
 If not:
 
-> **What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest 10-K, and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
+> **What does [your company] do?** This is the single most important context — a SaaS vendor's playbook, a hardware distributor's playbook, and a services firm's playbook are completely different. You don't have to type it out: paste a link to your company website, your "about" page, your Wikipedia article, or your latest HKEX annual report, Companies Registry annual return (NAR1), or annual accounts under the Companies Ordinance (Cap 622), and I'll extract what I need. Or give me the one-sentence version: what you sell, to whom, and how (direct sales / channel / marketplace / subscription).
 
 - What's the company name (or the name you want to use in outputs)?
 - What industry are you in?
@@ -342,7 +342,7 @@ From the repository or seed consents, extract:
 Write to `## Board & Secretary` → `**Consents repository:**` and `**Consent format:**` in the config.
 
 **Annual governance cycle:**
-- What annual items do you manage? (Director elections, auditor ratification, equity plan approvals, say-on-pay if public, annual board self-assessment — whatever applies to you.)
+- What annual items do you manage? (Director re-election under Cap 622, auditor re-appointment, share plan approvals, directors' remuneration report at AGM if listed, annual board evaluation — whatever applies to you.)
 
 Write to `## Board & Secretary` in the config.
 
@@ -350,29 +350,29 @@ Write to `## Board & Secretary` in the config.
 
 ### Part 2P: Public Company module (3–4 min, if active)
 
-- What exchange are you on — NYSE, Nasdaq, other?
+- What exchange are you on — HKEX Main Board, GEM, or other?
 - What's your fiscal year end?
-- What's your filer status — large accelerated, accelerated, or non-accelerated?
+- Listed company or subsidiary of a listed group?
 
 **Disclosure committee:**
-- Do you have a formal disclosure committee? Who's on it — CFO, CAO, IR, Legal, others?
-- How often does it meet — quarterly pre-earnings, or as needed?
+- Do you have a formal disclosure committee? Who's on it — CFO, company secretary, IR, legal, others?
+- How often does it meet — quarterly before results announcements, or as needed?
 
-**§16 reporting:**
-- Who tracks §16 filer transactions — you, outside counsel, IR, or a combination?
-- What's your internal target for getting Form 4 filed? (SEC requires 2 business days; internal targets are often tighter.)
-- Does your insider trading policy require pre-clearance? Who approves?
+**Part XV SFO (notifiable interests):**
+- Who tracks directors' and substantial shareholders' dealings — you, outside counsel, company secretary, or a combination?
+- What's your internal target for filing Form 3D/3E/3F? (SFO s.341 requires disclosure within 3 business days; internal targets are often tighter.)
+- Does your dealing policy require pre-clearance? Who approves?
 
-**Insider trading policy:**
-- When are your trading windows open relative to earnings?
-- Who is covered by pre-clearance requirements — all officers and directors, or a broader list?
+**Model Code / insider dealing (Listing Rules):**
+- When are your dealing windows open relative to interim and annual results announcements?
+- Who is covered by pre-clearance — directors only, or a broader list?
 - What's the process for a blackout exception if one is ever needed?
 
-**Earnings call:**
-- What's legal's role in earnings call prep — reviewing scripts, preparing Q&A, something else, or no direct role?
-- How far in advance of the call are you typically involved?
+**Results announcements:**
+- What's legal's role in results announcement prep — reviewing announcements, preliminary results, HKEX filing review, or no direct role?
+- How far in advance of the board meeting are you typically involved?
 
-Write to `## Public Company` in the config.
+Write to `## Public Company (HK Listed)` in the config.
 
 ---
 
@@ -383,19 +383,19 @@ Write to `## Public Company` in the config.
 > If you don't have one handy, answer the questions below and I'll build a starter entity table from your answers.
 
 **From uploaded org chart or entity list, extract:**
-- Entity names and entity types (Corp, LLC, Ltd, branch, etc.)
-- Jurisdiction of formation for each
+- Entity names and entity types (private company limited by shares, public company, company limited by guarantee, registered branch, etc.)
+- Place of incorporation for each (Hong Kong, BVI, Cayman, PRC, etc.)
 - Ownership chain and percentages
 - Any entities flagged as dormant or inactive
 
 **If no upload, ask:**
 
 - How many active legal entities are you managing, roughly?
-- What are the key jurisdictions — just Delaware, or a meaningful multi-jurisdiction footprint?
-- Who's your registered agent — CT Corp, National Registered Agents, in-house, or varies by jurisdiction?
-- Do you use an entity management system — Athena, Kira, Blueprint — or are you working off a spreadsheet?
-- What's your cap table situation — Carta, Shareworks, Ledgr, or still manual? (Or not applicable if wholly owned with no external equity.)
-- Who owns routine filing work — annual reports, foreign qualifications, registered agent renewals? Legal, legal ops, or does the registered agent handle it automatically?
+- What are the key jurisdictions — Hong Kong only, or a meaningful multi-jurisdiction footprint (BVI, Cayman, Singapore, PRC)?
+- Who is your company secretarial / registered office provider — in-house company secretary, external corporate services firm, or varies by entity?
+- Do you use an entity management system — or are you working off a spreadsheet?
+- What's your cap table situation — Carta, Ledgy, manual register of members, or not applicable if wholly owned?
+- Who owns routine filing work — annual returns (NAR1), business registration certificate renewals, SCR updates? Legal, legal ops, or does the secretarial provider handle it automatically?
 - Do your subsidiaries have their own governance cadence, or are they effectively dormant holding companies?
 - Do you have intercompany agreements in place — services agreements, IP licenses, loans?
 

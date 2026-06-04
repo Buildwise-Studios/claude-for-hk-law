@@ -66,7 +66,7 @@
     {
       "name": "litigation-legal",
       "source": "./litigation-legal",
-      "description": "Manages the litigation portfolio \u2014 matters, deadlines, holds, demands, outside counsel \u2014 under HK civil procedure (HCR, DCAC). Covers the CFA/CFI/DC court structure, claim charts, chronologies, depo prep, privilege logs, and brief drafting. Adapts to how you work litigation: in-house, firm, or solo.",
+      "description": "Manages the litigation portfolio \u2014 matters, deadlines, holds, demands, outside counsel \u2014 under HK civil procedure (RHC, RDC). Covers the CFA/CFI/DC court structure, claim charts, chronologies, depo prep, privilege logs, and brief drafting. Adapts to how you work litigation: in-house, firm, or solo.",
       "author": {
         "name": "Buildwise-Studios"
       }

@@ -96,7 +96,7 @@ A false assurance of protection is worse than no marking. The solicitor who reli
 **⚠️ Reviewer note — one block above the deliverable.** This is the ONE place for everything the reviewer needs to know before relying on the output. Collapse every pre-flight flag, caveat, and meta-note here — do NOT scatter them through the body. Format:
 
 > **⚠️ Reviewer note**
-> - **Sources:** [Research connector: HKLII ✓ verified | not connected — cites from training knowledge, verify before relying]
+> - **Sources:** [Repo scripts (`references/hk-primary-sources-setup.md`) or paid MCP ran this session | not connected — verify before relying]
 > - **Read:** [pages 1-50 of 200 | all 3 documents | N items in register | N/A]
 > - **Flagged for your judgment:** [N items marked `[review]` inline | none]
 > - **Currency:** [searched for developments since [date] — nothing found | found N updates, noted inline | could not search, verify [specific rules]]
@@ -458,13 +458,13 @@ When a skill doesn't know which matter is active and workspaces are enabled, it 
 
 **Active entities:** [PLACEHOLDER — N entities]
 **Key jurisdictions:** [PLACEHOLDER — list]
-**Registered agent:** [PLACEHOLDER — CT Corp / National Registered Agents / in-house / per jurisdiction]
+**Company secretarial / registered office:** [PLACEHOLDER — in-house company secretary / external corporate services firm / per entity]
 
-**Entity management system:** [PLACEHOLDER — Athena / Kira / Blueprint / manual spreadsheet]
-**Cap table tool:** [PLACEHOLDER — Carta / Shareworks / Ledgr / manual / n/a]
+**Entity management system:** [PLACEHOLDER — entity management platform / manual spreadsheet]
+**Cap table / members' register:** [PLACEHOLDER — Carta / Ledgy / statutory register only / n/a]
 
-**Routine filing owner:** [PLACEHOLDER — legal / legal ops / outside registered agent handles]
-**Annual report tracking:** [PLACEHOLDER — how tracked, who reviews]
+**Routine filing owner:** [PLACEHOLDER — legal / legal ops / outside company secretarial provider]
+**Annual return (NAR1) tracking:** [PLACEHOLDER — how tracked, who reviews]
 
 **Intercompany agreements in place:** [PLACEHOLDER — yes / no / partial]
 **Subsidiary governance cadence:** [PLACEHOLDER — how often sub boards meet, if at all]

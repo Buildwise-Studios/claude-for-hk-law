@@ -150,3 +150,15 @@ In drill-me mode, after building a section: "Okay, close the outline. [Subject] 
 - Replace the student's own synthesis. An outline you didn't build is an outline you won't know. This skill *helps* build — the student should be driving.
 - Guarantee exam coverage. Outline the whole syllabus; the professor will test whatever they want.
 - **Invent rules to fill gaps.** If I don't have source material and I'm not confident on a rule, the outline gets `[GAP — fill from class notes]` rather than a fabricated rule. Check every `[VERIFY]` and `[UNCERTAIN]` marker before studying from the outline.
+
+## HK primary sources (run before citing)
+
+Run from the **cloned `claude-for-hk-law` repo root** (see `references/hk-primary-sources-setup.md`). Before citing a Cap, rule, or case, run scripts **in this session** and tag: `[HK e-Legislation / DOJ open data]`, `[HKLII search]`, `[Judiciary site search]`, or `[model knowledge — verify]`. No HKLII/CLIC MCP is shipped.
+
+```bash
+python3 scripts/download_legislation_list.py --cap <cap>
+python3 scripts/download_legislation_text.py <cap>
+python3 scripts/hklii_search.py "<query>" --cases --limit 10
+python3 scripts/judiciary_search.py "<query>" --limit 10
+```
+
