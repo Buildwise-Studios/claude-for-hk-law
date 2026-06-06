@@ -1,0 +1,120 @@
+---
+name: ian-xiaohei-illustrations
+description: >-
+  Generate Ian Xiaohei-style Chinese article illustrations (16:9 white-background
+  hand-drawn, absurd but clean). Use when the user asks for 小黑/怪诞/手绘正文配图,
+  article illustrations, shot lists, or visual metaphors for Chinese blog posts,
+  Notion docs, or methodology content. Also triggers on English requests for
+  Xiaohei illustrations or hand-drawn article images in this style.
+---
+
+# Ian 小黑怪诞正文配图
+
+## 核心定位
+
+为中文文章设计和生成 16:9 横版正文配图。目标不是做商业插画、PPT 信息图或可爱卡通，而是把文章里的关键判断、流程、结构、状态或隐喻，变成一张清爽、怪诞、有创意、可读但不说明书的手绘解释图。
+
+默认视觉 IP 是“小黑”：黑色实心、白点眼、细腿、空表情，认真做一件荒诞但成立的事。小黑必须参与画面的核心动作，不能只是站在旁边当装饰。**画面上不要出现 “Xiaohei”“小黑” 或角色名字**，不要用气泡解释角色是谁。
+
+## 先读这些参考
+
+按任务需要读取，不要一次塞满上下文：
+
+- `references/style-dna.md`：风格 DNA、颜色、文字、禁忌。
+- `references/xiaohei-ip.md`：小黑 IP 的形象、性格、动作库和禁忌。
+- `references/composition-patterns.md`：结构类型、原创隐喻方法和反复刻规则。
+- `references/prompt-template.md`：单张生图提示词模板（中/英标注）。
+- `references/cursor-generate-image.md`：**Cursor 必读** — STYLE LOCK 块、失败重试、英文标注。
+- `references/qa-checklist.md`：生成后检查和迭代规则。
+- `assets/examples/`：只作低频视觉校准，不进入默认生成路径。不要照抄这些案例的构图、物件或标注。
+
+## 工作流
+
+### 1. 消化正文
+
+先读用户给的正文、链接、Notion 页面、Markdown 文件或截图内容。提炼：
+
+- 核心观点是什么
+- 哪些段落承担认知转折
+- 哪些内容适合用图解释
+- 哪些地方只适合文字，不需要图
+
+不要平均配图。优先选择“认知锚点”，例如：核心判断、两个断点、输入输出闭环、分流、前后对比、一鱼多吃、承接路径、常见坑、角色状态变化。
+
+### 2. 先出配图策略
+
+如果用户只是说“分析怎么配图 / 思考哪些地方需要配图”，先给 shot list。每张图写清楚：
+
+- 放在哪个段落后
+- 图的主题
+- 核心意思
+- 结构类型
+- 小黑在图里做什么
+- 建议元素
+- 建议标注词（中文或英文，跟文章语言；用户明确要求英文时用英文）
+
+默认 4-8 张。文章很短时 1-3 张；长文也不要轻易超过 9 张。够用就好，避免把正文做成画册。
+
+### 3. 单张生成
+
+如果用户明确要求“生成 / 输出 / 做图 / 帮我生成”，不要停下来等确认；用 Cursor 的 `GenerateImage` 工具每张单独生成。不要把多张图拼在一张里。
+
+**Cursor 适配（必读 `references/cursor-generate-image.md`）：**
+
+1. 提示词**必须以 STYLE LOCK 块开头**（白底、手绘、禁止信息图/UI/深色海报）。Cursor 默认会生成深色商业信息图，不加强约束第一批几乎必翻车。
+2. 标注语言：中文文章默认中文标注；英文文章或用户要求时用 **English handwritten labels**。
+3. 每张图一次 `GenerateImage` 调用；`filename` 用 `assets/<article-slug>-illustrations/01-topic-name.png`。
+4. 工具常把文件写到 `.cursor/projects/.../assets/` — 生成后**复制到 workspace 目标路径**。
+5. **生成后目视检查**。若出现深色背景、SaaS 界面、编号 playbook 海报、可爱品牌吉祥物，视为失败，立刻按 `cursor-generate-image.md` 重生成，不要交付。
+
+每张图只讲一个核心结构。提示词必须包含：
+
+- 16:9 横版正文配图
+- 纯白背景（STYLE LOCK 里重复强调）
+- 黑色手绘线稿
+- 少量红/橙/蓝手写标注（中或英）
+- 大量留白
+- 小黑作为核心动作主体
+- 禁止 PPT、商业插画、幼稚可爱、复杂架构、左上角类型标题、深色信息图、UI  mockup
+
+不要复刻过往案例。案例只提供风格密度和小黑参与方式，不能直接复用“传送带断点 / 小黑拉线 / 素材鱼 / 盖章工具箱 / 常见坑路径”等已有构图，除非用户明确要求复刻某张图。每次都要从当前文章重新发明一个奇怪但成立的隐喻。
+
+### 4. 检查与迭代
+
+生成后检查 `references/qa-checklist.md`。如果出现以下问题，优先重生成或局部编辑：
+
+- 小黑只是装饰
+- 画面太满
+- 太像流程图/PPT
+- 中文太多或错字严重
+- 左上角出现“常见坑/流程图/系统架构图”等标题
+- 画风太可爱、幼稚、死板
+- 背景不是干净白底
+
+### 5. 保存交付
+
+如果用户在 workspace 内工作，把最终图复制到：
+
+```text
+assets/<article-slug>-illustrations/
+```
+
+按顺序命名：
+
+```text
+01-topic-name.png
+02-topic-name.png
+```
+
+保留原始生成文件，不要覆盖已有资产，除非用户明确要求替换。
+
+## 输出口径
+
+生成前的策略输出要短而准。生成后的交付要包含：
+
+- 生成了几张
+- 每张图的用途
+- 保存路径
+- 哪些图最稳，哪些图是可选
+
+不要长篇解释风格理论；让图自己说话。
