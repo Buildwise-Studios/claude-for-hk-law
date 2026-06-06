@@ -33,7 +33,7 @@ Everything here is available **two ways from one source**: install it as a [Clau
 - Clone this repo if you want HK legislation / HKLII search scripts ([setup guide](references/hk-primary-sources-setup.md))
 - Follow the walkthrough in the video below:
 
-[https://github.com/user-attachments/assets/51394f0a-5277-4fe2-b81c-5c5e9ac876b5](https://github.com/user-attachments/assets/51394f0a-5277-4fe2-b81c-5c5e9ac876b5)
+https://github.com/user-attachments/assets/2e4c1282-e6a7-4839-91a6-4b4847e7c251
 
 > [!IMPORTANT]
 > **Every output from these plugins is a draft for solicitor review — not legal advice, not a legal conclusion, not a substitute for a solicitor or barrister.** They are built with guardrails that reflect that: source attribution on every citation, conservative defaults on privilege and subjective legal calls, jurisdiction assumptions surfaced, and explicit gates before anything is filed, sent, or relied on. A solicitor reviews, verifies, and takes professional responsibility for anything that leaves the building. These plugins make that review faster; they do not replace it.
