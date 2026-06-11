@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> **Built by [Buildwise Studios](https://github.com/Buildwise-Studios)** — we design and integrate AI agents for professional services: law firms, in-house legal, headhunters, eCommerce operators, and similar teams.
+> **Built by [Buildwise Studios](https://www.buildwise-studios.com/hong-kong-legal-agents)** — we design and integrate AI agents for professional services: law firms, in-house legal, headhunters, eCommerce operators, and similar teams.
 >
 > **This repo** is a free Claude plugin marketplace for Hong Kong legal workflows. Install it in [Claude Code](https://claude.com/product/claude-code) ([QUICKSTART.md](QUICKSTART.md); walkthrough video below). Also works in [Claude Cowork](https://claude.com/product/cowork). Your documents stay in **your** Claude environment—data handling follows **your** Anthropic subscription, not Buildwise.
 >
